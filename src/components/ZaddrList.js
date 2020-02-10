@@ -8,11 +8,11 @@ export default function ZaddrList (props) {
 
     return(
         <div className="zaddr-list">
-            {zaddrs.map(item => {
+            {zaddrs.map(item => 
                 item.zaddr 
                     ? <ZaddrCard user={item} /> 
                     : null
-            })}
+            )}
         </div>
      )
 
