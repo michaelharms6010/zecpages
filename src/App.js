@@ -2,8 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {ZaddrContext} from "./contexts/ZaddrContext"
 import {Link, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
-import ZaddrList from "./components/ZaddrList"
-import axiosWithAuth from "./utils/AxiosWithAuth"
+
+import ZaddrList from "./components/ZaddrList";
+import Navigation from "./components/Navigation";
+
+import axiosWithAuth from "./utils/AxiosWithAuth";
+
 
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
@@ -19,7 +23,7 @@ function App() {
     <ZaddrContext.Provider value={{zaddrs, setZaddrs}}>
       <Router>
         <div className="App">
-          <nav>navbar will go here <Link to="/edit" >Edit your information</Link> </nav>
+          <Navigation />
           <ZaddrList />
           
         
