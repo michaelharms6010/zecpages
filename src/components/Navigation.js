@@ -5,8 +5,13 @@ export default function Navigation() {
 
     return(
         <nav className="main-nav">
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Post your Zaddr</Link>
+            <div>
+                <Link to="/">Home</Link>
+            </div>
+            <div>
+                <Link to="/login">Login</Link>
+                <Link to="/signup">Sign Up</Link>
+            </div>
         </nav>
     )
 

@@ -44,6 +44,10 @@
   background:turquoise;
   padding:10px;
 
+  p{
+    word-break: break-all
+  }
+
   h2 {
     margin-top:0px;
   }
@@ -51,5 +55,17 @@
   .card-bottom-row {
     display:flex;
     justify-content:space-evenly;
+  }
+}
+
+.main-nav {
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  div {
+    width:40%;
+  }
+  a {
+    margin: 0 4%;
   }
 }
