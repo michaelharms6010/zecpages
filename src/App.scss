@@ -43,4 +43,13 @@
   border: 1px solid black;
   background:turquoise;
   padding:10px;
+
+  h2 {
+    margin-top:0px;
+  }
+
+  .card-bottom-row {
+    display:flex;
+    justify-content:space-evenly;
+  }
 }
