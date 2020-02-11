@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import axios from "axios";
+import {UserContext} from "../contexts/UserContext";
 
 export default function Login({history}) {
+    const {setLoggedIn} = useContext(UserContext);
     const [formInfo, setFormInfo] = useState({username: "", password: ""});
     
     const handleChange = e => {
@@ -13,6 +15,7 @@ export default function Login({history}) {
         axios.post("https://zeitpages-staging.herokuapp.com/auth/login", formInfo)
             .then(res => {
                 localStorage.setItem("jwt", res.data.token);
+                setLoggedIn(true);
                 history.push("/edit")
             })
             .catch(err => console.error(err))
