@@ -1,12 +1,18 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import axiosAuth from "../utils/AxiosWithAuth";
-
+import {UserContext} from "../contexts/UserContext";
 
 export default function EditUserInfo ({history}) {
     const [user, setUser] = useState({website: "", proofposturl: "",})
-    const [httpsString, setHttpsString] = useState("")
-    const [editing, setEditing] = useState(false)
-    const [error, setError] = useState("")
+    const [httpsString, setHttpsString] = useState("");
+    const [editing, setEditing] = useState(false);
+    const [error, setError] = useState("");
+    const {setLoggedIn} = useContext(UserContext);
+
+    const logout = _ => {
+        localStorage.removeItem("jwt")
+        setLoggedIn(false)
+    }
 
     useEffect( _ => {
         axiosAuth().get("https://zeitpages-staging.herokuapp.com/users/me")
@@ -35,8 +41,10 @@ export default function EditUserInfo ({history}) {
 
     const deleteUser = _ => {
         axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
-        .then(res => {setUser({website: ""})
-        history.push("/")   
+        .then(res => {
+            setUser({website: ""});
+            logout();
+            history.push("/");   
     })
         .catch(err => {console.error(err)
             
@@ -62,32 +70,36 @@ export default function EditUserInfo ({history}) {
             </>
             : 
             <>
-            <h2 style={{marginBottom: "0"}}>{user.username}</h2>
-            <label>z-address</label>
+            <h2>{user.username}</h2>
             <textarea 
                 className="zaddr-input"
                 name="zaddr"
                 onChange={handleChange}
                 value={user.zaddr} 
+                placeholder="Paste your z-address here"
             />
             <div className="card-bottom-row">
             
                 <input
+                className="details-input"
                 name="proofposturl"
                 onChange={handleChange}
                 value={user.proofposturl} 
                 placeholder="Proof of identity"/>
                 <input
+                className="details-input"
                 name="website"
                 onChange={handleChange}
                 value={user.website}
                 placeholder="Website" />
                 <input
+                className="details-input"
                 name="twitter"
                 onChange={handleChange}
                 value={user.twitter}
                 placeholder="Twitter" />
                 <input
+                className="details-input"
                 name="email"
                 onChange={handleChange}
                 value={user.email}

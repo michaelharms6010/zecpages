@@ -1,3 +1,6 @@
+$breakpoint-tablet: 800px;
+$breakpoint-mobile: 500px;
+
 .App {
   text-align: center;
 }
@@ -55,6 +58,9 @@
   .card-bottom-row {
     display:flex;
     justify-content:space-evenly;
+    .details-input {
+      width:20%;
+    }
   }
 }
 
@@ -87,4 +93,30 @@
   background:rgb(255, 194, 194);
   border: 1px solid red;
   width:60%;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .zaddr-card {
+    .card-bottom-row {
+      display:flex;
+      justify-content:space-evenly;
+      flex-direction:column;
+      .details-input {
+        width:80%;
+        margin: 1% auto;
+      }
+    }
+    button {
+      margin: 0px 10px;
+      height: auto;
+      background: white;
+      border: 2px solid rebeccapurple;
+      color:rebeccapurple;
+      padding: 4px;
+      font-size: 1.5rem;
+    }
+    button:active {
+      transform:scale(.95);
+    }
+  }
 }
