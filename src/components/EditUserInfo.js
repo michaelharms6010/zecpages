@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import axiosAuth from "../utils/AxiosWithAuth";
 import {UserContext} from "../contexts/UserContext";
+import {confirmAlert} from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css"
+
 
 export default function EditUserInfo ({history}) {
     const [user, setUser] = useState({website: "", proofposturl: "",})
@@ -39,15 +42,33 @@ export default function EditUserInfo ({history}) {
     }
 
     const deleteUser = _ => {
-        axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
-        .then(res => {
-            setUser({website: ""});
-            logout();
-            history.push("/");   
-    })
-        .catch(err => {console.error(err)
-            
-        });
+        confirmAlert({
+            title: "Confirm Delete",
+            message: "Are you sure you want to remove yourself from the directory? Your account will be deleted.",
+            buttons: [
+                {
+                    label: "Yes",
+                    onClick: _ => axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
+                    .then( _ => {
+                        setUser({website: ""});
+                        logout();
+                        history.push("/");   
+                    })
+                    .catch(err => {console.error(err)
+                        
+                    })
+                },
+                {
+                    label: "No",
+                    onClick: _ => console.log("cancelled delete")
+                }
+            ]
+        })
+
+
+
+
+        
     }
     const handleChange = e => {
         setUser({...user, [e.target.name] : e.target.value})
