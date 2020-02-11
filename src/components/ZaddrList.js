@@ -9,7 +9,7 @@ export default function ZaddrList (props) {
 
     useEffect(_ => {
         axiosWithAuth().get("https://zeitpages-staging.herokuapp.com/users")
-          .then(res => setZaddrs(res.data))
+          .then(res => setZaddrs(res.data.sort( (a, b) => a.id-b.id)))
           .catch(err => console.error(err));
       },[])
 
