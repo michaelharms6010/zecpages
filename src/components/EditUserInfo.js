@@ -14,7 +14,7 @@ export default function EditUserInfo () {
     },[])
 
     useEffect( _ => {
-        if (!user.website.includes("http")) {
+        if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
         }
     },[user.website])

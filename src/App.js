@@ -18,11 +18,7 @@ function App() {
   const [zaddrs, setZaddrs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
 
-  useEffect(_ => {
-    axiosWithAuth().get("https://zeitpages-staging.herokuapp.com/users")
-      .then(res => setZaddrs(res.data))
-      .catch(err => console.error(err));
-  },[])
+
 
 
   return (
