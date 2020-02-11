@@ -75,7 +75,10 @@ export default function EditUserInfo ({history}) {
     }
 
     return(
+        <>
+        <h2>Edit your listing:</h2>
         <div className="zaddr-card">
+            
             {!editing
             ?
             <>
@@ -130,6 +133,7 @@ export default function EditUserInfo ({history}) {
             <button onClick={toggleEditing}>{editing? "Submit" : "Edit"}</button>
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
+        </>
     )
 
 }
