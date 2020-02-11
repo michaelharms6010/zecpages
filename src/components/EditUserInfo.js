@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axiosAuth from "../utils/AxiosWithAuth";
 
 
-export default function EditUserInfo () {
+export default function EditUserInfo ({history}) {
     const [user, setUser] = useState({website: "", proofposturl: "",})
     const [httpsString, setHttpsString] = useState("")
     const [editing, setEditing] = useState(false)
@@ -35,7 +35,9 @@ export default function EditUserInfo () {
 
     const deleteUser = _ => {
         axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
-        .then(res => setUser({website: ""}))
+        .then(res => {setUser({website: ""})
+        history.push("/")   
+    })
         .catch(err => {console.error(err)
             
         });
