@@ -93,7 +93,7 @@ export default function EditUserInfo () {
             </div>
             </>}
             {error ? <p className="error-text">{error}</p> : null}
-            <button onClick={toggleEditing}>Edit</button>
+            <button onClick={toggleEditing}>{editing? "Submit" : "Edit"}</button>
             <button onClick={() => deleteUser(user.id)}>Delete Your Entry</button>
         </div>
     )
