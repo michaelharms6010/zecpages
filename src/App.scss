@@ -152,3 +152,31 @@ $breakpoint-mobile: 500px;
     
   }
 }
+
+
+.auth-form {
+  background: turquoise;
+  width: 500px;
+  margin: 2% auto;
+  padding:15px;
+  border: 1px solid black;
+  form {
+    
+    
+    display:flex;
+    flex-direction: column;
+    
+    
+    input {
+      margin: 2% auto;
+      width:70%;
+    }
+
+    button {
+      margin: 10px auto;
+      margin-top: 20px;
+      width: 50%;
+
+    }
+  }
+}
