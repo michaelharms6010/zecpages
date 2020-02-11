@@ -63,6 +63,7 @@ $breakpoint-mobile: 500px;
 
   h2 {
     margin-top:0px;
+    margin-bottom:0px;
   }
 
   .card-top-row {
@@ -131,7 +132,10 @@ $breakpoint-mobile: 500px;
   }
   
   .zaddr-card {
+    .card-top-row {
 
+      flex-direction:column;
+    }
 
 
     .card-bottom-row {
