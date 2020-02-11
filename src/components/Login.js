@@ -5,7 +5,8 @@ import {UserContext} from "../contexts/UserContext";
 export default function Login({history}) {
     const {setLoggedIn} = useContext(UserContext);
     const [formInfo, setFormInfo] = useState({username: "", password: ""});
-    
+    const [error, setError] = useState("");
+
     const handleChange = e => {
         setFormInfo({...formInfo, [e.target.name]: e.target.value})
     }
@@ -18,7 +19,11 @@ export default function Login({history}) {
                 setLoggedIn(true);
                 history.push("/edit")
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                if (error.status === 401) {
+                    setError("Invalid Credentials.")
+                }
+                console.error(err)})
     }
     
     return (
@@ -38,6 +43,7 @@ export default function Login({history}) {
             value={formInfo.password}
             onChange={handleChange}
             placeholder="password" />
+            {error ? <p className="error-text">{error}</p> : null}
             <button>Submit</button>
         </form> 
     </div>
