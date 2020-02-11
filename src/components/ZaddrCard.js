@@ -5,7 +5,7 @@ export default function ZaddrCard ({user}) {
     const [httpsString, setHttpsString] = useState("")
 
     useEffect( _ => {
-        if (!user.website.includes("http")) {
+        if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
         }
     },[user.website])
