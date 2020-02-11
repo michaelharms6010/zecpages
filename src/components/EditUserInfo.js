@@ -27,7 +27,6 @@ export default function EditUserInfo ({history}) {
     },[user.website])
 
     const toggleEditing = _ => {
-        console.log(user);
         if (editing) {
             axiosAuth().put("https://zeitpages-staging.herokuapp.com/users", user)
                 .then(res => {setEditing(false);
