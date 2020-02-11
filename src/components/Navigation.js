@@ -18,7 +18,7 @@ export default function Navigation() {
             <div>
                 {loggedIn 
                 ? <>
-                <Link to="/edit">Edit your information</Link>
+                <Link to="/edit">Edit Your Card</Link>
                 <Link onClick={logout}>Log Out</Link>
                 </>
                 : <>

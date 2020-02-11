@@ -107,6 +107,19 @@ $breakpoint-mobile: 500px;
 }
 
 @media (max-width: $breakpoint-tablet) {
+
+  .main-nav {
+    width:100%;
+    display:flex;
+    justify-content:flex-end;
+    div {
+      width:50%;
+    }
+    a {
+      margin: 0 4%;
+    }
+  }
+  
   .zaddr-card {
     .card-bottom-row {
       display:flex;
@@ -117,6 +130,8 @@ $breakpoint-mobile: 500px;
         margin: 1% auto;
       }
     }
+
+
     
   }
 }
