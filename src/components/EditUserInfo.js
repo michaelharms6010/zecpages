@@ -33,8 +33,8 @@ export default function EditUserInfo () {
         }
     }
 
-    const deleteUser = id => {
-        axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/${id}`)
+    const deleteUser = _ => {
+        axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
         .then(res => setUser({website: ""}))
         .catch(err => {console.error(err)
             
@@ -94,7 +94,7 @@ export default function EditUserInfo () {
             </>}
             {error ? <p className="error-text">{error}</p> : null}
             <button onClick={toggleEditing}>{editing? "Submit" : "Edit"}</button>
-            <button onClick={() => deleteUser(user.id)}>Delete Your Entry</button>
+            <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
     )
 
