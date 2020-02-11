@@ -2,7 +2,7 @@ import React, {useEffect, useContext} from "react";
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
 import axiosWithAuth from "../utils/AxiosWithAuth";
-
+import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
     const { zaddrs, setZaddrs } = useContext(ZaddrContext);
@@ -23,7 +23,10 @@ export default function ZaddrList (props) {
                     ? <ZaddrCard key={item.id} user={item} /> 
                     : null
             )
-            : <h3>A stylish loading animation</h3>
+            : <>
+            <img id="spinner" src={logo} />
+            <h2>Loading . . .</h2>
+            </>
         }
             <p className="dev-disclaimer">This site is still under development! If you encounter issues while testing, please let me know on <a href="https://twitter.com/michaelharms70">Twitter</a> or <a href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
         </div>
