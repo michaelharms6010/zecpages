@@ -15,6 +15,7 @@ export default function ZaddrList (props) {
 
     return(
         <div className="zaddr-list">
+            <h2>Zeitpages: A Public, Open-Source Zaddr Directory</h2>
             {zaddrs.map(item => 
                 item.zaddr 
                     ? <ZaddrCard key={item.id} user={item} /> 
