@@ -47,6 +47,16 @@ $breakpoint-mobile: 500px;
   background:turquoise;
   padding:10px;
 
+  button {
+    margin: 1% 10px;
+    height: auto;
+    padding: 4px;
+    font-size: 1.2rem;
+  }
+  button:active {
+    transform:scale(.95);
+  }
+  
   p{
     word-break: break-all
   }
@@ -61,6 +71,7 @@ $breakpoint-mobile: 500px;
     .details-input {
       width:20%;
     }
+
   }
 }
 
@@ -106,17 +117,6 @@ $breakpoint-mobile: 500px;
         margin: 1% auto;
       }
     }
-    button {
-      margin: 0px 10px;
-      height: auto;
-      background: white;
-      border: 2px solid rebeccapurple;
-      color:rebeccapurple;
-      padding: 4px;
-      font-size: 1.5rem;
-    }
-    button:active {
-      transform:scale(.95);
-    }
+    
   }
 }

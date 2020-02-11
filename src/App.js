@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
 
@@ -10,9 +10,6 @@ import Login from "./components/Login"
 import ZaddrList from "./components/ZaddrList";
 import Navigation from "./components/Navigation";
 import EditUserInfo from "./components/EditUserInfo";
-
-import axiosWithAuth from "./utils/AxiosWithAuth";
-
 
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
