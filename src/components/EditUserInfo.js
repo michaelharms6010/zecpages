@@ -6,6 +6,7 @@ export default function EditUserInfo () {
     const [user, setUser] = useState({website: "", proofposturl: "",})
     const [httpsString, setHttpsString] = useState("")
     const [editing, setEditing] = useState(false)
+    const [error, setError] = useState("")
 
     useEffect( _ => {
         axiosAuth().get("https://zeitpages-staging.herokuapp.com/users/me")
@@ -23,8 +24,9 @@ export default function EditUserInfo () {
         console.log(user);
         if (editing) {
             axiosAuth().put("https://zeitpages-staging.herokuapp.com/users", user)
-                .then(res => setEditing(false))
-                .catch(err => console.error(err));
+                .then(res => {setEditing(false);
+                     setError("");})
+                .catch(err => setError("Your z-address is invalid."));
             
         } else {
             setEditing(true);
@@ -34,7 +36,9 @@ export default function EditUserInfo () {
     const deleteUser = id => {
         axiosAuth.delete(`https://zeitpages-staging.herokuapp.com/users/${id}`)
         .then(res => setUser({website: ""}))
-        .catch(err => console.error(err));
+        .catch(err => {console.error(err)
+            
+        });
     }
     const handleChange = e => {
         setUser({...user, [e.target.name] : e.target.value})
@@ -88,6 +92,7 @@ export default function EditUserInfo () {
                 placeholder="Email" />
             </div>
             </>}
+            {error ? <p className="error-text">{error}</p> : null}
             <button onClick={toggleEditing}>Edit</button>
             <button onClick={() => deleteUser(user.id)}>Delete Your Entry</button>
         </div>
