@@ -32,6 +32,7 @@ function App() {
             <Route exact path="/login" render={(props) => <Login {...props} />} />
             <Route path="/edit" render={(props) => <EditUserInfo {...props} /> } />
           </div>
+          <p>This site is still under development! If you encounter issues while testing, please let me know on <a href="https://twitter.com/michaelharms70">Twitter</a> or <a href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
         </Router>
       </ZaddrContext.Provider>
     </UserContext.Provider>
