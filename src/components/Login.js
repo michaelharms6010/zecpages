@@ -20,10 +20,12 @@ export default function Login({history}) {
                 history.push("/edit")
             })
             .catch(err => {
-                if (err.response.status === 401) {
-                    setError("Invalid Credentials.")
+                if (err.response) {
+                    if (err.response.status === 401) {
+                        setError("Invalid Credentials.")
+                    }
                 }
-                console.error(err)})
+            })
     }
     
     return (
