@@ -34,7 +34,7 @@ export default function EditUserInfo () {
     }
 
     const deleteUser = id => {
-        axiosAuth.delete(`https://zeitpages-staging.herokuapp.com/users/${id}`)
+        axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/${id}`)
         .then(res => setUser({website: ""}))
         .catch(err => {console.error(err)
             
