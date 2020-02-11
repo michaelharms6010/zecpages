@@ -22,8 +22,8 @@ export default function Navigation() {
                 <Link onClick={logout}>Log Out</Link>
                 </>
                 : <>
-                <Link to="/login">Login</Link>
                 <Link to="/signup">Sign Up</Link>
+                <Link to="/login">Login</Link>
                 </> }
             </div>
         </nav>

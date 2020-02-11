@@ -65,6 +65,15 @@ $breakpoint-mobile: 500px;
     margin-top:0px;
   }
 
+  .card-top-row {
+    p{
+      display:inline-block;
+    }
+    width:90%;
+    display:flex;
+    justify-content:space-between;
+  }
+
   .card-bottom-row {
     display:flex;
     justify-content:space-evenly;
@@ -121,6 +130,9 @@ $breakpoint-mobile: 500px;
   }
   
   .zaddr-card {
+
+
+
     .card-bottom-row {
       display:flex;
       justify-content:space-evenly;
