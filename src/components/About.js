@@ -14,7 +14,8 @@ export default function About() {
             <div className="about-content">
                 <h2>About the Creator</h2>
                 <img alt="a silly picture of Mike" src={mike} />
-                <p>Hi! I'm Mike! I'm a friendly web developer interested in cryptocurrency, privacy, robots, carnivory, and piano. You can contact me on <a href="https://twitter.com/michaelharms70">Twitter</a> or via shielded ZEC memo: zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
+                <p>Hi! I'm Mike! I'm a friendly web developer interested in cryptocurrency, privacy, robots, carnivory, and piano. You can contact me on <a href="https://twitter.com/michaelharms70">Twitter</a> or via shielded ZEC memo:</p>
+                <p>zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
             </div>
          </div>
     )
