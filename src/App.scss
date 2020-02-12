@@ -150,6 +150,10 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.zaddr {
+  word-break: break-all
+}
+
 .zaddr-input {
   width:90%;
   height:2rem;
