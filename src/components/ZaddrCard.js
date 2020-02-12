@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {copyTextToClipboard } from "../utils/copy"
 
-export default function ZaddrCard ({user}) {
-    const [httpsString, setHttpsString] = useState("")
+export default function ZaddrCard ({user, copied, setCopied}) {
+    const [httpsString, setHttpsString] = useState("");
+    
 
     useEffect( _ => {
         if (user.website && !user.website.includes("http")) {
@@ -11,7 +12,10 @@ export default function ZaddrCard ({user}) {
     },[user.website])
 
 
-      
+    const handleCopy = ( zaddr, id) => {
+        copyTextToClipboard(zaddr)
+        setCopied(user.id)
+    }
       
 
     return(
@@ -19,7 +23,7 @@ export default function ZaddrCard ({user}) {
             <h2>{user.username}</h2>
             <div className="card-top-row">
                 <p>{user.zaddr}</p>
-                <button onClick={_ => copyTextToClipboard(user.zaddr)}>Copy Zaddr</button>
+                <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
             <div className="card-bottom-row">
                 {user.proofposturl ? <a href={user.proofposturl}>Proof</a> : null}

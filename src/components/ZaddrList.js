@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
 import axiosWithAuth from "../utils/AxiosWithAuth";
@@ -6,6 +6,7 @@ import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
     const { zaddrs, setZaddrs } = useContext(ZaddrContext);
+    const [copied, setCopied] = useState(0);
 
     useEffect(_ => {
         axiosWithAuth().get("https://zeitpages-staging.herokuapp.com/users")
@@ -20,7 +21,7 @@ export default function ZaddrList (props) {
             {zaddrs.length > 0 
             ? zaddrs.map(item => 
                 item.zaddr 
-                    ? <ZaddrCard key={item.id} user={item} /> 
+                    ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
                     : null
             )
             : <>
