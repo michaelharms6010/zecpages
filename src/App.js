@@ -10,6 +10,7 @@ import Login from "./components/Login"
 import ZaddrList from "./components/ZaddrList";
 import Navigation from "./components/Navigation";
 import EditUserInfo from "./components/EditUserInfo";
+import About from "./components/About"
 
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/signup" render={(props) => <Signup {...props} />} />
             <Route exact path="/login" render={(props) => <Login {...props} />} />
             <Route path="/edit" render={(props) => <EditUserInfo {...props} /> } />
+            <Route path="/about" render={(props) => <About {...props} /> } />
           </div>
         </Router>
       </ZaddrContext.Provider>

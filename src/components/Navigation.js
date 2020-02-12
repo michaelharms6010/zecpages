@@ -16,10 +16,12 @@ export default function Navigation() {
         <nav className="main-nav">
             
                 <Link to="/"><img alt="zecpages logo" className="logo" src={logo} /></Link>
-            
+                
             <div>
+                <Link to="/about">About</Link>
                 {loggedIn 
                 ? <>
+                
                 <Link to="/edit">Edit Your Card</Link>
                 <Link onClick={logout}>Log Out</Link>
                 </>

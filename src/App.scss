@@ -220,6 +220,33 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.about-page {
+  .about-content {
+    width: 70%;
+    margin: 2% auto;
+    background:#f9bb00;
+    border:2px solid black;
+    padding:15px;
+    font-size: 1.2rem;
+    img {
+      width:30%;
+      height:auto;
+      border-radius: 20px;
+      border: 2px solid black;
+    }
+  }
+  .cta {
+    background:turquoise;
+    border:1px solid black;
+    border-radius:10px;
+    height:2rem;
+    padding: 0px 20px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+  }
+}
+
 
 .auth-form {
   background: turquoise;
@@ -247,6 +274,7 @@ $breakpoint-mobile: 500px;
     }
   }
 }
+
 
 
 
