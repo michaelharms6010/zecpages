@@ -101,7 +101,7 @@ export default function EditUserInfo ({history}) {
                 value={user.zaddr} 
                 placeholder="Paste your z-address here"
             />
-            <div className="card-bottom-row">
+            <div className="card-bottom-row-form">
             
                 <input
                 className="details-input"

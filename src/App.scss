@@ -147,14 +147,29 @@ $breakpoint-mobile: 500px;
   }
   
   .zaddr-card {
+    .card-bottom-row {
+      a {
+        width:20%;
+        img {
+          width:100%
+        }
+      }
+      img {
+        width: 20%;
+        height: auto;
+      }
+    }
     .card-top-row {
 
       flex-direction:column;
-      
+      button {
+        margin: 0 auto;
+        margin-bottom: 2%;
+      }
     }
 
 
-    .card-bottom-row {
+    .card-bottom-row-form {
       display:flex;
       justify-content:space-evenly;
       flex-direction:column;
