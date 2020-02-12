@@ -15,7 +15,7 @@ export default function Navigation() {
     return(
         <nav className="main-nav">
             
-                <Link to="/"><img className="logo" src={logo} /></Link>
+                <Link to="/"><img alt="zecpages logo" className="logo" src={logo} /></Link>
             
             <div>
                 {loggedIn 

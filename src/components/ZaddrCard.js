@@ -35,10 +35,10 @@ export default function ZaddrCard ({user, copied, setCopied}) {
                 <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
             <div className="card-bottom-row">
-                {user.proofposturl ? <a target="_new" href={user.proofposturl}><img src={proofactive} /></a> : <img src={proofinactive} />}
-                {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img src={websiteactive} /></a> : <img src={websiteinactive} />}
-                {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img src={twitteractive} /></a> : <img src={twitterinactive} />}
-                {user.email ? <a href={`mailto:${user.email}`}><img src={emailactive} /></a> : <img src={emailinactive} />}
+                {user.proofposturl ? <a target="_new" href={user.proofposturl}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
+                {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
+                {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
+                {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
             </div>
         </div>
     )
