@@ -102,11 +102,16 @@ $breakpoint-mobile: 500px;
 }
 
 .main-nav {
+  background:whitesmoke;
+  padding: 15px 0px;
   width:100%;
   display:flex;
   justify-content:space-between;
   div {
     width:40%;
+    display:flex;
+    justify-content:flex-end;
+    margin-right:5%;
   }
   a {
     margin: 0 4%;
@@ -136,8 +141,7 @@ $breakpoint-mobile: 500px;
 
   .main-nav {
     width:100%;
-    display:flex;
-    justify-content:flex-end;
+
     div {
       width:50%;
     }

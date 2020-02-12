@@ -12,9 +12,9 @@ export default function Navigation() {
 
     return(
         <nav className="main-nav">
-            <div>
+            
                 <Link to="/">Home</Link>
-            </div>
+            
             <div>
                 {loggedIn 
                 ? <>
