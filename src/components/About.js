@@ -9,7 +9,7 @@ export default function About() {
             </div>
             <div className="about-content">
                 <h2>Want to join in? Don't have a z-address?</h2>
-                <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get a Zaddr in under a minute!</button></a>
+                <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Click here and get a Zaddr in under a minute!</button></a>
             </div>
             <div className="about-content">
                 <h2>About the Creator</h2>
