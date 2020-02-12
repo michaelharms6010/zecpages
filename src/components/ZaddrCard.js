@@ -26,9 +26,9 @@ export default function ZaddrCard ({user, copied, setCopied}) {
                 <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
             <div className="card-bottom-row">
-                {user.proofposturl ? <a href={user.proofposturl}>Proof</a> : null}
-                {user.website ? <a href={`${httpsString}${user.website}`}>Website</a> : null}
-                {user.twitter ? <a href={`https://twitter.com/${user.twitter}`}>Twitter: @{user.twitter}</a> : null}
+                {user.proofposturl ? <a target="_new" href={user.proofposturl}>Proof</a> : null}
+                {user.website ? <a target="_new" href={`${httpsString}${user.website}`}>Website</a> : null}
+                {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}>Twitter: @{user.twitter}</a> : null}
                 {user.email ? <span>{user.email}</span> : null}
             </div>
         </div>
