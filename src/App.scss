@@ -82,6 +82,7 @@ $breakpoint-mobile: 500px;
   .card-bottom-row {
     display:flex;
     justify-content:space-evenly;
+    
     .details-input {
       width:20%;
     }
@@ -101,16 +102,32 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.card-bottom-row-form {
+  display:flex;
+  justify-content:space-evenly;
+  width: 98%;
+  margin: 0 auto;
+  .details-input {
+    width:20%;
+  }
+}
+
 .main-nav {
   background:whitesmoke;
   padding: 15px 0px;
   width:100%;
   display:flex;
   justify-content:space-between;
+
+  img {
+    height: 3rem;
+  }
+
   div {
     width:40%;
     display:flex;
     justify-content:flex-end;
+    align-items:center;
     margin-right:5%;
   }
   a {

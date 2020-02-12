@@ -2,6 +2,8 @@ import React, {useContext} from "react";
 import {Link} from "react-router-dom"
 import {UserContext} from "../contexts/UserContext"
 
+import logo from "../icons/zecpageslogo.png"
+
 export default function Navigation() {
     const {loggedIn, setLoggedIn} = useContext(UserContext);
     
@@ -13,7 +15,7 @@ export default function Navigation() {
     return(
         <nav className="main-nav">
             
-                <Link to="/">Home</Link>
+                <Link to="/"><img className="logo" src={logo} /></Link>
             
             <div>
                 {loggedIn 
