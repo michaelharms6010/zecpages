@@ -32,8 +32,10 @@ export default function EditUserInfo ({history}) {
     const toggleEditing = _ => {
         if (editing) {
             axiosAuth().put("https://zeitpages-staging.herokuapp.com/users", user)
-                .then(res => {setEditing(false);
-                     setError("");})
+                .then(res => {
+                    setUser(res.data);
+                    setEditing(false);
+                    setError("");})
                 .catch(err => setError("Your z-address is invalid."));
             
         } else {
