@@ -85,10 +85,10 @@ export default function EditUserInfo ({history}) {
             <h2>{user.username}</h2>
             <p>{user.zaddr}</p>
             <div className="card-bottom-row">
-                {user.proofposturl ? <span>Proof Link: {user.proofposturl}</span> : null}
-                {user.website ? <span>Website: {`${httpsString}${user.website}`}</span> : null}
-                {user.twitter ? <span>Twitter: @{user.twitter}</span> : null}
-                {user.email ? <span>Email: {user.email}</span> : null}
+                {user.proofposturl ? <div><h3 className="title">Proof Link:</h3> {user.proofposturl}</div> : null}
+                {user.website ? <div><h3 className="title">Website:</h3> {`${httpsString}${user.website}`}</div> : null}
+                {user.twitter ? <div><h3 className="title">Twitter:</h3> @{user.twitter}</div> : null}
+                {user.email ? <div><h3 className="title">Email:</h3> {user.email}</div> : null}
             </div>
             </>
             : 
