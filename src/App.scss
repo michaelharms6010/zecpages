@@ -142,6 +142,11 @@ $breakpoint-mobile: 500px;
   }
   a {
     margin: 0 4%;
+    text-decoration:none;
+    color:black;
+    &:hover {
+      text-decoration:underline;
+    }
   }
 }
 
