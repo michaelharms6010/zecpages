@@ -5,7 +5,7 @@ export default function About() {
         <div className="about-page">
             <div className="about-content">
                 <h1>About the site</h1>
-                <p>ZECpages is a public director of zcash users. "Take it easy" is the ZECpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
+                <p>ZECpages is a public directory of zcash users. "Take it easy" is the ZECpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
             </div>
             <div className="about-content">
                 <h2>Want to join in? Don't have a z-address?</h2>

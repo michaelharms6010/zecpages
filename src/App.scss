@@ -3,6 +3,8 @@ $breakpoint-mobile: 500px;
 
 .App {
   text-align: center;
+  background:rgb(218, 252, 255);
+  min-height:100vh;
 }
 
 .App-logo {
@@ -125,7 +127,7 @@ $breakpoint-mobile: 500px;
 }
 
 .main-nav {
-  background:whitesmoke;
+  background:rgb(0, 0, 0);
   padding: 15px 0px;
   width:100%;
   display:flex;
@@ -133,7 +135,7 @@ $breakpoint-mobile: 500px;
 
   img {
     height: 3rem;
-    max-width:7rem;
+    border-radius: 5px;
   }
 
   div {
@@ -146,7 +148,7 @@ $breakpoint-mobile: 500px;
   a {
     margin: 0 4%;
     text-decoration:none;
-    color:black;
+    color:whitesmoke;
     &:hover {
       text-decoration:underline;
     }
