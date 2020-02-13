@@ -55,6 +55,7 @@ $breakpoint-mobile: 500px;
   border: 1px solid black;
   background:turquoise;
   padding:10px;
+  max-width:1000px;
   .zaddr-link {
     margin-top:10px;
   }
@@ -211,6 +212,7 @@ $breakpoint-mobile: 500px;
   }
 
   .zaddr-card {
+    
     .card-bottom-row {
       a {
         width:15%;
