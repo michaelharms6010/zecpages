@@ -2,9 +2,14 @@ $breakpoint-tablet: 800px;
 $breakpoint-mobile: 500px;
 
 .App {
+  
   text-align: center;
   background:rgb(218, 252, 255);
   min-height:100vh;
+  .search-input {
+    margin-left:10px;
+    margin-bottom:1rem;
+  }
 }
 
 .App-logo {
