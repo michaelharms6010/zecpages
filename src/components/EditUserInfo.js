@@ -106,6 +106,7 @@ export default function EditUserInfo ({history}) {
                 value={user.zaddr} 
                 placeholder="Paste your z-address here"
             />
+            <p className="zaddr-link" ><a className="zaddr-a" target="_new" href="https://www.zecwallet.co/">Don't have a zaddr yet? Get one!</a></p>
             <div className="card-bottom-row-form">
             
                 <input

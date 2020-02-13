@@ -55,6 +55,12 @@ $breakpoint-mobile: 500px;
   border: 1px solid black;
   background:turquoise;
   padding:10px;
+  .zaddr-link {
+    margin-top:10px;
+  }
+  .zaddr-a {
+    cursor:pointer;
+  }
 
   button {
     margin: 1% 10px;
@@ -127,7 +133,7 @@ $breakpoint-mobile: 500px;
   margin: 0 auto;
   .details-input {
     width:20%;
-    margin-top:40px;
+    margin-top:0px;
     height:1.5rem;
   }
 }
