@@ -15,7 +15,10 @@ export default function Navigation() {
     return(
         <nav className="main-nav">
             
-                <Link to="/"><img alt="zecpages logo" className="logo" src={logo} /></Link>
+                <Link className="zebra-icon" to="/">
+                    <span className="emoji">🦓</span>
+                    <img alt="zecpages logo" className="logo" src={logo} />
+                </Link>
                 
             <div>
                 <Link to="/about">About</Link>

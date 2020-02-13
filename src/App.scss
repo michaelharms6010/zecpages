@@ -146,6 +146,8 @@ $breakpoint-mobile: 500px;
   display:flex;
   justify-content:space-between;
 
+  
+
   img {
     height: 3rem;
     border-radius: 5px;
@@ -165,6 +167,17 @@ $breakpoint-mobile: 500px;
     &:hover {
       text-decoration:underline;
     }
+  }
+  .zebra-icon {
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .emoji {
+    position: relative;
+    bottom: 1rem;
+    font-size:24px;
   }
 }
 
