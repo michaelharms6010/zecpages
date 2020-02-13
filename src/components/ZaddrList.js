@@ -28,9 +28,9 @@ export default function ZaddrList (props) {
             setResults(zaddrs.filter(item => 
                 {
                     if (item.twitter){
-                        return item.username.includes(search) || item.twitter.includes(search)
+                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.twitter.toLowerCase().includes(search.toLowerCase())
                     } else {
-                        return item.username.includes(search)
+                        return item.username.toLowerCase().includes(search.toLowerCase())
                     }
                 }
             ))
