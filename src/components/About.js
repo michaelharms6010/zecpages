@@ -4,7 +4,7 @@ export default function About() {
     return (
         <div className="about-page">
             <div className="about-content">
-                <h1>About the site</h1>
+                <h2>About the site</h2>
                 
                 <p>ZECpages is a public directory of zcash users. "Take it easy" is the ZECpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
                 <p style={{fontWeight: "bold"}}><a href="https://github.com/michaelharms6010/fe-zeitpages" target="_new">Source Code</a> </p>
