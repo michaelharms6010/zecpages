@@ -90,7 +90,7 @@ $breakpoint-mobile: 500px;
 
   .card-bottom-row {
     display:flex;
-    justify-content:space-evenly;
+    justify-content:space-around;
     margin: 0 auto;
     div {
       width:24%;
@@ -121,7 +121,7 @@ $breakpoint-mobile: 500px;
 
 .card-bottom-row-form {
   display:flex;
-  justify-content:space-evenly;
+  justify-content:space-around;
   width: 98%;
   margin: 0 auto;
   .details-input {
@@ -227,7 +227,7 @@ $breakpoint-mobile: 500px;
 
     .card-bottom-row-form {
       display:flex;
-      justify-content:space-evenly;
+      justify-content:space-around;
       flex-direction:column;
       .details-input {
         width:80%;
