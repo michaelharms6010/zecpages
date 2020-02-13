@@ -197,6 +197,11 @@ $breakpoint-mobile: 500px;
     }
   }
   
+  .main-header {
+    margin-left: 10px;
+    margin-right:10px;
+  }
+
   .zaddr-card {
     .card-bottom-row {
       a {
@@ -207,7 +212,7 @@ $breakpoint-mobile: 500px;
       }
       img {
         width: 15%;
-        height: auto;
+        height: same-as-width;
       }
     }
     .card-top-row {
