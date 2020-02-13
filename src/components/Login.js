@@ -13,7 +13,7 @@ export default function Login({history}) {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post("https://zeitpages-staging.herokuapp.com/auth/login", formInfo)
+        axios.post("https://be.zecpages.com/auth/login", formInfo)
             .then(res => {
                 localStorage.setItem("jwt", res.data.token);
                 setLoggedIn(true);

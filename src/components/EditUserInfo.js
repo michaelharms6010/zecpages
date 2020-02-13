@@ -18,7 +18,7 @@ export default function EditUserInfo ({history}) {
     }
 
     useEffect( _ => {
-        axiosAuth().get("https://zeitpages-staging.herokuapp.com/users/me")
+        axiosAuth().get("https://be.zecpages.com/users/me")
         .then(res => setUser(res.data))
         .catch(err => console.error(err))
     },[])
@@ -31,7 +31,7 @@ export default function EditUserInfo ({history}) {
 
     const toggleEditing = _ => {
         if (editing) {
-            axiosAuth().put("https://zeitpages-staging.herokuapp.com/users", user)
+            axiosAuth().put("https://be.zecpages.com/users", user)
                 .then(res => {
                     setUser(res.data);
                     setEditing(false);
@@ -50,7 +50,7 @@ export default function EditUserInfo ({history}) {
             buttons: [
                 {
                     label: "Yes",
-                    onClick: _ => axiosAuth().delete(`https://zeitpages-staging.herokuapp.com/users/`)
+                    onClick: _ => axiosAuth().delete(`https://be.zecpages.com/users/`)
                     .then( _ => {
                         setUser({website: ""});
                         logout();
