@@ -92,6 +92,7 @@ $breakpoint-mobile: 500px;
     display:flex;
     justify-content:space-around;
     margin: 0 auto;
+    width:90%;
     div {
       width:24%;
       h3 {
@@ -104,16 +105,16 @@ $breakpoint-mobile: 500px;
       width:20%;
     }
 
-      a {
-        width:6%;
-        img {
-          width:100%
-        }
-      }
+    a {
+      width:6%;
       img {
-        width: 6%;
-        height: same-as-width;
+        width:100%
       }
+    }
+    img {
+      width: 6%;
+      height: 100%;
+    }
     
 
   }
@@ -212,7 +213,7 @@ $breakpoint-mobile: 500px;
       }
       img {
         width: 15%;
-        height: same-as-width;
+        height: 100%;
       }
     }
     .card-top-row {
