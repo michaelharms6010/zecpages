@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {copyTextToClipboard } from "../utils/copy";
+import ReactGA from "react-ga";
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -24,6 +25,7 @@ export default function ZaddrCard ({user, copied, setCopied}) {
     const handleCopy = ( zaddr, id) => {
         copyTextToClipboard(zaddr)
         setCopied(user.id)
+        ReactGA.event({category: "User", action: `Copied a zaddr`});
     }
       
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
+import ReactGA from "react-ga"
 
 import {ZaddrContext} from "./contexts/ZaddrContext"
 import {UserContext} from "./contexts/UserContext"
@@ -16,6 +17,11 @@ function App() {
   const [zaddrs, setZaddrs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
 
+  useEffect( _ => {
+    ReactGA.initialize("UA-156199574-2");
+    ReactGA.pageview("/");
+    ReactGA.event({category: "App", action: "Loaded app"});
+  })
 
 
 

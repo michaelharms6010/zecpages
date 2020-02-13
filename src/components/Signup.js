@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import axios from "axios";
 import {UserContext} from "../contexts/UserContext";
+import ReactGA from "react-ga";
 
 export default function Login({history}) {
     const [formInfo, setFormInfo] = useState({username: "", password: ""});
@@ -13,6 +14,7 @@ export default function Login({history}) {
         e.preventDefault();
         axios.post("https://be.zecpages.com/auth/register", formInfo)
             .then(res => {
+                ReactGA.event({category: "User", action: `created account ${formInfo.username} `});
                 localStorage.setItem("jwt", res.data.token)
                 setLoggedIn(true)
                 history.push("/edit")

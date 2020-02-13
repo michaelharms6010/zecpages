@@ -3,6 +3,7 @@ import axiosAuth from "../utils/AxiosWithAuth";
 import {UserContext} from "../contexts/UserContext";
 import {confirmAlert} from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css"
+import ReactGA from "react-ga"
 
 
 export default function EditUserInfo ({history}) {
@@ -33,6 +34,7 @@ export default function EditUserInfo ({history}) {
         if (editing) {
             axiosAuth().put("https://be.zecpages.com/users", user)
                 .then(res => {
+                    ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
                     setEditing(false);
                     setError("");})
@@ -54,6 +56,7 @@ export default function EditUserInfo ({history}) {
                     .then( _ => {
                         setUser({website: ""});
                         logout();
+                        ReactGA.event({category: "User", action: "Deleted User"});
                         history.push("/");   
                     })
                     .catch(err => {console.error(err)
