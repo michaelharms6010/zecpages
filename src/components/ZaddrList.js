@@ -10,7 +10,9 @@ export default function ZaddrList (props) {
 
     useEffect(_ => {
         axiosWithAuth().get("https://be.zecpages.com/users")
-          .then(res => setZaddrs(res.data.sort( (a, b) => a.id-b.id)))
+          .then(res => {
+            setTimeout( () =>setZaddrs(res.data.sort( (a, b) => a.id-b.id)), 1000 )
+          })
           .catch(err => console.error(err));
       },[])
 
