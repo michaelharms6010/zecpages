@@ -148,7 +148,7 @@ $breakpoint-mobile: 500px;
   a {
     margin: 0 4%;
     text-decoration:none;
-    color:whitesmoke;
+    color:rgb(218, 252, 255);
     &:hover {
       text-decoration:underline;
     }
@@ -234,7 +234,7 @@ $breakpoint-mobile: 500px;
   .about-content {
     width: 70%;
     margin: 2% auto;
-    background:#f9bb00;
+    background:#ffd862;
     border:2px solid black;
     padding:15px;
     font-size: 1.2rem;
@@ -254,6 +254,10 @@ $breakpoint-mobile: 500px;
     font-size:16px;
     font-weight:bold;
     cursor:pointer;
+    transition: .2s;
+    &:hover {
+      background: rgb(99, 250, 235);
+    }
   }
 }
 
@@ -265,22 +269,16 @@ $breakpoint-mobile: 500px;
   padding:15px;
   border: 1px solid black;
   form {
-    
-    
     display:flex;
     flex-direction: column;
-    
-    
     input {
       margin: 2% auto;
       width:70%;
     }
-
     button {
       margin: 10px auto;
       margin-top: 20px;
       width: 50%;
-
     }
   }
 }
