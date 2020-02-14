@@ -1,6 +1,9 @@
 import React from "react";
 import mike from "../mike.jpg"
+import { UserContext } from "../contexts/UserContext"
+
 export default function About() {
+    const { ip } = React.useContext(UserContext)
     return (
         <div className="about-page">
             <div className="about-content">
@@ -18,11 +21,12 @@ export default function About() {
             </div>
             <div className="about-content">
                 <h2>About the Creator</h2>
-                <img alt="silly picture of Mike" src={mike} />
+                <img alt="Mike looking silly" src={mike} />
                 <p>Hi! I'm Mike! I'm a friendly web developer interested in human autonomy, the impending Golden Age, privacy, robots, carnivory, and piano. You can contact me on <a href="https://twitter.com/michaelharms70">Twitter</a> or via shielded ZEC memo:</p>
                 <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
                 <p>I'd love to hear about your experience using this app and any features or improvements you'd like to see!</p>
             </div>
+            <p>Your ip is {ip}. Learn about network-level privacy sometime.</p>
          </div>
     )
 }
