@@ -20,9 +20,18 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
 
     useEffect( _ => {
         let userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase())
+        
         if (userInfo) {
             setUser(userInfo)
         } else if (!userInfo && zaddrs.length > 0) {
+            if(match.params.username === "about" 
+            || match.params.username === "edit" 
+            || match.params.username === "about" 
+            || match.params.username === "signup"
+            || match.params.username === "login") {
+                setUser({website: "", username: ""})
+                return
+            }
             history.push("/")
         }
     },[zaddrs])

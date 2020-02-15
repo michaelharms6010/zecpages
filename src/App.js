@@ -51,8 +51,8 @@ function App() {
             <Route exact path="/" render={() => <ZaddrList />} />
             <Route exact path="/signup" render={(props) => <Signup {...props} />} />
             <Route exact path="/login" render={(props) => <Login {...props} />} />
-            <Route path="/edit" render={(props) => <EditUserInfo {...props} /> } />
-            <Route path="/about" render={(props) => <About {...props} /> } />
+            <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
+            <Route exact path="/about" render={(props) => <About {...props} /> } />
             <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
           </div>
         </Router>
