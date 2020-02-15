@@ -13,16 +13,28 @@ import ZaddrList from "./components/ZaddrList";
 import Navigation from "./components/Navigation";
 import EditUserInfo from "./components/EditUserInfo";
 import About from "./components/About"
+import ZaddrPage from "./components/ZaddrPage"
 
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
+  const [copied, setCopied] = useState(0);
+  
+  useEffect(_ => {
+    axios.get("https://be.zecpages.com/users")
+      .then(res => {
+        setZaddrs(res.data.sort( (a, b) => b.id-a.id))
+      })
+      .catch(err => console.error(err));
+  },[])
+
+
   useEffect( _ => {
     ReactGA.initialize("UA-156199574-2");
     ReactGA.pageview("/");
     ReactGA.event({category: "App", action: "Loaded app"});
-  })
+  }, [])
   useEffect( _ => {
     axios.get('https://www.cloudflare.com/cdn-cgi/trace')
       .then(res => setIp(res.data.split("\n")[2].replace("ip=","")))
@@ -32,7 +44,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{loggedIn, setLoggedIn, ip}}>
-      <ZaddrContext.Provider value={{zaddrs, setZaddrs}}>
+      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied}}>
         <Router>
           <div className="App">
             <Navigation />
@@ -41,6 +53,7 @@ function App() {
             <Route exact path="/login" render={(props) => <Login {...props} />} />
             <Route path="/edit" render={(props) => <EditUserInfo {...props} /> } />
             <Route path="/about" render={(props) => <About {...props} /> } />
+            <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
           </div>
         </Router>
       </ZaddrContext.Provider>

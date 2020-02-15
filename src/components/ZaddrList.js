@@ -5,18 +5,16 @@ import axiosWithAuth from "../utils/AxiosWithAuth";
 import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
-    const { zaddrs, setZaddrs } = useContext(ZaddrContext);
-    const [copied, setCopied] = useState(0);
+    const { zaddrs, setZaddrs, copied, setCopied } = useContext(ZaddrContext);    
     const [results, setResults] = useState(zaddrs);
     const [search, setSearch] = useState("");
+    const [loaded, setLoaded] = useState(false);
 
-    useEffect(_ => {
-        axiosWithAuth().get("https://be.zecpages.com/users")
-          .then(res => {
-            setTimeout( () =>setZaddrs(res.data.sort( (a, b) => b.id-a.id)), 1000 )
-          })
-          .catch(err => console.error(err));
-      },[])
+    useEffect( _ => {
+        setTimeout( () => setLoaded(true), 1000 )
+    },[])
+
+  
 
     useEffect( _ => {
         setResults(zaddrs)
@@ -45,7 +43,7 @@ export default function ZaddrList (props) {
             <h2 className="main-header">Open-Source Zaddr Directory</h2>
             
            
-            {zaddrs.length > 0 
+            {loaded 
             ? 
             <>
             <label>Search:</label>
