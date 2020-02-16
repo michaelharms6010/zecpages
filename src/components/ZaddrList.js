@@ -58,6 +58,7 @@ export default function ZaddrList (props) {
                     : null
             )}
             <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>
+            <p className="dev-disclaimer">This site is still under development! If you encounter issues while using it, please let me know on <a target="_new" href="https://twitter.com/michaelharms70">Twitter</a> or <a target="_new" href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
             </>
             : <>
             <img id="spinner" src={logo} />
@@ -65,7 +66,7 @@ export default function ZaddrList (props) {
             </>
         }
             
-            <p className="dev-disclaimer">This site is still under development! If you encounter issues while using it, please let me know on <a target="_new" href="https://twitter.com/michaelharms70">Twitter</a> or <a target="_new" href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
+            
         </div>
      )
 

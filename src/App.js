@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Route, BrowserRouter as Router} from "react-router-dom";
+import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
 import ReactGA from "react-ga"
 import axios from "axios"
@@ -48,12 +48,14 @@ function App() {
         <Router>
           <div className="App">
             <Navigation />
-            <Route exact path="/" render={() => <ZaddrList />} />
-            <Route exact path="/signup" render={(props) => <Signup {...props} />} />
-            <Route exact path="/login" render={(props) => <Login {...props} />} />
-            <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
-            <Route exact path="/about" render={(props) => <About {...props} /> } />
-            <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
+            <Switch>
+              <Route exact path="/" render={() => <ZaddrList />} />
+              <Route exact path="/signup" render={(props) => <Signup {...props} />} />
+              <Route exact path="/login" render={(props) => <Login {...props} />} />
+              <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
+              <Route exact path="/about" render={(props) => <About {...props} /> } />
+              <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
+            </Switch>
           </div>
         </Router>
       </ZaddrContext.Provider>
