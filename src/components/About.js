@@ -26,7 +26,7 @@ export default function About() {
                 <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
                 <p>I'd love to hear about your experience using this app and any features or improvements you'd like to see!</p>
             </div>
-            <p>Your ip is {ip}. Learn about network-level privacy sometime.</p>
+            <p>Your ip is {ip}. Learn about network-level privacy from Naomi Brockwell <a target="_new" href="https://www.youtube.com/watch?v=KXEe2kqiYIM">here.</a></p>
          </div>
     )
 }
