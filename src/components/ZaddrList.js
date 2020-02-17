@@ -40,7 +40,7 @@ export default function ZaddrList (props) {
 
     return(
         <div className="zaddr-list">
-            <h2 className="main-header">Open-Source Zaddr Directory</h2>
+            <h2 className="main-header">Z-address Directory</h2>
             
            
             {loaded 
