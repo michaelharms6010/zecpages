@@ -147,7 +147,7 @@ export default function EditUserInfo ({history}) {
             </div>
             </>}
             {error ? <p className="error-text">{error}</p> : null}
-            <button onClick={toggleEditing}>{editing? "Submit" : "Edit"}</button>
+            <button onClick={toggleEditing}>{editing? "Submit" : "Edit Info"}</button>
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
         </>
