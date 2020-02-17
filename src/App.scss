@@ -318,17 +318,37 @@ $breakpoint-mobile: 500px;
 
 .cta-button-container {
   display:flex;
-  justify-content:space-around;
-  width: 80%;
+  justify-content:center;
+  width: 70%;
   margin: 2% auto;
+  max-width:1000px;
   .cta-button {
     width:40%;
+    margin: 0px 10px;
     img {
-      height: 2rem;
-      width: 2rem;
+      height: 3rem;
+      width: 3rem;
     }
   }
+  .cta-button-silver {
+    background:black;
+    color: silver;
+    display:flex;
+    padding:10px;
+    font-size:16px;
+    align-items:center;
+    border: 1px solid silver;
+    img {
+      margin-right: 5px;
+    }
+  }
+
+  .cta-button-black {
+
+  }
+  
 }
+
 
 
 
