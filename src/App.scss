@@ -269,13 +269,13 @@ $breakpoint-mobile: 500px;
 
 .cta-button-container {
   display:flex;
-  justify-content:center;
-  width: 70%;
+  justify-content:space-between;
+  width: 82%;
   margin: 2% auto;
-  max-width:1000px;
+  max-width:1022px;
   .cta-button {
-    width:40%;
-    margin: 0px 10px;
+    width:45%;
+    border:1px solid black;
     font-size:16px;
     a {
       display:flex;
@@ -313,6 +313,10 @@ $breakpoint-mobile: 500px;
 
 
 @media (max-width: $breakpoint-tablet) {
+
+  .cta-button-container {
+    width:84%;
+  }
 
   .cta-button a {
     min-height:100%;
