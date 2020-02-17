@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import {copyTextToClipboard } from "../utils/copy";
 import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
+import {Link} from "react-router-dom"
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -72,8 +73,8 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
             </div>
         </div>
         <div className="cta-button-container">
-            <button className="cta-button cta-button-silver"><a href="#"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</a></button>
-            <button className="cta-button cta-button-black"><a href="#"><img src={logo}/>Back to Z-address Directory</a></button>
+            <button className="cta-button cta-button-silver"><a target="_new" href="https://zecwallet.co/"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</a></button>
+            <button className="cta-button cta-button-black"><Link to="/"><img src={logo}/>Return to main Z-address Directory</Link></button>
         </div>
         </>
         : null}
