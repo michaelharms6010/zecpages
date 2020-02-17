@@ -82,6 +82,10 @@ $breakpoint-mobile: 500px;
     margin-bottom:0px;
   }
 
+  canvas {
+    margin: 2% auto;
+  }
+
   .card-top-row {
     p{
       display:inline-block;
@@ -358,7 +362,9 @@ $breakpoint-mobile: 500px;
         margin: 0 auto;
         margin-bottom: 2%;
       }
+      
     }
+    
 
 
     .card-bottom-row-form {

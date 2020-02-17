@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import {copyTextToClipboard } from "../utils/copy";
 import ReactGA from "react-ga";
+import QRCode from "qrcode.react";
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -13,7 +14,7 @@ import emailinactive from "../icons/email-inactive.png";
 
 
 
-export default function ZaddrCard ({user, copied, setCopied}) {
+export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
     const [httpsString, setHttpsString] = useState("");
 
     useEffect( _ => {
@@ -37,6 +38,9 @@ export default function ZaddrCard ({user, copied, setCopied}) {
                 <p>{user.zaddr}</p>
                 <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
+            {QRId !== user.id 
+                ? <button onClick={_ => setQRId(user.id) }>Show QR</button> 
+                : <QRCode size={256} value={user.zaddr} />}
             <div className="card-bottom-row">
                 {user.proofposturl ? <a target="_new" href={user.proofposturl}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}

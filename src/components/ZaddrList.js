@@ -5,7 +5,7 @@ import axiosWithAuth from "../utils/AxiosWithAuth";
 import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
-    const { zaddrs, setZaddrs, copied, setCopied } = useContext(ZaddrContext);    
+    const { zaddrs, setZaddrs, copied, setCopied, QRId, setQRId } = useContext(ZaddrContext);    
     const [results, setResults] = useState(zaddrs);
     const [search, setSearch] = useState("");
     const [loaded, setLoaded] = useState(false);
@@ -54,7 +54,7 @@ export default function ZaddrList (props) {
             />
             {results.map(item => 
                 item.zaddr 
-                    ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
+                    ? <ZaddrCard QRId={QRId} setQRId={setQRId} key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
                     : null
             )}
             <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>

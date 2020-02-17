@@ -20,7 +20,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
   const [copied, setCopied] = useState(0);
-  
+  const [QRId, setQRId] = useState(0);
+
   useEffect(_ => {
     axios.get("https://be.zecpages.com/users")
       .then(res => {
@@ -44,7 +45,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{loggedIn, setLoggedIn, ip}}>
-      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied}}>
+      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied, QRId, setQRId}}>
         <Router>
           <div className="App">
             <Navigation />
