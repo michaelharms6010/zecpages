@@ -22,7 +22,7 @@ import axiosAuth from "../utils/AxiosWithAuth";
 
 export default function ZaddrCard ({match, history, copied, setCopied}) {
     const [user, setUser] = useState({website: "", username: ""});
-    const [QRId, setQRId] = useState(0);
+    const [QRId, setQRId] = useState(false);
     const { zaddrs } = useContext(ZaddrContext);
 
 
@@ -58,12 +58,13 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
         <>
         <div className="zaddr-card">
             <h2>{user.username}</h2>
+            {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
                 <p>{user.zaddr}</p>
                 <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
                 
             </div>
-            {QRId !== user.id 
+            {!QRId 
                 ? null 
                 : <QRCode size={256} value={user.zaddr} />}
             <div className="card-bottom-row">
@@ -71,7 +72,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
-                <img className="qr-icon" src={qricon} onClick={_ => setQRId(user.id) } />
+                <img className="qr-icon" src={qricon} onClick={_ => setQRId(!QRId) } />
             </div>
         </div>
         <div className="cta-button-container">

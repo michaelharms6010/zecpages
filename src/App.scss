@@ -191,10 +191,21 @@ $breakpoint-mobile: 500px;
   word-break: break-all
 }
 
+.user-description {
+  font-weight:bold;
+  margin-bottom:0;
+}
+
 .zaddr-input {
   margin-top:1rem;
   width:90%;
   height:2rem;
+}
+
+.desc-input {
+  margin-top:1rem;
+  width:90%;
+  height:4rem;
 }
 
 .error-text {

@@ -88,7 +88,9 @@ export default function EditUserInfo ({history}) {
             ?
             <>
             <h2>{user.username}</h2>
+            {user.description ? <p className="user-description">{user.description}</p> : null }
             <p>{user.zaddr}</p>
+            
             <div className="card-bottom-row">
                 {user.proofposturl ? <div><h3 className="title">Proof Link:</h3> {user.proofposturl}</div> : null}
                 {user.website ? <div><h3 className="title">Website:</h3> {`${httpsString}${user.website}`}</div> : null}
@@ -99,13 +101,22 @@ export default function EditUserInfo ({history}) {
             : 
             <>
             <h2>{user.username}</h2>
+            <textarea maxlength="512"
+                className="desc-input"
+                name="description"
+                onChange={handleChange}
+                value={user.description} 
+                placeholder="A Brief Description of yourself (Limit 512 Chars)"
+            />
             <textarea 
+                maxlength="128"
                 className="zaddr-input"
                 name="zaddr"
                 onChange={handleChange}
                 value={user.zaddr} 
                 placeholder="Paste your z-address here"
             />
+
             <p className="zaddr-link" ><a className="zaddr-a" target="_new" href="https://www.zecwallet.co/">Don't have a zaddr yet? Get one!</a></p>
             <div className="card-bottom-row-form">
             
