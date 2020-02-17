@@ -316,6 +316,29 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.cta-button-container {
+  display:flex;
+  justify-content:space-around;
+  width: 80%;
+  margin: 2% auto;
+  .cta-button {
+    width:40%;
+    img {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -10,6 +10,7 @@ import websiteactive from "../icons/website-active.png";
 import websiteinactive  from "../icons/website-inactive.png";
 import emailactive from "../icons/email-active.png";
 import emailinactive from "../icons/email-inactive.png";
+import zecwallet from "../icons/zecwallet.png"
 
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import axiosAuth from "../utils/AxiosWithAuth";
@@ -47,6 +48,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
     return(
         <>
         {user.username ? 
+        <>
         <div className="zaddr-card">
             <h2>{user.username}</h2>
             <div className="card-top-row">
@@ -59,7 +61,13 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
             </div>
+      
         </div>
+        <div className="cta-button-container">
+            <button className="cta-button cta-button-silver"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</button>
+            <button className="cta-button cta-button-black">Back to Z-address Directory</button>
+        </div>
+        </>
         : null}
         </>
     )
