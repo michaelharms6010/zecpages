@@ -208,6 +208,11 @@ $breakpoint-mobile: 500px;
 
 @media (max-width: $breakpoint-tablet) {
 
+  .cta-button {
+
+    flex-direction:column;
+  }
+
   .main-nav {
     width:100%;
 
@@ -326,6 +331,8 @@ $breakpoint-mobile: 500px;
     width:40%;
     margin: 0px 10px;
     font-size:16px;
+    display:flex;
+    align-items:center;
     img {
       height:60%;
       width: 20%;
@@ -334,23 +341,21 @@ $breakpoint-mobile: 500px;
   .cta-button-silver {
     background:black;
     color: white;
-    display:flex;
     padding:10px;
-   
-    align-items:center;
-    border: 1px solid silver;
+    border: 1px solid black;
     img {
       margin-right: 5px;
+      height: 4rem;
+      width:4rem;
     }
   }
 
   .cta-button-black {
     background: black;
     color:white;
-    display:flex;
-    align-items:center;
     img {
-      width:7rem;
+      height:3rem;
+      width:6rem;
     }
   }
   
