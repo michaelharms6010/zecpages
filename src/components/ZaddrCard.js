@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect} from "react";
 import {copyTextToClipboard } from "../utils/copy";
 import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
@@ -15,7 +15,7 @@ import qricon from "../icons/qr.png"
 
 
 
-export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
+export default function ZaddrCard ({user, copied, setCopied}) {
     const [httpsString, setHttpsString] = useState("");
     const [qrVis, setQrVis] = useState(false);
     useEffect( _ => {
@@ -50,7 +50,7 @@ export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
-                <img className="qr-icon" src={qricon} onClick={_ => setQrVis(!qrVis) } />
+                <img alt="a qr code" className="qr-icon" src={qricon} onClick={_ => setQrVis(!qrVis) } />
             </div>
         </div>
     )
