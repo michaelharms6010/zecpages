@@ -66,8 +66,8 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
       
         </div>
         <div className="cta-button-container">
-            <button className="cta-button cta-button-silver"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</button>
-            <button className="cta-button cta-button-black"><img src={logo}/>Back to Z-address Directory</button>
+            <button className="cta-button cta-button-silver"><a href="#"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</a></button>
+            <button className="cta-button cta-button-black"><a href="#"><img src={logo}/>Back to Z-address Directory</a></button>
         </div>
         </>
         : null}

@@ -206,67 +206,7 @@ $breakpoint-mobile: 500px;
   width:60%;
 }
 
-@media (max-width: $breakpoint-tablet) {
 
-  .cta-button {
-
-    flex-direction:column;
-  }
-
-  .main-nav {
-    width:100%;
-
-    div {
-      width:50%;
-    }
-    a {
-      margin: 0 4%;
-    }
-  }
-  
-  .main-header {
-    margin-left: 10px;
-    margin-right:10px;
-  }
-
-  .zaddr-card {
-    
-    .card-bottom-row {
-      a {
-        width:15%;
-        img {
-          width:100%
-        }
-      }
-      img {
-        width: 15%;
-        height: 100%;
-      }
-    }
-    .card-top-row {
-
-      flex-direction:column;
-      button {
-        margin: 0 auto;
-        margin-bottom: 2%;
-      }
-    }
-
-
-    .card-bottom-row-form {
-      display:flex;
-      justify-content:space-around;
-      flex-direction:column;
-      .details-input {
-        width:80%;
-        margin: 1% auto;
-      }
-    }
-
-
-    
-  }
-}
 
 .about-page {
   .about-content {
@@ -331,11 +271,15 @@ $breakpoint-mobile: 500px;
     width:40%;
     margin: 0px 10px;
     font-size:16px;
-    display:flex;
-    align-items:center;
-    img {
-      height:60%;
-      width: 20%;
+    a {
+      display:flex;
+      align-items:center;
+      text-decoration:none;
+      color:white;
+      img {
+        height:60%;
+        width: 20%;
+      }
     }
   }
   .cta-button-silver {
@@ -343,7 +287,7 @@ $breakpoint-mobile: 500px;
     color: white;
     padding:10px;
     border: 1px solid black;
-    img {
+    a img {
       margin-right: 5px;
       height: 4rem;
       width:4rem;
@@ -353,7 +297,7 @@ $breakpoint-mobile: 500px;
   .cta-button-black {
     background: black;
     color:white;
-    img {
+    a img {
       height:3rem;
       width:6rem;
     }
@@ -362,7 +306,75 @@ $breakpoint-mobile: 500px;
 }
 
 
+@media (max-width: $breakpoint-tablet) {
 
+  .cta-button a {
+    min-height:100%;
+    flex-direction:column;
+    justify-content:flex-start;
+    img {
+      margin-right:0;
+    }
+  }
+
+  .cta-button.cta-button-silver a img {
+    margin-right:0;
+  }
+
+  .main-nav {
+    width:100%;
+
+    div {
+      width:50%;
+    }
+    a {
+      margin: 0 4%;
+    }
+  }
+  
+  .main-header {
+    margin-left: 10px;
+    margin-right:10px;
+  }
+
+  .zaddr-card {
+    
+    .card-bottom-row {
+      a {
+        width:15%;
+        img {
+          width:100%
+        }
+      }
+      img {
+        width: 15%;
+        height: 100%;
+      }
+    }
+    .card-top-row {
+
+      flex-direction:column;
+      button {
+        margin: 0 auto;
+        margin-bottom: 2%;
+      }
+    }
+
+
+    .card-bottom-row-form {
+      display:flex;
+      justify-content:space-around;
+      flex-direction:column;
+      .details-input {
+        width:80%;
+        margin: 1% auto;
+      }
+    }
+
+
+    
+  }
+}
 
 
 
