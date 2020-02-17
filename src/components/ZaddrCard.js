@@ -11,12 +11,13 @@ import websiteactive from "../icons/website-active.png";
 import websiteinactive  from "../icons/website-inactive.png";
 import emailactive from "../icons/email-active.png";
 import emailinactive from "../icons/email-inactive.png";
+import qricon from "../icons/qr.png"
 
 
 
 export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
     const [httpsString, setHttpsString] = useState("");
-
+    const [qrVis, setQrVis] = useState(false);
     useEffect( _ => {
         if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
@@ -38,14 +39,16 @@ export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
                 <p>{user.zaddr}</p>
                 <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
-            {QRId !== user.id 
-                ? <button onClick={_ => setQRId(user.id) }>Show QR</button> 
+            {!qrVis 
+                ? null 
                 : <QRCode size={256} value={user.zaddr} />}
             <div className="card-bottom-row">
+                
                 {user.proofposturl ? <a target="_new" href={user.proofposturl}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
+                <img className="qr-icon" src={qricon} onClick={_ => setQrVis(!qrVis) } />
             </div>
         </div>
     )
