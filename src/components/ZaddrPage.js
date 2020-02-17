@@ -61,7 +61,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
                 <p>{user.zaddr}</p>
-                <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
+                <button className="copy-button" onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
                 
             </div>
             {!QRId 

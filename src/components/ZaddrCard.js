@@ -39,7 +39,7 @@ export default function ZaddrCard ({user, copied, setCopied, QRId, setQRId}) {
             <div className="card-top-row">
                 
                 <p>{user.zaddr}</p>
-                <button onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
+                <button className="copy-button" onClick={_ => handleCopy(user.zaddr, user.id)}>{user.id === copied ? "Copied!" : "Copy Zaddr"}</button>
             </div>
             {!qrVis 
                 ? null 

@@ -68,6 +68,10 @@ $breakpoint-mobile: 500px;
     height: auto;
     padding: 4px;
     font-size: 1.2rem;
+    border: 1px solid black;
+    background: whitesmoke;
+    color:black;
+
   }
   button:active {
     transform:scale(.95);
