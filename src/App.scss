@@ -325,17 +325,18 @@ $breakpoint-mobile: 500px;
   .cta-button {
     width:40%;
     margin: 0px 10px;
+    font-size:16px;
     img {
-      height: 3rem;
-      width: 3rem;
+      height:60%;
+      width: 20%;
     }
   }
   .cta-button-silver {
     background:black;
-    color: silver;
+    color: white;
     display:flex;
     padding:10px;
-    font-size:16px;
+   
     align-items:center;
     border: 1px solid silver;
     img {
@@ -344,7 +345,13 @@ $breakpoint-mobile: 500px;
   }
 
   .cta-button-black {
-
+    background: black;
+    color:white;
+    display:flex;
+    align-items:center;
+    img {
+      width:7rem;
+    }
   }
   
 }

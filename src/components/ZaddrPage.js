@@ -11,7 +11,7 @@ import websiteinactive  from "../icons/website-inactive.png";
 import emailactive from "../icons/email-active.png";
 import emailinactive from "../icons/email-inactive.png";
 import zecwallet from "../icons/zecwallet.png"
-
+import logo from "../icons/zecpageslogo.png"
 
 
 import {ZaddrContext} from "../contexts/ZaddrContext"
@@ -67,7 +67,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
         </div>
         <div className="cta-button-container">
             <button className="cta-button cta-button-silver"><img src={zecwallet}/>New to Zcash? Get a Z-address in ~60 seconds with ZecWallet Lite.</button>
-            <button className="cta-button cta-button-black">Back to Z-address Directory</button>
+            <button className="cta-button cta-button-black"><img src={logo}/>Back to Z-address Directory</button>
         </div>
         </>
         : null}
