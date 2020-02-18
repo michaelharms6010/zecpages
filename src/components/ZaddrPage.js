@@ -27,7 +27,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
 
 
     useEffect( _ => {
-        let userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase())
+        let userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase().replace(" ",""))
         
         if (userInfo) {
             setUser(userInfo)
