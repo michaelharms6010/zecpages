@@ -5,3 +5,24 @@
     background: skyblue;
     padding:20px;
 }
+
+.highlighted-board-post {
+    width:80%;
+    border: 3px solid darkslategrey;
+    margin: 1% auto;
+    background: #000FB7;
+    font-weight:bold;
+    border-radius:20%;
+    color: #EAE133;
+    padding:20px;
+    .post-text {
+        background: #000FB7;
+        border: 1px solid #EAE113;
+    }
+}
+
+.post-text {
+    background: rgb(161, 255, 255);
+    border:1px solid black;
+    padding:10px;
+}
