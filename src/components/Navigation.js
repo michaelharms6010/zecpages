@@ -21,6 +21,7 @@ export default function Navigation() {
                 </Link>
                 
             <div>
+                <Link to="/board">Board</Link>
                 <Link to="/about">About</Link>
                 {loggedIn 
                 ? <>
