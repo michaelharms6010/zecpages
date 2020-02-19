@@ -29,7 +29,7 @@ export default function Board() {
             {posts.map(item => 
                 <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo}</p>
-                    <p>{stringifyDate(item.datetime)}</p>
+                    <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
             )}
 
