@@ -6,7 +6,7 @@ export default function Board() {
     const [posts, setPosts] = useState([])
 
     useEffect( _ => {
-        axios.get("https://zeitpages-staging.herokuapp.com/board")
+        axios.get("https://be.zecpages.com/board")
         .then(res => setPosts(res.data.sort( (a, b) => b.id-a.id)))
         .catch(err => console.log(err));
     }, [])
