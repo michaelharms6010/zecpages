@@ -18,6 +18,10 @@ export default function Board() {
         setTimeout( () => setToggle(!toggle),  100000)
     }, [toggle])
 
+    const stringifyDate = date => {
+        return new Date(Number(date)).toString().replace(" GMT-0600 (Central Standard Time)", "")
+      }
+
     return (
         <div className="z-board">
             <h2>Anonymous Memo Board</h2>
@@ -25,7 +29,7 @@ export default function Board() {
             {posts.map(item => 
                 <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo}</p>
-                    <p>{Date(item.datetime).toString().replace("GMT-0600 (Central Standard Time)", "")}</p>
+                    <p>{stringifyDate(item.datetime)}</p>
                 </div>    
             )}
 
