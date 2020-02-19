@@ -31,7 +31,7 @@ export default function Board() {
             {qrVis 
                 ? <><QRCode size={256} value="zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9" /><br /></> 
                 : null}
-            <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show QR"}</button>
+            <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {posts.map(item => 
                 <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo}</p>
