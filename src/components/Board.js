@@ -34,7 +34,7 @@ export default function Board() {
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {posts.map(item => 
                 <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{item.memo}</p>
+                    <p className="post-text">{item.memo.split("â€™").join("'")}</p>
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
             )}
