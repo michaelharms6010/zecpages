@@ -17,15 +17,20 @@
     border: 3px solid darkslategrey;
     margin: 1% auto;
     background: #000FB7;
-    font-weight:bold;
+
     border-radius:50%;
     color: #EAE133;
     padding:20px;
+    font-family: 'Playfair Display', serif;
+
 
     .post-text {
+        
+        letter-spacing: 1px;
         background: #000FB7;
         border: 2px solid #EAE113;
-        max-width:60%
+        max-width:60%;
+        font-size:22px;
     }
 }
 
