@@ -24,7 +24,7 @@
 
     .post-text {
         background: #000FB7;
-        border: 1px solid #EAE113;
+        border: 2px solid #EAE113;
         max-width:60%
     }
 }
@@ -34,4 +34,6 @@
     background: rgb(161, 255, 255);
     border:1px solid black;
     padding:10px;
+    word-break: break-word;
+    width:90%;
 }
