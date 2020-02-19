@@ -14,6 +14,9 @@
         background: rgb(230, 230, 230);
         padding:20px;
         padding-top:0px;
+        .post-date {
+            margin: 0 auto;
+        }
     }
 
     .highlighted-board-post {
@@ -39,6 +42,7 @@
             border:none;
             max-width:60%;
             font-size:22px;
+            text-align:center;
         }
     }
 
@@ -48,6 +52,7 @@
         border:1px solid black;
         padding:10px;
         word-break: break-word;
-        width:90%;
+        max-width:90%;
+        white-space:pre-line;
     }
 }
