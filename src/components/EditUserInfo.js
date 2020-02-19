@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import axiosAuth from "../utils/AxiosWithAuth";
 import {UserContext} from "../contexts/UserContext";
+import {ZaddrContext} from "../contexts/ZaddrContext";
 import {confirmAlert} from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
@@ -12,7 +13,7 @@ export default function EditUserInfo ({history}) {
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
     const {setLoggedIn} = useContext(UserContext);
-
+    const {zaddrs, setZaddrs} = useContext(ZaddrContext);
     const logout = _ => {
         localStorage.removeItem("jwt")
         setLoggedIn(false)
@@ -36,6 +37,7 @@ export default function EditUserInfo ({history}) {
                 .then(res => {
                     ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
+                    setZaddrs([ ...zaddrs.filter(zaddr => zaddr.id !== user.id ), user]);
                     setEditing(false);
                     setError("");})
                 .catch(err => setError("Your z-address is invalid."));
