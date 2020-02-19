@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios"
 import "./Board.scss"
+import QRCode from "qrcode.react";
 
 export default function Board() {
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
+    const [qrVis, setQrVis] = useState(false)
 
     useEffect( _ => {
         axios.get("https://be.zecpages.com/board")
@@ -26,6 +28,10 @@ export default function Board() {
         <div className="z-board">
             <h2>Anonymous Memo Board</h2>
             <h4 className="instructions-header">Send at least .001 ZEC to zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9 and it will be anonymously posted to this board.</h4>
+            {qrVis 
+                ? <><QRCode size={256} value="zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9" /><br /></> 
+                : null}
+            <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show QR"}</button>
             {posts.map(item => 
                 <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo}</p>
