@@ -1,23 +1,31 @@
+.instructions-header {
+    width:80%;
+    margin: auto;
+}
+
 .board-post {
     width:80%;
     border: 1px solid black;
     margin: 1% auto;
     background: skyblue;
     padding:20px;
+    padding-top:0px;
 }
 
 .highlighted-board-post {
-    width:80%;
+    width:85%;
     border: 3px solid darkslategrey;
     margin: 1% auto;
     background: #000FB7;
     font-weight:bold;
-    border-radius:20%;
+    border-radius:50%;
     color: #EAE133;
     padding:20px;
+
     .post-text {
         background: #000FB7;
         border: 1px solid #EAE113;
+        max-width:60%
     }
 }
 
