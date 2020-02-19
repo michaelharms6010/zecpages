@@ -37,7 +37,7 @@ export default function EditUserInfo ({history}) {
                 .then(res => {
                     ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
-                    setZaddrs([ ...zaddrs.filter(zaddr => zaddr.id !== user.id ), user]);
+                    setZaddrs([ ...zaddrs.filter(zaddr => zaddr.id !== user.id ), user].sort( (a, b) => b.id-a.id));
                     setEditing(false);
                     setError("");})
                 .catch(err => setError("Your z-address is invalid."));
