@@ -27,7 +27,7 @@ export default function Board() {
     return (
         <div className="z-board">
             <h2>Anonymous Memo Board</h2>
-            <h4 className="instructions-header">Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9 and it will be anonymously posted to this board.</h4>
+            <h4 className="instructions-header">Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9</h4>
             {qrVis 
                 ? <><QRCode size={256} value="zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9" /><br /></> 
                 : null}
