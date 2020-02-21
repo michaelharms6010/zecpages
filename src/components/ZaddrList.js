@@ -25,6 +25,14 @@ export default function ZaddrList (props) {
         if (search) {
             setResults(zaddrs.filter(item => 
                 {
+                    if (item.twitter && item.description) {
+                        item.username.toLowerCase().includes(search.toLowerCase()) || item.username.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase())
+                    } if (item.description) {
+                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase())
+                    }
+                    if (item.twitter){
+                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.twitter.toLowerCase().includes(search.toLowerCase())
+                    }
                     if (item.twitter){
                         return item.username.toLowerCase().includes(search.toLowerCase()) || item.twitter.toLowerCase().includes(search.toLowerCase())
                     } else {
