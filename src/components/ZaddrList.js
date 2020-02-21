@@ -22,22 +22,12 @@ export default function ZaddrList (props) {
 
 
     useEffect( _ => {
+        
         if (search) {
             setResults(zaddrs.filter(item => 
                 {
-                    if (item.twitter && item.description) {
-                        item.username.toLowerCase().includes(search.toLowerCase()) || item.username.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase())
-                    } if (item.description) {
-                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.description.toLowerCase().includes(search.toLowerCase())
-                    }
-                    if (item.twitter){
-                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.twitter.toLowerCase().includes(search.toLowerCase())
-                    }
-                    if (item.twitter){
-                        return item.username.toLowerCase().includes(search.toLowerCase()) || item.twitter.toLowerCase().includes(search.toLowerCase())
-                    } else {
-                        return item.username.toLowerCase().includes(search.toLowerCase())
-                    }
+                    let searchable = String(item.twitter + item.username + item.description).split("null").join("").toLowerCase()
+                    return searchable.includes(search.toLowerCase())
                 }
             ))
         } else {
