@@ -14,15 +14,11 @@ export default function ZaddrList (props) {
         setTimeout( () => setLoaded(true), 1000 )
     },[])
 
-  
-
     useEffect( _ => {
         setResults(zaddrs)
     }, [zaddrs])
 
-
-    useEffect( _ => {
-        
+    useEffect( _ => {      
         if (search) {
             setResults(zaddrs.filter(item => 
                 {
@@ -38,34 +34,30 @@ export default function ZaddrList (props) {
 
     return(
         <div className="zaddr-list">
-            <h2 className="main-header">Zcash Z-address Directory</h2>
-            
-           
+            <h2 className="main-header">Zcash Z-address Directory</h2>     
             {loaded 
             ? 
             <>
-            <label>Search:</label>
-             <input
-             className="search-input"
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            />
-            {results.map(item => 
-                item.zaddr 
-                    ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
-                    : null
-            )}
-            <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>
-            <p className="dev-disclaimer">This site is still under development! If you encounter issues while using it, please let me know on <a target="_new" href="https://twitter.com/michaelharms70">Twitter</a> or <a target="_new" href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
+                <label>Search:</label>
+                <input
+                className="search-input"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                />
+                {results.map(item => 
+                    item.zaddr 
+                        ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
+                        : null
+                )}
+                <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>
+                <p className="dev-disclaimer">This site is still under development! If you encounter issues while using it, please let me know on <a target="_new" href="https://twitter.com/michaelharms70">Twitter</a> or <a target="_new" href="https://github.com/michaelharms6010/fe-zeitpages">Github.</a></p>
             </>
-            : <>
-            <img id="spinner" src={logo} />
-            <h2>Loading . . .</h2>
+            : 
+            <>
+                <img id="spinner" src={logo} />
+                <h2>Loading . . .</h2>
             </>
-        }
-            
-            
+        }    
         </div>
      )
-
 }
