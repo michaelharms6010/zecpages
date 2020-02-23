@@ -11,14 +11,28 @@
         width:80%;
         border: 1px solid black;
         margin: 1% auto;
-        background: rgb(230, 230, 230);
-        padding:20px;
+        background: white;
+        padding:10px;
         padding-top:0px;
         text-align:left;
+        .post-text {
+            display:inline-block;
+            background: white;
+            
+            padding:10px;
+            word-break: break-word;
+            max-width:100%;
+            white-space:pre-line;
+            margin-bottom:0px;
+            margin-top:0px;
+        }
         .post-date {
             margin: 0 auto;
+            padding-left:10px;
+            color:rgb(117, 117, 117);
         }
     }
+
 
     .highlighted-board-post {
         width:85%;
@@ -34,7 +48,7 @@
         .post-date {
             max-width:60%;
             margin: auto;
-            
+            color: #EAE133;
         }
         .post-text {
             margin-top:0;
@@ -48,13 +62,5 @@
         }
     }
 
-    .post-text {
-        display:inline-block;
-        background: white;
-        border:1px solid black;
-        padding:10px;
-        word-break: break-word;
-        max-width:100%;
-        white-space:pre-line;
-    }
+
 }
