@@ -21,7 +21,7 @@ export default function About() {
                 <h2>What is Zcash?</h2>
                 <p>Zcash is a decentralized means of exchange that employs Zero Knowledge Proofs to prevent printing transaction details onto its public ledger.</p>
                 <p>When transacting between z-addresses, the sender, receiver, amount, and memo are not shared with anyone else along the way!</p>
-                <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zcashvr">Tweet at ZcashVR!</a></p>
+                <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at us!</a></p>
                 <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
             </div>
             <div className="about-content">
