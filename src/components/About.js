@@ -3,7 +3,12 @@ import mike from "../mike.jpg"
 import { UserContext } from "../contexts/UserContext"
 
 export default function About() {
-    const { ip } = React.useContext(UserContext)
+    const { ip } = React.useContext(UserContext);
+
+    React.useEffect(_ => {
+        window.scrollTo(0, 0)
+    },[])
+
     return (
         <div className="about-page">
             <div className="about-content">

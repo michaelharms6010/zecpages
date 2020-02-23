@@ -13,28 +13,30 @@ export default function Navigation() {
     }
 
     return(
-        <nav className="main-nav">
-            
-                <Link className="zebra-icon" to="/">
-                    <span className="emoji">🦓</span>
-                    <img alt="zecpages logo" className="logo" src={logo} />
-                </Link>
+        <div className="main-nav-placeholder">
+            <nav className="main-nav">
                 
-            <div>
-                <Link to="/board">Board</Link>
-                <Link to="/about">About</Link>
-                {loggedIn 
-                ? <>
-                
-                <Link to="/edit">Edit Your Card</Link>
-                <Link onClick={logout}>Log Out</Link>
-                </>
-                : <>
-                <Link to="/signup">Sign Up</Link>
-                <Link to="/login">Login</Link>
-                </> }
-            </div>
-        </nav>
+                    <Link className="zebra-icon" to="/">
+                        <span className="emoji">🦓</span>
+                        <img alt="zecpages logo" className="logo" src={logo} />
+                    </Link>
+                    
+                <div>
+                    <Link to="/board">Board</Link>
+                    <Link to="/about">About</Link>
+                    {loggedIn 
+                    ? <>
+                    
+                    <Link to="/edit">Edit Your Card</Link>
+                    <Link onClick={logout}>Log Out</Link>
+                    </>
+                    : <>
+                    <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">Login</Link>
+                    </> }
+                </div>
+            </nav>
+        </div>
     )
 
 }

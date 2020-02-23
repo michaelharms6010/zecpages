@@ -157,10 +157,17 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.main-nav-placeholder {
+  height:84px;
+}
+
+
 .main-nav {
   background:rgb(0, 0, 0);
   padding: 15px 0px;
   width:100%;
+  position:fixed;
+  top: 0px;
   display:flex;
   justify-content:space-between;
 
