@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
-import axiosWithAuth from "../utils/AxiosWithAuth";
 import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
@@ -30,7 +29,7 @@ export default function ZaddrList (props) {
             setResults(zaddrs)
         }
 
-    }, [search])
+    }, [search, zaddrs])
 
     return(
         <div className="zaddr-list">
