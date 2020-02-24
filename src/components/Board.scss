@@ -35,30 +35,32 @@
 
 
     .highlighted-board-post {
-        width:85%;
-        border: 3px solid darkslategrey;
-        margin: 1% auto;
+        width:80%;
+        // border: 3px solid darkslategrey;
+        // margin: 1% auto;
         background: #000FB7;
-        text-align:center;
-        border-radius:50%;
-        color: #EAE133;
-        padding:20px;
-        font-family: 'Playfair Display', serif;
+        background:rgb(255, 135, 155);
+        // text-align:center;
+        // border-radius:50%;
+        // color: #EAE133;
+        
+        // font-family: 'Playfair Display', serif;
 
         .post-date {
-            max-width:60%;
-            margin: auto;
-            color: #EAE133;
+            margin: 0 auto;
+            padding-left:10px;
+            color:rgb(68, 68, 68);
         }
         .post-text {
             margin-top:0;
-            letter-spacing: 1px;
-            background: #000FB7;
+            // letter-spacing: 1px;
+            // background: #000FB7;
+            background:rgb(255, 135, 155);
             border:none;
             max-width:60%;
-            font-size:26px;
-            text-align:center;
-            font-weight:520;
+            font-size:18px;
+            // text-align:center;
+            // font-weight:520;
         }
     }
 
