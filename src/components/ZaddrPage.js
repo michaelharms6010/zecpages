@@ -18,7 +18,6 @@ import qricon from "../icons/qr.png"
 
 
 import {ZaddrContext} from "../contexts/ZaddrContext";
-import axiosAuth from "../utils/AxiosWithAuth";
 
 export default function ZaddrCard ({match, history, copied, setCopied}) {
     const [user, setUser] = useState({website: "", username: ""});
