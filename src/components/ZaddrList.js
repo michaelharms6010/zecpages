@@ -53,7 +53,7 @@ export default function ZaddrList (props) {
             </>
             : 
             <>
-                <img id="spinner" src={logo} />
+                <img id="spinner" alt="spinning zcash logo" src={logo} />
                 <h2>Loading . . .</h2>
             </>
         }    
