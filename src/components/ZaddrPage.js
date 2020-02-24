@@ -71,12 +71,12 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
-                <img className="qr-icon" src={qricon} onClick={_ => setQRId(!QRId) } />
+                <img alt="qr code" className="qr-icon" src={qricon} onClick={_ => setQRId(!QRId) } />
             </div>
         </div>
         <div className="cta-button-container">
-            <button className="cta-button cta-button-silver"><a target="_new" href="https://zecwallet.co/"><img src={zecwallet}/>New to Zcash? Get started in ~60 seconds with ZecWallet Lite. (Mac/PC/Linux)</a></button>
-            <button className="cta-button cta-button-black"><Link to="/"><img src={logo}/>Return to main Z-address Directory</Link></button>
+            <button className="cta-button cta-button-silver"><a target="_new" href="https://zecwallet.co/"><img alt="zecwallet logo" src={zecwallet}/>New to Zcash? Get started in ~60 seconds with ZecWallet Lite. (Mac/PC/Linux)</a></button>
+            <button className="cta-button cta-button-black"><Link to="/"><img alt="zecpages logo" src={logo}/>Return to main Z-address Directory</Link></button>
         </div>
         </>
         : null}
