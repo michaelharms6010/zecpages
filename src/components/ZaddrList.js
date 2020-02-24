@@ -5,7 +5,7 @@ import axiosWithAuth from "../utils/AxiosWithAuth";
 import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
-    const { zaddrs, setZaddrs, copied, setCopied} = useContext(ZaddrContext);    
+    const { zaddrs, copied, setCopied} = useContext(ZaddrContext);    
     const [results, setResults] = useState(zaddrs);
     const [search, setSearch] = useState("");
     const [loaded, setLoaded] = useState(false);
