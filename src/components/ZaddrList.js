@@ -35,7 +35,7 @@ export default function ZaddrList (props) {
     return(
         <div className="zaddr-list">
             <h2 className="main-header">Zcash Z-address Directory</h2>     
-            {loaded 
+            {loaded && zaddrs.length > 0
             ? 
             <>
                 <label>Search:</label>
