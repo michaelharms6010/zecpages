@@ -21,6 +21,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
   const [copied, setCopied] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
 
   useEffect(_ => {
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{loggedIn, setLoggedIn, ip}}>
-      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied}}>
+      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied, loaded, setLoaded}}>
         <Router>
           <div className="App">
             <Navigation />

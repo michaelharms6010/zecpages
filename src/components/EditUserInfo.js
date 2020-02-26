@@ -56,10 +56,12 @@ export default function EditUserInfo ({history}) {
                     label: "Yes",
                     onClick: _ => axiosAuth().delete(`https://be.zecpages.com/users/`)
                     .then( _ => {
+                        setZaddrs( ...zaddrs.filter(zaddr => zaddr.id !== user.id ))
                         setUser({website: ""});
                         logout();
                         ReactGA.event({category: "User", action: "Deleted User"});
                         history.push("/");   
+                        window.location.reload()
                     })
                     .catch(err => {console.error(err)
                         

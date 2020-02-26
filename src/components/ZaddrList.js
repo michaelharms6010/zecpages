@@ -4,10 +4,10 @@ import ZaddrCard from "./ZaddrCard";
 import logo from "../zcash-icon.png"
 
 export default function ZaddrList (props) {
-    const { zaddrs, copied, setCopied} = useContext(ZaddrContext);    
+    const { zaddrs, copied, setCopied, loaded, setLoaded} = useContext(ZaddrContext);    
     const [results, setResults] = useState(zaddrs);
     const [search, setSearch] = useState("");
-    const [loaded, setLoaded] = useState(false);
+    
 
     useEffect( _ => {
         setTimeout( () => setLoaded(true), 1000 )
@@ -15,6 +15,7 @@ export default function ZaddrList (props) {
 
     useEffect( _ => {
         setResults(zaddrs)
+        setTimeout( () => setLoaded(true), 1000 )
     }, [zaddrs])
 
     useEffect( _ => {      
