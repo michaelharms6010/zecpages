@@ -26,7 +26,7 @@ export default function Board() {
     }, [toggle])
 
     const stringifyDate = date => {
-        return new Date(Number(date)).toString().replace(" GMT-0600 (Central Standard Time)", "")
+        return new Date(Number(date)).toString().split("GMT")[0]
       }
 
     return (
