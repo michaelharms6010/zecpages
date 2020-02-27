@@ -59,7 +59,6 @@ function App() {
               <Route exact path="/about" render={(props) => <About {...props} /> } />
               <Route exact path="/board" component={Board} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
-              
             </Switch>
           </div>
         </Router>

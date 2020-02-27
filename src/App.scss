@@ -6,6 +6,7 @@ $breakpoint-mobile: 500px;
   text-align: center;
   background:rgb(218, 252, 255);
   min-height:100vh;
+  box-sizing:border-box;
   .search-input {
     margin-left:10px;
     margin-bottom:1rem;
@@ -97,7 +98,6 @@ $breakpoint-mobile: 500px;
   canvas {
     margin: 2% auto;
     border: 2px solid black;
-    // padding: 8px;
   }
 
   .card-top-row {
@@ -163,7 +163,8 @@ $breakpoint-mobile: 500px;
 
 
 .main-nav {
-  background:rgb(0, 0, 0);
+  // background:#393E41;
+  background: black;
   padding: 15px 0px;
   width:100%;
   position:fixed;
@@ -179,16 +180,17 @@ $breakpoint-mobile: 500px;
   }
 
   div {
-    width:40%;
+    width:50%;
     display:flex;
     justify-content:flex-end;
     align-items:center;
     margin-right:5%;
   }
   a {
+    font-size:1.2rem;
     margin: 0 4%;
     text-decoration:none;
-    color:rgb(218, 252, 255);
+    color:#ffbf00;
     &:hover {
       text-decoration:underline;
     }
