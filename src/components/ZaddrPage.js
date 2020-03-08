@@ -22,6 +22,7 @@ import {ZaddrContext} from "../contexts/ZaddrContext";
 export default function ZaddrCard ({match, history, copied, setCopied}) {
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
+    const [proofHttps, setProofHttps] = useState("");
     const { zaddrs } = useContext(ZaddrContext);
 
 
@@ -42,7 +43,10 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
         if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
         }
-    },[user.website])
+        if (user.proofposturl && !user.proofposturl.includes("http")) {
+            setProofHttps("https://")
+        }
+    },[user.website, user.proofposturl])
 
     const handleCopy = ( zaddr, id) => {
         copyTextToClipboard(zaddr)
@@ -67,7 +71,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
                 ? null 
                 : <QRCode size={256} value={user.zaddr} />}
             <div className="card-bottom-row">
-                {user.proofposturl ? <a target="_new" href={user.proofposturl}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
+                {user.proofposturl ? <a target="_new" href={`${proofHttps}${user.proofposturl}`}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
