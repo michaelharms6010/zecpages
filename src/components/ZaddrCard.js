@@ -15,10 +15,14 @@ import qricon from "../icons/qr.png"
 
 export default function ZaddrCard ({user, copied, setCopied}) {
     const [httpsString, setHttpsString] = useState("");
+    const [proofHttps, setProofHttps] = useState("");
     const [qrVis, setQrVis] = useState(false);
     useEffect( _ => {
         if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
+        }
+        if (user.proofposturl && !user.proofposturl.includes("http")) {
+            setProofHttps("https://")
         }
     },[user.website])
 
@@ -41,7 +45,7 @@ export default function ZaddrCard ({user, copied, setCopied}) {
                 ? null 
                 : <QRCode size={256} value={user.zaddr} />}
             <div className="card-bottom-row">              
-                {user.proofposturl ? <a target="_new" href={user.proofposturl}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
+                {user.proofposturl ? <a target="_new" href={`${proofHttps}${user.proofposturl}`}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
                 {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
                 {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}

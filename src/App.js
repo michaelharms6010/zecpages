@@ -3,7 +3,6 @@ import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
 import ReactGA from "react-ga"
 import axios from "axios"
-import Pusher from 'pusher-js';
 
 import {ZaddrContext} from "./contexts/ZaddrContext"
 import {UserContext} from "./contexts/UserContext"
