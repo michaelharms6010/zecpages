@@ -24,6 +24,7 @@ export default function Board() {
     }
 
     useEffect( _ => {
+        window.scrollTo(0, 0);
         getNewPosts();
         Pusher.logToConsole = true;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
@@ -35,7 +36,6 @@ export default function Board() {
             console.log(data);
             getNewPosts();
         });
-        window.scrollTo(0, 0)
     },[])
 
     const stringifyDate = date => {
