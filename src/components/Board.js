@@ -3,17 +3,16 @@ import axios from "axios"
 import "./Board.scss"
 import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
+import Pusher from 'pusher-js';
+
+
 
 export default function Board() {
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
 
-    useEffect( _ => {
-        window.scrollTo(0, 0)
-    },[])
-
-    useEffect( _ => {
+    const getNewPosts = _ => {
         axios.get("https://be.zecpages.com/board")
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
@@ -22,9 +21,22 @@ export default function Board() {
                 }
             })
         .catch(err => console.log(err));
-        
-        setTimeout( () => setToggle(!toggle),  100000)
-    }, [toggle])
+    }
+
+    useEffect( _ => {
+        window.scrollTo(0, 0);
+        getNewPosts();
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('0cea3b0950ab8614f8e9', {
+            cluster: 'us2',
+            forceTLS: true
+        });
+        var channel = pusher.subscribe('board');
+            channel.bind('new-post', function(data) {
+            console.log(data);
+            getNewPosts();
+        });
+    },[])
 
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
