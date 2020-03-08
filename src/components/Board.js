@@ -38,19 +38,6 @@ export default function Board() {
         window.scrollTo(0, 0)
     },[])
 
-    useEffect( _ => {
-        axios.get("https://be.zecpages.com/board")
-        .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
-                if (posts !== newPosts) {
-                    setPosts(newPosts)
-                }
-            })
-        .catch(err => console.log(err));
-        
-        setTimeout( () => setToggle(!toggle),  100000)
-    }, [toggle])
-
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
       }
