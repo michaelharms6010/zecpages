@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
 import ReactGA from "react-ga"
 import axios from "axios"
+import Pusher from 'pusher-js';
 
 import {ZaddrContext} from "./contexts/ZaddrContext"
 import {UserContext} from "./contexts/UserContext"
@@ -23,6 +24,8 @@ function App() {
   const [copied, setCopied] = useState(0);
   const [loaded, setLoaded] = useState(false);
 
+  
+
 
   useEffect(_ => {
     axios.get("https://be.zecpages.com/users")
@@ -33,7 +36,18 @@ function App() {
   },[])
 
 
+  // initialize services
   useEffect( _ => {
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('0cea3b0950ab8614f8e9', {
+      cluster: 'us2',
+      forceTLS: true
+    });
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+
     ReactGA.initialize("UA-156199574-2");
     ReactGA.pageview("/");
     ReactGA.event({category: "App", action: "Loaded app"});
