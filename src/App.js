@@ -38,15 +38,6 @@ function App() {
 
   // initialize services
   useEffect( _ => {
-    Pusher.logToConsole = true;
-    var pusher = new Pusher('0cea3b0950ab8614f8e9', {
-      cluster: 'us2',
-      forceTLS: true
-    });
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
-    });
 
     ReactGA.initialize("UA-156199574-2");
     ReactGA.pageview("/");

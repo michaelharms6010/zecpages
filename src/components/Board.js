@@ -3,13 +3,38 @@ import axios from "axios"
 import "./Board.scss"
 import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
+import Pusher from 'pusher-js';
+
+
 
 export default function Board() {
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
 
+    const getNewPosts = _ => {
+        axios.get("https://be.zecpages.com/board")
+        .then(res =>{ 
+                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                if (posts !== newPosts) {
+                    setPosts(newPosts)
+                }
+            })
+        .catch(err => console.log(err));
+    }
+
     useEffect( _ => {
+        getNewPosts();
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('0cea3b0950ab8614f8e9', {
+            cluster: 'us2',
+            forceTLS: true
+        });
+        var channel = pusher.subscribe('board');
+            channel.bind('new-post', function(data) {
+            console.log(data);
+            getNewPosts();
+        });
         window.scrollTo(0, 0)
     },[])
 
