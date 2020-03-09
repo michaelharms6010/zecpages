@@ -84,6 +84,7 @@ export default function ZaddrList (props) {
                     /></label>
   
                 </div>
+                {results.length !== zaddrs.length ? <p className="results-count">{results.length} results</p> : null}
                 {results.map(item => 
                     item.zaddr 
                         ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
