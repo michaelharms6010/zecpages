@@ -34,10 +34,20 @@ export default function ZaddrList (props) {
                 }
             ))
         } else {
-            setResults(zaddrs)
+            setResults(applyFilters(zaddrs))
         }
 
-    }, [search, zaddrs])
+    }, [search, zaddrs, filters])
+
+    const applyFilters = zaddrArray => {
+        let output = zaddrArray
+        if (filters.needs_twitter) {
+            output = output.filter(item => item.twitter)
+        } if (filters.needs_proof) {
+            output = output.filter(item => item.needs_proof)
+        }
+        return output
+    }
 
     const handleFilterChange = e => {
         setFilters({...filters, [e.target.name]: e.target.checked})
@@ -78,7 +88,7 @@ export default function ZaddrList (props) {
                         : null
                 )}
                 <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>
-                <FilterBar results={results} setResults={setResults} />
+                {/* <FilterBar results={results} setResults={setResults} /> */}
             </>
             : 
             <>
