@@ -44,7 +44,7 @@ export default function ZaddrList (props) {
         if (filters.needs_twitter) {
             output = output.filter(item => item.twitter)
         } if (filters.needs_proof) {
-            output = output.filter(item => item.needs_proof)
+            output = output.filter(item => item.proofposturl)
         }
         return output
     }
@@ -67,20 +67,22 @@ export default function ZaddrList (props) {
                 onChange={e => setSearch(e.target.value)}
                 />
                 <div className="filter-checkboxes">
-                    <label>Twitter
-                    <input 
-                        type="checkbox" 
-                        name="needs_twitter"
-                        checked={filters.needs_twitter}
-                        onChange={handleFilterChange}
-                    /></label>
-                    <label>Proof
+                    <span>Filter by field:  {"  "}</span>
+                    <label>Users with Proof
                     <input 
                         type="checkbox" 
                         name="needs_proof"
                         checked={filters.needs_proof}
                         onChange={handleFilterChange}
                     /></label>
+                    <label>Users with Twitter
+                    <input 
+                        type="checkbox" 
+                        name="needs_twitter"
+                        checked={filters.needs_twitter}
+                        onChange={handleFilterChange}
+                    /></label>
+  
                 </div>
                 {results.map(item => 
                     item.zaddr 

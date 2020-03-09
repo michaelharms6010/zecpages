@@ -7,6 +7,18 @@ $breakpoint-mobile: 500px;
   background:rgb(218, 252, 255);
   min-height:100vh;
   box-sizing:border-box;
+  .filter-checkboxes {
+    width: 60%;
+    display:flex;
+    justify-content:space-around;
+    margin: 0 auto;
+    span {
+      font-weight:bold;
+    }
+    input {
+      margin-left: 10px;
+    }
+  }
   .search-input {
     margin-left:10px;
     margin-bottom:1rem;
