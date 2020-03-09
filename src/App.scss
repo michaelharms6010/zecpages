@@ -10,13 +10,15 @@ $breakpoint-mobile: 500px;
   .filter-checkboxes {
     width: 60%;
     display:flex;
-    justify-content:space-around;
+    justify-content:center;
     margin: 0 auto;
     span {
       font-weight:bold;
+      margin-right: 20px;
     }
     input {
       margin-left: 10px;
+      margin-right: 20px;
     }
   }
   .search-input {
