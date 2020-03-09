@@ -24,7 +24,7 @@ export default function ZaddrCard ({user, copied, setCopied}) {
         if (user.proofposturl && !user.proofposturl.includes("http")) {
             setProofHttps("https://")
         }
-    },[user.website])
+    },[user.website, user.proofposturl])
 
     const handleCopy = ( zaddr, id) => {
         copyTextToClipboard(zaddr)
