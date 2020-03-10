@@ -57,7 +57,7 @@ export default function ZaddrList (props) {
     return(
         <div className="zaddr-list">
             <h2 className="main-header">Zcash Z-address Directory</h2>
-            <a href="https://be.zecpages.com/users" target="_new"><button className="export-button">Export All Zaddrs</button></a>     
+            <a href="https://be.zecpages.com/users" target="_new"><button className="export-button">Export All Zaddrs (Better Privacy)</button></a>     
             {loaded && zaddrs.length > 0
             ? 
             <>
