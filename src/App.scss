@@ -7,6 +7,25 @@ $breakpoint-mobile: 500px;
   background:rgb(218, 252, 255);
   min-height:100vh;
   box-sizing:border-box;
+  a {
+    text-decoration:none;
+  }
+  .export-button {
+    display:block;
+    border: 2px solid #ffbf00;
+    background:black;
+    color: #ffbf00;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 1%;
+    text-decoration:none;
+    &:active {
+      transform: scale(.95);
+    }
+    &:focus {
+      outline:none;
+    }
+  }
   .filter-checkboxes {
     width: 60%;
     display:flex;
