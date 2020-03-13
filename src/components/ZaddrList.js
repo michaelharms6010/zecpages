@@ -68,7 +68,7 @@ export default function ZaddrList (props) {
                 onChange={e => setSearch(e.target.value)}
                 />
                 <div className="filter-checkboxes">
-                    <span>Filter by field:  {"  "}</span>
+                    <span>Filter:  {"  "}</span>
                     <label>Users with Proof
                     <input 
                         type="checkbox" 
