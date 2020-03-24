@@ -14,7 +14,6 @@ export default function ZaddrList (props) {
         needs_website: false,
         needs_email: false,
     })
-    
 
     useEffect( _ => {
         setTimeout( () => setLoaded(true), 1000 )
