@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from "react";
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
 import logo from "../zcash-icon.png"
+import {copyTextToClipboard } from "../utils/copy";
 import FilterBar from "./FilterBar"
 
 export default function ZaddrList (props) {
@@ -39,6 +40,11 @@ export default function ZaddrList (props) {
 
     }, [search, zaddrs, filters])
 
+
+    const handleCopyAll = _ => {
+        copyTextToClipboard(results.filter(item => item.zaddr).reduce((acc, val) => acc + val.zaddr + ",\n", ""))
+    }
+
     const applyFilters = zaddrArray => {
         let output = zaddrArray
         if (filters.needs_twitter) {
@@ -57,6 +63,7 @@ export default function ZaddrList (props) {
     return(
         <div className="zaddr-list">
             <h2 className="main-header">Zcash Z-address Directory</h2>
+            <button className="export-button" onClick={handleCopyAll}>Copy all filtered zaddrs to clipboard (comma-separated)</button>
             <a href="https://be.zecpages.com/users" target="_new"><button className="export-button">Export All Zaddrs (Better Privacy)</button></a>     
             {loaded && zaddrs.length > 0
             ? 

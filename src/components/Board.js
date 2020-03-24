@@ -26,7 +26,7 @@ export default function Board() {
     useEffect( _ => {
         window.scrollTo(0, 0);
         getNewPosts();
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
             cluster: 'us2',
             forceTLS: true
@@ -54,7 +54,7 @@ export default function Board() {
             {posts.length > 0 
             ? 
             posts.map(item => 
-                <div className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+                <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo.split("â€™").join("'")}</p>
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
