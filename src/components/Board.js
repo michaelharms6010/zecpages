@@ -11,14 +11,17 @@ export default function Board() {
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
-
+    const [page, setPage] = useState(1)
+    
+    const [next, setNext] = useState(true);
+    const [prev, setPrev] = useState(true);
     const getNewPosts = _ => {
-        axios.get("https://be.zecpages.com/board")
+        axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     setPosts(newPosts)
-                }
+                                    }
             })
         .catch(err => console.log(err));
     }
@@ -36,7 +39,20 @@ export default function Board() {
             console.log(data);
             getNewPosts();
         });
-    },[])
+        if (page === 1) {
+            setPrev(false)
+        } else {
+            setPrev(true)
+        }
+    },[page])
+
+    useEffect( _ => {
+        if (posts.length < 25) {
+            setNext(false)
+        } else {
+            setNext(true)
+        }
+    },[posts])
 
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
@@ -53,17 +69,25 @@ export default function Board() {
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {posts.length > 0 
             ? 
-            posts.map(item => 
+            <>
+            <div className="buttons">
+                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
+                <button className="page-number" disabled="disabled">{page} </button>
+                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
+            </div>
+            {posts.map(item => 
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{item.memo.split("â€™").join("'")}</p>
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
-            )
+            )}
+            </>
         : 
         <>
             <img id="spinner" alt="spinning zcash logo" src={logo} />
             <h2>Loading . . .</h2>
         </>}
+
 
         </div>
 

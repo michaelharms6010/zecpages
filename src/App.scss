@@ -1,6 +1,14 @@
 $breakpoint-tablet: 800px;
 $breakpoint-mobile: 500px;
 
+
+.page-number {
+  background:white;
+  border: 1px solid black;
+  padding:2px 5px;
+  
+}
+
 .App {
   padding-bottom:.1%;
   text-align: center;
