@@ -3,7 +3,6 @@ import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
 import logo from "../zcash-icon.png"
 import {copyTextToClipboard } from "../utils/copy";
-import FilterBar from "./FilterBar"
 
 export default function ZaddrList (props) {
     const { zaddrs, copied, setCopied, loaded, setLoaded} = useContext(ZaddrContext);    
@@ -63,8 +62,8 @@ export default function ZaddrList (props) {
     return(
         <div className="zaddr-list">
             <h2 className="main-header">Zcash Z-address Directory</h2>
-            <button className="export-button" onClick={handleCopyAll}>Copy all filtered zaddrs to clipboard (comma-separated)</button>
-            <a href="https://be.zecpages.com/users" target="_new"><button className="export-button">Export All Zaddrs (Better Privacy)</button></a>     
+            <button className="export-button" onClick={handleCopyAll}>Copy all results zaddrs to clipboard (comma-separated)</button>
+            {/* <a href="https://be.zecpages.com/users" target="_new"><button className="export-button">Export All Zaddrs (Better Privacy)</button></a>      */}
             {loaded && zaddrs.length > 0
             ? 
             <>
