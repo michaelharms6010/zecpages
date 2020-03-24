@@ -27,7 +27,7 @@ export default function Board() {
     }
 
     useEffect( _ => {
-        window.scrollTo(0, 0);
+        
         getNewPosts();
         Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
@@ -39,6 +39,7 @@ export default function Board() {
             console.log(data);
             getNewPosts();
         });
+        window.scrollTo(0, 0);
         if (page === 1) {
             setPrev(false)
         } else {
@@ -70,7 +71,7 @@ export default function Board() {
             {posts.length > 0 
             ? 
             <>
-            <div className="buttons">
+            <div className="board-page-buttons">
                 <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
                 <button className="page-number" disabled="disabled">{page} </button>
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
@@ -81,6 +82,11 @@ export default function Board() {
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
             )}
+            <div className="board-page-buttons">
+                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
+                <button className="page-number" disabled="disabled">{page} </button>
+                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
+            </div>
             </>
         : 
         <>

@@ -10,6 +10,13 @@
         margin: auto;
         margin-bottom:5px
     }
+
+    .board-page-buttons {
+        display:flex;
+        justify-content:flex-end;
+        margin-right:10%;
+        padding:10px;
+    }
   
     .board-post {
         width:80%;
