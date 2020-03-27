@@ -15,6 +15,16 @@ export default function Board() {
     
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+
+    function lineReducer(str) {
+        let arr = str.split("\n");
+        if (arr.length > 12) {
+          return arr.join("")
+        } else {
+          return arr.join("\n")
+        }
+      }
+
     const getNewPosts = _ => {
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
@@ -78,7 +88,7 @@ export default function Board() {
             </div>
             {posts.map(item => 
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{item.memo.split("â€™").join("'")}</p>
+                    <p className="post-text">{lineReducer(item.memo.split("â€™").join("'"))}</p>
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                 </div>    
             )}
