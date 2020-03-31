@@ -22,7 +22,7 @@ export default function BoardPost(props) {
     <div className="z-board">
 
     {post.memo ? 
-    <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+    <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{post.memo.split("â€™").join("'")}</p>
         <p className="post-date">{stringifyDate(post.datetime)}</p>
     </div>
