@@ -4,10 +4,7 @@
         border: 2px solid black;
     }
 
-    a {
-        text-decoration: none;
-        color:black;
-    }
+
 
 
 
@@ -48,6 +45,7 @@
             margin: 0 auto;
             padding-left:10px;
             color:rgb(117, 117, 117);
+            margin-bottom:5px;
         }
     }
 
@@ -58,7 +56,8 @@
         .post-date {
             margin: 0 auto;
             padding-left:10px;
-            color:rgb(68, 68, 68);     
+            color:rgb(68, 68, 68);    
+            margin-bottom: 5px; 
         }
         .post-text {
             margin-top:0;
@@ -75,6 +74,11 @@
     .individual-post {
         margin-top:25px;
     }
+    a {
+        text-decoration: none;
+        color:rgb(93, 93, 93);
+        font-weight:bold;
 
-
+        padding-left:10px;
+    }
 }

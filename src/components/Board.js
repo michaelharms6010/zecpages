@@ -95,12 +95,16 @@ export default function Board() {
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
             </div>
             {posts.map(item => 
-                <Link to={`/board/post/${item.id}`}>
+               <>
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'"))}</p>
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
-                </div>    
-                </Link>
+                    <Link to={`/board/post/${item.id}`}> 
+                    Permalink
+                    </Link>
+                </div>   
+                
+                </>
             )}
             <div className="board-page-buttons">
                 <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
