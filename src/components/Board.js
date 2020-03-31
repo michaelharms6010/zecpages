@@ -12,6 +12,7 @@ export default function Board() {
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
     const [page, setPage] = useState(1)
+    const [postCount, setPostCount] = useState(0)
     
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -32,6 +33,11 @@ export default function Board() {
                 if (posts !== newPosts) {
                     setPosts(newPosts)
                                     }
+            })
+        .catch(err => console.log(err));
+        axios.get(`https://be.zecpages.com/board/count`)
+        .then(res =>{ 
+                setPostCount(Number(res.data));
             })
         .catch(err => console.log(err));
     }
@@ -58,12 +64,12 @@ export default function Board() {
     },[page])
 
     useEffect( _ => {
-        if (posts.length < 25) {
+        if (page * 25 >= postCount) {
             setNext(false)
         } else {
             setNext(true)
         }
-    },[posts])
+    },[postCount, page])
 
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
@@ -98,6 +104,7 @@ export default function Board() {
                 <button className="page-number" disabled="disabled">{page} </button>
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
             </div>
+            <h5>{`There are currently ${postCount} posts on this board!`}</h5>
             </>
         : 
         <>
