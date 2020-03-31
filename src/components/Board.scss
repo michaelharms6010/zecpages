@@ -42,10 +42,10 @@
             margin-top:1px;
         }
         .post-date {
-            margin: 0 auto;
+            margin: 0;
             padding-left:10px;
             color:rgb(117, 117, 117);
-            margin-bottom:5px;
+            
         }
     }
 
@@ -54,7 +54,7 @@
         width:80%;
         background:rgb(255, 135, 155);
         .post-date {
-            margin: 0 auto;
+            margin: 0;
             padding-left:10px;
             color:rgb(68, 68, 68);    
             margin-bottom: 5px; 
@@ -78,7 +78,12 @@
         text-decoration: none;
         color:rgb(93, 93, 93);
         font-weight:bold;
-
+        padding-right:10px;
         padding-left:10px;
+    }
+    .post-bottom-row {
+        display:flex;
+        justify-content:space-between;
+        text-align:left;
     }
 }
