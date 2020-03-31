@@ -15,6 +15,7 @@ import EditUserInfo from "./components/EditUserInfo";
 import About from "./components/About"
 import ZaddrPage from "./components/ZaddrPage"
 import Board from "./components/Board"
+import BoardPost from "./components/BoardPost";
 
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
@@ -62,6 +63,7 @@ function App() {
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
               <Route exact path="/about" render={(props) => <About {...props} /> } />
               <Route exact path="/board" component={Board} />
+              <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>
           </div>
