@@ -1,6 +1,8 @@
-# Zeitpages
+# Zecpages
 
-In its current state, this is a one man, 6 hour hackathon project. It's a react frontend connected to a express/node/knex/postgres backend in its present state. You can see the site at https://zecpages.com
+This is a Zcash-focused social site with a Zcash-powered message board. It's a react frontend connected to a express/node/knex/postgres backend in its present state. You can see the site at https://zecpages.com
+
+Zecpages is built and maintained by Michael Harms. 
 
 ## Backend
 
