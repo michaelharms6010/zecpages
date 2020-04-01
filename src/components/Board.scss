@@ -12,7 +12,12 @@
     .instructions-header {
         width:80%;
         margin: auto;
-        margin-bottom:5px
+        margin-bottom:5px;
+        word-break: break-word;
+    }
+
+    .highlight-cta {
+        margin-top:0;
     }
 
     .board-page-buttons {
