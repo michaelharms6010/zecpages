@@ -84,7 +84,7 @@ export default function Board() {
             <h4 className="instructions-header">Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f</h4>
             <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
             {qrVis 
-                ? <><QRCode size={256} value="zs1n5m4szkmqup6ht9nuwke9j5w6pwcd527l4sm8u2aqqhaedjv5at64el6eyazm6engqplx0ht6x9" /><br /></> 
+                ? <><QRCode size={256} value="zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f" /><br /></> 
                 : null}
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {posts.length > 0 
