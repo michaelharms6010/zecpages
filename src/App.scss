@@ -329,9 +329,16 @@ $breakpoint-mobile: 500px;
   form {
     display:flex;
     flex-direction: column;
+    label {
+      display: flex;
+      flex-direction:column;
+      align-items:flex-start;
+      width: 70%;
+      margin: 0 auto;
+    }
     input {
       margin: 2% auto;
-      width:70%;
+      width:100%;
     }
     button {
       margin: 10px auto;
