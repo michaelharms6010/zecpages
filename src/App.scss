@@ -326,6 +326,9 @@ $breakpoint-mobile: 500px;
   margin: 2% auto;
   padding:15px;
   border: 1px solid black;
+  h2 {
+    margin-top:0;
+  }
   form {
     display:flex;
     flex-direction: column;

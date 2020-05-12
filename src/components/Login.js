@@ -33,20 +33,22 @@ export default function Login({history}) {
     return (
     <div className="auth-form">
         <h2>Log in to make edits</h2>
-        <form onSubmit={handleSubmit}>   
+        <form onSubmit={handleSubmit}>
+            <label>Username   
             <input
             name="username"
             type="text"
             value={formInfo.username}
             onChange={handleChange}
-            placeholder="username" />
+            /></label>
             
+            <label>Password
             <input
             name="password"
             type="password"
             value={formInfo.password}
             onChange={handleChange}
-            placeholder="password" />
+            /></label>
             {error ? <p className="error-text">{error}</p> : null}
             <button>Submit</button>
         </form> 
