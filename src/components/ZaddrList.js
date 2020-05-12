@@ -55,7 +55,6 @@ export default function ZaddrList (props) {
 
     const handleFilterChange = e => {
         setFilters({...filters, [e.target.name]: e.target.checked})
-        console.log(filters)
     }
 
     return(

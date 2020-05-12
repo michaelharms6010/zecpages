@@ -4,7 +4,7 @@ import {UserContext} from "../contexts/UserContext";
 import ReactGA from "react-ga";
 
 export default function Login({history}) {
-    const [formInfo, setFormInfo] = useState({username: "", password: ""});
+    const [formInfo, setFormInfo] = useState({username: "", password: "", password2: ""});
     const {setLoggedIn} = useContext(UserContext);
     const handleChange = e => {
         setFormInfo({...formInfo, [e.target.name]: e.target.value})
@@ -39,6 +39,12 @@ export default function Login({history}) {
             value={formInfo.password}
             onChange={handleChange}
             placeholder="password" />
+            <input
+            name="password2"
+            type="password"
+            value={formInfo.password2}
+            onChange={handleChange}
+            placeholder="Confirm Password" />
             <button>Submit</button>
         </form> 
     </div>
