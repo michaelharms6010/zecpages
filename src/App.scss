@@ -19,20 +19,26 @@ $breakpoint-mobile: 500px;
     text-decoration:none;
   }
   .export-button {
-    display:block;
     border: 2px solid #ffbf00;
     background:black;
     color: #ffbf00;
     padding: 10px;
-    margin: 0 auto;
+    margin: 10px;
     margin-top:15px;
     margin-bottom: 15px;
     text-decoration:none;
+    width: 30%;
     &:active {
       transform: scale(.95);
     }
     &:focus {
       outline:none;
+    }
+    button {
+      background:black;
+      color: #ffbf00;
+      border:none;
+      width: 80%;
     }
   }
   .filter-checkboxes {
@@ -429,6 +435,7 @@ $breakpoint-mobile: 500px;
   .main-header {
     margin-left: 10px;
     margin-right:10px;
+    margin-bottom: 0;
   }
 
   .zaddr-card {
@@ -472,6 +479,10 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.top-buttons {
+  display:flex; 
+  justify-content:center;
+}
 
 
 
