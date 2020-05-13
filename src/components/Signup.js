@@ -14,8 +14,12 @@ export default function Login({history}) {
     const handleSubmit = e => {
         e.preventDefault();
         if (formInfo.password !== formInfo.password2) {
-            setAlert("Passwords do not match");
-        } else {
+            setAlert("Passwords do not match.");
+        } 
+        else if (formInfo.password.length < 8) {
+            setAlert("Your password should be at least 8 characters long.")
+        } 
+        else {
             const {username, password} = formInfo;
             axios.post("https://be.zecpages.com/auth/register", {username, password})
                 .then(res => {
@@ -32,7 +36,7 @@ export default function Login({history}) {
     
     return (
     <div className="auth-form">
-        <h2>Register an account to post your zaddr</h2>
+        <h2>Register a new account:</h2>
         <form onSubmit={handleSubmit}>
             <label>Username  
             <input
