@@ -34,7 +34,7 @@ export default function EditUserInfo ({history}) {
 
     const toggleEditing = _ => {
         if (editing) {
-            if (!zaddrRegex.test(editing.zaddr)) {
+            if (!zaddrRegex.test(user.zaddr)) {
                 setError("That z-address is invalid.")
             } else {
             axiosAuth().put("https://be.zecpages.com/users", user)
