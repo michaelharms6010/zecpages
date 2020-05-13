@@ -16,8 +16,8 @@ export default function Login({history}) {
         if (formInfo.password !== formInfo.password2) {
             setAlert("Passwords do not match");
         } else {
-            setAlert("Passwords do not match");
-            axios.post("https://be.zecpages.com/auth/register", formInfo)
+            const {username, password} = formInfo;
+            axios.post("https://be.zecpages.com/auth/register", {username, password})
                 .then(res => {
                         
                         ReactGA.event({category: "User", action: `created account ${formInfo.username} `});
