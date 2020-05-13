@@ -62,7 +62,7 @@ export default function ZaddrList (props) {
             
             <h2 className="main-header">Zcash Z-address Directory</h2>
             <div className="top-buttons">
-                <a className="export-button" href="https://be.zecpages.com/users" target="_new"><button>Export All User Data/Zaddrs (Better Privacy)</button></a>
+                <a className="export-button" href="https://be.zecpages.com/users" target="_new"><button>Export All User Data / Zaddrs (Better Privacy)</button></a>
                 <button className="export-button" onClick={handleCopyAll}>Copy all filtered zaddrs to clipboard (comma-separated)</button>
             </div>
             {loaded && zaddrs.length > 0
