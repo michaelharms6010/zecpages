@@ -75,7 +75,7 @@ export default function Board() {
 
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
-      }
+    }
 
     return (
         <div className="z-board">
