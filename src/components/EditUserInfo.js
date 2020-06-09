@@ -38,7 +38,7 @@ export default function EditUserInfo ({history}) {
             if (!zaddrRegex.test(user.zaddr)) {
                 setError("That z-address is invalid.")
             } else if (user.proofposturl && !proofRegex.test(user.proofposturl)) {
-                setError("Your proof of identity should link to a posting from another account (Twitter Preferred) that indicates your ownership of this account.")
+                setError("Your proof of identity should link to a post on another website that indicates your ownership of this account.")
             }
             else {
             axiosAuth().put("https://be.zecpages.com/users", user)
