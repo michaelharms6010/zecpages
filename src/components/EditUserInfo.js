@@ -15,6 +15,7 @@ export default function EditUserInfo ({history}) {
     const {setLoggedIn} = useContext(UserContext);
     const {zaddrs, setZaddrs} = useContext(ZaddrContext);
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
+    const proofRegex = /([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]/;
     const logout = _ => {
         localStorage.removeItem("jwt")
         setLoggedIn(false)
@@ -36,7 +37,10 @@ export default function EditUserInfo ({history}) {
         if (editing) {
             if (!zaddrRegex.test(user.zaddr)) {
                 setError("That z-address is invalid.")
-            } else {
+            } else if (user.proofposturl && !proofRegex.test(user.proofposturl)) {
+                setError("Your proof of identity should link to a posting from another account (Twitter Preferred) that indicates your ownership of this account.")
+            }
+            else {
             axiosAuth().put("https://be.zecpages.com/users", user)
                 .then(res => {
                     ReactGA.event({category: "User", action: "Edited User"});
