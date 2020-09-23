@@ -84,7 +84,7 @@ export default function Board() {
             <h2>Anonymous Memo Board</h2>
             <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
             <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
-            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey}</p> : null}
+            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}}target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             {qrVis 
                 ? <><QRCode size={256} value={qrVal} /><br /></> 
