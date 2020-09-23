@@ -14,10 +14,12 @@ export default function Board() {
     const [qrVis, setQrVis] = useState(false)
     const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
+    const [showViewKey, setShowViewKey] = useState(false)
     
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
+    const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
     function lineReducer(str) {
         let arr = str.split("\n");
@@ -82,6 +84,8 @@ export default function Board() {
             <h2>Anonymous Memo Board</h2>
             <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
             <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
+            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey}</p> : null}
+            <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             {qrVis 
                 ? <><QRCode size={256} value={qrVal} /><br /></> 
                 : null}
