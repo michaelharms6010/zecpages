@@ -15,6 +15,7 @@ export default function Board() {
     const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
+    const [bathroomMode, setBathroomMode] = useState(false)
     
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -79,12 +80,25 @@ export default function Board() {
         return new Date(Number(date)).toString().split("GMT")[0]
     }
 
+    const handleModeChange = _ => {
+        setBathroomMode(!bathroomMode)
+    }
+
     return (
-        <div className="z-board">
+        <div className={bathroomMode ? "z-board bathroom-mode" : "z-board"}>
+            <span></span>
+            <div className="bathroom-mode-controls">
+                <label class="switch">
+                    
+                    <input value={bathroomMode} onChange={handleModeChange} type="checkbox" />
+                    <span class="slider"></span>
+                </label>
+                <p style={{width: "190px", height: "28px"}}>Toggle Bathroom Mode</p>
+            </div>
             <h2>Anonymous Memo Board</h2>
             <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
             <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
-            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}}target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
+            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             {qrVis 
                 ? <><QRCode size={256} value={qrVal} /><br /></> 
