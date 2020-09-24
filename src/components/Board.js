@@ -6,6 +6,8 @@ import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 
+import {useLocalStorage} from "../hooks/useLocalStorage";
+
 
 
 export default function Board() {
@@ -15,7 +17,7 @@ export default function Board() {
     const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
-    const [bathroomMode, setBathroomMode] = useState(false)
+    const [bathroomMode, setBathroomMode] = useLocalStorage("br-mode", false)
     
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -90,7 +92,7 @@ export default function Board() {
             <div className="bathroom-mode-controls">
                 <label class="switch">
                     
-                    <input value={bathroomMode} onChange={handleModeChange} type="checkbox" />
+                    <input checked={bathroomMode} value={bathroomMode} onChange={handleModeChange} type="checkbox" />
                     <span class="slider"></span>
                 </label>
                 <p style={{width: "190px", height: "28px"}}>Toggle Bathroom Mode</p>
