@@ -137,7 +137,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #888;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -163,7 +163,7 @@
   }
   
   input:checked + .slider:before {
-    background-color: #ccc;
+    background-color: #888;
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
