@@ -18,7 +18,7 @@ export default function Board() {
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const [bathroomMode, setBathroomMode] = useLocalStorage("br-mode", false)
-    
+    const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
@@ -49,8 +49,14 @@ export default function Board() {
         .catch(err => console.log(err));
     }
 
+    const fetchPinned = _ => {
+        axios.get(`https://be.zecpages.com/board/pinned`)
+        .then(res => setPinned(res.data))
+        .catch(err => console.log(err))
+    }
+
     useEffect( _ => {
-        
+        fetchPinned();
         getNewPosts();
         Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
@@ -90,10 +96,10 @@ export default function Board() {
         <div className={bathroomMode ? "z-board bathroom-mode" : "z-board"}>
             <span></span>
             <div className="bathroom-mode-controls">
-                <label class="switch">
+                <label className="switch">
                     
                     <input checked={bathroomMode} value={bathroomMode} onChange={handleModeChange} type="checkbox" />
-                    <span class="slider"></span>
+                    <span className="slider"></span>
                 </label>
                 <p style={{width: "190px", height: "28px"}}>Toggle Bathroom Mode</p>
             </div>
@@ -106,6 +112,22 @@ export default function Board() {
                 ? <><QRCode size={256} value={qrVal} /><br /></> 
                 : null}
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
+            {pinned && 
+                <>
+                <h3>Pinned post: (current price: {pinned.amount+1})</h3>
+                <div key={pinned.id} className={"highlighted-board-post board-post"}>
+                    <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
+                    <div className="post-bottom-row">
+                    <p className="post-date">{stringifyDate(pinned.datetime)}</p>
+                    <Link to={`/board/post/${pinned.id}`}> 
+                    Permalink
+                    </Link>
+                    </div>
+                </div>
+                </>
+                }
+
+        
             {posts.length > 0 
             ? 
             <>
@@ -114,6 +136,7 @@ export default function Board() {
                 <button className="page-number" disabled="disabled">{page} </button>
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
             </div>
+
             {posts.map(item => 
                <>
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
