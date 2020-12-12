@@ -114,7 +114,7 @@ export default function Board() {
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {pinned && 
                 <>
-                <h3>Pinned post: (current price: {pinned.amount+1})</h3>
+                <h3>Pinned post: (Claim this slot for: {pinned.amount+1} Zats)</h3>
                 <div key={pinned.id} className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
