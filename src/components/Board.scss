@@ -97,20 +97,21 @@
 
 .z-board.bathroom-mode {
     font-family: 'Permanent Marker', cursive;
-
     background-image: url("../bathroom_wall_light.png");
+    
     .board-post {
         border: none;
         background: #00000000;
-        
-        .post-text {
 
+        .post-text {
             font-size: 24px;
             background: #00000000;
         }
+
         p {
             opacity: 1;
         }
+
     }
 }
 

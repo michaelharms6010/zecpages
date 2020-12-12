@@ -117,7 +117,7 @@ export default function Board() {
             {posts.map(item => 
                <>
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{lineReducer(item.memo.split("â€™").join("'"))}</p>
+                    <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\n").join("<br/>")}</p>
                     <div className="post-bottom-row">
                     <p className="post-date">{stringifyDate(item.datetime)}</p>
                     <Link to={`/board/post/${item.id}`}> 
