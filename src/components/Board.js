@@ -67,6 +67,7 @@ export default function Board() {
             channel.bind('new-post', function(data) {
             console.log(data);
             getNewPosts();
+            fetchPinned();
         });
         window.scrollTo(0, 0);
         if (page === 1) {
