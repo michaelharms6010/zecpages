@@ -28,7 +28,7 @@ export default function About() {
                 <h2>About the Creator</h2>
                 <img alt="Mike looking silly" src={mike} />
                 <p>Hi! I'm Mike! I'm a friendly web developer interested in human autonomy, the impending Golden Age, privacy, robots, carnivory, and piano. You can contact me on <a href="https://twitter.com/michaelharms70">Twitter</a> or via shielded ZEC memo:</p>
-                <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
+                <p className="zaddr">zs19we4u32hlec7n8ln7aqkvdg4njvyyl2h640h7vek2e4jankwssgwwflzqerlxxyt0keeg04re0h</p>
                 <p>I'd love to hear about your experience using this app and any features or improvements you'd like to see!</p>
             </div>
             <p>Your ip is {ip}. Learn about network-level privacy from Naomi Brockwell <a target="_new" href="https://www.youtube.com/watch?v=KXEe2kqiYIM">here.</a></p>
