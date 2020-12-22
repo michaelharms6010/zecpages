@@ -95,6 +95,8 @@ export default function Board() {
 
     return (
         <div className={bathroomMode ? "z-board bathroom-mode" : "z-board"}>
+            <p className="dev-disclaimer">Zecpages is now running a lightwalletd node! Connect your light wallet to https://lightwalletd.zecpages.com:443 <br/> Or via cli with <code> ./zecwallet-cli.exe --server https://lightwalletd.zecpages.com:443</code></p>
+
             <span></span>
             <div className="bathroom-mode-controls">
                 <label className="switch">

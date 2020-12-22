@@ -94,6 +94,10 @@ $breakpoint-mobile: 500px;
   color: #61dafb;
 }
 
+.zaddr-list {
+  padding-top: 1%;
+}
+
 
 
 @keyframes App-logo-spin {
@@ -289,6 +293,7 @@ $breakpoint-mobile: 500px;
   color:darkred;
   padding:10px;
   margin: 2% auto;
+  margin-top: 0;
   text-align:center;
   background:rgb(255, 194, 194);
   border: 1px solid red;
