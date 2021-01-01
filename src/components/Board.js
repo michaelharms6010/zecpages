@@ -95,9 +95,9 @@ export default function Board() {
 
     return (
         <div className={bathroomMode ? "z-board bathroom-mode" : "z-board"}>
-            <p className="dev-disclaimer">Zecpages is now running a lightwalletd node! Connect your light wallet to https://lightwalletd.zecpages.com:443 <br/> Or via cli with <code> ./zecwallet-cli.exe --server https://lightwalletd.zecpages.com:443</code></p>
+            {/* <p className="dev-disclaimer">Zecpages is now running a lightwalletd node! Connect your light wallet to https://lightwalletd.zecpages.com:443 <br/> Or via cli with <code> ./zecwallet-cli.exe --server https://lightwalletd.zecpages.com:443</code></p> */}
 
-            <span></span>
+            {/* <span></span>
             <div className="bathroom-mode-controls">
                 <label className="switch">
                     
@@ -105,10 +105,12 @@ export default function Board() {
                     <span className="slider"></span>
                 </label>
                 <p style={{width: "190px", height: "28px"}}>Toggle Bathroom Mode</p>
+            </div> */}
+            <div className="board-explainer">
+                <h2>Zecpages Anonymous Memo Board</h2>
+                <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
+                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
             </div>
-            <h2>Anonymous Memo Board</h2>
-            <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
-            <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
             {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             {qrVis 
@@ -117,7 +119,7 @@ export default function Board() {
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {pinned && 
                 <>
-                <h3>Pinned post: (Claim the pinned slot for {pinned.amount+1} Zats)</h3>
+                <h3>Pinned for {pinned.amount} Zats</h3>
                 <div key={pinned.id} className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
