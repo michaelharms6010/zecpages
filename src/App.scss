@@ -1,4 +1,4 @@
-$breakpoint-tablet: 800px;
+$breakpoint-tablet: 864px;
 $breakpoint-mobile: 500px;
 
 
@@ -411,6 +411,9 @@ $breakpoint-mobile: 500px;
 
 
 @media (max-width: $breakpoint-tablet) {
+  #faucet-link {
+    display:none;
+  }
 
   .cta-button-container {
     width:84%;

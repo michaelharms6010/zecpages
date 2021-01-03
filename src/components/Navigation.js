@@ -22,7 +22,7 @@ export default function Navigation() {
                     </Link>
                     
                 <div>
-                    <a href="https://faucet.zecpages.com">Get Testnet ZEC</a>
+                    <a id="faucet-link" target="_blank" rel="noopener norefferrer" href="https://faucet.zecpages.com">Get Testnet ZEC</a>
                     <Link to="/board">Board</Link>
                     <Link to="/about">About</Link>
                     {loggedIn 
