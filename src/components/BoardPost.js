@@ -52,7 +52,7 @@ export default function BoardPost(props) {
     </div>
     : null }
     <h3 className="reply-header">Replies {`(${post.replies.length})` || ""}</h3>
-    {post && post.replies && !post.replies.length ? <h4>No replies yet</h4> 
+    {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
     : post.replies.map(reply => 
         <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{reply.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
