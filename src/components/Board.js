@@ -141,9 +141,14 @@ export default function Board() {
                         </div>
                         <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
                     </div>
-                    <Link to={`/board/post/${pinned.id}`}> 
-                    Permalink
-                    </Link>
+                    <div className="post-links">
+                        <Link to={`/board/post/${pinned.id}`}> 
+                            {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
+                        </Link>
+                        <Link to={`/board/post/${pinned.id}`}> 
+                            Permalink
+                        </Link>
+                    </div>
                     </div>
                     {likeTooltip === pinned.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
                 </div>
@@ -174,9 +179,14 @@ export default function Board() {
                     : <img src={like} onClick={_ => handleLikeTooltip(item.id)} style={{height: '1.7rem', width: '1.7rem', marginRight: '5px', color: "black", textDecoration: "underline", cursor: "pointer"}}></img> }
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
-                    <Link to={`/board/post/${item.id}`}> 
-                    Permalink
-                    </Link>
+                    <div className="post-links">
+                        <Link to={`/board/post/${item.id}`}> 
+                        {item.reply_count > 1 ? `${item.reply_count} Replies` : item.reply_count === 1 ? "1 Reply" : "Reply"}
+                        </Link>
+                        <Link to={`/board/post/${item.id}`}> 
+                        Permalink
+                        </Link>
+                    </div>
                     </div>
                     {likeTooltip === item.id && <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
                 </div>   

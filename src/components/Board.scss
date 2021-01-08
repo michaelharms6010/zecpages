@@ -5,8 +5,16 @@
     canvas {
         border: 2px solid black;
     }
-
-
+    .reply-header {
+        padding: 2% 1%;
+        border: 5px solid silver;
+        color: #ffbf00;
+        width: 30%;
+        margin: 1% auto;
+        border-radius: 28%;
+        background: black;
+        min-width: 200px;
+    }
 
     .board-explainer {
         background: rgba(255,255,255,.6);
@@ -44,6 +52,9 @@
         padding:10px;
         padding-top:0px;
         text-align:left;
+        .post-links {
+            padding-top: 15px;
+        }
         .post-text {
             display:inline-block;
             background: white;
