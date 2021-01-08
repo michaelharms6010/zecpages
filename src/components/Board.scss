@@ -43,6 +43,13 @@
         margin-right:10%;
         padding:10px;
     }
+
+    .replying-to-link {
+        width: 83%;
+        text-align: left;
+        margin: 0 auto;
+        display: block;
+    }
   
     .board-post {
         width:80%;
@@ -124,7 +131,7 @@
         }
     }
     .individual-post {
-        margin-top:25px;
+        margin-top:5px;
     }
     a {
         text-decoration: none;

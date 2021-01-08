@@ -12,13 +12,14 @@ export default function BoardPost(props) {
         memo: "",
         amount: 0,
         datetime: 0,
-        replies: []
+        replies: [],
+        reply_to_post: null
     })
     useEffect( _ => {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => setPost(res.data))
             .catch(err => console.log(err))
-    },[])
+    },[props.match.params])
 
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
@@ -37,8 +38,10 @@ export default function BoardPost(props) {
     <div className="z-board">
 
     {post.memo ? 
+    <>
+    {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
     <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        <p className="post-text">{post.memo.split("â€™").join("'")}</p>
+        <p className="post-text">{post.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
         <div className="post-date">
             <div className="like-container">
                 <img onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
@@ -50,6 +53,7 @@ export default function BoardPost(props) {
         <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post by sending a .001 ZEC tx to {qrVal} beginning with the memo "REPLY::{post.id}"</code></p>
 
     </div>
+    </>
     : null }
     <h3 className="reply-header">Replies {`(${post.replies.length})` || ""}</h3>
     {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
@@ -64,12 +68,12 @@ export default function BoardPost(props) {
             <p style={{display: "inline"}}>{stringifyDate(reply.datetime)}</p>
         </div>
         <div className="post-links">
-                        <a href={`/board/post/${reply.id}`}> 
+                        <Link to={`/board/post/${reply.id}`}> 
                             {reply.reply_count > 1 ? `${reply.reply_count} Replies` : reply.reply_count === 1 ? "1 Reply" : "Reply"}
-                        </a>
-                        <a href={`/board/post/${reply.id}`}> 
+                        </Link>
+                        <Link to={`/board/post/${reply.id}`}> 
                             Permalink
-                        </a>
+                        </Link>
         </div>  
         {likeTooltip === reply.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{reply.id}"</code></p>}
 
