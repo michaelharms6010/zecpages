@@ -166,17 +166,19 @@ export default function Board() {
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
+                    {item.likes ?
                     <div className="like-container">
                         <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} />
-                        <span>{item.likes}</span>
+                         <span>{item.likes}</span> 
                     </div>
+                    : <img src={like} onClick={_ => handleLikeTooltip(item.id)} style={{height: '1.7rem', width: '1.7rem', marginRight: '5px', color: "black", textDecoration: "underline", cursor: "pointer"}}></img> }
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
                     <Link to={`/board/post/${item.id}`}> 
                     Permalink
                     </Link>
                     </div>
-                    {likeTooltip === item.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
+                    {likeTooltip === item.id && <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
                 </div>   
                 
                 </>
