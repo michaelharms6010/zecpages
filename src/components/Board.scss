@@ -74,11 +74,13 @@
                 }
                 span {
                     border-left: 1px solid black;
-                    line-height: 1.2;
+                    line-height: 1;
+                    padding-bottom: 3px;
                     padding-left: 5px;
                     padding-right: 5px;
                     margin-top: 0;
                     font-size: 2rem;
+                    color: black;
                 }
                 .like-icon {
                     width: 2rem;

@@ -145,7 +145,7 @@ export default function Board() {
                     Permalink
                     </Link>
                     </div>
-                    {likeTooltip === pinned.id && <p style={{paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
+                    {likeTooltip === pinned.id && <p style={{wordBreak: "break-all", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
                 </div>
                 </>
                 }
@@ -166,17 +166,17 @@ export default function Board() {
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
-                        <div className="like-container">
-                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} />
-                            <span>{item.likes}</span>
-                        </div>
+                    <div className="like-container">
+                        <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} />
+                        <span>{item.likes}</span>
+                    </div>
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
                     <Link to={`/board/post/${item.id}`}> 
                     Permalink
                     </Link>
                     </div>
-                    {likeTooltip === item.id && <p style={{paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
+                    {likeTooltip === item.id && <p style={{wordBreak: "break-all", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
                 </div>   
                 
                 </>
