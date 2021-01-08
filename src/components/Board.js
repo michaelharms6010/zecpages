@@ -6,6 +6,7 @@ import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 import like from "../512like.png"
+import qricon from "../icons/qr.png"
 
 import {useLocalStorage} from "../hooks/useLocalStorage";
 
@@ -150,7 +151,8 @@ export default function Board() {
                         </Link>
                     </div>
                     </div>
-                    {likeTooltip === pinned.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setQrVis(!qrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}</code></p>
+                    {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                 </div>
                 </>
                 }
@@ -188,7 +190,11 @@ export default function Board() {
                         </Link>
                     </div>
                     </div>
-                    {likeTooltip === item.id && <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
+                    {likeTooltip === item.id && 
+                    <>
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setQrVis(!qrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}</code></p>
+                    {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
+                    </>}
                 </div>   
                 
                 </>

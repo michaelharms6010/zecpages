@@ -2,12 +2,16 @@ import React, {useState, useEffect} from "react"
 import axios from "axios";
 import {Link} from "react-router-dom"
 import like from "../512like.png"
-const replyRegex = /REPLY::\d+/i
+import QRCode from "qrcode.react";
+import qricon from "../icons/qr.png"
 
 export default function BoardPost(props) {
-    const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
+    const replyRegex = /REPLY::\d+/i
+    const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
     const [likeTooltip, setLikeTooltip] = useState(null)
+    const [qrVal, setQrVal] = useState(initial_qrVal)
+    const [qrVis, setQrVis] = useState(false)
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
@@ -17,10 +21,14 @@ export default function BoardPost(props) {
     })
     useEffect( _ => {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
-            .then(res => setPost(res.data))
+            .then(res => {
+                setPost(res.data)
+                setQrVal(`zcash:${initial_qrVal}?amount=0.001&memo=${btoa(`REPLY::${res.data.id}`)}`)
+                
+            })
             .catch(err => console.log(err))
     },[props.match.params])
-
+    
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
       }
@@ -48,9 +56,12 @@ export default function BoardPost(props) {
                 <span>{post.likes}</span>
             </div>
             <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
+            
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post by sending a .001 ZEC tx to {qrVal} beginning with the memo "REPLY::{post.id}"</code></p>
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img onClick={_ => setQrVis(!qrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {qrVal}</code></p>
+        {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={qrVal} />}
+        
 
     </div>
     </>
