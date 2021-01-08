@@ -1,12 +1,12 @@
 
 
 .z-board {
-    padding-top: 2%;
+    padding-top: 20px;
     canvas {
         border: 2px solid black;
     }
     .reply-header {
-        padding: 2% 1%;
+        padding: 1% 1%;
         border: 5px solid silver;
         color: #ffbf00;
         width: 30%;
@@ -14,6 +14,7 @@
         border-radius: 28%;
         background: black;
         min-width: 200px;
+        max-width: 400px;
     }
 
     .board-explainer {
@@ -65,7 +66,7 @@
         .post-text {
             display:inline-block;
             background: white;
-            
+            font-size: 18px;
             padding:10px;
             word-break: break-word;
             max-width:100%;
@@ -125,7 +126,7 @@
             background:rgb(255, 135, 155);
             border:none;
             max-width:100%;
-            font-size:18px;
+            font-size:20px;
             // text-align:center;
             // font-weight:520;
         }
