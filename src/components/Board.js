@@ -5,6 +5,7 @@ import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
+import like from "../512like.png"
 
 import {useLocalStorage} from "../hooks/useLocalStorage";
 
@@ -21,6 +22,7 @@ export default function Board() {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [likeTooltip, setLikeTooltip] = useState(null)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
@@ -89,6 +91,15 @@ export default function Board() {
         return new Date(Number(date)).toString().split("GMT")[0]
     }
 
+    const handleLikeTooltip = id => {
+        if (likeTooltip !== id) {
+            setLikeTooltip(id)
+        }
+        else {
+            setLikeTooltip(null)
+        }
+    }
+
     const handleModeChange = _ => {
         setBathroomMode(!bathroomMode)
     }
@@ -123,11 +134,18 @@ export default function Board() {
                 <div key={pinned.id} className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
-                    <p className="post-date">{stringifyDate(pinned.datetime)}</p>
+                    <div className="post-date">
+                        <div className="like-container">
+                            <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={like} />
+                            <span>{pinned.likes}</span>
+                        </div>
+                        <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
+                    </div>
                     <Link to={`/board/post/${pinned.id}`}> 
                     Permalink
                     </Link>
                     </div>
+                    {likeTooltip === pinned.id && <p style={{paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
                 </div>
                 </>
                 }
@@ -147,11 +165,18 @@ export default function Board() {
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
-                    <p className="post-date">{stringifyDate(item.datetime)}</p>
+                    <div className="post-date">
+                        <div className="like-container">
+                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} />
+                            <span>{item.likes}</span>
+                        </div>
+                        <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
+                    </div>
                     <Link to={`/board/post/${item.id}`}> 
                     Permalink
                     </Link>
                     </div>
+                    {likeTooltip === item.id && <p style={{paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
                 </div>   
                 
                 </>
