@@ -16,6 +16,7 @@ export default function Board() {
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
+    const [replyQrVis, setReplyQrVis] = useState(false)
     const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
@@ -122,11 +123,12 @@ export default function Board() {
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
             </div>
             {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             {qrVis 
-                ? <><QRCode size={256} value={qrVal} /><br /></> 
+                ? <><QRCode size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
                 : null}
             <button onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide QR" : "Show Board QR"}</button>
             {pinned && 
@@ -151,8 +153,9 @@ export default function Board() {
                         </Link>
                     </div>
                     </div>
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setQrVis(!qrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}</code></p>
-                    {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
+                    {likeTooltip === pinned.id &&
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}</code></p>}
+                    {replyQrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                 </div>
                 </>
                 }
@@ -192,8 +195,8 @@ export default function Board() {
                     </div>
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setQrVis(!qrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}</code></p>
-                    {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}</code></p>
+                    {replyQrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
                 </div>   
                 
