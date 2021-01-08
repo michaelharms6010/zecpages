@@ -145,7 +145,7 @@ export default function Board() {
                     Permalink
                     </Link>
                     </div>
-                    {likeTooltip === pinned.id && <p style={{wordBreak: "break-all", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
+                    {likeTooltip === pinned.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{pinned.id}"</code></p>}
                 </div>
                 </>
                 }
@@ -176,7 +176,7 @@ export default function Board() {
                     Permalink
                     </Link>
                     </div>
-                    {likeTooltip === item.id && <p style={{wordBreak: "break-all", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
+                    {likeTooltip === item.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{item.id}"</code></p>}
                 </div>   
                 
                 </>

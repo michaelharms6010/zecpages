@@ -44,7 +44,7 @@ export default function BoardPost(props) {
             </div>
             <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
         </div>
-        {likeTooltip === post.id && <p style={{wordBreak: "break-all", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
+        {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
 
     </div>
     : null }
