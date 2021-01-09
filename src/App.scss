@@ -12,7 +12,7 @@ $breakpoint-mobile: 500px;
 .App {
   padding-bottom:.1%;
   text-align: center;
-  background:rgb(218, 252, 255);
+  background:#b0a3e6;
   min-height:100vh;
   box-sizing:border-box;
   a {
@@ -28,6 +28,7 @@ $breakpoint-mobile: 500px;
     margin-bottom: 15px;
     text-decoration:none;
     width: 30%;
+    cursor: pointer;
     &:active {
       transform: scale(.95);
     }
@@ -35,11 +36,13 @@ $breakpoint-mobile: 500px;
       outline:none;
     }
     button {
+      cursor: pointer;
       background:black;
       color: #ffbf00;
       border:none;
       width: 80%;
       padding-top: 0px;
+      
     }
   }
   a.export-button {
@@ -226,7 +229,7 @@ $breakpoint-mobile: 500px;
   background: black;
   padding: 15px 0px;
   width:100%;
-  position:fixed;
+  position:absolute;
   top: 0px;
   display:flex;
   justify-content:space-between;

@@ -54,7 +54,6 @@
   
     .board-post {
         width:80%;
-        border: 1px solid black;
         margin: .5% auto;
         background: white;
         padding:10px;
@@ -80,6 +79,16 @@
             color:rgb(117, 117, 117);
             display: flex;
             align-items:center;
+            .like-icon {
+                width: 1.7rem;
+                height: 1.7rem;
+                transition: .2s;
+
+                &:hover {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
             .like-container {
                 border: 1px solid black;
                 border-radius: 5px;
@@ -98,13 +107,10 @@
                     padding-left: 5px;
                     padding-right: 5px;
                     margin-top: 0;
-                    font-size: 2rem;
+                    font-size: 1.7rem;
                     color: black;
                 }
-                .like-icon {
-                    width: 2rem;
-                    height: 2rem;
-                }
+                
             }
         }
     }

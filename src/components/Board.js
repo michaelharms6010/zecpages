@@ -7,12 +7,14 @@ import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 import like from "../378zheart.png"
 import qricon from "../icons/qr.png"
-
+import AOS from 'aos'
+import 'aos/dist/aos.css';
 import {useLocalStorage} from "../hooks/useLocalStorage";
 
 
 
 export default function Board() {
+    AOS.init()
     const [posts, setPosts] = useState([])
     const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
@@ -138,7 +140,11 @@ export default function Board() {
             {pinned && 
                 <>
                 <h3>Pinned for {pinned.amount} Zats</h3>
-                <div key={pinned.id} className={"highlighted-board-post board-post"}>
+                <div data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="1000"
+                    key={pinned.id} 
+                    className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
@@ -176,16 +182,19 @@ export default function Board() {
 
             {posts.map(item => 
                <>
+                <div className="aos-container" data-aos="fade-left" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
                     {item.likes ?
                     <div className="like-container">
-                        <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} />
+                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} /> 
                          <span>{item.likes}</span> 
                     </div>
-                    : <img src={like} onClick={_ => handleLikeTooltip(item.id)} style={{height: '1.7rem', width: '1.7rem', marginRight: '5px', color: "black", textDecoration: "underline", cursor: "pointer"}}></img> }
+                    : <div className="like-icon-container" style={{width:"2rem", marginRight: '5px'}}>
+                        <img src={like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
+                        
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
                     <div className="post-links">
@@ -202,7 +211,8 @@ export default function Board() {
                     <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
                     {replyQrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
-                </div>   
+                </div> 
+                </div>  
                 
                 </>
             )}
