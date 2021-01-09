@@ -143,6 +143,7 @@ export default function Board() {
                 <div data-aos="flip-left"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000"
+                    id="pinned-post"
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
