@@ -5,7 +5,7 @@ import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
-import like from "../512like.png"
+import like from "../378zheart.png"
 import qricon from "../icons/qr.png"
 
 import {useLocalStorage} from "../hooks/useLocalStorage";

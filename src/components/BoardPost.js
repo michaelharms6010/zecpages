@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios";
 import {Link} from "react-router-dom"
-import like from "../512like.png"
+import like from "../378zheart.png"
 import QRCode from "qrcode.react";
 import qricon from "../icons/qr.png"
 
