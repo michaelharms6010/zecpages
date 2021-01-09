@@ -130,7 +130,7 @@ export default function Board() {
                 <br/><img onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/>
                 <br/>
                 {qrVis 
-                ? <><QRCode size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
+                ? <><QRCode includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
                 : null}
             </div>
             {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
@@ -165,7 +165,7 @@ export default function Board() {
                     </div>
                     {likeTooltip === pinned.id &&
                     <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                    {replyQrVis && likeTooltip === pinned.id && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
+                    {replyQrVis && likeTooltip === pinned.id && <QRCode style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                 </div>
                 </>
                 }
@@ -209,7 +209,7 @@ export default function Board() {
                     {likeTooltip === item.id && 
                     <>
                     <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
-                    {replyQrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
+                    {replyQrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
                 </div> 
                 </div>  
