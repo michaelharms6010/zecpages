@@ -3,7 +3,7 @@ import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
 import './App.scss';
 import ReactGA from "react-ga"
 import axios from "axios"
-
+import {useLocalStorage} from "./hooks/useLocalStorage"
 import {ZaddrContext} from "./contexts/ZaddrContext"
 import {UserContext} from "./contexts/UserContext"
 
@@ -17,14 +17,15 @@ import ZaddrPage from "./components/ZaddrPage"
 import Board from "./components/Board"
 import BoardPost from "./components/BoardPost";
 
+
 function App() {
   const [zaddrs, setZaddrs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
   const [copied, setCopied] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false)
 
-  
 
 
   useEffect(_ => {
@@ -51,17 +52,16 @@ function App() {
 
 
   return (
-    <UserContext.Provider value={{loggedIn, setLoggedIn, ip}}>
+    <UserContext.Provider value={{loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
       <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied, loaded, setLoaded}}>
         <Router>
-          <div className="App">
+          <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#ddd", background: "#333"} : {}}>
             <Navigation />
             <Switch>
               <Route exact path="/" render={() => <ZaddrList />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
-              <Route exact path="/about" render={(props) => <About {...props} /> } />
               <Route exact path="/board" component={Board} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />

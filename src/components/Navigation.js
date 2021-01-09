@@ -5,7 +5,7 @@ import {UserContext} from "../contexts/UserContext"
 import logo from "../icons/zecpageslogo.png"
 
 export default function Navigation() {
-    const {loggedIn, setLoggedIn} = useContext(UserContext);
+    const {loggedIn, setLoggedIn, darkMode, setDarkMode} = useContext(UserContext);
     
     const logout = _ => {
         localStorage.removeItem("jwt")
@@ -19,12 +19,15 @@ export default function Navigation() {
                     <Link className="zebra-icon" to="/">
                         <span className="emoji">🦓</span>
                         <img alt="zecpages logo" className="logo" src={logo} />
+                        
+
                     </Link>
                     
+                    
+                    <input type="checkbox" className="dark-mode-toggle" checked={darkMode} value={darkMode} onChange={ _ => setDarkMode(!darkMode)} />
                 <div>
                     <a id="faucet-link" target="_blank" rel="noopener norefferrer" href="https://faucet.zecpages.com">Get Testnet ZEC</a>
                     <Link to="/board">Board</Link>
-                    <Link to="/about">About</Link>
                     {loggedIn 
                     ? <>
                     

@@ -9,7 +9,7 @@ import like from "../378zheart.png"
 import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
-import {useLocalStorage} from "../hooks/useLocalStorage";
+import {UserContext} from "../contexts/UserContext";
 
 
 
@@ -22,7 +22,7 @@ export default function Board() {
     const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
-    const [bathroomMode, setBathroomMode] = useLocalStorage("br-mode", false)
+    const {darkMode} = React.useContext(UserContext)
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -106,24 +106,11 @@ export default function Board() {
         }
     }
 
-    const handleModeChange = _ => {
-        setBathroomMode(!bathroomMode)
-    }
 
     return (
-        <div className={bathroomMode ? "z-board bathroom-mode" : "z-board"}>
-            {/* <p className="dev-disclaimer">Zecpages is now running a lightwalletd node! Connect your light wallet to https://lightwalletd.zecpages.com:443 <br/> Or via cli with <code> ./zecwallet-cli.exe --server https://lightwalletd.zecpages.com:443</code></p> */}
+        <div className={"z-board"}>
 
-            {/* <span></span>
-            <div className="bathroom-mode-controls">
-                <label className="switch">
-                    
-                    <input checked={bathroomMode} value={bathroomMode} onChange={handleModeChange} type="checkbox" />
-                    <span className="slider"></span>
-                </label>
-                <p style={{width: "190px", height: "28px"}}>Toggle Bathroom Mode</p>
-            </div> */}
-            <div className="board-explainer">
+            <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to ${qrVal}`}</h4>
                 <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>

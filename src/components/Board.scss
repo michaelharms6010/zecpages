@@ -1,5 +1,6 @@
 
 
+
 .z-board {
     padding-top: 52px;
     canvas {
@@ -38,6 +39,8 @@
         margin-top:0;
     }
 
+
+
     .board-page-buttons {
         display:flex;
         justify-content:flex-end;
@@ -60,6 +63,9 @@
         .board-previous {
             cursor: pointer;
             border-radius: 5px 0px 0px 5px;
+        }
+        .board-next:disabled, .board-previous:disabled {
+            cursor: not-allowed;
         }
     }
 
@@ -263,6 +269,7 @@
   
   #pinned-post {
       padding: 60px;
+      margin-bottom: 20px;
       max-width: 650px;
       background: lighten($theme-color, 20%);
       border: $dash-size dashed $theme-color;
@@ -274,3 +281,56 @@
                   inset 0 0 100vw 100vw $fill-color;
   
   }
+
+  .dark-mode .z-board {
+    .board-explainer {
+        background: #383bad80;
+    }
+
+    .board-page-buttons {
+        .board-next, .board-previous {
+            border: 1px solid #383bad;
+            background: #383bad;
+            color: #ddd;
+        }
+    }
+    #pinned-post {
+        padding: 60px;
+        margin-bottom: 20px;
+        max-width: 650px;
+        background: lighten($theme-color, 20%);
+        border: $dash-size dashed $theme-color;
+        box-shadow: 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
+                    0 0 0 ($dash-size * 2.5) rgb(133, 72, 72),
+                    inset 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
+                    0 $dash-size ($dash-size * 2) ($dash-size * 3) rgba(0,0,0,0.5),
+                    inset 0 0 0 ($dash-size * 1.2) rgb(133, 72, 72),
+                    inset 0 0 100vw 100vw #902c3c;
+    
+    }
+    .board-post {
+        background: #383bad;
+        border: 1px solid #795c05;
+        a {
+            color: #ddd;
+        }
+        .post-text {
+            background: #383bad;
+        }
+        .like-container {
+            border-color: #ddd;
+            color: #ddd;
+            span {
+                border-color: #ddd;
+                color: #ddd;
+            }
+        }
+    }
+
+    .highlighted-board-post.board-post {
+        background: #902c3c;
+        .post-text {
+            background: #902c3c;
+        }
+    }
+}

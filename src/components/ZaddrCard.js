@@ -12,11 +12,13 @@ import websiteinactive  from "../icons/website-inactive.png";
 import emailactive from "../icons/email-active.png";
 import emailinactive from "../icons/email-inactive.png";
 import qricon from "../icons/qr.png"
+import {UserContext} from "../contexts/UserContext"
 
 export default function ZaddrCard ({user, copied, setCopied}) {
     const [httpsString, setHttpsString] = useState("");
     const [proofHttps, setProofHttps] = useState("");
     const [qrVis, setQrVis] = useState(false);
+    const {darkMode} = React.useContext(UserContext)
     useEffect( _ => {
         if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
@@ -33,7 +35,7 @@ export default function ZaddrCard ({user, copied, setCopied}) {
     }
       
     return(
-        <div className="zaddr-card">
+        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             <h2>{user.username}</h2>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">

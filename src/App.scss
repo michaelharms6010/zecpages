@@ -208,6 +208,10 @@ $breakpoint-mobile: 500px;
   }
 }
 
+.zaddr-card.dark-mode {
+  background: #197a70;
+}
+
 .card-bottom-row-form {
   display:flex;
   justify-content:space-around;
@@ -251,7 +255,7 @@ $breakpoint-mobile: 500px;
   }
   a {
     font-size:1.2rem;
-    margin: 0 4%;
+    margin: 0 0 0 40px;
     text-decoration:none;
     color:#ffbf00;
     &:hover {
@@ -440,7 +444,7 @@ $breakpoint-mobile: 500px;
     width:100%;
 
     div {
-      width:50%;
+      width:70%;
     }
     a {
       margin: 0 4%;
@@ -540,4 +544,50 @@ $breakpoint-mobile: 500px;
       -ms-transform: rotateY(-360deg);
       transform: rotateY(-360deg);
     }
+  }
+
+  .dark-mode-toggle {
+    
+    top: 24px;
+    left: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    height: 32px;
+    width: 52px;
+    border-radius: 16px;
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    border: 2px solid #474755;
+    background: linear-gradient(180deg, #2D2F39 0%, #1F2027 100%);
+    transition: all .2s ease;
+    position: absolute;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #eee;
+      background-image: url("./sun-icon.png");
+      box-shadow: 0 1px 2px rgba(44,44,44,.2);
+      transition: all .2s cubic-bezier(.5,.1,.75,1.35);
+    } &:focus {
+      outline: 0;
+    }
+    &:checked {
+      border-color: #654FEC;
+      &:after {
+        background-image: url("./moon-icon.png");
+        transform: translatex(20px);
+      }
+    }
+    
+    
   }
