@@ -75,7 +75,7 @@ export default function Board() {
             getNewPosts();
             fetchPinned();
         });
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
         if (page === 1) {
             setPrev(false)
         } else {

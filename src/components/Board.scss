@@ -43,6 +43,23 @@
         justify-content:flex-end;
         margin-right:10%;
         padding:10px;
+        height: 2rem;
+        button {
+            border: 1px solid #bec0fe;
+            background: #bec0fe;
+        }
+        .page-number {
+            background: white;
+            border: none;
+            font-size: 18px;
+        }
+        .board-next {
+            border-radius: 0px 5px 5px 0px;
+        }
+        .board-previous {
+            border-radius: 5px 0px 0px 5px;
+
+        }
     }
 
     .replying-to-link {
@@ -59,6 +76,7 @@
         padding:10px;
         padding-top:0px;
         text-align:left;
+        border-radius: 5px;
         .post-links {
             padding-top: 15px;
         }
