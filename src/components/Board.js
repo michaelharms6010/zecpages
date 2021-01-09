@@ -141,7 +141,7 @@ export default function Board() {
 
             {pinned && posts.length && 
                 <>
-                <h3>Pinned for {pinned.amount} Zats</h3>
+                <h3>Pin cost: {pinned.amount+1} Zats</h3>
                 <div data-aos="flip-left"
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000"
