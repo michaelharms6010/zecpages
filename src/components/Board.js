@@ -142,7 +142,7 @@ export default function Board() {
                 <h3>Pinned for {pinned.amount} Zats</h3>
                 <div data-aos="flip-left"
                     data-aos-easing="ease-out-cubic"
-                    data-aos-duration="1000"
+                    data-aos-duration="2000"
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
@@ -182,7 +182,7 @@ export default function Board() {
 
             {posts.map(item => 
                <>
-                <div className="aos-container" data-aos="fade-left" >
+                <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
