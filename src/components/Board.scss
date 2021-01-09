@@ -54,11 +54,12 @@
             font-size: 18px;
         }
         .board-next {
+            cursor: pointer;
             border-radius: 0px 5px 5px 0px;
         }
         .board-previous {
+            cursor: pointer;
             border-radius: 5px 0px 0px 5px;
-
         }
     }
 
