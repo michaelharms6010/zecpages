@@ -63,7 +63,7 @@ export default function Board() {
 
     useEffect( _ => {
         fetchPinned();
-        getNewPosts();
+        
         Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
             cluster: 'us2',
@@ -77,8 +77,10 @@ export default function Board() {
         });
         // window.scrollTo(0, 0);
         if (page === 1) {
+            setTimeout(_ => getNewPosts(), 325);
             setPrev(false)
         } else {
+            getNewPosts();
             setPrev(true)
         }
     },[page])
@@ -137,7 +139,7 @@ export default function Board() {
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
 
-            {pinned && 
+            {pinned && posts.length && 
                 <>
                 <h3>Pinned for {pinned.amount} Zats</h3>
                 <div data-aos="flip-left"
