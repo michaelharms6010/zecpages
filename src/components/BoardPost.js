@@ -60,7 +60,7 @@ export default function BoardPost(props) {
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
         <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
-        {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} size={256} value={qrVal} />}
+        {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={qrVal} />}
         
 
     </div>

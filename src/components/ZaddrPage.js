@@ -69,7 +69,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
             </div>
             {!QRId 
                 ? null 
-                : <QRCode size={256} value={user.zaddr} />}
+                : <QRCode includeMargin={true} size={256} value={user.zaddr} />}
             <div className="card-bottom-row">
                 {user.proofposturl ? <a target="_new" href={`${proofHttps}${user.proofposturl}`}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
                 {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
