@@ -31,7 +31,7 @@ export default function Navigation() {
                     {loggedIn 
                     ? <>
                     
-                    <Link to="/edit">Edit Your Card</Link>
+                    <Link to="/edit">Edit Card</Link>
                     <Link onClick={logout}>Log Out</Link>
                     </>
                     : <>

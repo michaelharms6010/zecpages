@@ -77,7 +77,7 @@ export default function Board() {
         });
         // window.scrollTo(0, 0);
         if (page === 1) {
-            setTimeout(_ => getNewPosts(), 325);
+            setTimeout(_ => getNewPosts(), 360);
             setPrev(false)
         } else {
             getNewPosts();
