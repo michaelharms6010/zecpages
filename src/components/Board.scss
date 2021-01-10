@@ -29,7 +29,7 @@
 
 
     .instructions-header {
-        width:80%;
+        width:100%;
         margin: auto;
         margin-bottom:5px;
         word-break: break-word;
@@ -270,6 +270,7 @@
   $dark-outline: #7a5f0b;
   $fill-color: #ff879b;
   $dark-theme-color:  #353670;
+  $dark-red: #743943;
   
   #pinned-post {
       padding: 60px;

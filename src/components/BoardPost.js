@@ -4,11 +4,13 @@ import {Link} from "react-router-dom"
 import like from "../378zheart.png"
 import QRCode from "qrcode.react";
 import qricon from "../icons/qr.png"
+import qricondark from "../icons/qrdark.png"
+import {UserContext} from "../contexts/UserContext"
 
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
     const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
-
+    const {darkMode} = React.useContext(UserContext)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
@@ -59,8 +61,8 @@ export default function BoardPost(props) {
             
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
-        {qrVis && <QRCode style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={qrVal} />}
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+        {qrVis && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={qrVal} />}
         
 
     </div>
