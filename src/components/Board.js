@@ -6,6 +6,7 @@ import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 import like from "../378zheart.png"
+import darklike from "../378zheartdark.png"
 import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
@@ -139,7 +140,7 @@ export default function Board() {
                     <div className="post-bottom-row">
                     <div className="post-date">
                             <div className="like-container">
-                                <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={like} />
+                                <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
                                 <span>{pinned.likes}</span>
                             </div>
                         
@@ -182,11 +183,11 @@ export default function Board() {
                     <div className="post-date">
                     {item.likes ?
                     <div className="like-container">
-                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={like} /> 
+                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={darkMode ? darklike : like} /> 
                          <span>{item.likes}</span> 
                     </div>
                     : <div className="like-icon-container" style={{width:"2rem", marginRight: '5px'}}>
-                        <img src={like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
+                        <img src={darkMode ? darklike : like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
                         
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
