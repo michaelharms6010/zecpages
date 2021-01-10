@@ -138,13 +138,16 @@ export default function Board() {
                     <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
-                        <div className="like-container">
-                            <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={like} />
-                            <span>{pinned.likes}</span>
-                        </div>
-                        <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
+                            <div className="like-container">
+                                <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={like} />
+                                <span>{pinned.likes}</span>
+                            </div>
+                        
                     </div>
                     <div className="post-links">
+                        <div className="post-date" style={{display:'inline'}}>
+                            <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
+                        </div>
                         <Link to={`/board/post/${pinned.id}`}> 
                             {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
                         </Link>

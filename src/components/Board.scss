@@ -121,6 +121,7 @@
                 align-items:center;
                 margin-right: 5px;
                 padding: 0 2px;
+                height: 2rem;
                 img {
                     margin-right: 2px;
                     cursor: pointer;
@@ -318,7 +319,7 @@
             background: #383bad;
         }
         .post-date {
-            color: #bbb;
+            color: #bbb; 
         }
         .like-container {
             border-color: #ddd;
