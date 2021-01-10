@@ -24,12 +24,12 @@ Wallet daemon code: https://github.com/michaelharms6010/zcash-memo-monitor
 
 Likes are paid 50% to eligible posts (a post is eligible if it contains a valid zcash address). These payments are batched and go out on a scheudled cron job on the job box every day at ~midnight. 
 
-Like sender code: https://github.com/michaelharms6010/zecpages-likes-payout-script
+Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
 ### Testnet Faucet
 
 The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the zecpages stack that does full on zcash rpc 
 
-https://github.com/michaelharms6010/zcash-faucet
+Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
 It lives on its own server and is just linked from Zecpages, but this seems like an appt place to leave the link for now.
