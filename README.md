@@ -6,8 +6,6 @@ Zecpages is built and maintained by Michael Harms.
 
 ## Backend
 
-The users API is public and reachable via a GET https://be.zecpages.com/users
-
 The backend is hosted w/AWS EB (yuck) / RDS (double yuck). Its source code and deployment information can be seen here: https://github.com/michaelharms6010/be-zeitpages
 
 ## Zcash Jobs
