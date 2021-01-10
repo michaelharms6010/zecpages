@@ -561,7 +561,7 @@ $breakpoint-mobile: 500px;
     display: inline-block;
     position: relative;
     margin: 0;
-    border: 2px solid #474755;
+    border: 2px solid #c59400;
     background: linear-gradient(180deg, #2D2F39 0%, #1F2027 100%);
     transition: all .2s ease;
     position: absolute;
@@ -582,7 +582,7 @@ $breakpoint-mobile: 500px;
       outline: 0;
     }
     &:checked {
-      border-color: #654FEC;
+      border-color: #7a5f0b;
       &:after {
         background-image: url("./moon-icon.png");
         transform: translatex(20px);
