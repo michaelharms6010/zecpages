@@ -17,15 +17,19 @@ The backend is hosted w/AWS EB (yuck) / RDS (double yuck). Its source code and d
 ### Wallet Daemon
 
 The zec-lightwallet => board functionality is powered by a t2.micro ec2 instance. Credit where it's due, this is mostly cribbed and adapted from Andrew Miller's staked polling script: https://gist.github.com/amiller/63f78b6c5fb5a9aadcd8a34012986a76 . Thank you vm sir. This box uses admin auth to make posts to the rds db.
+
 Wallet daemon code: https://github.com/michaelharms6010/zcash-memo-monitor 
 
 ### Daily Batched Like Payouts
 
 Likes are paid 50% to eligible posts (a post is eligible if it contains a valid zcash address). These payments are batched and go out on a scheudled cron job on the job box every day at ~midnight. 
+
 Like sender code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
 ### Testnet Faucet
 
-The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the zecpages stack that does full on zcash rpc https://github.com/michaelharms6010/zcash-faucet
+The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the zecpages stack that does full on zcash rpc 
+
+https://github.com/michaelharms6010/zcash-faucet
 
 It lives on its own server and is just linked from Zecpages, but this seems like an appt place to leave the link for now.
