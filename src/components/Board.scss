@@ -267,6 +267,7 @@
   $dash-size: 5px;
   $theme-color: #bec0fe;
   $fill-color: #ff879b;
+  $dark-theme-color:  #353670;
   
   #pinned-post {
       padding: 60px;
@@ -299,11 +300,11 @@
         padding: 60px;
         margin-bottom: 20px;
         max-width: 650px;
-        background: lighten($theme-color, 20%);
-        border: $dash-size dashed $theme-color;
-        box-shadow: 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
+        background: lighten($dark-theme-color, 20%);
+        border: $dash-size dashed $dark-theme-color;
+        box-shadow: 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
                     0 0 0 ($dash-size * 2.5) rgb(133, 72, 72),
-                    inset 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
+                    inset 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
                     0 $dash-size ($dash-size * 2) ($dash-size * 3) rgba(0,0,0,0.5),
                     inset 0 0 0 ($dash-size * 1.2) rgb(133, 72, 72),
                     inset 0 0 100vw 100vw #743943;
