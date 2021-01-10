@@ -16,7 +16,7 @@ These jobs all run on a t2.micro instance using adityapk00's [zecwallet-cli](htt
 
 ### Wallet Daemon
 
-The zec-lightwallet => board daemon handles new transactions. Credit where it's due, this is mostly cribbed and adapted from Andrew Miller's staked polling script: https://gist.github.com/amiller/63f78b6c5fb5a9aadcd8a34012986a76 . Thank you vm sir. This box uses admin auth to make posts to the rds db.
+The wallet daemon listns for and handles new transactions. Credit where it's due, this is mostly cribbed and adapted from Andrew Miller's staked polling script: https://gist.github.com/amiller/63f78b6c5fb5a9aadcd8a34012986a76 . Thank you vm sir. This box uses admin auth to make posts to the rds db.
 
 Wallet daemon code: https://github.com/michaelharms6010/zcash-memo-monitor 
 
