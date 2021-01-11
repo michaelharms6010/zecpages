@@ -107,7 +107,13 @@ export default function Board() {
             setLikeTooltip(null)
         }
     }
-
+    const flagClickedIcon = e => {
+        document.querySelector(".copy-icon.icon").classList.add('clicked')
+    }
+    
+    const flagUnClickedIcon = e => {
+        document.querySelector(".copy-icon.icon").classList.remove('clicked')
+    }
 
     return (
         <div className={"z-board"}>
@@ -115,7 +121,7 @@ export default function Board() {
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onClick={_ => copyTextToClipboard(qrVal)}><i class="fa fa-files-o"></i></span></h4>
+                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => copyTextToClipboard(qrVal)}><i class="fa fa-files-o"></i></span></h4>
                 <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
