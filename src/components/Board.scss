@@ -29,16 +29,27 @@
 
 
     .instructions-header {
-        width:100%;
+        width:90%;
         margin: auto;
         margin-bottom:5px;
         word-break: break-word;
+        .copy-icon {
+            
+        }
     }
 
     .highlight-cta {
         margin-top:0;
     }
 
+    .board-zaddr {
+        margin: 5px 5px;
+        width: 80%;
+        padding: 3px 10px;
+        margin-top: 20px;
+        word-break: break-word;
+        display: inline;       
+    }
 
 
     .board-page-buttons {
