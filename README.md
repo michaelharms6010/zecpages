@@ -1,6 +1,6 @@
 # Zecpages
 
-Zecpages is a Zcash-focused social site with a Zcash-powered message board. It uses a react frontend connected to a express/node/knex/postgres backend in its present state. You can see the app at https://zecpages.com. Note that this repo is just for the React app - the backend and a few other jobs that drive the app are in other repositories linked below.
+Zecpages is a Zcash-focused social site with a Zcash-powered message board. It uses a React frontend connected to a Express/knex/pg backend in its present state. You can see the app at https://zecpages.com. Note that this repo is just for the React app - the backend and a few other jobs that drive the app are in other repositories linked below.
 
 Zecpages is built and maintained by [Michael Harms](https://twitter.com/michaelharms70). 
 
@@ -30,7 +30,7 @@ Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
 https://faucet.zecpages.com
 
-The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the Zecpages stack that does full on zcash rpc 
+Minimal React app with just enough node backend to middleman cors for the browser. I think this is the only part of the Zecpages stack that does full on zcash rpc 
 
 Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
