@@ -6,9 +6,9 @@ Zecpages is built and maintained by [Michael Harms](https://twitter.com/michaelh
 
 ## Backend
 
-The backend is hosted w/AWS EB / RDS. I wouldn't choose them again, but here we are. 
+Expressjs api / pg db. Hosted w/AWS EB / RDS. I wouldn't choose them again, but here we are. 
 
-Its source code, public API details, and deployment information can be seen here: https://github.com/michaelharms6010/be-zeitpages
+JSON API details, db schema, and deployment information are here: https://github.com/michaelharms6010/be-zeitpages
 
 ## Zcash Jobs
 
@@ -28,8 +28,10 @@ Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
 ## Testnet Faucet
 
-The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the zecpages stack that does full on zcash rpc 
+https://faucet.zecpages.com
+
+The testnet faucet is a minimal react app with just enough node backend to middleman cors for the browser. I think this is the only part of the Zecpages stack that does full on zcash rpc 
 
 Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
-It lives on its own server and is just linked from Zecpages, but this seems like an appt place to leave the link for now.
+The faucet lives on its own server and isn't even linked from Zecpages, but this seems like an apprpt place to link it.
