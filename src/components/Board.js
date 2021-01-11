@@ -73,7 +73,7 @@ export default function Board() {
         });
         var channel = pusher.subscribe('board');
             channel.bind('new-post', function(data) {
-            console.log(data);
+            console.log('board update', new Date().toISOString());
             getNewPosts();
             fetchPinned();
         });
