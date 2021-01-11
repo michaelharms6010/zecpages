@@ -7,7 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "aos": "^2.3.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "node-sass": "^4.14.1",
     "pusher-js": "^5.1.1",
     "qrcode.react": "^1.0.1",
