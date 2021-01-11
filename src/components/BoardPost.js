@@ -54,14 +54,14 @@ export default function BoardPost(props) {
         <p className="post-text">{post.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
         <div className="post-date">
             <div className="like-container">
-                <img onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
+                <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
                 <span>{post.likes}</span>
             </div>
             <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
             
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
         {qrVis && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={qrVal} />}
         
 
@@ -75,7 +75,7 @@ export default function BoardPost(props) {
         <p className="post-text">{reply.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
         <div className="post-date">
             <div className="like-container">
-                <img onClick={_ => handleLikeTooltip(reply.id)} className="like-icon" src={like} />
+                <img alt='zcash heart' onClick={_ => handleLikeTooltip(reply.id)} className="like-icon" src={like} />
                 <span>{reply.likes}</span>
             </div>
             <p style={{display: "inline"}}>{stringifyDate(reply.datetime)}</p>

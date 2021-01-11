@@ -16,6 +16,7 @@ import About from "./components/About"
 import ZaddrPage from "./components/ZaddrPage"
 import Board from "./components/Board"
 import BoardPost from "./components/BoardPost";
+import Drawing from "./components/Drawing";
 
 
 function App() {
@@ -59,11 +60,13 @@ function App() {
             <Navigation />
             <Switch>
               <Redirect exact from="/" to="/board" />
+              <Route exact path="/draw" render={() => <Drawing />} />
               <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
               <Route exact path="/board" component={Board} />
+              <Route exact path="/about" component={About} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>

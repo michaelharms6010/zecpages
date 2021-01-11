@@ -15,7 +15,7 @@ export default function EditUserInfo ({history}) {
     const {setLoggedIn} = useContext(UserContext);
     const {zaddrs, setZaddrs} = useContext(ZaddrContext);
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
-    const proofRegex = /([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]/;
+    const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
         localStorage.removeItem("jwt")
         setLoggedIn(false)

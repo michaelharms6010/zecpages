@@ -12,6 +12,8 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import {UserContext} from "../contexts/UserContext";
 import qricondark from "../icons/qrdark.png"
+// import shieldicon from "../icons/shieldicon.png"
+import copyicon from "../icons/zecpagescopyicondaymode01.gif"
 import {copyTextToClipboard} from "../utils/copy"
 
 
@@ -120,11 +122,11 @@ export default function Board() {
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => copyTextToClipboard(qrVal)}><i class="fa fa-files-o"></i></span></h4>
+                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => copyTextToClipboard(qrVal)}><img alt="copy" title="Copy to Clipboard" src={copyicon}></img></span></h4>
                 <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
-                <br/><img onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
+                <br/><img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 {qrVis 
                 ? <><QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
@@ -147,7 +149,7 @@ export default function Board() {
                     <div className="post-bottom-row">
                     <div className="post-date">
                             <div className="like-container">
-                                <img onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
+                                <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
                                 <span>{pinned.likes}</span>
                             </div>
                         
@@ -165,7 +167,7 @@ export default function Board() {
                     </div>
                     </div>
                     {likeTooltip === pinned.id &&
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
                     {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#C46274" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                 </div>
                 </>
@@ -190,11 +192,11 @@ export default function Board() {
                     <div className="post-date">
                     {item.likes ?
                     <div className="like-container">
-                            <img onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={darkMode ? darklike : like} /> 
+                            <img alt="zcash heart" onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={darkMode ? darklike : like} /> 
                          <span>{item.likes}</span> 
                     </div>
                     : <div className="like-icon-container" style={{width:"2rem", marginRight: '5px'}}>
-                        <img src={darkMode ? darklike : like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
+                        <img alt="zcash heart" src={darkMode ? darklike : like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
                         
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
@@ -209,7 +211,7 @@ export default function Board() {
                     </div>
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
+                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
                     {replyQrVis && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
                 </div> 

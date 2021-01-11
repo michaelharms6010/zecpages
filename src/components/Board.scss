@@ -57,7 +57,7 @@
         justify-content:flex-end;
         margin-right:10%;
         padding:10px;
-        height: 2rem;
+        height: 50px;
         button {
             border: 1px solid #bec0fe;
             background: #bec0fe;
@@ -299,8 +299,14 @@
   }
 
   .dark-mode .z-board {
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: 0.5em;
+        color: #ccc;
+        font-weight: 500;
+    }
     .board-explainer {
-        background: #353670;
+        background: #151632;
     }
 
     .board-page-buttons {

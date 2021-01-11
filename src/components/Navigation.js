@@ -17,7 +17,7 @@ export default function Navigation() {
             <nav className="main-nav">
                 
                     <Link className="zebra-icon" to="/directory">
-                        <span className="emoji">🦓</span>
+                        <span aria-label='Zebra' role='img' className="emoji">🦓</span>
                         <img alt="zecpages logo" className="logo" src={logo} />
                         
 
