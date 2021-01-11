@@ -258,7 +258,7 @@ $breakpoint-mobile: 500px;
   }
 
   div {
-    width:50%;
+    width:75%;
     display:flex;
     justify-content:flex-end;
     align-items:center;
@@ -427,7 +427,12 @@ $breakpoint-mobile: 500px;
   }
   
 }
+@media (max-width: 1100px) {
+  .main-nav .about-link {
+    display:none;
 
+  }
+}
 
 @media (max-width: $breakpoint-tablet) {
   #faucet-link {
@@ -471,6 +476,7 @@ $breakpoint-mobile: 500px;
       font-size: 1rem;
       margin: 0%;
     }
+
   }
   
   .main-header {

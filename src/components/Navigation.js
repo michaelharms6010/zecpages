@@ -26,6 +26,7 @@ export default function Navigation() {
                     
                 <div className="main-nav-inner">
                     <input type="checkbox" className="dark-mode-toggle" checked={darkMode} value={darkMode} onChange={ _ => setDarkMode(!darkMode)} />
+                    <Link className="about-link" to="/about">About</Link>
                     <Link to="/board">Board</Link>
                     <Link to="/directory">Zaddrs</Link>
                     {loggedIn 
