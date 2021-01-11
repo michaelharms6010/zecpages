@@ -27,6 +27,7 @@ export default function Navigation() {
                     <input type="checkbox" className="dark-mode-toggle" checked={darkMode} value={darkMode} onChange={ _ => setDarkMode(!darkMode)} />
                 <div>
                     <Link to="/board">Board</Link>
+                    <Link to="/directory">Zaddrs</Link>
                     <a id="faucet-link" target="_blank" rel="noopener norefferrer" href="https://faucet.zecpages.com">Testnet Faucet</a>
                     {loggedIn 
                     ? <>

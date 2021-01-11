@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import {Switch, Route, BrowserRouter as Router, Redirect} from "react-router-dom";
 import './App.scss';
 import ReactGA from "react-ga"
 import axios from "axios"
@@ -58,7 +58,8 @@ function App() {
           <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#ddd", background: "#333"} : {}}>
             <Navigation />
             <Switch>
-              <Route exact path="/" render={() => <ZaddrList />} />
+              <Redirect exact from="/" to="/board" />
+              <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
