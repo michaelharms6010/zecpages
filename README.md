@@ -1,12 +1,12 @@
 # Zecpages
 
-This is a Zcash-focused social site with a Zcash-powered message board. It's a react frontend connected to a express/node/knex/postgres backend in its present state. You can see the site at https://zecpages.com
+Zecpages is a Zcash-focused social site with a Zcash-powered message board. It uses a react frontend connected to a express/node/knex/postgres backend in its present state. You can see the app at https://zecpages.com. Note that this repo is just for the React app - the backend and a few other jobs that drive the app are in other repositories linked below.
 
-Zecpages is built and maintained by Michael Harms. 
+Zecpages is built and maintained by [Michael Harms](https://twitter.com/michaelharms70). 
 
 ## Backend
 
-The backend is hosted w/AWS EB (yuck) / RDS (double yuck). 
+The backend is hosted w/AWS EB / RDS. I wouldn't choose them again, but here we are. 
 
 Its source code, public API details, and deployment information can be seen here: https://github.com/michaelharms6010/be-zeitpages
 
