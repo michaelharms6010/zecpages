@@ -317,10 +317,10 @@
         background: lighten($dark-theme-color, 20%);
         border: $dash-size dashed $dark-theme-color;
         box-shadow: 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
-                    0 0 0 ($dash-size * 2.5) rgb(133, 72, 72),
+                    0 0 0 ($dash-size * 2.5) #743943,
                     inset 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
                     0 $dash-size ($dash-size * 2) ($dash-size * 3) rgba(0,0,0,0.5),
-                    inset 0 0 0 ($dash-size * 1.2) rgb(133, 72, 72),
+                    inset 0 0 0 ($dash-size * 1.2) #743943,
                     inset 0 0 100vw 100vw #743943;
     
     }
