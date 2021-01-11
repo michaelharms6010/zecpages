@@ -353,3 +353,12 @@
         }
     }
 }
+
+$breakpoint-tablet: 864px;
+@media (max-width: $breakpoint-tablet) {
+    .z-board {
+        .board-explainer {
+            width: 90%;
+        }
+    }
+}
