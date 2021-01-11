@@ -453,12 +453,23 @@ $breakpoint-mobile: 500px;
 
   .main-nav {
     width:100%;
-
+    .dark-mode-toggle {
+      transform: scale(.7);
+    }
+    .main-nav-inner {
+      width: 90%;
+      margin: 0 auto;
+      justify-content: space-around;
+    }
+    .zebra-icon {
+      display: none;
+    }
     div {
       width:70%;
     }
     a {
-      margin: 0 4%;
+      font-size: 1rem;
+      margin: 0%;
     }
   }
   
@@ -559,8 +570,6 @@ $breakpoint-mobile: 500px;
 
   .dark-mode-toggle {
     
-    top: 24px;
-    left: 200px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -575,7 +584,7 @@ $breakpoint-mobile: 500px;
     border: 2px solid #c59400;
     background: linear-gradient(180deg, #2D2F39 0%, #1F2027 100%);
     transition: all .2s ease;
-    position: absolute;
+    position: relative;
 
     &:after {
       content: '';
