@@ -284,7 +284,7 @@
                   0 $dash-size ($dash-size * 2) ($dash-size * 3) rgba(0,0,0,0.5),
                   inset 0 0 0 ($dash-size * 1.2) #fff,
                   inset 0 0 100vw 100vw $fill-color;
-  
+    width: 60%;
   }
 
   .dark-mode .z-board {
