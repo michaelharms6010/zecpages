@@ -28,6 +28,7 @@ export default function Navigation() {
                 <div>
                     <Link to="/board">Board</Link>
                     <Link to="/directory">Zaddrs</Link>
+                    <Link to="/about">About</Link>
                     {loggedIn 
                     ? <>
                     
