@@ -18,7 +18,6 @@ import {copyTextToClipboard} from "../utils/copy"
 export default function Board() {
     AOS.init()
     const [posts, setPosts] = useState([])
-    const [toggle, setToggle] = useState(false)
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
     const [page, setPage] = useState(1)
