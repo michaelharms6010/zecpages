@@ -9,11 +9,30 @@ $breakpoint-mobile: 500px;
   
 }
 
+.copied-tooltip {
+  position: absolute;
+  top: 30px;
+  left: -28px;
+  width: 80px;
+  opacity: 0;
+  transition: .5s;
+  background: black;
+  border-radius: 3px;
+  color: #ddd;
+}
+
+.copied-tooltip.visible {
+  opacity:1;
+  transition: .5s;
+}
+
+
 .icon {
+  position:relative;
   cursor: pointer; 
   margin: 5px; 
   user-select: none;
-  opacity: .8;
+  opacity: .9;
 }
 
 .icon.clicked {
@@ -218,6 +237,25 @@ $breakpoint-mobile: 500px;
 
   }
 }
+.dark-mode {
+  .copied-tooltip {
+    position: absolute;
+    top: 30px;
+    left: -28px;
+    width: 80px;
+    opacity: 0;
+    transition: .5s;
+    background: black;
+    border-radius: 3px;
+    color: #ddd;
+  }
+  
+  .copied-tooltip.visible {
+    opacity:1;
+    transition: .5s;
+  }
+}
+
 
 .zaddr-card.dark-mode {
   background: #197a70;

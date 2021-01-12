@@ -13,7 +13,8 @@ import 'aos/dist/aos.css';
 import {UserContext} from "../contexts/UserContext";
 import qricondark from "../icons/qrdark.png"
 // import shieldicon from "../icons/shieldicon.png"
-import copyicon from "../icons/zecpagescopyicondaymode01.gif"
+import copyicon from "../icons/zecpagescopyicondaymode01.png"
+import copyicondark from "../icons/zecpagescopyicondaymode01bluer.png"
 import {copyTextToClipboard} from "../utils/copy"
 
 
@@ -115,6 +116,10 @@ export default function Board() {
     const flagUnClickedIcon = e => {
         document.querySelector(".copy-icon.icon").classList.remove('clicked')
     }
+    const showCopyTooltip = e => {
+        document.querySelector(".copied-tooltip").classList.add('visible')
+        setTimeout(_ => document.querySelector(".copied-tooltip").classList.remove('visible'), 1000)
+    }
 
     return (
         <div className={"z-board"}>
@@ -122,7 +127,7 @@ export default function Board() {
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => copyTextToClipboard(qrVal)}><img alt="copy" title="Copy to Clipboard" src={copyicon}></img></span></h4>
+                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></h4>
                 <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
