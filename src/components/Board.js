@@ -137,10 +137,10 @@ export default function Board() {
                 ? <><QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
                 : null}
             </div>
-            {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
+            {showViewKey ? <p className="view-key" style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button style={{color: "#333"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
-            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '10px'}}>Pin cost: {pinned.amount+1} Zats</h3> : <h3 style={{color: "#5e63fd"}}>.</h3> }
+            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px'}}>Pin cost: {pinned.amount+1} Zats</h3> : <h3 style={{color: "#5e63fd"}}>.</h3> }
             {pinned && posts.length && 
                 <>
                 

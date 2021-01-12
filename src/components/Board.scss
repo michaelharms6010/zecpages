@@ -3,6 +3,12 @@
 
 .z-board {
     padding-top: 30px;
+    .view-key {
+        color: #eee;
+    }
+    .view-key-link {
+        color: #ff879b;
+    }
     canvas {
         border: 2px solid black;
     }
@@ -298,7 +304,31 @@
     width: 60%;
   }
 
+
   .dark-mode .z-board {
+    .view-key {
+        color: cyan;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 10px,
+          dodgerblue 10px,
+          dodgerblue 20px
+        ),
+        /* on "bottom" */
+        linear-gradient(
+          to bottom,
+          magenta,
+          green
+        );
+        border: 5px solid gold;
+        border-radius: 10%;
+        padding: 10px;
+        .view-key-link {
+            color: lime;
+        }
+    }
+    
     h1, h2, h3, h4, h5, h6 {
         margin-top: 0;
         margin-bottom: 0.5em;
