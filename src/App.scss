@@ -11,8 +11,8 @@ $breakpoint-mobile: 500px;
 
 .copied-tooltip {
   position: absolute;
-  top: 50%;
-  left: -50%;
+  top: 30px;
+  left: -28px;
   width: 80px;
   opacity: 0;
   transition: .5s;
@@ -34,7 +34,8 @@ $breakpoint-mobile: 500px;
   user-select: none;
   opacity: .9;
   img {
-    height: 2.2rem;
+    height: 27px;
+    width: 22px;
   }
 }
 
