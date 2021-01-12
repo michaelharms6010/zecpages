@@ -138,9 +138,9 @@ export default function Board() {
                 : null}
             </div>
             {showViewKey ? <p style={{margin: "0 auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a style={{margin: "1%", display: "block", color: "blue", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
-            <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
+            <button style={{color: "#333"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
-            {pinned ? <h3>Pin cost: {pinned.amount+1} Zats</h3> : <h3 style={{color: "#5e63fd"}}>.</h3> }
+            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '10px'}}>Pin cost: {pinned.amount+1} Zats</h3> : <h3 style={{color: "#5e63fd"}}>.</h3> }
             {pinned && posts.length && 
                 <>
                 
