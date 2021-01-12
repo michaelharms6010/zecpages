@@ -14,7 +14,7 @@ import {UserContext} from "../contexts/UserContext";
 import qricondark from "../icons/qrdark.png"
 // import shieldicon from "../icons/shieldicon.png"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
-import copyicondark from "../icons/zecpagescopyicondaymode01bluer.png"
+import copyicondark from "../icons/bignightcopy.png"
 import {copyTextToClipboard} from "../utils/copy"
 
 
