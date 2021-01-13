@@ -290,9 +290,15 @@
   $dark-red: #743943;
   
   #pinned-post {
+      .pin-text {
+          font-size: 12px;
+          text-align: right;
+          padding-right: 10px;
+      }
       margin-bottom: 20px;
       padding: 25px;
       max-width: 900px;
+      padding-top: 10px;
       background: lighten($theme-color, 20%);
       border: $dash-size dashed $theme-color;
       box-shadow: 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
