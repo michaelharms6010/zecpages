@@ -60,7 +60,7 @@ export default function Board() {
         }
       }
 
-    const getNewPosts = _ => {
+    const getNewPosts = (page=1) => {
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
@@ -93,7 +93,7 @@ export default function Board() {
         var channel = pusher.subscribe('board');
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
-            getNewPosts();
+            getNewPosts(page);
             fetchPinned();
         });
         // window.scrollTo(0, 0);
@@ -101,7 +101,7 @@ export default function Board() {
             setTimeout(_ => getNewPosts(), 360);
             setPrev(false)
         } else {
-            getNewPosts();
+            getNewPosts(page);
             setPrev(true)
         }
     },[page])
