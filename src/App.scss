@@ -200,6 +200,7 @@ $breakpoint-mobile: 500px;
   .card-top-row {
     p{
       display:inline-block;
+      margin-bottom: 4px;
     }
     button {
       width: 150px;
@@ -208,6 +209,7 @@ $breakpoint-mobile: 500px;
     width:90%;
     display:flex;
     justify-content:space-between;
+    align-items:center;
   }
 
   .card-bottom-row {
@@ -242,7 +244,11 @@ $breakpoint-mobile: 500px;
   }
 }
 .dark-mode {
-
+  .copy-button {
+    border-radius: 5px;
+    color: #ddd;
+    background: rgb(0, 32, 29);
+  }
   .main-header {
     color: #bbb;
   }
