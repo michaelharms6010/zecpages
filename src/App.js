@@ -56,7 +56,7 @@ function App() {
     <UserContext.Provider value={{loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
       <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied, loaded, setLoaded}}>
         <Router>
-          <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#ddd", background: "#333"} : {}}>
+          <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#eee", background: "#333"} : {}}>
             <Navigation />
             <Switch>
               <Redirect exact from="/" to="/board" />
