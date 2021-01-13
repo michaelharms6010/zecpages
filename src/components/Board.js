@@ -12,7 +12,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css';
 import {UserContext} from "../contexts/UserContext";
 import qricondark from "../icons/qrdark.png"
-// import shieldicon from "../icons/shieldicon.png"
+import shieldicon from "../icons/shieldicon.gif"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
@@ -39,8 +39,8 @@ export default function Board() {
     const reformatShields = str => {
         let output = []
         for (let i = 0; i < str.length ; i++) {
-            if (str[i].charCodeAt(0) === 55357 ) {
-                output.push(<span role="img" aria-label="zcash shield">😎🤣</span>)
+            if (str[i].charCodeAt(0) === 55357 && darkMode) {
+                output.push(<img className="shield-icon" src={shieldicon} />)
                 i++
             } else {
                 output.push(str[i])
@@ -168,7 +168,7 @@ export default function Board() {
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
                     <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    <p className="post-text">{lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
+                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
                             <div className="like-container">
@@ -210,7 +210,7 @@ export default function Board() {
                <>
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n")}</p>
+                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
                     {item.likes ?
