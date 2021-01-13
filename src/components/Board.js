@@ -61,7 +61,7 @@ export default function Board() {
       }
 
     const getNewPosts = _ => {
-        axios.get(`fhttps://be.zecpages.com/board/${page}`)
+        axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
