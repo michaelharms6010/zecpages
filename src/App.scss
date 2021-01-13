@@ -243,6 +243,8 @@ $breakpoint-mobile: 500px;
 
   }
 }
+$dark-stripe: #7a5f0b;
+$dark-card-background: #0a5e55;
 .dark-mode {
   .copy-button {
     border-radius: 5px;
@@ -251,7 +253,14 @@ $breakpoint-mobile: 500px;
     border: 2px dashed #ddd;
   }
   .main-header {
-    color: #bbb;
+    background: repeating-linear-gradient(60deg, transparent, transparent 5px, $dark-stripe 5px, $dark-stripe 10px);
+    border: 1px solid $dark-card-background;
+    text-shadow: 0px 0px 3px black;
+    border-radius: 10px;
+    color:#ffbf00;
+    max-width: 300px;
+    margin: .2% auto; 
+
   }
 
   .zaddr-card {
@@ -280,7 +289,7 @@ $breakpoint-mobile: 500px;
 
 
 .zaddr-card.dark-mode {
-  background: #0a5e55;
+  background: $dark-card-background;
 }
 
 .card-bottom-row-form {
