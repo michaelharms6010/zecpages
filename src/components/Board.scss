@@ -25,7 +25,8 @@
     }
 
     .board-explainer {
-        background: rgba(255,255,255,.6);
+        transition: .4s;
+        background: #bec0fe;
         width: 62%;
         margin: 0 auto;
         border: 1px solid black;
