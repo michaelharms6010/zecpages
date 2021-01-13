@@ -15,11 +15,13 @@ import qricondark from "../icons/qrdark.png"
 // import shieldicon from "../icons/shieldicon.png"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
+import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 
 
 export default function Board() {
     AOS.init()
+    const [ab, setAb] = useState(Math.random() > .5)
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
@@ -142,7 +144,7 @@ export default function Board() {
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></h4>
+                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></h4>
                 <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
