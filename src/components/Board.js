@@ -61,12 +61,12 @@ export default function Board() {
       }
 
     const getNewPosts = _ => {
-        axios.get(`https://be.zecpages.com/board/${page}`)
+        axios.get(`fhttps://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     setPosts(newPosts)
-                                    }
+                }
             })
         .catch(err => console.log(err));
         axios.get(`https://be.zecpages.com/board/count`)
@@ -158,7 +158,7 @@ export default function Board() {
             <button style={{color: "#333"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
             {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px'}}></h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
-            {pinned && posts.length && 
+            {pinned && !!posts.length && 
                 <>
                 
                 <div data-aos="flip-left"
@@ -244,7 +244,7 @@ export default function Board() {
             )}
             <div className="board-page-buttons">
                 <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page} </button>
+                <button className="page-number" disabled="disabled">{page}</button>
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
             </div>
             <h5>{`There are currently ${postCount} posts on this board!`}</h5>
