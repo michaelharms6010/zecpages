@@ -34,6 +34,21 @@ export default function Board() {
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
+    const reformatShields = str => {
+        let output = []
+        for (let i = 0; i < str.length ; i++) {
+            if (str[i].charCodeAt(0) === 55357 ) {
+                output.push(<span role="img" aria-label="zcash shield">😎🤣</span>)
+                i++
+            } else {
+                output.push(str[i])
+            }
+        }
+        console.log(output)
+        return output
+    }
+    
+
     function lineReducer(str) {
         let arr = str.split("\n");
         if (arr.length > 12) {

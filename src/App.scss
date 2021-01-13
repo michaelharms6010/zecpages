@@ -242,6 +242,17 @@ $breakpoint-mobile: 500px;
   }
 }
 .dark-mode {
+
+  .main-header {
+    color: #bbb;
+  }
+
+  .zaddr-card {
+    h2 {
+      color: #ddd;
+    }
+  }
+
   .copied-tooltip {
     position: absolute;
     top: 30px;
@@ -262,7 +273,7 @@ $breakpoint-mobile: 500px;
 
 
 .zaddr-card.dark-mode {
-  background: #197a70;
+  background: #0a5e55;
 }
 
 .card-bottom-row-form {

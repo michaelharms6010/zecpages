@@ -290,9 +290,9 @@
   $dark-red: #743943;
   
   #pinned-post {
-      padding: 60px;
       margin-bottom: 20px;
-      max-width: 650px;
+      padding: 25px;
+      max-width: 900px;
       background: lighten($theme-color, 20%);
       border: $dash-size dashed $theme-color;
       box-shadow: 0 0 0 ($dash-size / 2) darken($theme-color, 20%),
@@ -313,20 +313,8 @@
     .view-key {
         margin-bottom: 5px;
         color: cyan;
-        background: repeating-linear-gradient(
-          30deg,
-          transparent,
-          transparent 10px,
-          rgb(0, 87, 173) 10px,
-          darkorange 20px
-        ),
-        /* on "bottom" */
-        linear-gradient(
-          to bottom,
-          magenta,
-          green
-        );
-        border: 5px solid gold;
+        background: repeating-linear-gradient(30deg, transparent, transparent 10px, #0057ad 10px, #be6800 20px), linear-gradient(to bottom, #870087, #006c00);
+        border: 5px solid #817324;
         border-radius: 10%;
         padding: 10px;
         .view-key-link {
@@ -351,9 +339,6 @@
         }
     }
     #pinned-post {
-        padding: 20px;
-        margin-bottom: 20px;
-        max-width: 800px;
         background: lighten($dark-theme-color, 20%);
         border: $dash-size dashed $dark-theme-color;
         box-shadow: 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
