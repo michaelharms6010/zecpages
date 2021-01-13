@@ -70,6 +70,7 @@
             background: #bec0fe;
         }
         .page-number {
+            line-height: 1;
             background: white;
             border: none;
             font-size: 18px;
@@ -83,6 +84,7 @@
             border-radius: 5px 0px 0px 5px;
         }
         .board-next:disabled, .board-previous:disabled {
+            opacity: .5;
             cursor: not-allowed;
         }
     }
@@ -339,8 +341,13 @@
     }
 
     .board-page-buttons {
+        .page-number {
+            color: #eee;
+            background: #333;
+            border: 1px solid #aaa;
+        }
         .board-next, .board-previous {
-            border: 1px solid #1e1f52;
+            border: 1px solid #aaa;
             background: #1e1f52;
             color: #ddd;
         }
