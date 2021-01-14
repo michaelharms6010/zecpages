@@ -17,6 +17,7 @@ import logo from "../icons/zecpageslogo.png";
 import qricon from "../icons/qr.png"
 
 
+import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext";
 
 export default function ZaddrCard ({match, history, copied, setCopied}) {
@@ -24,6 +25,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
     const { zaddrs } = useContext(ZaddrContext);
+    const {darkMode} = useContext(UserContext)
 
 
     useEffect( _ => {
@@ -59,7 +61,7 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
         <>
         {user.username ? 
         <>
-        <div className="zaddr-card">
+        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             <h2>{user.username}</h2>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
