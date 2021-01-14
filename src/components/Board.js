@@ -46,7 +46,6 @@ export default function Board() {
                 output.push(str[i])
             }
         }
-        console.log(output)
         return output
     }
     
