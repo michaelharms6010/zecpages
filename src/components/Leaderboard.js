@@ -69,12 +69,9 @@ export default function Board() {
       }
 
     const getNewPosts = (page=1) => {
-        axios.get(`https://be.zecpages.com/board/${page}`)
-        .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
-                if (posts !== newPosts) {
-                    setPosts(newPosts)
-                }
+        axios.get(`https://be.zecpages.com/board/leaderboard`)
+        .then(res =>{  
+                setPosts(res.data.posts)
             })
         .catch(err => console.log(err));
         axios.get(`https://be.zecpages.com/board/count`)
@@ -84,14 +81,9 @@ export default function Board() {
         .catch(err => console.log(err));
     }
 
-    const fetchPinned = _ => {
-        axios.get(`https://be.zecpages.com/board/pinned`)
-        .then(res => setPinned(res.data))
-        .catch(err => console.log(err))
-    }
 
     useEffect( _ => {
-        fetchPinned();
+
         
         Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
@@ -102,7 +94,7 @@ export default function Board() {
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
             getNewPosts(page);
-            fetchPinned();
+
         });
         // window.scrollTo(0, 0);
         if (page === 1) {
