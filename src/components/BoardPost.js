@@ -6,6 +6,7 @@ import QRCode from "qrcode.react";
 import qricon from "../icons/qr.png"
 import qricondark from "../icons/qrdark.png"
 import {UserContext} from "../contexts/UserContext"
+import shieldicon from "../icons/shieldicon.gif"
 
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
@@ -14,6 +15,7 @@ export default function BoardPost(props) {
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
+    const[pinned, setPinned] = useState({id: 0})
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
@@ -21,11 +23,29 @@ export default function BoardPost(props) {
         replies: [],
         reply_to_post: null
     })
+    const reformatShields = str => {
+        let output = []
+        for (let i = 0; i < str.length ; i++) {
+            if (str[i].charCodeAt(0) === 55357 && darkMode) {
+                output.push(<img className="shield-icon" src={shieldicon} />)
+                i++
+            } else {
+                output.push(str[i])
+            }
+        }
+        return output
+    }
     useEffect( _ => {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => {
                 setPost(res.data)
                 setQrVal(`zcash:${initial_qrVal}?amount=0.001&memo=${btoa(`REPLY::${res.data.id}`)}`)
+                
+            })
+            .catch(err => console.log(err))
+        axios.get(`https://be.zecpages.com/board/pinned`)
+            .then(res => {
+                setPinned(res.data)
                 
             })
             .catch(err => console.log(err))
@@ -50,8 +70,8 @@ export default function BoardPost(props) {
     {post.memo ? 
     <>
     {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
-    <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        <p className="post-text">{post.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
+    <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
+        <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""))}</p>
         <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
