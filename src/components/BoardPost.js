@@ -7,6 +7,7 @@ import qricon from "../icons/qr.png"
 import qricondark from "../icons/qrdark.png"
 import {UserContext} from "../contexts/UserContext"
 import shieldicon from "../icons/shieldicon.gif"
+import "./Board.scss"
 
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
@@ -38,7 +39,7 @@ export default function BoardPost(props) {
     useEffect( _ => {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => {
-                setPost(res.data)
+                setTimeout(_ => setPost(res.data), 100)
                 setQrVal(`zcash:${initial_qrVal}?amount=0.001&memo=${btoa(`REPLY::${res.data.id}`)}`)
                 
             })
@@ -65,7 +66,7 @@ export default function BoardPost(props) {
     }
 
     return (
-    <div className="z-board">
+    <div className={darkMode ? "dark-mode z-board" : "z-board"}>
 
     {post.memo ? 
     <>
