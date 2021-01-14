@@ -2,7 +2,7 @@ import React from "react";
 import mike from "../mike.jpg"
 import {Link} from 'react-router-dom';
 import { UserContext } from "../contexts/UserContext"
-import shieldicon from "../icons/shieldicon.gif"
+import ShieldIcon from "./icons/ShieldIcon";
 
 export default function About() {
     const { ip, darkMode } = React.useContext(UserContext);
@@ -33,9 +33,9 @@ export default function About() {
                 <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
                 <p>I'd love to hear about your experience using this app and any features or improvements you'd like to see!</p>
 
-                <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <img src={shieldicon} className="shield-icon" /><span style={{color: "#bec0fe" }}>noonervision</span><img src={shieldicon} className="shield-icon" /></h2></Link>
+                <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <ShieldIcon /><span style={{color: "#bec0fe" }}>noonervision</span><ShieldIcon /></h2></Link>
             </div>
-            <p>Your ip is {ip}. Learn about network-level privacy from Naomi Brockwell <a target="_new" href="https://www.youtube.com/watch?v=KXEe2kqiYIM">here.</a></p>
+            <p>Your ip is {ip}. Learn about network-level privacy from Naomi Brockwell <ShieldIcon /><a target="_new" href="https://www.youtube.com/watch?v=KXEe2kqiYIM">here.</a></p>
          </div>
     )
 }
