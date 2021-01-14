@@ -6,6 +6,7 @@ $breakpoint-mobile: 500px;
   margin: 3px;
 }
 
+
 .page-number {
   background:white;
   border: 1px solid grey;
@@ -200,6 +201,16 @@ $breakpoint-mobile: 500px;
     margin-bottom:0px;
   }
 
+  .username-link {
+    display: "inline-block";
+    transition: .2s;
+    margin-bottom: 5px;
+    &:hover {
+      transform: scale(1.1) translateY(-1px);
+      color: black;
+    }
+  }
+
   canvas {
     margin: 2% auto;
     border: 2px solid black;
@@ -298,6 +309,15 @@ $dark-card-background: #0a5e55;
 
 .zaddr-card.dark-mode {
   background: $dark-card-background;
+
+  
+  .username-link {
+    display: "inline-block";
+    &:hover {
+      transform: scale(1);
+      color: white;
+    }
+  }
 }
 
 .card-bottom-row-form {
@@ -563,6 +583,7 @@ $dark-card-background: #0a5e55;
   }
 
   .zaddr-card {
+    
     
     .card-bottom-row {
       a {

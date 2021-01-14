@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {copyTextToClipboard } from "../utils/copy";
 import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
+import {Link} from "react-router-dom"
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -36,7 +37,7 @@ export default function ZaddrCard ({user, copied, setCopied}) {
       
     return(
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            <h2>{user.username}</h2>
+            <Link to={`/${user.username}`}><h2 className="username-link">{user.username}</h2></Link>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
                 
