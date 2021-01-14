@@ -319,6 +319,10 @@
 
   .dark-mode .z-board {
 
+    .reply-header {
+        border-color: $dark-theme-color
+    }
+
     .page-number {
         color: #333;
     }
