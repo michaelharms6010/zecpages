@@ -1,6 +1,10 @@
 $breakpoint-tablet: 864px;
 $breakpoint-mobile: 500px;
-
+.shield-icon {
+  width: 22px;
+  height: 25px;
+  margin: 3px;
+}
 
 .page-number {
   background:white;
@@ -398,7 +402,7 @@ $dark-card-background: #0a5e55;
     border:2px solid black;
     padding:15px;
     font-size: 1.2rem;
-    img {
+    .mike-pic {
       width:30%;
       height:auto;
       border-radius: 20px;
