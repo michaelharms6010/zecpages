@@ -16,7 +16,7 @@ export default function Navigation() {
         <div className="main-nav-placeholder">
             <nav className="main-nav">
                 
-                    <Link className="zebra-icon" to="/directory">
+                    <Link className="zebra-icon" to="/board">
                         <span aria-label='Zebra' role='img' className="emoji">🦓</span>
                         <img alt="zecpages logo" className="logo" src={logo} />
                         
