@@ -147,73 +147,11 @@ export default function Board() {
     }
 
     return (
-        <div className={"z-board"}>
-
-            <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h2>Zecpages Anonymous Memo Board</h2>
-                <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></h4>
-                <h4>**Include your zaddr in your post and you'll receive a daily payout for each like you received. (50k zat/like)**</h4>
-                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
-                <br/><img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
-                <br/>
-                {qrVis 
-                ? <><QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
-                : null}
-            </div>
-            {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
-            <button style={{color: "#333"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
-            
-            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px'}}></h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
-            {pinned && !!posts.length && 
-                <>
-                
-                <div data-aos="flip-left"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="2000"
-                    id="pinned-post"
-                    key={pinned.id} 
-                    className={"highlighted-board-post board-post"}>
-                    <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
-                    <div className="post-bottom-row">
-                    <div className="post-date">
-                            <div className="like-container">
-                                <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
-                                <span>{pinned.likes}</span>
-                            </div>
-                        
-                    </div>
-                    <div className="post-links">
-                        <div className="post-date" style={{display:'inline'}}>
-                            <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
-                        </div>
-                        <Link to={`/board/post/${pinned.id}`}> 
-                            {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
-                        </Link>
-                        <Link to={`/board/post/${pinned.id}`}> 
-                            Permalink
-                        </Link>
-                    </div>
-                    </div>
-                    {likeTooltip === pinned.id &&
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                    {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#C46274" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
-                </div>
-                </>
-                }
-
+        <div className={"z-board"}>       
         
             {posts.length > 0 
             ? 
             <>
-            <div className="board-page-buttons">
-                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page} </button>
-                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
-            </div>
-
             {posts.map(item => 
                <>
 
@@ -221,7 +159,6 @@ export default function Board() {
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
-                    
                     <div className="post-bottom-row">
                     <div className="post-date">
                     {item.likes ?
@@ -253,12 +190,6 @@ export default function Board() {
                 
                 </>
             )}
-            <div className="board-page-buttons">
-                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page}</button>
-                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
-            </div>
-            <h5>{`There are currently ${postCount} posts on this board!`}</h5>
             </>
         : 
         <>

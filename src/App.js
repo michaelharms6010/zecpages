@@ -17,6 +17,9 @@ import ZaddrPage from "./components/ZaddrPage"
 import Board from "./components/Board"
 import BoardPost from "./components/BoardPost";
 import Drawing from "./components/Drawing";
+import Leaderboard from "./components/Leaderboard"
+
+import PollChart from "./components/charts/PollChart"
 
 
 function App() {
@@ -27,7 +30,12 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false)
 
-
+  const POLL_TITLE= "Are You A Chill Dude?"
+  const TEST_POLL_DATA = {
+    "No": 15,
+    "Yes": 8,
+    "Maybe": 24
+  }
 
   useEffect(_ => {
     axios.get("https://be.zecpages.com/users")
@@ -60,13 +68,14 @@ function App() {
             <Navigation />
             <Switch>
               <Redirect exact from="/" to="/board" />
-              <Route exact path="/draw" render={() => <Drawing />} />
+              {/* <Route exact path="/poll" render={() => <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />} /> */}
               <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
               <Route exact path="/board" component={Board} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/leaderboard" component={Leaderboard} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>
