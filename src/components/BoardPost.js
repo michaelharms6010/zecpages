@@ -6,6 +6,7 @@ import QRCode from "qrcode.react";
 import qricon from "../icons/qr.png"
 import qricondark from "../icons/qrdark.png"
 import {UserContext} from "../contexts/UserContext"
+import {ZaddrContext} from "../contexts/ZaddrContext"
 import shieldicon from "../icons/shieldicon.gif"
 import "./Board.scss"
 
@@ -13,6 +14,7 @@ export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
     const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const {darkMode} = React.useContext(UserContext)
+    const {zaddrs} = React.useContext(ZaddrContext)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
@@ -24,16 +26,54 @@ export default function BoardPost(props) {
         replies: [],
         reply_to_post: null
     })
-    const reformatShields = str => {
+
+    const iconsToReplace = [{"🛡": <img className="shield-icon" src={shieldicon} />}]
+    const charCodes = iconsToReplace.map(item => Object.keys(item)[0].charCodeAt(0))
+    const zaddrMarker = "🚠"
+    const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
+
+    const reformatShields = (str, replyZaddr) => {
         let output = []
-        for (let i = 0; i < str.length ; i++) {
-            if (str[i].charCodeAt(0) === 55357 && darkMode) {
-                output.push(<img className="shield-icon" src={shieldicon} />)
-                i++
-            } else {
-                output.push(str[i])
-            }
+        const user = zaddrs.find(item => item.zaddr === replyZaddr )
+        let string = str;
+        if (replyZaddr && user ) {
+            str = str.replace(replyZaddr, zaddrMarker)
         }
+
+
+        iconsToReplace.forEach(icon => {
+            let char = Object.keys(icon)[0]
+            let Image = icon[char]
+            let shieldUnicode = /\ud83d\udee1/
+
+            
+          
+                for (let i = 0; i < str.length ; i++) {
+                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1) && darkMode) {
+                        
+                        output.push(Image)
+                        if (str[i+1] != " ") {
+                            output.push(" ")
+                        }
+                        i++
+                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
+                        output.push(<Link className="board-zaddr-link" to={`/${user.username}`}>{replyZaddr}</Link>)
+                        i++
+                    } else {
+                        output.push(str[i])
+                    }
+
+                    
+                    if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " " && darkMode) {
+                        output.push(" ")
+                    }
+                    
+
+                    
+                }
+            
+
+        })
         return output
     }
     useEffect( _ => {
@@ -72,7 +112,7 @@ export default function BoardPost(props) {
     <>
     {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""))}</p>
+        <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr)}</p>
         <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
