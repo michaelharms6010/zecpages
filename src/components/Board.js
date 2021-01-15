@@ -80,32 +80,6 @@ export default function Board() {
 
 
 
-    // const reformatShields = str => {
-
-    //     if (!str.includes("🛡")) return str
-    //     let output = []
-    //     for (let i = 0; i < str.length ; i++) {
-
-
-
-    //         if (str[i].charCodeAt(0) === 55357 && darkMode) {
-    //             output.push(<img className="shield-icon" src={shieldicon} />)
-    //             if (str[i+1] != " ") {
-    //                 output.push(" ")
-    //             }
-    //             i++
-    //         } else {
-    //             output.push(str[i])
-    //         }
-
-    //         if (str[i+1] && str[i+1].charCodeAt(0) === 55357 && str[i] != " " && darkMode) {
-    //             output.push(" ")
-    //         }
-            
-    //     }
-    //     return output
-    // }
-    
 
     function lineReducer(str) {
         let arr = str.split("\n");
