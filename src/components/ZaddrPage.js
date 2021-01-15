@@ -15,6 +15,7 @@ import emailinactive from "../icons/email-inactive.png";
 import zecwallet from "../icons/zecwallet.png";
 import logo from "../icons/zecpageslogo.png";
 import qricon from "../icons/qr.png"
+import qrdark from "../icons/qrdark.png"
 
 
 import {UserContext} from "../contexts/UserContext"
@@ -78,13 +79,13 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
             </div>
             {!QRId 
                 ? null 
-                : <QRCode includeMargin={true} size={256} value={user.zaddr} />}
+                : <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${user.zaddr}?amount=0.001`} />} 
             <div className="card-bottom-row">
-                {user.proofposturl ? <a target="_new" href={`${proofHttps}${user.proofposturl}`}><img alt="green check mark" src={proofactive} /></a> : <img alt="white check mark" src={proofinactive} />}
-                {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={websiteactive} /></a> : <img alt="light connected world" src={websiteinactive} />}
-                {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={twitteractive} /></a> : <img alt="light twitter logo"src={twitterinactive} />}
-                {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={emailactive} /></a> : <img alt="light envelope" src={emailinactive} />}
-                <img alt="qr code" className="qr-icon" src={qricon} onClick={_ => setQRId(!QRId) } />
+            {user.proofposturl ? <a target="_new" href={`${proofHttps}${user.proofposturl}`}><img alt="green check mark" src={darkMode ? proofinactive :proofactive} /></a> : <img alt="white check mark" src={darkMode ? proofactive :proofinactive} />}
+                {user.website ? <a target="_new" href={`${httpsString}${user.website}`}><img alt="dark connected world" src={darkMode ? websiteinactive :websiteactive} /></a> : <img alt="light connected world" src={darkMode ? websiteactive : websiteinactive} />}
+                {user.twitter ? <a target="_new" href={`https://twitter.com/${user.twitter}`}><img alt="dark twitter logo" src={darkMode ? twitterinactive :twitteractive} /></a> : <img alt="light twitter logo"src={darkMode ? twitteractive : twitterinactive} />}
+                {user.email ? <a href={`mailto:${user.email}`}><img alt="dark envelope" src={darkMode ? emailinactive : emailactive} /></a> : <img alt="light envelope" src={darkMode ? emailactive : emailinactive} />}
+                <img alt="qr code" className="qr-icon" src={darkMode ? qrdark : qricon} onClick={_ => setQRId(!QRId) } />
             </div>
         </div>
         <div className="cta-button-container">
