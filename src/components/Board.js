@@ -66,7 +66,6 @@ export default function Board() {
             }
             
         }
-        console.log(output)
         return output
     }
     
