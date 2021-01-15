@@ -55,9 +55,9 @@ export default function Board() {
 
     const reformatShields = (str, replyZaddr) => {
         let output = []
- 
+        const user = zaddrs.find(item => item.zaddr === replyZaddr )
         let string = str;
-        if (replyZaddr && zaddrs.find(item => item.zaddr === replyZaddr )) {
+        if (replyZaddr && user ) {
             str = str.replace(replyZaddr, zaddrMarker)
         }
 
@@ -78,7 +78,7 @@ export default function Board() {
                         }
                         i++
                     } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                        output.push(<Link className="board-zaddr-link" to={`/zaddr/${replyZaddr}`}>{replyZaddr}</Link>)
+                        output.push(<Link className="board-zaddr-link" to={`/${user.username}`}>{replyZaddr}</Link>)
                         i++
                     } else {
                         output.push(str[i])
