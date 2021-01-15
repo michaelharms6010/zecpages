@@ -28,7 +28,7 @@ export default function ZaddrList (props) {
         if (search) {
             setResults(zaddrs.filter(item => 
                 {
-                    let searchable = String(item.twitter + item.username + item.description).split("null").join("").toLowerCase()
+                    let searchable = String(item.zaddr + item.twitter + item.username + item.description).split("null").join("").toLowerCase()
                     return searchable.includes(search.toLowerCase())
                 }
             ))

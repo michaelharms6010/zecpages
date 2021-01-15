@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import axios from "axios"
 import "./Board.scss"
 import QRCode from "qrcode.react";
@@ -11,6 +11,7 @@ import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import {UserContext} from "../contexts/UserContext";
+import {ZaddrContext} from "../contexts/ZaddrContext";
 import qricondark from "../icons/qrdark.png"
 import shieldicon from "../icons/shieldicon.gif"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
@@ -38,6 +39,7 @@ export default function Board() {
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode} = React.useContext(UserContext)
+    const { zaddrs } = useContext(ZaddrContext);
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -47,29 +49,47 @@ export default function Board() {
 
 
     const iconsToReplace = [{"🛡": <img className="shield-icon" src={shieldicon} />}]
-    console.log(iconsToReplace)
     const charCodes = iconsToReplace.map(item => Object.keys(item)[0].charCodeAt(0))
+    const zaddrMarker = "🚠"
+    const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
 
-    const reformatShields = str => {
+    const reformatShields = (str, replyZaddr) => {
         let output = []
+ 
+        let string = str;
+        if (replyZaddr && zaddrs.find(item => item.zaddr === replyZaddr )) {
+            str = str.replace(replyZaddr, zaddrMarker)
+        }
+
+
         iconsToReplace.forEach(icon => {
             let char = Object.keys(icon)[0]
             let Image = icon[char]
+            let shieldUnicode = /\ud83d\udee1/
+
+            
           
                 for (let i = 0; i < str.length ; i++) {
-                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && darkMode) {
+                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1) && darkMode) {
+                        
                         output.push(Image)
                         if (str[i+1] != " ") {
                             output.push(" ")
                         }
                         i++
+                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
+                        output.push(<Link className="board-zaddr-link" to={`/zaddr/${replyZaddr}`}>{replyZaddr}</Link>)
+                        i++
                     } else {
                         output.push(str[i])
                     }
-        
+
+                    
                     if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " " && darkMode) {
                         output.push(" ")
                     }
+                    
+
                     
                 }
             
@@ -198,7 +218,7 @@ export default function Board() {
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
                     <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
+                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr)}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
                             <div className="like-container">
@@ -242,7 +262,7 @@ export default function Board() {
                
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
+                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr)}</p>
                     
                     <div className="post-bottom-row">
                     <div className="post-date">

@@ -267,6 +267,9 @@ $breakpoint-mobile: 500px;
 $dark-stripe: #7a5f0b;
 $dark-card-background: #0a5e55;
 .dark-mode {
+  input {
+    color: #333;
+  }
   .copy-button {
     border-radius: 5px;
     color: #ddd;

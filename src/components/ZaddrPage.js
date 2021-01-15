@@ -20,7 +20,7 @@ import qricon from "../icons/qr.png"
 import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext";
 
-export default function ZaddrCard ({match, history, copied, setCopied}) {
+export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
@@ -29,7 +29,14 @@ export default function ZaddrCard ({match, history, copied, setCopied}) {
 
 
     useEffect( _ => {
-        let userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase().split(" ").join(""))
+        let userInfo;
+        console.log(match.params)
+        console.log(zaddrs)
+        if (zaddr) {
+            userInfo = zaddrs.filter(zaddr => zaddr.zaddr ).find(item => match.params.zaddr.toLowerCase() === item.zaddr.toLowerCase().split(" ").join(""))
+        } else {
+            userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase().split(" ").join(""))
+        }
         
         if (userInfo) {
             setUser(userInfo)
