@@ -70,14 +70,14 @@ export default function Board() {
             
           
                 for (let i = 0; i < str.length ; i++) {
-                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1) && darkMode ) {
+                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1)  ) {
                         
                         output.push(Image)
                         if (str[i+1] != " ") {
                             output.push(" ")
                         }
                         i++
-                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) && darkMode ) {
+                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
                         output.push(<Link className="board-zaddr-link" to={`/${user.username}`}>{replyZaddr}</Link>)
                         i++
                     } else {
@@ -85,7 +85,7 @@ export default function Board() {
                     }
 
                     
-                    if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " "  && darkMode)  {
+                    if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " "  )  {
                         output.push(" ")
                     }
                     
