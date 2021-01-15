@@ -41,6 +41,7 @@ export default function Board() {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [active, setActive] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
@@ -138,6 +139,7 @@ export default function Board() {
         setTimeout(_ => document.querySelector(".copied-tooltip").classList.remove('visible'), 1000)
     }
 
+
     return (
         <div className={"z-board"}>       
         
@@ -149,7 +151,7 @@ export default function Board() {
 
                
                 <div className="aos-container" >
-                <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+                <div id="top-post" key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">

@@ -2,6 +2,15 @@
 
 
 .z-board {
+    #top-post {
+        border: 5px dashed turquoise;
+        color: lime;
+        background: magenta;
+        border-radius: 10%;
+        .active {
+            border-radiu: 2%;
+        }
+    }
     .board-zaddr-link {
         font-weight: normal;
         text-decoration: underline;
