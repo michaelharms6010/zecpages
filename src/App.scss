@@ -6,7 +6,17 @@ $breakpoint-mobile: 500px;
   position: relative;
   bottom: 2px;
 }
+$dark-stripe: #ad860e;
+.main-header {
+  background: repeating-linear-gradient(60deg, transparent, transparent 5px, $dark-stripe 5px, $dark-stripe 10px);
+  border: 1px solid orchid;
+  text-shadow: 0px 0px 3px black;
+  border-radius: 10px;
+  color:#ffbf00;
+  max-width: 300px;
+  margin: .2% auto; 
 
+}
 
 .page-number {
   background:white;
