@@ -53,11 +53,11 @@ export default function Board() {
     const zaddrMarker = "🚠"
     const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
 
-    const reformatShields = (str, replyZaddr) => {
+    const reformatShields = (str, replyZaddr, username) => {
         let output = []
-        const user = zaddrs.find(item => item.zaddr === replyZaddr )
+        
         let string = str;
-        if (replyZaddr && user ) {
+        if (replyZaddr && username ) {
             str = str.replace(replyZaddr, zaddrMarker)
         }
 
@@ -78,7 +78,7 @@ export default function Board() {
                         }
                         i++
                     } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                        output.push(<Link className="board-zaddr-link" to={`/${user.username}`}>{replyZaddr}</Link>)
+                        output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
                         i++
                     } else {
                         output.push(str[i])
@@ -218,7 +218,7 @@ export default function Board() {
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
                     <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr)}</p>
+                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
                             <div className="like-container">
@@ -262,7 +262,7 @@ export default function Board() {
                
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr)}</p>
+                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     <div className="post-bottom-row">
                     <div className="post-date">
