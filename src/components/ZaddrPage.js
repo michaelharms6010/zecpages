@@ -22,11 +22,13 @@ import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext";
 
 export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
+    const zaddrRegex = /^zs[a-z0-9]{76}$/i
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
     const { zaddrs } = useContext(ZaddrContext);
     const {darkMode} = useContext(UserContext)
+    const [done, setDone] = useState(false)
 
 
     useEffect( _ => {
@@ -41,11 +43,13 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         
         if (userInfo) {
             setUser(userInfo)
-        } else if (!userInfo && zaddrs.length > 0) {
+        } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
 
             
             history.push("/")
+            
         }
+        setTimeout(_ => setDone(true), 300)
     },[zaddrs])
   
     const [httpsString, setHttpsString] = useState("");
@@ -94,6 +98,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         </div>
         </>
         : null}
+        <div style={{marginTop: "30px"}}>
+            {done && zaddr && !user.username ? zaddrRegex.test(match.params.zaddr) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr} isn't in the Zecpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr} isn't a a valid sapling z-address.</h2>: null}
+        </div>
         </>
     )
 
