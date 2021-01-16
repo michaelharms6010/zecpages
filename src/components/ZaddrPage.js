@@ -3,6 +3,7 @@ import {copyTextToClipboard } from "../utils/copy";
 import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
 import {Link} from "react-router-dom"
+import axios from "axios"
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -33,27 +34,44 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
 
     useEffect( _ => {
         let userInfo;
-        console.log(match.params)
-        console.log(zaddrs)
 
-        // todos:
-        // get by zaddr endpoint
-        // get by username endpoint
+
 
         if (zaddr) {
-            userInfo = zaddrs.filter(zaddr => zaddr.zaddr ).find(item => match.params.zaddr.toLowerCase() === item.zaddr.toLowerCase().split(" ").join(""))
+            axios.get(`https://be.zecpages.com/users/zaddr/${match.params.zaddr}`)
+            .then(r => {
+                console.log('1',r)
+                userInfo = r;
+                if (userInfo) {
+                    setUser(userInfo.data)
+                } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
+                   history.push("/directory")
+                    
+                }
+            })
+            .catch(err => console.log(err))
         } else {
-            userInfo = zaddrs.find(item => match.params.username.toLowerCase() === item.username.toLowerCase().split(" ").join(""))
-        }
+            axios.get(`https://be.zecpages.com/users/${match.params.username}.json`)
+            .then(r => {
+                console.log('2',r)
+                userInfo = r;
+                if (userInfo) {
+                    setUser(userInfo.data)
+                } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
+                   history.push("/directory")
+                    
+                }
+            })
+            .catch(err => console.log(err))
+        }  
+        // todos:   
+        // get by zaddr endpoint
         
-        if (userInfo) {
-            setUser(userInfo)
-        } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
+        // get by username endpoint
 
-            
-            history.push("/")
-            
-        }
+        
+        
+ 
         setTimeout(_ => setDone(true), 300)
     },[zaddrs])
   
