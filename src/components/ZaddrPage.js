@@ -44,8 +44,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                 userInfo = r;
                 if (userInfo) {
                     setUser(userInfo.data)
-                } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
-                   history.push("/directory")
+                } else if (!userInfo) {
+
                     
                 }
             })
@@ -57,8 +57,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                 userInfo = r;
                 if (userInfo) {
                     setUser(userInfo.data)
-                } else if (!userInfo && zaddrs.length > 0 && !zaddr) {
-                   history.push("/directory")
+                } else if (!userInfo) {
+
                     
                 }
             })
@@ -121,8 +121,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         </div>
         </>
         : null}
-        <div style={{marginTop: "30px"}}>
-            {done && zaddr && !user.username ? zaddrRegex.test(match.params.zaddr) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr} isn't in the Zecpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr} isn't a a valid sapling z-address.</h2>: null}
+        <div style={{maxWidth: "900px", margin: "30px auto"}}>
+            {done && zaddr && !user.username ? zaddrRegex.test(match.params.zaddr) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't in the Zecpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't a a valid sapling z-address.</h2>: null}
+            {done && !zaddr && !user.username && <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.username} isn't in the Zecpages database. Try <Link to="/directory">searching the directory</Link>.</h2> }
         </div>
         </>
     )
