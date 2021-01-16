@@ -35,6 +35,11 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         let userInfo;
         console.log(match.params)
         console.log(zaddrs)
+
+        // todos:
+        // get by zaddr endpoint
+        // get by username endpoint
+
         if (zaddr) {
             userInfo = zaddrs.filter(zaddr => zaddr.zaddr ).find(item => match.params.zaddr.toLowerCase() === item.zaddr.toLowerCase().split(" ").join(""))
         } else {

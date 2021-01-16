@@ -14,7 +14,6 @@ export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
     const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const {darkMode} = React.useContext(UserContext)
-    const {zaddrs} = React.useContext(ZaddrContext)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
@@ -32,11 +31,10 @@ export default function BoardPost(props) {
     const zaddrMarker = "🚠"
     const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
 
-    const reformatShields = (str, replyZaddr) => {
+    const reformatShields = (str, replyZaddr,  username) => {
         let output = []
-        const user = zaddrs.find(item => item.zaddr === replyZaddr )
         let string = str;
-        if (replyZaddr && user ) {
+        if (replyZaddr && username ) {
             str = str.replace(replyZaddr, zaddrMarker)
         }
 
@@ -57,7 +55,7 @@ export default function BoardPost(props) {
                         }
                         i++
                     } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                        output.push(<Link className="board-zaddr-link" to={`/${user.username}`}>{replyZaddr}</Link>)
+                        output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
                         i++
                     } else {
                         output.push(str[i])
@@ -112,7 +110,7 @@ export default function BoardPost(props) {
     <>
     {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr)}</p>
+        <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
         <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />

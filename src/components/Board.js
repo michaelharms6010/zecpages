@@ -39,7 +39,6 @@ export default function Board() {
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode} = React.useContext(UserContext)
-    const { zaddrs } = useContext(ZaddrContext);
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
