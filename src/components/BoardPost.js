@@ -9,6 +9,7 @@ import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext"
 import shieldicon from "../icons/shieldicon.gif"
 import "./Board.scss"
+var Base64 = require("js-base64")
 
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
@@ -122,7 +123,7 @@ export default function BoardPost(props) {
             
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`REPLY::${post.id} ${replyBody}`)}`} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
         {qrVis && 
             <div className="reply-editor">
                 <div className="reply-text-editor">
@@ -130,7 +131,7 @@ export default function BoardPost(props) {
                     <textarea placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => setReplyBody(e.target.value)} />
                 </div>
                 {/* #bec0fe #0a5e55*/}
-                <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`REPLY::${post.id} ${replyBody}`)}`} />
+                <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} />
             </div>    
         }
         
