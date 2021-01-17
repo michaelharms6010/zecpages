@@ -13,7 +13,6 @@ export default function EditUserInfo ({history}) {
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
     const {setLoggedIn} = useContext(UserContext);
-    const {zaddrs, setZaddrs} = useContext(ZaddrContext);
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
@@ -45,7 +44,6 @@ export default function EditUserInfo ({history}) {
                 .then(res => {
                     ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
-                    setZaddrs([ ...zaddrs.filter(zaddr => zaddr.id !== user.id ), user].sort( (a, b) => b.id-a.id));
                     setEditing(false);
                     setError("");})
                 .catch(err => setError("Your z-address is invalid."));
@@ -64,7 +62,6 @@ export default function EditUserInfo ({history}) {
                     label: "Yes",
                     onClick: _ => axiosAuth().delete(`https://be.zecpages.com/users/`)
                     .then( _ => {
-                        setZaddrs( ...zaddrs.filter(zaddr => zaddr.id !== user.id ))
                         setUser({website: ""});
                         logout();
                         ReactGA.event({category: "User", action: "Deleted User"});
