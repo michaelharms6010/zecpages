@@ -36,7 +36,7 @@ export default function Board(props) {
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
-    const [page, setPage] = useState(props.match ? +props.match.params.page : 1)
+    const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode} = React.useContext(UserContext)
