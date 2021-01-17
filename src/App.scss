@@ -122,11 +122,14 @@ $dark-stripe: #ad860e;
   }
   .results-count {
     font-size:18px;
+    color: #eee;
   }
   .cancel-search-x {
-    padding: 0px 2px;
+    padding: 0px 5px;
     border-radius: 2px;
     line-height: 1;
+    background: $day-main;
+    color: #111;
     cursor: pointer;
     border: 1px solid black;
   }
@@ -372,12 +375,13 @@ $dark-card-background: #0a5e55;
     cursor: pointer;
   }
   .cancel-search-x {
-    background: #333;
-    padding: 0px 2px;
+    background: #0a5e55;
+    padding: 0px 5px;
     border-radius: 2px;
     line-height: 1;
     cursor: pointer;
     border: 1px solid black;
+    color: #eee;
   }
   .zaddr-page-buttons {
     

@@ -106,7 +106,7 @@ export default function ZaddrList (props) {
   
                 </div>  
                 {searching 
-                    ? <p className="results-count">{zaddrs.length} results <span className="cancel-search-x" onClick={_=> setSearching(false)}>X</span></p> 
+                    ? <p className="results-count">{zaddrs.length} results <span className="cancel-search-x" onClick={_=> setSearching(false)}>Clear Search</span></p> 
                     : <div className="zaddr-page-buttons">
                         <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
                         <button className="page-number" disabled="disabled">{page} </button>
