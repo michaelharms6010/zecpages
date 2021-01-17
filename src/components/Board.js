@@ -48,9 +48,8 @@ export default function Board() {
 
 
     const iconsToReplace = [{"🛡": <img className="shield-icon" src={shieldicon} />}]
-    const charCodes = iconsToReplace.map(item => Object.keys(item)[0].charCodeAt(0))
+
     const zaddrMarker = "🚠"
-    const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
 
     const reformatShields = (str, replyZaddr, username) => {
         let output = []

@@ -17,7 +17,8 @@ export default function BoardPost(props) {
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
-    const[pinned, setPinned] = useState({id: 0})
+    const [pinned, setPinned] = useState({id: 0})
+    const [replyBody, setReplyBody] = useState("")
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
@@ -78,7 +79,8 @@ export default function BoardPost(props) {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => {
                 setTimeout(_ => setPost(res.data), 100)
-                setQrVal(`zcash:${initial_qrVal}?amount=0.001&memo=${btoa(`REPLY::${res.data.id}`)}`)
+                
+                // setQrVal(`zcash:${initial_qrVal}?amount=0.001&memo=${btoa(`REPLY::${res.data.id}`)}`)
                 
             })
             .catch(err => console.log(err))
@@ -120,8 +122,17 @@ export default function BoardPost(props) {
             
         </div>
         {likeTooltip === post.id && <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post by sending a .001 ZEC tx to {qrVal} with the memo "LIKE::{post.id}"</code></p>}
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{qrVal} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
-        {qrVis && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={qrVal} />}
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`REPLY::${post.id} ${replyBody}`)}`} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+        {qrVis && 
+            <div className="reply-editor">
+                <div className="reply-text-editor">
+                    <h2>Write reply</h2>
+                    <textarea placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => setReplyBody(e.target.value)} />
+                </div>
+                {/* #bec0fe #0a5e55*/}
+                <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`REPLY::${post.id} ${replyBody}`)}`} />
+            </div>    
+        }
         
 
     </div>

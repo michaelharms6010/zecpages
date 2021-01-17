@@ -27,6 +27,26 @@
         color: #ff879b;
     }
 
+    .reply-editor {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        .reply-text-editor {
+            width: 60%;
+            margin-left: 10px;
+        
+            textarea {
+                width: 40%;
+                margin-left: 30px;
+                height: 150px;
+                color: #111;
+                width: 90%;
+            }
+        }
+}
+    
+
     .reply-header {
         padding: 1% 1%;
         border: 5px solid #bec0fe;
@@ -410,6 +430,25 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .z-board {
+        .reply-editor {
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: space-between;
+    
+            .reply-text-editor {
+                width: 100%;
+                textarea {
+                    margin-left: 0;
+                    width: 95%;
+                    
+                }
+            }
+    }
+    }
+}
+
 $breakpoint-tablet: 864px;
 @media (max-width: $breakpoint-tablet) {
     .z-board {
@@ -418,3 +457,4 @@ $breakpoint-tablet: 864px;
         }
     }
 }
+
