@@ -23,28 +23,17 @@ import PollChart from "./components/charts/PollChart"
 
 
 function App() {
-  const [zaddrs, setZaddrs] = useState([]);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
   const [copied, setCopied] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false)
-
   const POLL_TITLE= "Are You A Chill Dude?"
   const TEST_POLL_DATA = {
     "No": 15,
     "Yes": 8,
     "Maybe": 24
   }
-
-  useEffect(_ => {
-    axios.get("https://be.zecpages.com/users")
-      .then(res => {
-        setZaddrs(res.data.sort( (a, b) => b.id-a.id))
-      })
-      .catch(err => console.error(err));
-  },[])
-
 
   // initialize services
   useEffect( _ => {
@@ -62,7 +51,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
-      <ZaddrContext.Provider value={{zaddrs, setZaddrs, copied, setCopied, loaded, setLoaded}}>
+      <ZaddrContext.Provider value={{ copied, setCopied, loaded, setLoaded}}>
         <Router>
           <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#eee", background: "#333"} : {}}>
             <Navigation />
