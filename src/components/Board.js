@@ -32,7 +32,7 @@ export default function Board(props) {
       "Maybe that's ok but idk i'm silly": 24
     }
 
-    const [ab, setAb] = useState(Math.random() > .5)
+    const [ab, setAb] = useState(Math.random() > .9)
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
