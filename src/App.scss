@@ -116,7 +116,6 @@ $dark-stripe: #ad860e;
 
   .form-container {
     display: inline-block;
-    border: 1px solid #eee;
     margin: 10px auto;
     margin-top: 0px;
     padding: 10px;
@@ -362,6 +361,8 @@ $dark-stripe: #ad860e;
 $dark-stripe: #7a5f0b;
 $dark-card-background: #0a5e55;
 .dark-mode {
+  .form-container {
+  }
   input {
     color: #333;
   }
