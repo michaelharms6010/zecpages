@@ -290,9 +290,7 @@ $dark-stripe: #ad860e;
 
   }
 }
-.search-button {
-  background: $day-main;
-}
+
 
 .zaddr-page-buttons {
   width: 80%;
@@ -302,8 +300,8 @@ $dark-stripe: #ad860e;
   margin: 0 auto;
   max-width: 1000px;
   button {
-    background: $day-main;
-    border: 1px solid $day-main;
+    background: turquoise;
+    border: 1px solid turquoise;
     padding: 1px 5px;
   }
   .page-number {
@@ -329,10 +327,14 @@ $dark-stripe: #ad860e;
 }
 
 .search-button {
-  background: $day-main;
-  border: 1px solid $day-main;
+  background: turquoise;
+  border: 2px solid turquoise;
   border-radius: 0px 3px 3px 0px;
   cursor: pointer;
+}
+
+.filter-label, label {
+  color: #eee;
 }
 
 $dark-stripe: #7a5f0b;

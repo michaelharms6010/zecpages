@@ -78,8 +78,8 @@ export default function ZaddrList (props) {
             {searching || zaddrs.length > 0
             ? 
             <>
-                <label>Search:</label>
                 <form onSubmit={e => doSearch(e, {search, needs_proof: filters.needs_proof, needs_twitter: filters.needs_twitter})} className="search-form">
+                <label style={{marginRight: '5px'}}>Search:</label>
                 <input
                 className="search-input"
                 value={search}
@@ -88,7 +88,7 @@ export default function ZaddrList (props) {
                 <button className="search-button" type="submit">Search</button> {loadingSearch && <span>Searching...</span>}
                 </form>
                 <div className="filter-checkboxes">
-                    <span>Filter:  {"  "}</span>
+                    <span className="filter-label">Filter:  {"  "}</span>
                     <label>Require Proof
                     <input 
                         type="checkbox" 
