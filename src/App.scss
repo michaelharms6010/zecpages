@@ -1,5 +1,8 @@
 $breakpoint-tablet: 864px;
 $breakpoint-mobile: 500px;
+$day-main: #fec8fc;
+$day-background: #5e63fd;
+
 .shield-icon {
   width: 22px;
   height: 25px;
@@ -12,7 +15,7 @@ $dark-stripe: #ad860e;
   border: 1px solid orchid;
   text-shadow: 0px 0px 3px black;
   border-radius: 10px;
-  color:#fec8fc;
+  color:$day-main;
   max-width: 300px;
   margin: .2% auto; 
 
@@ -66,7 +69,7 @@ $dark-stripe: #ad860e;
 .App {
   padding-bottom:.1%;
   text-align: center;
-  background: #5e63fd;
+  background: $day-background;
   // background:#b0a3e6;
   min-height:100vh;
   box-sizing:border-box;
@@ -120,9 +123,23 @@ $dark-stripe: #ad860e;
   .results-count {
     font-size:18px;
   }
-  .search-input {
-    margin-left:10px;
-    margin-bottom:1rem;
+  .cancel-search-x {
+    padding: 0px 2px;
+    border-radius: 2px;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid black;
+  }
+  .search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    
+    .search-input {
+
+      border-radius: 3px 0px 0px 3px;
+      border: none;
+    }
   }
 }
 
@@ -273,6 +290,9 @@ $dark-stripe: #ad860e;
 
   }
 }
+.search-button {
+  background: $day-main;
+}
 
 .zaddr-page-buttons {
   width: 80%;
@@ -282,8 +302,8 @@ $dark-stripe: #ad860e;
   margin: 0 auto;
   max-width: 1000px;
   button {
-    background: #fec8fc;
-    border: 1px solid #fec8fc;
+    background: $day-main;
+    border: 1px solid $day-main;
     padding: 1px 5px;
   }
   .page-number {
@@ -292,10 +312,27 @@ $dark-stripe: #ad860e;
   }
   .zaddr-previous {
     border-radius: 3px 0px 0px 3px;
+    cursor: pointer;
+    &:disabled {
+      cursor: auto;
+      opacity: .8;
+    }
   }
   .zaddr-next {
     border-radius: 0px 3px 3px 0px;
+    cursor: pointer;
+    &:disabled {
+      cursor: auto;
+      opacity: .8;
+    }
   }
+}
+
+.search-button {
+  background: $day-main;
+  border: 1px solid $day-main;
+  border-radius: 0px 3px 3px 0px;
+  cursor: pointer;
 }
 
 $dark-stripe: #7a5f0b;
@@ -325,6 +362,20 @@ $dark-card-background: #0a5e55;
     h2 {
       color: #ddd;
     }
+  }
+  .search-button {
+    background: #0a5e55;
+    border: 2px solid #0a5e55;
+    border-radius: 0px 3px 3px 0px;
+    cursor: pointer;
+  }
+  .cancel-search-x {
+    background: #333;
+    padding: 0px 2px;
+    border-radius: 2px;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid black;
   }
   .zaddr-page-buttons {
     

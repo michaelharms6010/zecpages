@@ -12,6 +12,8 @@ export default function ZaddrList (props) {
     const [page, setPage] = useState(1);
     const [zaddrs, setZaddrs] = useState([])
     const [userCount, setUserCount] = useState(0)
+    const [searching, setSearching] = useState(false)
+    const [loadingSearch, setLoadingSearch] = useState(false)
     const [filters, setFilters] = useState({
         needs_twitter: false,
         needs_proof: false,
@@ -28,47 +30,37 @@ export default function ZaddrList (props) {
         .catch(err => console.error(err));
     }
 
+
     useEffect( _ => {
         
+        if (!searching) {
         fetchZaddrs(1)
-    },[])
+        }
+        
+    },[searching])
 
     useEffect( _ => {
         
         fetchZaddrs(page)
     },[page])
 
-    useEffect( _ => {
-        
-    }, [zaddrs])
-
-    useEffect( _ => {      
-        // if (search) {
-        //     setResults(zaddrs.filter(item => 
-        //         {
-        //             let searchable = String(item.zaddr + item.twitter + item.username + item.description).split("null").join("").toLowerCase()
-        //             return searchable.includes(search.toLowerCase())
-        //         }
-        //     ))
-        // } else {
-        //     setResults(applyFilters(zaddrs))
-        // }
-
-    }, [search, zaddrs, filters])
 
 
     const handleCopyAll = _ => {
-        copyTextToClipboard(results.filter(item => item.zaddr).reduce((acc, val) => acc + val.zaddr + ",\n", ""))
+        copyTextToClipboard(zaddrs.filter(item => item.zaddr).reduce((acc, val) => acc + val.zaddr + ",\n", ""))
     }
 
-    const applyFilters = zaddrArray => {
-        let output = zaddrArray
-        if (filters.needs_twitter) {
-            output = output.filter(item => item.twitter)
-        } if (filters.needs_proof) {
-            output = output.filter(item => item.proofposturl)
-        }
-        return output
+    const doSearch = (e, params) => {
+        e.preventDefault()
+        setLoadingSearch(true)
+        
+        axios.post("https://be.zecpages.com/users/search", params)
+        .then(r => {
+            setSearching(true)
+            setLoadingSearch(false)
+            setZaddrs(r.data)
+        })
+        .catch(err => console.log(err))
     }
 
     const handleFilterChange = e => {
@@ -83,28 +75,28 @@ export default function ZaddrList (props) {
                 <a className="export-button" href="https://be.zecpages.com/users" target="_new"><button>Export All User Zaddr Data</button></a>
                 <button className="export-button" onClick={handleCopyAll}>Copy all filtered zaddrs to clipboard (comma-separated)</button>
             </div>
-            {loaded && zaddrs.length > 0
+            {searching || zaddrs.length > 0
             ? 
             <>
                 <label>Search:</label>
-                <form className="search-form">
+                <form onSubmit={e => doSearch(e, {search, needs_proof: filters.needs_proof, needs_twitter: filters.needs_twitter})} className="search-form">
                 <input
                 className="search-input"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 />
-                <button type="submit">Search</button>
-                    </form>
+                <button className="search-button" type="submit">Search</button> {loadingSearch && <span>Searching...</span>}
+                </form>
                 <div className="filter-checkboxes">
                     <span>Filter:  {"  "}</span>
-                    <label>Users with Proof
+                    <label>Require Proof
                     <input 
                         type="checkbox" 
                         name="needs_proof"
                         checked={filters.needs_proof}
                         onChange={handleFilterChange}
                     /></label>
-                    <label>Users with Twitter
+                    <label>Require Twitter
                     <input 
                         type="checkbox" 
                         name="needs_twitter"
@@ -113,12 +105,13 @@ export default function ZaddrList (props) {
                     /></label>
   
                 </div>  
-                {results.length ? <p className="results-count">{results.length} results</p> : null}
-            <div className="zaddr-page-buttons">
-                <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page} </button>
-                <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
-            </div>
+                {searching 
+                    ? <p className="results-count">{zaddrs.length} results <span className="cancel-search-x" onClick={_=> setSearching(false)}>X</span></p> 
+                    : <div className="zaddr-page-buttons">
+                        <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
+                        <button className="page-number" disabled="disabled">{page} </button>
+                        <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
+                    </div>}
                 {zaddrs.map(item => 
                     item.zaddr 
                         ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
