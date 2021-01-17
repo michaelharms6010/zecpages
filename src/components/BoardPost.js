@@ -167,8 +167,7 @@ export default function BoardPost(props) {
         
 
     </div>
-    </>
-    : null }
+    
     <h3 className="reply-header">Replies {`(${post.replies.length})` || ""}</h3>
     {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
     : post.replies.map(reply => 
@@ -198,7 +197,11 @@ export default function BoardPost(props) {
         {likeQrVis === reply.id && likeTooltip === reply.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? reply.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`} />}
     </div>
     )}
+    
         <Link to="/board"><button>Back to the board!</button></Link>
+        </>
+    : null }
     </div>
+    
     )
 }
