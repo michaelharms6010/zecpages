@@ -70,6 +70,7 @@ $day-background: #5e63fd;
         border: 1px solid black;
         margin-bottom: 10px;
         padding: 10px;
+        transition: 1s;
     }
 
 
@@ -94,6 +95,12 @@ $day-background: #5e63fd;
         margin-top: 20px;
         word-break: break-word;
         display: inline;       
+    }
+
+    button {
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 3px;
     }
 
 
@@ -344,7 +351,6 @@ $day-background: #5e63fd;
           text-align: right;
           padding-right: 10px;
       }
-      transition: 1s;
       margin-bottom: 20px;
       padding: 25px;
       max-width: 900px;
@@ -362,6 +368,14 @@ $day-background: #5e63fd;
 
 
   .dark-mode .z-board {
+
+    button {
+        background: #151632;
+        color: #ddd;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        
+    }
 
     a.page-link {
         color: #ddd;

@@ -371,6 +371,7 @@ $dark-card-background: #0a5e55;
     color: #ddd;
     background: rgb(0, 32, 29);
     border: 2px dashed #ddd;
+    cursor: pointer;
   }
   .main-header {
     background: repeating-linear-gradient(60deg, transparent, transparent 5px, $dark-stripe 5px, $dark-stripe 10px);
