@@ -35,3 +35,9 @@ Minimal React app with just enough node backend to middleman cors for the browse
 Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
 The faucet lives on its own server and isn't even linked from Zecpages, but this seems like an apprpt place to link it.
+
+## Contributing
+
+Drop by our Trello!
+
+https://trello.com/b/Bi7ghafG/zecpages
