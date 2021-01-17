@@ -103,9 +103,28 @@ $dark-stripe: #ad860e;
       
     }
   }
+  input:focus, button:focus {
+    outline: 0;
+  }
+  button {
+    transition: .2s;
+  }
+
+  button:active {
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .form-container {
+    display: inline-block;
+    border: 1px solid #eee;
+    margin: 10px auto;
+    margin-top: 0px;
+    padding: 10px;
+    border-radius: 3px;
+  }
 
   .filter-checkboxes {
-    width: 60%;
+    width: 100%;
     display:flex;
     justify-content:center;
     margin: 0 auto;
@@ -119,8 +138,10 @@ $dark-stripe: #ad860e;
     }
   }
   .results-count {
+    margin-top: 10px;
     font-size:18px;
     color: #eee;
+    margin-bottom: 0;
   }
   .cancel-search-x {
     padding: 0px 5px;

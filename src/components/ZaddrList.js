@@ -78,41 +78,44 @@ export default function ZaddrList (props) {
             </div>
             {searching || zaddrs.length > 0
             ? 
-            <>
+            <> 
+            <div className="form-container">
+                <label style={{display: "none", marginRight: '5px'}}>Search:</label>
                 <form onSubmit={e => doSearch(e, {search, require_proof: filters.needs_proof, require_twitter: filters.needs_twitter})} className="search-form">
-                <label style={{marginRight: '5px'}}>Search:</label>
                 <input
                 className="search-input"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 />
-                <button className="search-button" type="submit">Search</button> {loadingSearch && <span>Searching...</span>}
+                <button className="search-button" type="submit">Search</button> 
                 </form>
                 <div className="filter-checkboxes">
-                    <span className="filter-label">Filter:  {"  "}</span>
-                    <label>Require Proof
+                    <span className="filter-label">Require:  {"  "}</span>
+                    <label>Proof
                     <input 
                         type="checkbox" 
                         name="needs_proof"
                         checked={filters.needs_proof}
                         onChange={handleFilterChange}
                     /></label>
-                    <label>Require Twitter
+                    <label>Twitter
                     <input 
                         type="checkbox" 
                         name="needs_twitter"
                         checked={filters.needs_twitter}
                         onChange={handleFilterChange}
                     /></label>
-  
                 </div>  
+                    {searching ? <p className="results-count">{zaddrs.length} results <span className="cancel-search-x" onClick={_=> setSearching(false)}>Clear Search</span></p> : loadingSearch ? <span>Searching...</span> : null }
+                </div>
                 {searching 
-                    ? <p className="results-count">{zaddrs.length} results <span className="cancel-search-x" onClick={_=> setSearching(false)}>Clear Search</span></p> 
+                    ? null 
                     : <div className="zaddr-page-buttons">
                         <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
                         <button className="page-number" disabled="disabled">{page} </button>
                         <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
-                    </div>}
+                </div>}
+                
                 {zaddrs.map(item => 
                     item.zaddr 
                         ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
