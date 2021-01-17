@@ -52,6 +52,7 @@ export default function ZaddrList (props) {
 
     const doSearch = (e, params) => {
         e.preventDefault()
+        console.log(params)
         setLoadingSearch(true)
         
         axios.post("https://be.zecpages.com/users/search", params)
@@ -78,7 +79,7 @@ export default function ZaddrList (props) {
             {searching || zaddrs.length > 0
             ? 
             <>
-                <form onSubmit={e => doSearch(e, {search, needs_proof: filters.needs_proof, needs_twitter: filters.needs_twitter})} className="search-form">
+                <form onSubmit={e => doSearch(e, {search, require_proof: filters.needs_proof, require_twitter: filters.needs_twitter})} className="search-form">
                 <label style={{marginRight: '5px'}}>Search:</label>
                 <input
                 className="search-input"
