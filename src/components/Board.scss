@@ -236,11 +236,9 @@ $day-background: #5e63fd;
         padding-left:10px;
     }
     a.page-link {
-        color: #ddd;
+        color: #333;
         font-weight: normal;
-        &:hover {
-            color: #ffbf00;
-        }
+
     }
     .post-bottom-row {
         display:flex;
@@ -365,6 +363,14 @@ $day-background: #5e63fd;
 
   .dark-mode .z-board {
 
+    a.page-link {
+        color: #ddd;
+        font-weight: normal;
+        &:hover {
+            color: #ffbf00;
+        }
+    }
+
     .reply-header {
         border-color: $dark-theme-color
     }
@@ -406,6 +412,9 @@ $day-background: #5e63fd;
             transition: .4s;
             &:hover {
                     border-color: #ffbf00;
+            }
+            &:disabled:hover {
+                border-color: #ccc;
             }
         }
         
