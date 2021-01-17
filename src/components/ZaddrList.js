@@ -3,11 +3,15 @@ import {ZaddrContext} from "../contexts/ZaddrContext"
 import ZaddrCard from "./ZaddrCard";
 import logo from "../zcash-icon.png"
 import {copyTextToClipboard } from "../utils/copy";
+import axios from "axios"
 
 export default function ZaddrList (props) {
-    const { zaddrs, copied, setCopied, loaded, setLoaded} = useContext(ZaddrContext);    
-    const [results, setResults] = useState(zaddrs);
+    const { copied, setCopied, loaded, setLoaded} = useContext(ZaddrContext);    
+    const [results, setResults] = useState([]);
     const [search, setSearch] = useState("");
+    const [page, setPage] = useState(1);
+    const [zaddrs, setZaddrs] = useState([])
+    const [userCount, setUserCount] = useState(0)
     const [filters, setFilters] = useState({
         needs_twitter: false,
         needs_proof: false,
@@ -15,26 +19,40 @@ export default function ZaddrList (props) {
         needs_email: false,
     })
 
+    const fetchZaddrs = page => {
+        axios.get(`https://be.zecpages.com/users/page/${page}`)
+        .then(res => {
+            setZaddrs(res.data.users.sort( (a, b) => b.id-a.id))
+            setUserCount(+res.data.count)
+        })
+        .catch(err => console.error(err));
+    }
+
     useEffect( _ => {
-        setTimeout( () => setLoaded(true), 1000 )
+        
+        fetchZaddrs(1)
     },[])
 
     useEffect( _ => {
-        setResults(zaddrs)
-        setTimeout( () => setLoaded(true), 1000 )
+        
+        fetchZaddrs(page)
+    },[page])
+
+    useEffect( _ => {
+        
     }, [zaddrs])
 
     useEffect( _ => {      
-        if (search) {
-            setResults(zaddrs.filter(item => 
-                {
-                    let searchable = String(item.zaddr + item.twitter + item.username + item.description).split("null").join("").toLowerCase()
-                    return searchable.includes(search.toLowerCase())
-                }
-            ))
-        } else {
-            setResults(applyFilters(zaddrs))
-        }
+        // if (search) {
+        //     setResults(zaddrs.filter(item => 
+        //         {
+        //             let searchable = String(item.zaddr + item.twitter + item.username + item.description).split("null").join("").toLowerCase()
+        //             return searchable.includes(search.toLowerCase())
+        //         }
+        //     ))
+        // } else {
+        //     setResults(applyFilters(zaddrs))
+        // }
 
     }, [search, zaddrs, filters])
 
@@ -69,11 +87,14 @@ export default function ZaddrList (props) {
             ? 
             <>
                 <label>Search:</label>
+                <form className="search-form">
                 <input
                 className="search-input"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 />
+                <button type="submit">Search</button>
+                    </form>
                 <div className="filter-checkboxes">
                     <span>Filter:  {"  "}</span>
                     <label>Users with Proof
@@ -91,14 +112,19 @@ export default function ZaddrList (props) {
                         onChange={handleFilterChange}
                     /></label>
   
-                </div>
-                {results.length !== zaddrs.length ? <p className="results-count">{results.length} results</p> : null}
-                {results.map(item => 
+                </div>  
+                {results.length ? <p className="results-count">{results.length} results</p> : null}
+            <div className="zaddr-page-buttons">
+                <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
+                <button className="page-number" disabled="disabled">{page} </button>
+                <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
+            </div>
+                {zaddrs.map(item => 
                     item.zaddr 
                         ? <ZaddrCard key={item.id} user={item} copied={copied} setCopied={setCopied} /> 
                         : null
                 )}
-                <p>This humble directory contains {zaddrs.filter(item => item.zaddr ).length} 🦓 people! Help us grow!</p>
+                <p>This humble directory contains {userCount} 🦓 people! Help us grow!</p>
                 {/* <FilterBar results={results} setResults={setResults} /> */}
             </>
             : 

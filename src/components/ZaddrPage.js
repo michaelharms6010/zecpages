@@ -27,7 +27,6 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
-    const { zaddrs } = useContext(ZaddrContext);
     const {darkMode} = useContext(UserContext)
     const [done, setDone] = useState(false)
 
@@ -73,7 +72,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         
  
         setTimeout(_ => setDone(true), 300)
-    },[zaddrs])
+    },[match.params.zaddr, match.params.username])
   
     const [httpsString, setHttpsString] = useState("");
     useEffect( _ => {

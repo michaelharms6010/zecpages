@@ -302,6 +302,29 @@ $dark-card-background: #0a5e55;
     }
   }
 
+  .zaddr-page-buttons {
+    width: 80%;
+    display: block;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    button {
+      background: #0a5e55;
+      border: 1px solid #0a5e55;
+      padding: 1px 5px;
+    }
+    .page-number {
+      background: #ddd;
+      color: #111;
+    }
+    .zaddr-previous {
+      border-radius: 3px 0px 0px 3px;
+    }
+    .zaddr-next {
+      border-radius: 0px 3px 3px 0px;
+    }
+  }
+
   .copied-tooltip {
     position: absolute;
     top: 30px;
