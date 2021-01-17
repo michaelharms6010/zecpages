@@ -19,9 +19,10 @@ import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
+import BoardPageControls from "./BoardPageControls"
 
 
-export default function Board() {
+export default function Board(props) {
     AOS.init()
 
     const POLL_TITLE= "Are You A Chill Dude?"
@@ -35,7 +36,7 @@ export default function Board() {
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(props.match ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode} = React.useContext(UserContext)
@@ -259,11 +260,11 @@ export default function Board() {
             {posts.length > 0 
             ? 
             <>
-            <div className="board-page-buttons">
-                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page} </button>
-                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
-            </div>
+            <BoardPageControls 
+                setPage={setPage}
+                next={next}
+                prev={prev}
+                page={page} />
 
             {posts.map(item => 
                <>
@@ -304,11 +305,11 @@ export default function Board() {
                 
                 </>
             )}
-            <div className="board-page-buttons">
-                <button disabled={prev ? "" : "disabled"} onClick={_ => setPage(page -1) }className="board-previous">Previous</button> 
-                <button className="page-number" disabled="disabled">{page}</button>
-                <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
-            </div>
+            <BoardPageControls 
+                setPage={setPage}
+                next={next}
+                prev={prev}
+                page={page} />
             <h5>{`There are currently ${postCount} posts on this board!`}</h5>
             </>
         : 

@@ -124,6 +124,9 @@ $day-background: #5e63fd;
         .board-next:disabled, .board-previous:disabled {
             opacity: .5;
             cursor: not-allowed;
+            a {
+                pointer-events: none;
+            }
         }
     }
 
@@ -231,6 +234,13 @@ $day-background: #5e63fd;
         font-weight:bold;
         padding-right:10px;
         padding-left:10px;
+    }
+    a.page-link {
+        color: #ddd;
+        font-weight: normal;
+        &:hover {
+            color: #ffbf00;
+        }
     }
     .post-bottom-row {
         display:flex;
@@ -393,7 +403,12 @@ $day-background: #5e63fd;
             border: 1px solid #aaa;
             background: #1e1f52;
             color: #ddd;
+            transition: .4s;
+            &:hover {
+                    border-color: #ffbf00;
+            }
         }
+        
     }
     #pinned-post {
         background: lighten($dark-theme-color, 20%);
