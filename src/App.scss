@@ -685,19 +685,11 @@ $dark-card-background: #0a5e55;
 
 @media (max-width: $breakpoint-tablet) {
   .App {
-
-  .zaddr-list-top-tools {
-    width: 90%;
-    .form-container {
-      flex-direction: column;
+    .zaddr-list-top-tools {
       width: 90%;
-      padding: 0;
-      .filter-checkboxes {
-        margin-left: 0px;
-      }
+      
     }
-  }
-}
+    }
   .zaddr-card {
     width: 90%;
   }
@@ -879,6 +871,22 @@ $dark-card-background: #0a5e55;
     
     
   }
+
+  @media (max-width: 680px) {
+    .form-container {
+      flex-direction: column;
+      width: 90%;
+      padding: 0;
+      .filter-label {
+        display:none;
+      }
+      .filter-checkboxes {
+        margin-left: 0px;
+      }
+    }
+  }
+
+
 
   @media (max-width: $breakpoint-mobile) {
     .App {
