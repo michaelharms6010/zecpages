@@ -127,7 +127,7 @@ $dark-stripe: #ad860e;
   }
 
   .form-container {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -878,6 +878,7 @@ $dark-card-background: #0a5e55;
 
   @media (max-width: 680px) {
     .form-container {
+      align-items: flex-start;
       flex-direction: column;
       width: 90%;
       padding: 0;
