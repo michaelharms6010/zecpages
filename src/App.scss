@@ -18,6 +18,8 @@ $dark-stripe: #ad860e;
   color:$day-main;
   max-width: 300px;
   margin: .2% auto; 
+  margin-bottom: 15px;
+  margin-top: 5px;
 
 }
 
@@ -79,7 +81,8 @@ $dark-stripe: #ad860e;
 
   .zaddr-list-top-tools {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
     width: 80%;
     margin: 0 auto;
     max-width: 1000px;
@@ -126,7 +129,6 @@ $dark-stripe: #ad860e;
   .form-container {
     align-items: flex-start;
     display: flex;
-    margin: 0 auto;
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 0px;
@@ -148,10 +150,10 @@ $dark-stripe: #ad860e;
     }
   }
   .results-count {
-    margin-top: 10px;
     font-size:18px;
     color: #eee;
     margin-bottom: 0;
+    text-align: right;
   }
   .cancel-search-x {
     padding: 0px 5px;
@@ -165,8 +167,6 @@ $dark-stripe: #ad860e;
   .search-form {
     display: flex;
     justify-content: center;
-    
-    margin-bottom: 5px;
     
     .search-input {
 
@@ -393,7 +393,7 @@ $dark-card-background: #0a5e55;
     border-radius: 10px;
     color:#ffbf00;
     max-width: 300px;
-    margin: .2% auto; 
+
 
   }
 
@@ -687,6 +687,10 @@ $dark-card-background: #0a5e55;
   .App {
     .zaddr-list-top-tools {
       width: 90%;
+      
+    }
+    .results-count {
+      width: 200px;
       
     }
     }
