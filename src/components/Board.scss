@@ -119,12 +119,15 @@ $day-background: #5e63fd;
             background: white;
             border: none;
             font-size: 18px;
+            border-radius: 0px;
         }
         .board-next {
             cursor: pointer;
+            border-left: none;
             border-radius: 0px 5px 5px 0px;
         }
         .board-previous {
+            border-right:none;
             cursor: pointer;
             border-radius: 5px 0px 0px 5px;
         }
@@ -420,7 +423,7 @@ $day-background: #5e63fd;
             border: 1px solid #aaa;
         }
         .board-next, .board-previous {
-            border: 1px solid #aaa;
+            border-color: #aaa;
             background: #1e1f52;
             color: #ddd;
             transition: .4s;
