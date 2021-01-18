@@ -102,7 +102,7 @@ export default function Board(props) {
 
     function lineReducer(str) {
         let arr = str.split("\n");
-        if (arr.length > 12) {
+        if (arr.length > 20) {
           return arr.join("")
         } else {
           return arr.join("\n")
