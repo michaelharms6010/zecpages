@@ -877,11 +877,17 @@ $dark-card-background: #0a5e55;
       flex-direction: column;
       width: 90%;
       padding: 0;
+      .search-form {
+        .search-input {
+          width: 100px;
+        }
+      }
       .filter-label {
         display:none;
       }
       .filter-checkboxes {
         margin-left: 0px;
+        width: auto;
       }
     }
   }
