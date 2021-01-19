@@ -6,6 +6,17 @@ $day-background: #5e63fd;
 
 
 .z-board {
+    min-width: 420px;
+    .post-id {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+    .pinned-header {
+        margin-left: 10px;
+        display:flex;
+        justify-content: space-between;
+    }
+
     #top-post {
         border: 5px dashed turquoise;
         color: lime;
@@ -155,7 +166,7 @@ $day-background: #5e63fd;
         padding-top:0px;
         text-align:left;
         border-radius: 5px;
-        transition: .2s;
+        transition: 1s;
         -webkit-transition: .2s;
         .post-links {
             padding-top: 15px;
@@ -495,8 +506,25 @@ $day-background: #5e63fd;
 }
 
 $breakpoint-tablet: 864px;
+
+
+@media (max-width: 1000px) {
+    .z-board {
+
+        .board-post {
+            width: 95%;
+        }
+
+    }
+}
+
+
 @media (max-width: $breakpoint-tablet) {
     .z-board {
+        .board-page-buttons {
+            margin-right: 4%;
+        }
+
         .board-explainer {
             width: 90%;
         }

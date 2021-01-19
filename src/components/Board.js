@@ -224,7 +224,11 @@ export default function Board(props) {
                     id="pinned-post"
                     key={pinned.id} 
                     className={"highlighted-board-post board-post"}>
-                    <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
+                    <div className="pinned-header">
+                        {/* <h4>{pinned.id}</h4> */}
+                        <h4></h4>
+                        <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
+                    </div>
                     <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">
@@ -273,6 +277,7 @@ export default function Board(props) {
                
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+                    {/* <h4 className="post-id">{item.id}</h4> */}
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     <div className="post-bottom-row">
