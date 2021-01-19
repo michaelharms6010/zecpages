@@ -24,7 +24,7 @@ export default function ZaddrList (props) {
     const fetchZaddrs = page => {
         axios.get(`https://be.zecpages.com/users/page/${page}`)
         .then(res => {
-            setZaddrs(res.data.users.sort( (a, b) => b.id-a.id))
+            setZaddrs(res.data.users.filter(zaddr=> zaddr.zaddr).sort( (a, b) => b.id-a.id))
             setUserCount(+res.data.count)
         })
         .catch(err => console.error(err));
@@ -52,6 +52,13 @@ export default function ZaddrList (props) {
 
     const doSearch = (e, params) => {
         e.preventDefault()
+        if (params.search === "") {
+            fetchZaddrs(1)
+            setSearching(false)
+            return
+        } if (params.search === "*") {
+            params.search = ""
+        }
         console.log(params)
         setLoadingSearch(true)
         
@@ -59,7 +66,7 @@ export default function ZaddrList (props) {
         .then(r => {
             setSearching(true)
             setLoadingSearch(false)
-            setZaddrs(r.data)
+            setZaddrs(r.data.filter(zaddr=> zaddr.zaddr))
         })
         .catch(err => console.log(err))
     }
@@ -87,6 +94,7 @@ export default function ZaddrList (props) {
                     className="search-input"
                     value={search}
                     onChange={e => setSearch(e.target.value)}
+                    placeholder="* = all"
                     />
                     <button className="search-button" type="submit">Search</button> 
                 </form>

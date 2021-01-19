@@ -685,6 +685,9 @@ $dark-card-background: #0a5e55;
 
 @media (max-width: $breakpoint-tablet) {
   .App {
+    .form-container {
+      align-items: flex-start;
+    }
     .zaddr-list-top-tools {
       width: 90%;
       
@@ -878,7 +881,7 @@ $dark-card-background: #0a5e55;
 
   @media (max-width: 680px) {
     .form-container {
-      align-items: flex-start;
+      
       flex-direction: column;
       width: 90%;
       padding: 0;
