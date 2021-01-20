@@ -30,7 +30,7 @@ Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
 https://faucet.zecpages.com
 
-Minimal React app with just enough node backend to middleman cors for the browser. I think this is the only part of the Zecpages stack that does full on Zcash rpc.
+Minimal React app with just enough node backend to middleman cors for the browser. I think this is the only part of the Zecpages stack that does fullnode Zcashd rpc.
 
 Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
