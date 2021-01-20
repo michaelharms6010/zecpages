@@ -12,7 +12,7 @@ JSON API details, db schema, and deployment information are here: https://github
 
 ## Zcash Jobs
 
-These jobs all run on a t2.micro instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli).
+These jobs run on a t2.micro instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli).
 
 ### Wallet Daemon
 
