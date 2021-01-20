@@ -28,7 +28,6 @@ export default function BoardPost(props) {
     const [replyBody, setReplyBody] = useState("")
     const [likeQrVis, setLikeQrVis] = useState(0)
     const [ab, setAb] = useState(Math.random() > .9)
-    const [lock, setLock] = useState(false)
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
