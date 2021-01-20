@@ -512,6 +512,10 @@ $breakpoint-tablet: 864px;
 @media (max-width: 1000px) {
     .z-board {
 
+        .replying-to-link {
+            width: 97%;
+        }
+
         .board-post {
             width: 95%;
         }

@@ -13,6 +13,9 @@ import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 var Base64 = require("js-base64")
+var Buffer = require('buffer/').Buffer
+var decoder = new TextDecoder();
+var encoder = new TextEncoder();
 
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
@@ -25,6 +28,7 @@ export default function BoardPost(props) {
     const [replyBody, setReplyBody] = useState("")
     const [likeQrVis, setLikeQrVis] = useState(0)
     const [ab, setAb] = useState(Math.random() > .9)
+    const [lock, setLock] = useState(false)
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
@@ -41,6 +45,24 @@ export default function BoardPost(props) {
     const charCodes = iconsToReplace.map(item => Object.keys(item)[0].charCodeAt(0))
     const zaddrMarker = "🚠"
     const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
+
+    
+
+
+
+    const formatReplyBody = str => {
+
+        
+        setReplyBody(str)
+    }
+
+    const formatURI = replyBody => {
+        return encodeURIComponent(replyBody).replace(/%([0-9A-F]{2})/g,
+            function toSolidBytes(match, p1) {
+                return String.fromCharCode('0x' + p1);
+        })
+
+    }
 
     const reformatShields = (str, replyZaddr,  username) => {
         let output = []
@@ -158,7 +180,7 @@ export default function BoardPost(props) {
             <div className="reply-editor">
                 <div className="reply-text-editor">
                     <h2>Write reply</h2>
-                    <textarea placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => setReplyBody(e.target.value)} />
+                    <textarea placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
                 </div>
                 {/* #bec0fe #0a5e55*/}
                 <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} />
