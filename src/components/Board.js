@@ -141,7 +141,7 @@ export default function Board(props) {
         var channel = pusher.subscribe('board');
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
-            getNewPosts();
+            // getNewPosts();
             fetchPinned();
         });
     }, [])

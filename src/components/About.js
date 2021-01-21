@@ -30,7 +30,7 @@ export default function About() {
                 <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at Zecpages!</a></p>
                 <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
             </div>
-            <div style={{width: "50%"}} className="about-content">
+            <div className="about-content">
                 <h2>lightwalletd server</h2>
                 <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
             </div>
@@ -39,7 +39,7 @@ export default function About() {
                 <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
                 <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <ShieldIcon /><span style={{color: "#bec0fe" }}>noonervision</span><ShieldIcon /></h2></Link>
             </div>
-            <div style={{textAlign: 'left'}} className="about-content">
+            <div id="canary" style={{textAlign: 'left'}} className="about-content">
                 <h2 style={{textAlign: "center"}}>Canary</h2>
                <code  className="canary">
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
