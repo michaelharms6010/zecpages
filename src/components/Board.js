@@ -43,6 +43,7 @@ export default function Board(props) {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
@@ -110,12 +111,14 @@ export default function Board(props) {
       }
 
     const getNewPosts = () => {
+       
         const page = props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     setPosts(newPosts)
+                    setNotificationVis(false)
                 }
             })
         .catch(err => console.log(err));
@@ -146,7 +149,7 @@ export default function Board(props) {
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
             // getNewPosts();
-            fetchPinned();
+            setNotificationVis(true);
         });
     }, [])
 
@@ -203,6 +206,7 @@ export default function Board(props) {
 
     return (
         <div className={"z-board"}>
+            {notificationVis && <h2 onClick={getNewPosts} className='update-notification'>Refresh New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>

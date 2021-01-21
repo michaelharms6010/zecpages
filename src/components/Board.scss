@@ -2,11 +2,32 @@
 
 $day-main: #fec8fc;
 $day-background: #5e63fd;
-
+$zcash-yellow: #ffbf00;
 
 
 .z-board {
+
+
     min-width: 420px;
+    
+    
+    .update-notification {
+        width: 20%;
+        min-width: 100px;
+        height: 50px;
+        position: fixed;
+        left: 40%;
+        top: 70px;
+        background: black;
+        border-radius: 25px;
+        cursor: pointer;
+        color: $zcash-yellow;
+        margin: 0 auto;
+        padding: 7px;
+        z-index: 9999999999;
+    }
+    
+    
     .post-id {
         padding-left: 10px;
         padding-top: 10px;
@@ -65,7 +86,7 @@ $day-background: #5e63fd;
     .reply-header {
         padding: 1% 1%;
         border: 5px solid #bec0fe;
-        color: #ffbf00;
+        color: $zcash-yellow;
         width: 30%;
         margin: 1% auto;
         border-radius: 28%;
@@ -354,7 +375,7 @@ $day-background: #5e63fd;
 
   $dash-size: 5px;
   $theme-color: #bec0fe;
-  $light-outline: #ffbf00;
+  $light-outline: $zcash-yellow;
   $dark-outline: #7a5f0b;
   $fill-color: #ff879b;
   $dark-theme-color:  #353670;
@@ -384,6 +405,11 @@ $day-background: #5e63fd;
 
   .dark-mode .z-board {
 
+    .update-notification {
+        color: $zcash-yellow;
+    }
+    
+
     button {
         background: #151632;
         color: #ddd;
@@ -396,7 +422,7 @@ $day-background: #5e63fd;
         color: #ddd;
         font-weight: normal;
         &:hover {
-            color: #ffbf00;
+            color: $zcash-yellow;
         }
     }
 
@@ -440,9 +466,9 @@ $day-background: #5e63fd;
             color: #ddd;
             transition: .4s;
             &:hover {
-                    border-color: #ffbf00;
+                    border-color: $zcash-yellow;
                     a {
-                        color: #ffbf00;
+                        color: $zcash-yellow;
                     }
             }
             &:disabled:hover {
