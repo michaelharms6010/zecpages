@@ -109,7 +109,8 @@ export default function Board(props) {
         }
       }
 
-    const getNewPosts = (page=1) => {
+    const getNewPosts = () => {
+        const page = props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
@@ -131,9 +132,7 @@ export default function Board(props) {
         .catch(err => console.log(err))
     }
 
-    useEffect( _ => {
-        fetchPinned();
-        
+    useEffect(_ => {
         Pusher.logToConsole = false;
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
             cluster: 'us2',
@@ -142,18 +141,24 @@ export default function Board(props) {
         var channel = pusher.subscribe('board');
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
-            getNewPosts(page);
+            getNewPosts();
             fetchPinned();
         });
+    }, [])
+
+    useEffect( _ => {
+        fetchPinned();
+        
+
         // window.scrollTo(0, 0);
         if (page === 1) {
             setTimeout(_ => getNewPosts(), 360);
             setPrev(false)
         } else {
-            getNewPosts(page);
+            getNewPosts();
             setPrev(true)
         }
-    },[page])
+    },[props.match.params.page])
 
     useEffect( _ => {
         if (page * 25 >= postCount) {
