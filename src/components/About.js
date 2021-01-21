@@ -17,7 +17,7 @@ export default function About() {
         <div style={{color: "#111"}} className="about-page">
         <div className="about-content">
             <h2>lightwalletd server</h2>
-            <p style={{marginTop: "10px"}}>To support the Zcash network, Zecpages runs a lightwalletd node. Connect your light wallet to https://lightwalletd.zecpages.com:443</p>
+            <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
         </div>
             
             <div className="about-content">
