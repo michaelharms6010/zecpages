@@ -40,7 +40,6 @@ export default function About() {
                 <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <ShieldIcon /><span style={{color: "#bec0fe" }}>noonervision</span><ShieldIcon /></h2></Link>
             </div>
             <div style={{textAlign: 'left'}} className="about-content">
-                <h2>Canary</h2>
                <code  className="canary">
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
                 Hash: SHA256<br/><br/>
