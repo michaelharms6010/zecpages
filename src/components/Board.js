@@ -128,7 +128,11 @@ export default function Board(props) {
 
     const fetchPinned = _ => {
         axios.get(`https://be.zecpages.com/board/pinned`)
-        .then(res => setPinned(res.data))
+        .then(res => {
+            if (!pinned || res.data.id !== pinned.id) {
+                setPinned(res.data)
+            }
+        })
         .catch(err => console.log(err))
     }
 
@@ -322,6 +326,7 @@ export default function Board(props) {
                 </>
             )}
             <BoardPageControls 
+                history={props.history}
                 setPage={setPage}
                 next={next}
                 prev={prev}
