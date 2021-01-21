@@ -573,7 +573,8 @@ $dark-card-background: #0a5e55;
 
 .about-page {
   .about-content {
-    width: 70%;
+    width: 95%;
+    max-width: 1000px;
     margin: 2% auto;
     background:#ffd862;
     border:2px solid black;
@@ -587,7 +588,8 @@ $dark-card-background: #0a5e55;
     }
   }
   .cta {
-    background:turquoise;
+    color: #ffbf00;
+    background: black;
     border:1px solid black;
     border-radius:10px;
     height:3rem;
@@ -597,7 +599,7 @@ $dark-card-background: #0a5e55;
     cursor:pointer;
     transition: .2s;
     &:hover {
-      background: rgb(99, 250, 235);
+      transform: scale(1.05);
     }
   }
 }

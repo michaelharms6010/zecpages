@@ -15,10 +15,7 @@ export default function About() {
         <>
 
         <div style={{color: "#111"}} className="about-page">
-        <div className="about-content">
-            <h2>lightwalletd server</h2>
-            <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
-        </div>
+        
             
             <div className="about-content">
                 <h2>About the site</h2>
@@ -28,10 +25,14 @@ export default function About() {
             </div>
             <div className="about-content">
                 <h2>What is Zcash?</h2>
-                <p>Zcash is a decentralized means of exchange that employs Zero Knowledge Proofs to prevent printing transaction details onto its public ledger.</p>
-                <p>When transacting between z-addresses, the sender, receiver, amount, and memo are not shared with anyone else along the way!</p>
+                <p>Zcash is Bitcoin + Encryption. </p>
+                <p>A blockchain is public. Blockchain-level privacy is super important.</p>
                 <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at Zecpages!</a></p>
                 <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
+            </div>
+            <div style={{width: "50%"}} className="about-content">
+                <h2>lightwalletd server</h2>
+                <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
             </div>
             <div className="about-content">
                 <h2>About the Creator</h2>
