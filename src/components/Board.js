@@ -206,7 +206,7 @@ export default function Board(props) {
 
     return (
         <div className={"z-board"}>
-            {notificationVis && <h2 onClick={getNewPosts} className='update-notification'>Refresh New Posts</h2>}
+            {notificationVis && <h2 onClick={getNewPosts} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>

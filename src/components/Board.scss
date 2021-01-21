@@ -12,9 +12,10 @@ $zcash-yellow: #ffbf00;
     
     
     .update-notification {
+        border: 5px solid $zcash-yellow;
         width: 20%;
         min-width: 100px;
-        height: 50px;
+        min-height: 50px;
         position: fixed;
         left: 40%;
         top: 70px;
@@ -23,7 +24,7 @@ $zcash-yellow: #ffbf00;
         cursor: pointer;
         color: $zcash-yellow;
         margin: 0 auto;
-        padding: 7px;
+        padding: 5px;
         z-index: 9999999999;
     }
     
