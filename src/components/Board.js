@@ -146,6 +146,7 @@ export default function Board(props) {
             forceTLS: true
         });
         var channel = pusher.subscribe('board');
+            // todo - Push new like ids ? Only manually refresh posts?
             channel.bind('new-post', function(data) {
             console.log('board update', new Date().toISOString());
             // getNewPosts();
