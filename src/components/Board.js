@@ -151,7 +151,7 @@ export default function Board(props) {
         
         if (props.match.params.page) setPage(+props.match.params.page)
         // window.scrollTo(0, 0);
-        if (+props.match.params.page === 1) {
+        if (+props.match.params.page === 1 || !props.match.params.page) {
             setTimeout(_ => getNewPosts(), 360);
             setPrev(false)
         } else {
