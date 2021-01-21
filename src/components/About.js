@@ -64,7 +64,7 @@ export default function About() {
                 -----END PGP SIGNATURE-----<br/>
 
                </code>
-               <hr />
+               <hr style={{border: "1px solid black"}} />
                <code>
                 gpg --keyserver keys.gnupg.net --recv-key F50ECEFE<br/><br/>
                 Fingerprint: 1D1E 0918 74C4 DB21 7D47  7DAC DF1F E6D1 F50E CEFE<br/><br/>
