@@ -149,9 +149,9 @@ export default function Board(props) {
     useEffect( _ => {
         fetchPinned();
         
-
+        if (props.match.params.page) setPage(+props.match.params.page)
         // window.scrollTo(0, 0);
-        if (page === 1) {
+        if (+props.match.params.page === 1) {
             setTimeout(_ => getNewPosts(), 360);
             setPrev(false)
         } else {
