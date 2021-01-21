@@ -270,7 +270,8 @@ export default function Board(props) {
             {posts.length > 0 
             ? 
             <>
-            <BoardPageControls 
+            <BoardPageControls
+                history={props.history} 
                 setPage={setPage}
                 next={next}
                 prev={prev}

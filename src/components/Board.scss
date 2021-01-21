@@ -441,6 +441,9 @@ $day-background: #5e63fd;
             transition: .4s;
             &:hover {
                     border-color: #ffbf00;
+                    a {
+                        color: #ffbf00;
+                    }
             }
             &:disabled:hover {
                 border-color: #ccc;
