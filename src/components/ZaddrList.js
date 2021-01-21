@@ -77,7 +77,7 @@ export default function ZaddrList (props) {
 
     return(
         <div className="zaddr-list">
-            {/* <p className="dev-disclaimer">Zecpages is now running a lightwalletd node! Connect your light wallet to https://lightwalletd.zecpages.com:443 <br/> Or via cli with <code> ./zecwallet-cli.exe --server https://lightwalletd.zecpages.com:443</code></p> */}
+            {/* <p className="dev-disclaimer">Zecpages runs a lightwalletd node. Connect your light wallet to https://lightwalletd.zecpages.com:443</p> */}
             <h2 className="main-header">Zcash Z-address Directory</h2>
             {/* <div className="top-buttons">
                 <a className="export-button" href="https://be.zecpages.com/users" target="_new"><button>Export All User Zaddr Data</button></a>

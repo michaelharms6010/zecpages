@@ -560,12 +560,11 @@ $dark-card-background: #0a5e55;
 }
 
 .dev-disclaimer {
-  color:#111;
+  background: turquoise;
   padding:10px;
   margin: 2% auto;
   margin-top: 0;
   text-align:center;
-  background:#ccc;
   border: 1px solid #111;
   width:60%;
 }
@@ -836,8 +835,13 @@ $dark-card-background: #0a5e55;
       transform: rotateY(-360deg);
     }
   }
+  .dark-mode .dev-disclaimer {
+    background: $dark-card-background;
+  }
 
   .dark-mode-toggle {
+
+
     
     -webkit-appearance: none;
     -moz-appearance: none;

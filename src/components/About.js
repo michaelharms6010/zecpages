@@ -12,7 +12,14 @@ export default function About() {
     },[])
 
     return (
+        <>
+
         <div style={{color: "#111"}} className="about-page">
+        <div className="about-content">
+            <h2>lightwalletd server</h2>
+            <p style={{marginTop: "10px"}}>To support the Zcash network, Zecpages runs a lightwalletd node. Connect your light wallet to https://lightwalletd.zecpages.com:443</p>
+        </div>
+            
             <div className="about-content">
                 <h2>About the site</h2>
                 
@@ -33,5 +40,6 @@ export default function About() {
             </div>
             <p>Your ip is {ip}. Think about that.</p>
          </div>
+    </> 
     )
 }
