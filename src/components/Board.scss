@@ -26,6 +26,11 @@ $zcash-yellow: #ffbf00;
         margin: 0 auto;
         padding: 5px;
         z-index: 9999999999;
+        transition: .3s;
+
+        &:hover {
+            background: rgb(27, 27, 27);
+        }
     }
     
     
