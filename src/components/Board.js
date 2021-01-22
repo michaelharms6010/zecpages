@@ -228,7 +228,7 @@ export default function Board(props) {
             {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
             <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
-            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px'}}></h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
+            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px', opacity: "0"}}>.</h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
             {pinned && !!posts.length && 
                 <>
                 
@@ -246,7 +246,7 @@ export default function Board(props) {
                     <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                     
                     {likeTooltip === pinned.id &&
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
+                    <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
                     <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                     <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
@@ -299,7 +299,7 @@ export default function Board(props) {
                     
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} 
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} 
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
                     <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                     <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>

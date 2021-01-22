@@ -7,7 +7,7 @@ $zcash-yellow: #ffbf00;
 
 .z-board {
 
-
+    min-height: 101vh;
     min-width: 420px;
     
     
@@ -191,6 +191,11 @@ $zcash-yellow: #ffbf00;
         border-radius: 5px;
         transition: 1s;
         -webkit-transition: .2s;
+        p {
+            code {
+                margin-bottom: 10px;
+            }
+        }
         .post-links {
             padding-top: 15px;
         }
@@ -203,9 +208,11 @@ $zcash-yellow: #ffbf00;
             white-space:pre-line;
             margin-bottom:0px;
             margin-top:1px;
+            
         }
         .post-date {
             margin: 0;
+            
             padding-left:10px;
             color:rgb(117, 117, 117);
             display: flex;
@@ -499,10 +506,14 @@ $zcash-yellow: #ffbf00;
         }
         .post-date {
             color: #bbb; 
+            p {
+                margin: 0px 10px;
+            }
         }
         .like-container {
             border-color: #ddd;
             color: #ddd;
+           
             span {
                 border-color: #ddd;
                 color: #ddd;

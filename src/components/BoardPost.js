@@ -157,16 +157,9 @@ export default function BoardPost(props) {
     {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
-        <div className="post-date">
-            <div className="like-container">
-                <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
-                <span>{post.likes}</span>
-            </div>
-            <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
-            
-        </div>
+       
         {likeTooltip === post.id && 
-            <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(post.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`}       
+            <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(post.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`}       
             <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
             <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
             <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
@@ -185,6 +178,14 @@ export default function BoardPost(props) {
                 <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} />
             </div>    
         }
+         <div className="post-date">
+            <div className="like-container">
+                <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
+                <span>{post.likes}</span>
+            </div>
+            <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
+            
+        </div>
         
 
     </div>
@@ -194,6 +195,14 @@ export default function BoardPost(props) {
     : post.replies.map(reply => 
         <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{reply.memo.split("â€™").join("'").replace(replyRegex, "")}</p>
+        
+        {likeTooltip === reply.id && 
+        <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(reply.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`}       
+        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`); showLikeCopyTooltipById(reply.id);}}>
+        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+        <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${reply.id}`}>Copied!</span></span>
+        <br/> or simply make a board post with the memo "{`LIKE::${reply.id}`}"</code></p>}
+        {likeQrVis === reply.id && likeTooltip === reply.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? reply.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`} />}
         <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(reply.id)} className="like-icon" src={like} />
@@ -209,13 +218,6 @@ export default function BoardPost(props) {
                             Permalink
                         </Link>
         </div>  
-        {likeTooltip === reply.id && 
-        <p style={{margin: 0, wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(reply.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`}       
-        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`); showLikeCopyTooltipById(reply.id);}}>
-        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-        <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${reply.id}`}>Copied!</span></span>
-        <br/> or simply make a board post with the memo "{`LIKE::${reply.id}`}"</code></p>}
-        {likeQrVis === reply.id && likeTooltip === reply.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? reply.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`} />}
     </div>
     )}
     
