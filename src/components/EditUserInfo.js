@@ -91,7 +91,7 @@ export default function EditUserInfo ({history}) {
     return(
         <>
         <h2>Edit your listing:</h2>
-        <div className="zaddr-card">
+        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             
             {!editing
             ?
