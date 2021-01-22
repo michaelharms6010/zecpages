@@ -122,8 +122,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         </>
         : null}
         <div style={{maxWidth: "900px", margin: "30px auto"}}>
-            {done && zaddr && !user.username ? zaddrRegex.test(match.params.zaddr) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't in the Zecpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't a a valid sapling z-address.</h2>: null}
-            {done && !zaddr && !user.username && <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.username} isn't in the Zecpages database. Try <Link to="/directory">searching the directory</Link>.</h2> }
+            {done && zaddr && !user.username ? zaddrRegex.test(match.params.zaddr) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't in the ZECpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't a a valid sapling z-address.</h2>: null}
+            {done && !zaddr && !user.username && <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.username} isn't in the ZECpages database. Try <Link to="/directory">searching the directory</Link>.</h2> }
         </div>
         </>
     )

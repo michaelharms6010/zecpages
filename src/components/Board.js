@@ -210,7 +210,7 @@ export default function Board(props) {
             {notificationVis && <h2 onClick={getNewPosts} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h2>Zecpages Anonymous Memo Board</h2>
+                <h2>ZECpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
                 <h4 className="board-zaddr">{qrVal} 
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>

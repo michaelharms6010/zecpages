@@ -18,25 +18,25 @@ export default function About() {
         
             
             <div className="about-content">
-                <h2>About Zecpages</h2>
+                <h2>About ZECpages</h2>
                 
-                <p>Zecpages is a public directory of Zcash users. "Take it easy" is the Zecpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
+                <p>ZECpages is a public directory of Zcash users. "Take it easy" is the ZECpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
                 <p style={{fontWeight: "bold"}}><a href="https://github.com/michaelharms6010/fe-zeitpages" target="_new">Github</a> </p>
             </div>
             <div className="about-content">
                 <h2>What is Zcash?</h2>
                 <p>Zcash is Bitcoin + Encryption. </p>
                 <p>A blockchain is public. Blockchain-level privacy is super important.</p>
-                <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at Zecpages!</a></p>
+                <p>Want a lil Zcash to take this ole blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at ZECpages!</a></p>
                 <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
             </div>
             <div className="about-content">
                 <h2>lightwalletd server</h2>
-                <h4 style={{textAlign: "center"}}>Zecpages is powered by its own lightwalletd server. You are welcome to connect as well.</h4>
+                <h4 style={{textAlign: "center"}}>ZECpages is powered by its own lightwalletd server. You are welcome to connect as well.</h4>
                 <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
             </div>
             <div className="about-content">
-                <h2>Team Zecpages</h2>
+                <h2>Team ZECpages</h2>
                 <p className="zaddr">zs150xua0qxun6lf7p2rexz2kz2t75aqecaguh80rq2ruaj7vwn9rxuhphgm9qpce4j6runxqm3e2u</p>
                 <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <ShieldIcon /><span style={{color: "#bec0fe" }}>noonervision</span><ShieldIcon /></h2></Link>
             </div>
@@ -46,7 +46,7 @@ export default function About() {
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
                 Hash: SHA256<br/><br/>
 
-                As of January 20th, 2021, Zecpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. Zecpages has never placed any backdoors in our hardware or software and has not received any requests to do so. Zecpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on Zecpages assets.<br/><br/>
+                As of January 20th, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/><br/>
 
                 Recent headlines:<br/>
                 DHS pauses some deportations for 100 days - https://www.cnn.com/2021/01/20/politics/homeland-security-pause-some-deportations/index.html<br/><br/>
