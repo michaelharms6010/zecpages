@@ -12,7 +12,7 @@ export default function EditUserInfo ({history}) {
     const [httpsString, setHttpsString] = useState("");
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
-    const {setLoggedIn} = useContext(UserContext);
+    const {setLoggedIn, darkMode} = useContext(UserContext);
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
@@ -90,7 +90,6 @@ export default function EditUserInfo ({history}) {
 
     return(
         <>
-        <h2>Edit your listing:</h2>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             
             {!editing
