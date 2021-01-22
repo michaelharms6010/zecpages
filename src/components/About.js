@@ -36,8 +36,8 @@ export default function About() {
                 <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
             </div>
             <div className="about-content">
-                <h2>About the Creator</h2>
-                <p className="zaddr">zs1q4jdaenhv5pdn4uqn86qekt7j2dch66uuszyp05ywne8z7yh56dhqjekpqle72skfl8ycd86ew4</p>
+                <h2>Team Zecpages</h2>
+                <p className="zaddr">zs150xua0qxun6lf7p2rexz2kz2t75aqecaguh80rq2ruaj7vwn9rxuhphgm9qpce4j6runxqm3e2u</p>
                 <Link to="/noonervision" style={{textDecoration: "none"}}><h2 style={{margin: "1% auto", borderRadius: "8%", padding: "20px", width: "300px", color: "#ddd", background: "black"}}>Graphic Design by <ShieldIcon /><span style={{color: "#bec0fe" }}>noonervision</span><ShieldIcon /></h2></Link>
             </div>
             <div id="canary" style={{textAlign: 'left'}} className="about-content">
