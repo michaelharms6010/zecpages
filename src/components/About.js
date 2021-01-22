@@ -18,10 +18,10 @@ export default function About() {
         
             
             <div className="about-content">
-                <h2>About the site</h2>
+                <h2>About Zecpages</h2>
                 
-                <p>ZECpages is a public directory of Zcash users. "Take it easy" is the ZECpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
-                <p style={{fontWeight: "bold"}}><a href="https://github.com/michaelharms6010/fe-zeitpages" target="_new">Source Code</a> </p>
+                <p>Zecpages is a public directory of Zcash users. "Take it easy" is the Zecpages motto. A good reason to swing by is if you want to chat and make new friends.</p>
+                <p style={{fontWeight: "bold"}}><a href="https://github.com/michaelharms6010/fe-zeitpages" target="_new">Github</a> </p>
             </div>
             <div className="about-content">
                 <h2>What is Zcash?</h2>
