@@ -18,6 +18,7 @@ import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PinIcon from "./icons/PinIcon"
+import "./Leaderboard.scss"
 
 export default function Board() {
     AOS.init()
@@ -61,9 +62,10 @@ export default function Board() {
       }
 
     const getNewPosts = (page=1) => {
-        axios.get(`https://be.zecpages.com/board/${page}`)
+        axios.get(`https://be.zecpages.com/board/leaderboard`)
         .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                console.log(res)
+                let newPosts= res.data.posts.sort( (a, b) => b.likes-a.likes)
                 if (posts !== newPosts) {
                     setPosts(newPosts)
                 }
@@ -141,7 +143,7 @@ export default function Board() {
     return (
         <div className={"z-board"}>
 
-            <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
+            {/* <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>Zecpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
                 <h4 className="board-zaddr">{qrVal} <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></h4>
@@ -194,7 +196,7 @@ export default function Board() {
                     {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? "#C46274" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                 </div>
                 </>
-                }
+                } */}
 
         
             {posts.length > 0 
@@ -206,10 +208,10 @@ export default function Board() {
                 <button disabled={next ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="board-next">Next</button>      
             </div>
 
-            {posts.map(item => 
+            {posts.map((item, index) => 
                <>
-                <div className="aos-container" >
-                <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+                <div  >
+                <div id={`${darkMode ? "night" : "day"}-${index+1}`} key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
                     <div className="post-bottom-row">
                     <div className="post-date">

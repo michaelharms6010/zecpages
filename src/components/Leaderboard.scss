@@ -1,0 +1,96 @@
+#day-1 {
+    background-image: url("../images/daycloud.gif");
+    animation: moveclouds 14s linear 0s infinite;
+    color: black;
+    @keyframes moveclouds {
+        0%  {background-position: 0px 0px;}
+        100% {background-position: 1134px 0px;}
+        }
+
+}
+
+#night-1 {
+    background-image: url(../images/starz.gif);
+    animation: nightcolors 12s linear 0s infinite;
+        @keyframes nightcolors {
+            0%  {background-color: #000000;}
+            0%  {background-position: 0px 0px;}
+            25%  {background-color: #0b003e;}
+            50%  {background-color: #00054f;}
+            75% {background-color: #0e0667;}
+        100% {background-position: 304px 0px; background-color: black;}
+            }
+
+    p {
+        color: cyan;
+        text-shadow: 2px 2px magenta
+    }
+}
+
+#night-2 {
+    background-image: url(../images/cutiecircuits.gif);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+#night-3 {
+    background-image: url(../images/tiledpurps.gif);
+    animation: rainbow 4s ease-in-out 0s infinite alternate;
+    border: 10px double rgb(228, 236, 236);
+    @keyframes rainbow {
+        0%  {background-color: #7f00ff;}
+        25%  {background-color: #00a1ff;}
+        50%  {background-color: #00ff40;}
+        75% {background-color: #e1ff00;}
+        100% {background-color:#ff0000;}
+        }
+      
+}
+
+#night-4 {
+    border: 4px dashed white;
+    background-image: url("../images/TVstatic.gif");
+}
+
+#day-2 {
+    border: 4px double;
+    background-image: url(../images/rose-bk2.gif);
+}
+
+#day-3 {
+    background-image: url(../images/tiledmikey.gif);
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: center;
+    animation: movebuns 14s linear 0s infinite;
+    color: black;
+    @keyframes movebuns {
+        0%  {background-position: 200px 200px;}
+        100% {background-position: 200px 20px;}
+        }
+}
+
+#day-4 {
+    background-image: url(../images/tiledcoloranimation.gif);
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: center;
+}
+
+#night-5 {
+    background-image: url(../images/tiledpsych03.gif);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+}
+
+#day-5 {
+    background-image: url(../images/tiledwater.gif);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+}
