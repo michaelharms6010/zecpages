@@ -11,47 +11,40 @@
 
 #night-1 {
     background-image: url(../images/starz.gif);
+    background-color: #000000;
     animation: nightcolors 12s linear 0s infinite;
-        @keyframes nightcolors {
-            0%  {background-color: #000000;}
-            0%  {background-position: 0px 0px;}
-            25%  {background-color: #0b003e;}
-            50%  {background-color: #00054f;}
-            75% {background-color: #0e0667;}
-        100% {background-position: 304px 0px; background-color: black;}
-            }
-
+    @keyframes nightcolors {
+        0%  {}
+        0%  {background-position: 0px 0px;}
+        100% {background-position: 304px 0px;}
+    }
+    
     p {
         color: cyan;
-        text-shadow: 2px 2px magenta
+        text-shadow: 2px 2px magenta;
     }
 }
 
 #night-2 {
-    background-image: url(../images/cutiecircuits.gif);
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
-
+    background-image: url("../images/TVstatic.gif");
+    border: 4px dashed white;
 }
+    
 
 #night-3 {
-    background-image: url(../images/tiledpurps.gif);
-    animation: rainbow 4s ease-in-out 0s infinite alternate;
+    background-image: url(../images/cutiecircuits.gif);
     border: 10px double rgb(228, 236, 236);
-    @keyframes rainbow {
-        0%  {background-color: #7f00ff;}
-        25%  {background-color: #00a1ff;}
-        50%  {background-color: #00ff40;}
-        75% {background-color: #e1ff00;}
-        100% {background-color:#ff0000;}
-        }
-      
+    
 }
 
 #night-4 {
-    border: 4px dashed white;
-    background-image: url("../images/TVstatic.gif");
+    background-image: url(../images/night.jfif);
+    background-position: center;
+    animation: nightclouds 12s linear 0s infinite;
+    @keyframes nightclouds {
+        0%  {background-position: 0px -50px;}
+        100% {background-position: 474px -50px;}
+    }
 }
 
 #day-2 {
@@ -80,7 +73,7 @@
 }
 
 #night-5 {
-    background-image: url(../images/tiledpsych03.gif);
+    background-image: url(../images/tiledpsych05.gif);
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center;

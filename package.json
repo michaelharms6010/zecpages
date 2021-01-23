@@ -18,7 +18,7 @@
     "react-drawing-board": "^0.3.5",
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.3.1"
+    "react-scripts": "4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
