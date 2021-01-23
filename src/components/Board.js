@@ -31,7 +31,7 @@ export default function Board(props) {
       "Yes IU think thats fine": 8,
       "Maybe that's ok but idk i'm silly": 24
     }
-
+    const [newLike, setNewLike] = useState(null)
     const [ab, setAb] = useState(Math.random() > .9)
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
@@ -110,8 +110,35 @@ export default function Board(props) {
         }
       }
 
-    const getNewPosts = () => {
+      const getNewPostPageOne = () => {
        
+        if (!/board\/1$/.test(window.location)) {
+            props.history.push("/board/1")
+        }
+        axios.get(`https://be.zecpages.com/board/1`)
+        .then(res =>{ 
+                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                if (posts !== newPosts) {
+                    window.scroll(0,0)
+                    setPosts(newPosts)
+                    setPage(1)
+                    setNotificationVis(false)
+                }
+            })
+        .catch(err => console.log(err));
+        axios.get(`https://be.zecpages.com/board/count`)
+        .then(res =>{ 
+                setPostCount(Number(res.data));
+            })
+        .catch(err => console.log(err));
+    }
+
+    useEffect(_ => {
+        if (newLike) addLike(newLike)
+    },[newLike])
+
+    const getNewPosts = () => {
+        
         const page = props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
@@ -148,9 +175,15 @@ export default function Board(props) {
         var channel = pusher.subscribe('board');
             // todo - Push new like ids ? Only manually refresh posts?
             channel.bind('new-post', function(data) {
-            console.log('board update', new Date().toISOString());
+            
+
+            if (data.liked_post_id) {
+                setNewLike(data.liked_post_id)
+            } else {
+                setNotificationVis(true);
+
+            }
             // getNewPosts();
-            setNotificationVis(true);
         });
     }, [])
 
@@ -205,9 +238,18 @@ export default function Board(props) {
         setTimeout(_ => document.querySelector(`.copied-tooltip-${id}`).classList.remove('visible'), 1000)
     }
 
+    const addLike = postId => {
+        const post = posts.find(post => post.id === postId)
+        console.log(posts)
+        if (!post) return
+        let newPosts = posts.filter(post => post.id !== postId)
+        newPosts.push({...post, likes: post.likes + 1})
+        setPosts(newPosts.sort( (a, b) => b.id-a.id))
+    }
+
     return (
         <div className={"z-board"}>
-            {notificationVis && <h2 onClick={getNewPosts} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={_ => getNewPostPageOne()} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZECpages Anonymous Memo Board</h2>
