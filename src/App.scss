@@ -2,6 +2,7 @@ $breakpoint-tablet: 864px;
 $breakpoint-mobile: 500px;
 $day-main: #fec8fc;
 $day-background: #5e63fd;
+$day-text: #3d4095;
 
 .shield-icon {
   width: 22px;
@@ -21,6 +22,18 @@ $dark-stripe: #ad860e;
   margin-bottom: 15px;
   margin-top: 5px;
 
+}
+
+.search-results-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  .copy-all-button {
+    cursor:pointer;
+    height: 26px;
+    border: 1px solid black;
+    background: $day-main;
+  }
 }
 
 .page-number {
@@ -119,6 +132,17 @@ $dark-stripe: #ad860e;
       
     }
   }
+
+  .copy-all-button {
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: $day-text;
+    font-size: 18px;
+    padding: 0px 3px;
+  }
+
   input:focus, button:focus {
     outline: 0;
   }
@@ -131,7 +155,7 @@ $dark-stripe: #ad860e;
   }
 
   .form-container {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -379,6 +403,10 @@ $dark-stripe: #ad860e;
 $dark-stripe: #7a5f0b;
 $dark-card-background: #0a5e55;
 .dark-mode {
+  .copy-all-button {
+    background: $dark-card-background;
+    color: #eee;
+  }
   .form-container {
     
   }
@@ -691,6 +719,15 @@ $dark-card-background: #0a5e55;
   }
 }
 
+@media (max-width: 972px) {
+  .search-controls {
+    width: 70%;
+  }
+
+  
+
+}
+
 @media (max-width: $breakpoint-tablet) {
   .App {
     .form-container {
@@ -701,7 +738,7 @@ $dark-card-background: #0a5e55;
       
     }
     .results-count {
-      width: 200px;
+
       
     }
     }
@@ -892,7 +929,7 @@ $dark-card-background: #0a5e55;
     
   }
 
-  @media (max-width: 680px) {
+  @media (max-width: 720px) {
     .form-container {
       
       flex-direction: column;

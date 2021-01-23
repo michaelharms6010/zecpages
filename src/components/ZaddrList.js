@@ -81,7 +81,7 @@ export default function ZaddrList (props) {
             <h2 className="main-header">Zcash Z-address Directory</h2>
             {/* <div className="top-buttons">
                 <a className="export-button" href="https://be.zecpages.com/users" target="_new"><button>Export All User Zaddr Data</button></a>
-                <button className="export-button" onClick={handleCopyAll}>Copy all filtered zaddrs to clipboard (comma-separated)</button>
+                
             </div> */}
             {searching || zaddrs.length > 0
             ? 
@@ -116,14 +116,25 @@ export default function ZaddrList (props) {
                     /></label>
                 </div>  
                 </div>
-                    {searching ? <p className="results-count">{zaddrs.length} results<br/> <span className="cancel-search-x" onClick={_=> setSearching(false)}>Clear Search</span></p> : loadingSearch ? <span>Searching...</span> : null }
-                {searching 
-                    ? null 
-                    : <div className="zaddr-page-buttons">
-                        <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
-                        <button className="page-number" disabled="disabled">{page} </button>
-                        <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
-                </div>}
+                <div className="search-controls">
+                    
+                    {searching ? 
+                    <div className="search-results-buttons">
+                    <button className="copy-all-button" onClick={handleCopyAll}><span style={{position: "relative", bottom: "2px", fontSize: "16px"}}>Copy</span></button>
+                    <p className="results-count">{zaddrs.length} results<br/> <span className="cancel-search-x" onClick={_=> setSearching(false)}>Clear Search</span></p> 
+                    </div>
+                    : loadingSearch  ? <span>Searching...</span> 
+                    : null }
+                    
+                    {searching 
+                        ? null 
+                        : <div className="zaddr-page-buttons">
+                            
+                            <button disabled={page !== 1 ? "" : "disabled"} onClick={_ => setPage(page -1) }className="zaddr-previous">Previous</button> 
+                            <button className="page-number" disabled="disabled">{page} </button>
+                            <button disabled={page * 25 < userCount ? "" : "disabled"} onClick={_ => setPage(page +1 )} className="zaddr-next">Next</button>      
+                    </div>}
+                </div>
             </div>
                 
                 {zaddrs.map(item => 
