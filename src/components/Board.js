@@ -120,6 +120,7 @@ export default function Board(props) {
 
       const getNotifiedContent = () => {
        if (newReplyId) {
+           setNotificationVis(false)
            props.history.push(`/board/post/${newReplyId}`)
            return
        }
