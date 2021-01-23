@@ -34,8 +34,7 @@ export default function About() {
                 <h2>lightwalletd server</h2>
                 <h4 style={{textAlign: "center"}}>ZECpages is powered by its own lightwalletd server. You are welcome to connect as well.</h4>
                 <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
-                <h4 style={{textAlign: "center"}}>Testnet</h4>
-                <p><strong style={{marginTop: "10px"}}>https://tlightwalletd.zecpages.com:443</strong></p>
+                <p><strong style={{marginTop: "10px"}}>Testnet: https://tlightwalletd.zecpages.com:443</strong></p>
             </div>
             <div className="about-content">
                 <h2>Team ZECpages</h2>
