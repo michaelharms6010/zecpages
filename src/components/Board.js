@@ -43,6 +43,7 @@ export default function Board(props) {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
@@ -110,16 +111,29 @@ export default function Board(props) {
         }
       }
 
-      const getNewPostPageOne = () => {
-       
+      function offset(el) {
+        var rect = el.getBoundingClientRect(),
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+        }
+
+      const getNotifiedContent = () => {
+       if (newReplyId) {
+           props.history.push(`/board/post/${newReplyId}`)
+           return
+       }
         if (!/board\/1$/.test(window.location)) {
             props.history.push("/board/1")
         }
+        fetchPinned();
         axios.get(`https://be.zecpages.com/board/1`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
-                    window.scroll(0,0)
+                    const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
+                    console.log(scrollHeight)
+                    window.scroll({top: scrollHeight, behavior: "smooth"})
                     setPosts(newPosts)
                     setPage(1)
                     setNotificationVis(false)
@@ -132,6 +146,7 @@ export default function Board(props) {
             })
         .catch(err => console.log(err));
     }
+
 
     useEffect(_ => {
         if (newLike) addLike(newLike)
@@ -179,9 +194,15 @@ export default function Board(props) {
 
             if (data.liked_post_id) {
                 setNewLike(data.liked_post_id)
-            } else {
+            } else if (data.reply_to) {
+                if (!notificationVis) {
+                    setNewReplyId(data.reply_to)
+                    setNotificationVis(true)
+                }
+            }
+            else {
+                setNewReplyId(null)
                 setNotificationVis(true);
-
             }
             // getNewPosts();
         });
@@ -249,7 +270,7 @@ export default function Board(props) {
 
     return (
         <div className={"z-board"}>
-            {notificationVis && <h2 onClick={_ => getNewPostPageOne()} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZECpages Anonymous Memo Board</h2>
