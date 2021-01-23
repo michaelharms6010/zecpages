@@ -157,6 +157,7 @@ $zcash-yellow: #ffbf00;
             border: none;
             font-size: 18px;
             border-radius: 0px;
+            border: 1px solid white;
         }
         .board-next {
             margin-right: 1px;
@@ -189,6 +190,7 @@ $zcash-yellow: #ffbf00;
         width:80%;
         margin: .5% auto;
         background: #bec0fe;
+        border: 1px solid #bec0fe;
         padding:10px;
         padding-top:0px;
         text-align:left;
@@ -221,6 +223,9 @@ $zcash-yellow: #ffbf00;
             color:rgb(117, 117, 117);
             display: flex;
             align-items:center;
+            p {
+                margin: 0px 10px;
+            }
             .like-icon {
                 width: 1.7rem;
                 height: 1.7rem;
@@ -263,6 +268,7 @@ $zcash-yellow: #ffbf00;
     .highlighted-board-post {
         width:80%;
         background:rgb(255, 135, 155);
+        border: 1px solid rgb(255, 135, 155);
         .post-date {
             margin: 0;
             padding-left:10px;
