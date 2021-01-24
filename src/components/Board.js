@@ -133,7 +133,6 @@ export default function Board(props) {
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
-                    console.log(scrollHeight)
                     window.scroll({top: scrollHeight, behavior: "smooth"})
                     setPosts(newPosts)
                     setPage(1)
@@ -263,7 +262,6 @@ export default function Board(props) {
     const addLike = postId => {
         const post = posts.find(post => post.id === postId)
         if (pinned.id === postId) setPinned({...pinned, likes: pinned.likes + 1})
-        console.log(posts)
         if (!post) return
         let newPosts = posts.filter(post => post.id !== postId)
         newPosts.push({...post, likes: post.likes + 1})

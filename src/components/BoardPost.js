@@ -144,10 +144,6 @@ export default function BoardPost(props) {
             setLikeQrVis(0)
         }
     }
-    
-    useEffect(_ => {
-        console.log(likeQrVis)
-    })
 
     return (
     <div className={darkMode ? "dark-mode z-board" : "z-board"}>
