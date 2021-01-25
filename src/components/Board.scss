@@ -443,7 +443,8 @@ $zcash-yellow: #ffbf00;
     }
 
     .reply-header {
-        border-color: $dark-theme-color
+        border-color: $dark-theme-color;
+        margin-top: 1%;
     }
 
     .page-number {
@@ -466,6 +467,7 @@ $zcash-yellow: #ffbf00;
         color: #ccc;
         font-weight: 500;
     }
+
     .board-explainer {
         background: #151632;
     }
