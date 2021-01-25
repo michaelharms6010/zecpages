@@ -562,6 +562,10 @@ $breakpoint-tablet: 864px;
 
 @media (max-width: 1000px) {
     .z-board {
+        .board-page-buttons {
+            margin-right: 2.5%;
+        }
+
 
         .replying-to-link {
             width: 97%;
