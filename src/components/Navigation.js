@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import {UserContext} from "../contexts/UserContext"
 
 import logo from "../icons/zecpageslogo.png"
+import whitestripes from "../icons/negative-space-logo.png"
 
 export default function Navigation() {
     const {loggedIn, setLoggedIn, darkMode, setDarkMode} = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function Navigation() {
             <nav className="main-nav">
                 
                     <Link className="zebra-icon" to="/board">
-                        <span aria-label='Zebra' role='img' className="emoji">🦓</span>
+                        <img src={whitestripes} className="negative-space-zebra"/>
                         <img alt="zecpages logo" className="logo" src={logo} />
                         
 
