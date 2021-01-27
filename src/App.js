@@ -70,7 +70,7 @@ function App() {
               <Route path="/board/:page" render={props => <Board {...props} />} />
 
               <Route path="/zaddr/:zaddr" render={props => <ZaddrPage zaddr={true} copied={copied} setCopied={setCopied} {...props} /> } />
-              <Route path="/u/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
+              <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>
           </div>
         </Router>
