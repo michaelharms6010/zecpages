@@ -14,6 +14,7 @@ let postIds, usernames;
 axios.get(baseURL + "/board/postids").then(r => {
   console.log(r)
   postIds = r.data.posts;
+  postIds.reverse();
 
 axios.get(baseURL + "/users/getUsernames").then(r => {
   console.log(r)
