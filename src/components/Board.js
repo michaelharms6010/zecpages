@@ -154,7 +154,7 @@ export default function Board(props) {
 
     const getNewPosts = () => {
         
-        const page = props.match.params.page || 1
+        const page = +props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
