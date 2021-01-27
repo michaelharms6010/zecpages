@@ -257,6 +257,7 @@ $dark-stripe: #ad860e;
   background:turquoise;
   padding:10px;
   max-width:1000px;
+
   .zaddr-link {
     margin-top:10px;
   }
@@ -717,7 +718,7 @@ $dark-card-background: #0a5e55;
   
 }
 @media (max-width: 1100px) {
-  .main-nav .about-link {
+  .main-nav .about-link, .main-nav .api-link {
     display:none;
 
   }
