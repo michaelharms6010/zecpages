@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "sitemap": "npx babel-node src/config/sitemap.js",
+    "sitemap": "node src/config/sitemap.js",
     "build": "npm run sitemap && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
