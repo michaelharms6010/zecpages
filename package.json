@@ -31,7 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "sitemap": "npx babel-node src/sitemap.js.mjs",
-    "build": "react-scripts build && cp public/sitemap.xml build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

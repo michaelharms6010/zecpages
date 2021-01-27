@@ -65,7 +65,6 @@ function App() {
               <Route exact path="/board" component={Board} />
               <Route exact path="/about" component={About} />
               <Route exact path="/leaderboard" component={Leaderboard} />
-              <Route exact path="/sitemap.xml" component={Leaderboard} />
 
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/board/:page" render={props => <Board {...props} />} />
