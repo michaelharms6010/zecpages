@@ -153,7 +153,11 @@ export default function Board(props) {
     },[newLike])
 
     const getNewPosts = () => {
-        
+
+        if (props.match.params.page === "0") {
+            props.history.push("/board/1")
+            return
+        }
         const page = +props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
