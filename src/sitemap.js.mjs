@@ -33,8 +33,8 @@ postIds.forEach(postId => {
   links.push({ url: `/board/post/${postId}`,  changefreq: 'weekly', priority: .4 })
 })
 
-usernames.forEach(postId => {
-  links.push({ url: `/${postId}`,  changefreq: 'weekly', priority: .3 })
+usernames.forEach(username => {
+  links.push({ url: `/${username}`,  changefreq: 'weekly', priority: .3 })
 })
 
 
