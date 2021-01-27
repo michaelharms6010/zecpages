@@ -25,11 +25,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.3.1",
     "sitemap": "^6.3.5",
+    "stream": "0.0.2",
     "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "sitemap": "node src/config/sitemap.js",
+    "sitemap": "npx babel-node src/sitemap.js.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
