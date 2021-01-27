@@ -23,11 +23,13 @@
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.3.1",
+    "sitemap": "^6.3.5",
     "styled-components": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv robots.txt build",
+    "sitemap": "./node_modules/.bin/babel-node src/config/sitemap.js",
+    "build": "npm run sitemap && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
