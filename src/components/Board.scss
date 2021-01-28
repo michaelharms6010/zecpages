@@ -273,6 +273,7 @@ $zcash-yellow: #ffbf00;
         width:80%;
         background:rgb(255, 135, 155);
         border: 1px solid rgb(255, 135, 155);
+
         .post-date {
             margin: 0;
             padding-left:10px;
@@ -288,6 +289,10 @@ $zcash-yellow: #ffbf00;
             font-size:20px;
             // text-align:center;
             // font-weight:520;
+        }
+        .sub-board-link {
+            font-size: 14px;
+            padding-bottom: 0;
         }
     }
     .individual-post {
