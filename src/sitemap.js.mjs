@@ -37,6 +37,8 @@ usernames.forEach(username => {
   links.push({ url: `/${username}`,  changefreq: 'weekly', priority: .4 })
 })
 
+// todo - get sub boards
+
 
 fs.writeFile('public/sitemap.xml', "", (err) => {
   if (err) throw err;
