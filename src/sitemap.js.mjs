@@ -26,15 +26,15 @@ const OUTPUT_FILE = path.resolve(process.cwd(), '..', '..', 'public', 'sitemap.x
 console.log(OUTPUT_FILE)
 const stream = new sm.SitemapStream({ hostname: 'https://zecpages.com/' })
 const links = [{ url: '/',  changefreq: 'daily', priority: 1 },
-{ url: '/directory',  changefreq: 'weekly',  priority: 0.5 },
-{ url: '/about', changefreq: 'weekly',  priority: 0.5 }]
+{ url: '/directory',  changefreq: 'weekly',  priority: 0.6 },
+{ url: '/about', changefreq: 'weekly',  priority: 0.1 }]
 
-postIds.forEach(postId => {
-  links.push({ url: `/board/post/${postId}`,  changefreq: 'weekly', priority: .4 })
+postIds.forEach((postId, index) => {
+  links.push({ url: `/board/post/${postId}`,  changefreq: 'weekly', priority: index < 50 ? .5 : .3 })
 })
 
 usernames.forEach(username => {
-  links.push({ url: `/${username}`,  changefreq: 'weekly', priority: .3 })
+  links.push({ url: `/${username}`,  changefreq: 'weekly', priority: .4 })
 })
 
 
