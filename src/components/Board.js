@@ -56,6 +56,7 @@ export default function Board(props) {
 
     const reformatShields = (str, replyZaddr, username) => {
         let output = []
+        str = str.replace(/^board::(\w+)/i, "")
         
         let string = str;
         if (replyZaddr && username ) {
