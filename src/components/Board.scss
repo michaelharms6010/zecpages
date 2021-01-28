@@ -204,7 +204,7 @@ $zcash-yellow: #ffbf00;
             padding-top: 15px;
         }
         .post-text {
-            display:inline-block;
+            display:block;
             font-size: 18px;
             padding:10px;
             word-break: break-word;
@@ -511,6 +511,11 @@ $zcash-yellow: #ffbf00;
         border: 1px solid #584304;
         a {
             color: #ddd;
+        }
+        .z-link {
+            padding: 0;
+            color: $zcash-yellow;
+            padding-left: 2px;
         }
         .post-text {
         }

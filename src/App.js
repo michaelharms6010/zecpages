@@ -15,6 +15,7 @@ import EditUserInfo from "./components/EditUserInfo";
 import About from "./components/About"
 import ZaddrPage from "./components/ZaddrPage"
 import Board from "./components/Board"
+import SubBoard from "./components/SubBoard"
 import BoardPost from "./components/BoardPost";
 import Drawing from "./components/Drawing";
 import Leaderboard from "./components/Leaderboard"
@@ -67,6 +68,7 @@ function App() {
               <Route exact path="/leaderboard" component={Leaderboard} />
               <Route exact path="/bitcoin" render={_ => window.location.href = "/bitcoin.pdf" } />
 
+              <Route path="/board/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/board/:page" render={props => <Board {...props} />} />
 

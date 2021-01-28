@@ -43,6 +43,7 @@ export default function Board(props) {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [loaded, setLoaded] = useState(false)
     const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
@@ -129,9 +130,10 @@ export default function Board(props) {
             props.history.push("/board/1")
         }
         fetchPinned();
-        axios.get(`https://be.zecpages.com/board/1`)
+        axios.get(`https://be.zecpages.com/board/z/${props.match.params.boardname}`)
         .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+            
+                let newPosts= res.data.board.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
                     window.scroll({top: scrollHeight, behavior: "smooth"})
@@ -139,6 +141,7 @@ export default function Board(props) {
                     setPage(1)
                     setNotificationVis(false)
                 }
+                
             })
         .catch(err => console.log(err));
         axios.get(`https://be.zecpages.com/board/count`)
@@ -160,12 +163,18 @@ export default function Board(props) {
             return
         }
         const page = +props.match.params.page || 1
-        axios.get(`https://be.zecpages.com/board/${page}`)
+        axios.get(`https://be.zecpages.com/board/z/${props.match.params.boardname}`)
         .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                console.log(res)
+                if (!res.data.board.length) {
+                    setLoaded(true)
+                    return
+                }
+                let newPosts= res.data.board.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
                     setPosts(newPosts)
                     setNotificationVis(false)
+                    setLoaded(true)
                 }
             })
         .catch(err => console.log(err));
@@ -284,77 +293,24 @@ export default function Board(props) {
                 <h4 className="board-zaddr">{qrVal} 
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
                 </h4>
-                <h4>**Include your zaddr in your post and you'll receive 50k zat for every like**</h4>
-                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}</code>
+                <h4 className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong> to reply on this board.</h4>
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code>
                 <br/><img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 
                 {qrVis 
-                ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
+                ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`} /><br /></> 
                 : null}
             </div>
-            {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
-            <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
-            {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px', opacity: "0"}}>.</h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
-            {pinned && !!posts.length && 
-                <>
-                
-                <div data-aos="flip-left"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="2000"
-                    id="pinned-post"
-                    key={pinned.id} 
-                    className={"highlighted-board-post board-post"}>
-                    <div className="pinned-header">
-                        {/* <h4>{pinned.id}</h4> */}
-                        <h4></h4>
-                        <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    </div>
-                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
-                    
-                    {likeTooltip === pinned.id &&
-                    <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
-                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
-                    <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-                    <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
-                    <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                    {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
-                    <div className="post-bottom-row">
-                    <div className="post-date">
-                            <div className="like-container">
-                                <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
-                                <span>{pinned.likes}</span>
-                            </div>
-                        
-                    </div>
-                    <div className="post-links">
-                        <div className="post-date" style={{display:'inline'}}>
-                            <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
-                        </div>
-                        <Link to={`/board/post/${pinned.id}`}> 
-                            {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
-                        </Link>
-                        <Link to={`/board/post/${pinned.id}`}> 
-                            Permalink
-                        </Link>
-                    </div>
-                    </div>
-                </div>
-                </>
-                }
+            
+            
 
         
             {posts.length > 0 
             ? 
             <>
-            <BoardPageControls
-                history={props.history} 
-                setPage={setPage}
-                next={next}
-                prev={prev}
-                page={page} />
+            
 
             {posts.map(item => 
                <>
@@ -363,7 +319,6 @@ export default function Board(props) {
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}
-                    {!!item.board_name && <p className="post-text">Posted to <Link className="z-link" to={`/board/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     
@@ -402,19 +357,18 @@ export default function Board(props) {
                 
                 </>
             )}
-            <BoardPageControls 
-                history={props.history}
-                setPage={setPage}
-                next={next}
-                prev={prev}
-                page={page} />
+
             <h5>{`There are currently ${postCount} posts on this board!`}</h5>
             </>
         : 
-        <>
+        loaded 
+        ?
+        <h3>There isn't a board for /z/{props.match.params.boardname} yet.</h3>
+        : 
+        <h3>
             <img id="spinner" alt="spinning zcash logo" src={logo} />
             
-        </>}
+        </h3>}
 
 
         </div>
