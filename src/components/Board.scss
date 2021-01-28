@@ -304,6 +304,11 @@ $zcash-yellow: #ffbf00;
         justify-content:space-between;
         text-align:left;
     }
+
+    .z-link {
+        color: $day-background;
+        padding: 0px 0px 0px 5px;
+    }
 }
 
 .z-board.bathroom-mode {
