@@ -69,6 +69,7 @@ export default function BoardPost(props) {
         if (replyZaddr && username ) {
             str = str.replace(replyZaddr, zaddrMarker)
         }
+        str = str.replace(/^board::(\w+)/i, "").trim()
 
 
         iconsToReplace.forEach(icon => {

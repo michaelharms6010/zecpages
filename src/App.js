@@ -57,7 +57,7 @@ function App() {
           <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#eee", background: "#333"} : {}}>
             <Navigation />
             <Switch>
-              <Redirect exact from="/" to="/board" />
+              <Redirect exact from="/" to="/z/all" />
               {/* <Route exact path="/poll" render={() => <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />} /> */}
               <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
@@ -67,14 +67,16 @@ function App() {
               <Route exact path="/about" component={About} />
               <Route exact path="/leaderboard" component={Leaderboard} />
               <Route exact path="/bitcoin" render={_ => window.location.href = "/bitcoin.pdf" } />
-              <Route exact path="/z" render={_ => <Redirect to="/board/1" />} />
-              <Route path="/z/:boardname" render={props => <SubBoard {...props} />} />
+              <Route exact path="/z" render={_ => <Redirect to="/z/all" />} />
+              <Route exact path="/z/all" render={props => <Board {...props} />} />
+              <Route path="/z/all/:page" render={props => <Board {...props} />} />
               <Route path="/board/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/z/post/:id" component={BoardPost} />
               <Route path="/board/:page" render={props => <Board {...props} />} />
 
               <Route path="/zaddr/:zaddr" render={props => <ZaddrPage zaddr={true} copied={copied} setCopied={setCopied} {...props} /> } />
+              <Route path="/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>
           </div>

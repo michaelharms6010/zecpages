@@ -27,7 +27,7 @@ export default function Navigation() {
                     
                 <div className="main-nav-inner">
                     <input type="checkbox" className="dark-mode-toggle" checked={darkMode} value={darkMode} onChange={ _ => setDarkMode(!darkMode)} />
-                    <Link to="/board/1">Board</Link>
+                    <Link to="/z/all/1">Board</Link>
                     <Link to="/directory">Zaddrs</Link>
                     <Link className="about-link" to="/about">About</Link>
                     <a className="api-link" href="https://github.com/michaelharms6010/be-zeitpages/" rel="noopener noreferrer" target="_blank">API</a>

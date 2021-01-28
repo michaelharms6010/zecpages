@@ -122,11 +122,11 @@ export default function Board(props) {
       const getNotifiedContent = () => {
        if (newReplyId) {
            setNotificationVis(false)
-           props.history.push(`/board/post/${newReplyId}`)
+           props.history.push(`/z/post/${newReplyId}`)
            return
        }
         if (!/board\/1$/.test(window.location)) {
-            props.history.push("/board/1")
+            props.history.push("/z/all/1")
         }
         fetchPinned();
         axios.get(`https://be.zecpages.com/board/1`)
@@ -156,7 +156,7 @@ export default function Board(props) {
     const getNewPosts = () => {
 
         if (props.match.params.page === "0") {
-            props.history.push("/board/1")
+            props.history.push("/z/all/1")
             return
         }
         const page = +props.match.params.page || 1
@@ -333,10 +333,10 @@ export default function Board(props) {
                         <div className="post-date" style={{display:'inline'}}>
                             <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
                         </div>
-                        <Link to={`/board/post/${pinned.id}`}> 
+                        <Link to={`/z/post/${pinned.id}`}> 
                             {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
                         </Link>
-                        <Link to={`/board/post/${pinned.id}`}> 
+                        <Link to={`/z/post/${pinned.id}`}> 
                             Permalink
                         </Link>
                     </div>
@@ -363,7 +363,7 @@ export default function Board(props) {
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}
-                    {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/board/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
+                    {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     
@@ -389,10 +389,10 @@ export default function Board(props) {
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
                     <div className="post-links">
-                        <Link to={`/board/post/${item.id}`}> 
+                        <Link to={`/z/post/${item.id}`}> 
                         {item.reply_count > 1 ? `${item.reply_count} Replies` : item.reply_count === 1 ? "1 Reply" : "Reply"}
                         </Link>
-                        <Link to={`/board/post/${item.id}`}> 
+                        <Link to={`/z/post/${item.id}`}> 
                         Permalink
                         </Link>
                     </div>

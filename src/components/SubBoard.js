@@ -113,6 +113,9 @@ export default function Board(props) {
         }
       }
 
+
+
+
       function offset(el) {
         var rect = el.getBoundingClientRect(),
         scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
@@ -123,11 +126,11 @@ export default function Board(props) {
       const getNotifiedContent = () => {
        if (newReplyId) {
            setNotificationVis(false)
-           props.history.push(`/board/post/${newReplyId}`)
+           props.history.push(`/z/post/${newReplyId}`)
            return
        }
         if (!/board\/1$/.test(window.location)) {
-            props.history.push("/board/1")
+            props.history.push("/z/all/1")
         }
         fetchPinned();
         axios.get(`https://be.zecpages.com/board/z/${props.match.params.boardname}`)
@@ -159,7 +162,7 @@ export default function Board(props) {
     const getNewPosts = () => {
 
         if (props.match.params.page === "0") {
-            props.history.push("/board/1")
+            props.history.push("/z/all/1")
             return
         }
         const page = +props.match.params.page || 1
@@ -344,10 +347,10 @@ export default function Board(props) {
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
                     <div className="post-links">
-                        <Link to={`/board/post/${item.id}`}> 
+                        <Link to={`/z/post/${item.id}`}> 
                         {item.reply_count > 1 ? `${item.reply_count} Replies` : item.reply_count === 1 ? "1 Reply" : "Reply"}
                         </Link>
-                        <Link to={`/board/post/${item.id}`}> 
+                        <Link to={`/z/post/${item.id}`}> 
                         Permalink
                         </Link>
                     </div>
