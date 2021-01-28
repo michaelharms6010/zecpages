@@ -289,11 +289,11 @@ export default function Board(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h1>z/{props.match.params.boardname}</h1>
-                <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
+                <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC to`}</h4>
                 <h4 className="board-zaddr">{qrVal} 
                     
                 </h4>
-                <h4 className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
+                <h4 style={{fontSize: "18px", margin: "10px"}} className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
                 <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer', marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
