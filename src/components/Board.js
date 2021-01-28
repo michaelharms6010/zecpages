@@ -363,7 +363,7 @@ export default function Board(props) {
                 <div className="aos-container" >
                 <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}
-                    {!!item.board_name && <p className="post-text">Posted to <Link className="z-link" to={`/board/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
+                    {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/board/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     
