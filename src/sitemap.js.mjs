@@ -35,7 +35,7 @@ const links = [{ url: '/',  changefreq: 'daily', priority: 1 },
 { url: '/about', changefreq: 'weekly',  priority: 0.1 }]
 
 postIds.forEach((postId, index) => {
-  links.push({ url: `/board/post/${postId}`,  changefreq: 'weekly', priority: index < 50 ? .5 : .3 })
+  links.push({ url: `/z/post/${postId}`,  changefreq: 'weekly', priority: index < 50 ? .5 : .3 })
 })
 
 usernames.forEach(username => {
