@@ -291,10 +291,10 @@ export default function Board(props) {
                 <h2>ZECpages Anonymous Memo Board</h2>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
                 <h4 className="board-zaddr">{qrVal} 
-                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(qrVal); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+                    
                 </h4>
                 <h4 className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong> to reply on this board.</h4>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code>
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
                 <br/><img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 
