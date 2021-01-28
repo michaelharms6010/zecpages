@@ -43,7 +43,7 @@ usernames.forEach(username => {
 })
 
 subBoards.forEach(subBoard => {
-  links.push({ url: `board/z/${subBoard}`,  changefreq: 'daily', priority: .6 })
+  links.push({ url: `z/${subBoard}`,  changefreq: 'daily', priority: .6 })
 })
 
 // todo - get sub boards
