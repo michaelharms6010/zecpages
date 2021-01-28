@@ -7,10 +7,15 @@ import axios from 'axios';
 import { Readable } from 'stream'
 const baseURL = "https://be.zecpages.com"
 
-let postIds, usernames;
+let postIds, usernames, subBoards;
 
 // get post ids
 // get usernames
+
+axios.get(baseURL + "/board/boardnames").then(r => {
+
+  subBoards = r.data.boards.filter(b => b)
+
 axios.get(baseURL + "/board/postids").then(r => {
   console.log(r)
   postIds = r.data.posts;
@@ -26,7 +31,7 @@ const OUTPUT_FILE = path.resolve(process.cwd(), '..', '..', 'public', 'sitemap.x
 console.log(OUTPUT_FILE)
 const stream = new sm.SitemapStream({ hostname: 'https://zecpages.com/' })
 const links = [{ url: '/',  changefreq: 'daily', priority: 1 },
-{ url: '/directory',  changefreq: 'weekly',  priority: 0.6 },
+{ url: '/directory',  changefreq: 'daily',  priority: 0.6 },
 { url: '/about', changefreq: 'weekly',  priority: 0.1 }]
 
 postIds.forEach((postId, index) => {
@@ -35,6 +40,10 @@ postIds.forEach((postId, index) => {
 
 usernames.forEach(username => {
   links.push({ url: `/${username}`,  changefreq: 'weekly', priority: .4 })
+})
+
+subBoards.forEach(subBoard => {
+  links.push({ url: `board/z/${subBoard}`,  changefreq: 'daily', priority: .6 })
 })
 
 // todo - get sub boards
@@ -53,5 +62,6 @@ sm.streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
 
 console.log(`Sitemap written at ${OUTPUT_FILE}`)
 
+}).catch(err => console.log(err))
 }).catch(err => console.log(err))
 }).catch(err => console.log(err))
