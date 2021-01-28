@@ -288,14 +288,14 @@ export default function Board(props) {
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h2>ZECpages Anonymous Memo Board</h2>
+                <h1>z/{props.match.params.boardname}</h1>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
                 <h4 className="board-zaddr">{qrVal} 
                     
                 </h4>
-                <h4 className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong> to reply on this board.</h4>
+                <h4 className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
-                <br/><img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginTop: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
+                <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer', marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 
                 {qrVis 
@@ -358,7 +358,7 @@ export default function Board(props) {
                 </>
             )}
 
-            <h5>{`There are currently ${postCount} posts on this board!`}</h5>
+            <h5>{`There are currently ${posts.length} posts on z/${props.match.params.boardname}`}</h5>
             </>
         : 
         loaded 
