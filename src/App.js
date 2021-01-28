@@ -71,6 +71,7 @@ function App() {
               <Route path="/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/board/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/board/post/:id" component={BoardPost} />
+              <Route path="/z/post/:id" component={BoardPost} />
               <Route path="/board/:page" render={props => <Board {...props} />} />
 
               <Route path="/zaddr/:zaddr" render={props => <ZaddrPage zaddr={true} copied={copied} setCopied={setCopied} {...props} /> } />
