@@ -20,7 +20,7 @@ import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
-
+import zebraemoji from "../icons/negative-space-logo.png"
 
 export default function Board(props) {
     AOS.init()
@@ -50,7 +50,7 @@ export default function Board(props) {
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
 
-    const iconsToReplace = [{"🛡": <img className="shield-icon" src={shieldicon} />}]
+    const iconsToReplace = [{"🦓": <img className="zebra-icon" src={zebraemoji} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
 
     const zaddrMarker = "🚠"
 
@@ -64,39 +64,37 @@ export default function Board(props) {
         }
 
 
-        iconsToReplace.forEach(icon => {
-            let char = Object.keys(icon)[0]
-            let Image = icon[char]
-            let shieldUnicode = /\ud83d\udee1/
 
-            
-          
-                for (let i = 0; i < str.length ; i++) {
-                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1)  ) {
-                        
-                        output.push(Image)
-                        if (str[i+1] != " ") {
-                            output.push(" ")
-                        }
-                        i++
-                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                        output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
-                        i++
-                    } else {
-                        output.push(str[i])
-                    }
 
-                    
-                    if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " "  )  {
+        let shieldUnicode = /\ud83d\udee1/
+
+        
+        
+            for (let i = 0; i < str.length ; i++) {
+                const icon = iconsToReplace.find(icon => Object.keys(icon)[0].charCodeAt(0) == str[i].charCodeAt(0) && str[i+1].charCodeAt(0) == Object.keys(icon)[0].charCodeAt(1) )
+                if (icon) {
+                    let Image = Object.values(icon)[0]
+                    output.push(Image)
+                    if (str[i+1] != " ") {
                         output.push(" ")
                     }
-                    
-
-                    
+                    i++
+                } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
+                    output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
+                    i++
+                } else {
+                    output.push(str[i])
                 }
-            
 
-        })
+                
+                if (str[i+1] && iconsToReplace.find(icon => Object.keys(icon)[0].charCodeAt(0) === str[i+1].charCodeAt(0)) && str[i] != " "  )  {
+                    output.push(" ")
+                }
+                
+
+                
+            }
+        
         return output
     }
 
