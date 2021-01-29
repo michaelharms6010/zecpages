@@ -189,6 +189,7 @@ $zcash-yellow: #ffbf00;
     }
   
     .board-post {
+
         width:80%;
         margin: .5% auto;
         background: #bec0fe;
@@ -197,6 +198,11 @@ $zcash-yellow: #ffbf00;
         padding-top:0px;
         text-align:left;
         border-radius: 5px;
+
+        .zebra-icon {
+            height: 19px;
+            width: 20px;
+          }
         p {
             code {
                 margin-bottom: 10px;

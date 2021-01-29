@@ -20,7 +20,7 @@ import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
-import zebraemoji from "../icons/negative-space-logo.png"
+import zebraemoji from "../icons/zebra-emoji.png"
 
 export default function Board(props) {
     AOS.init()

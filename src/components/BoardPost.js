@@ -12,6 +12,8 @@ import {copyTextToClipboard} from "../utils/copy"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
+import zebraemoji from "../icons/zebra-emoji.png"
+
 var Base64 = require("js-base64")
 var Buffer = require('buffer/').Buffer
 var decoder = new TextDecoder();
@@ -40,12 +42,55 @@ export default function BoardPost(props) {
         setTimeout(_ => document.querySelector(`.like-copied-${id}`).classList.remove('visible'), 1000)
     }
 
-    const iconsToReplace = [{"🛡": <img className="shield-icon" src={shieldicon} />}]
-    const charCodes = iconsToReplace.map(item => Object.keys(item)[0].charCodeAt(0))
-    const zaddrMarker = "🚠"
-    const zaddrRegex = /^zs[a-z0-9]{76}$/ig;
 
-    
+
+    const iconsToReplace = [{"🦓": <img className="zebra-icon" src={zebraemoji} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
+
+    const zaddrMarker = "🚠"
+
+    const reformatShields = (str, replyZaddr, username) => {
+        let output = []
+        str = str.replace(/^board::(\w+)/i, "").trim()
+        
+        let string = str;
+        if (replyZaddr && username ) {
+            str = str.replace(replyZaddr, zaddrMarker)
+        }
+
+
+
+
+        let shieldUnicode = /\ud83d\udee1/
+
+        
+        
+            for (let i = 0; i < str.length ; i++) {
+                const icon = iconsToReplace.find(icon => Object.keys(icon)[0].charCodeAt(0) == str[i].charCodeAt(0) && str[i+1].charCodeAt(0) == Object.keys(icon)[0].charCodeAt(1) )
+                if (icon) {
+                    let Image = Object.values(icon)[0]
+                    output.push(Image)
+                    if (str[i+1] != " ") {
+                        output.push(" ")
+                    }
+                    i++
+                } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
+                    output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
+                    i++
+                } else {
+                    output.push(str[i])
+                }
+
+                
+                if (str[i+1] && iconsToReplace.find(icon => Object.keys(icon)[0].charCodeAt(0) === str[i+1].charCodeAt(0)) && str[i] != " "  )  {
+                    output.push(" ")
+                }
+                
+
+                
+            }
+        
+        return output
+    }
 
 
 
@@ -63,50 +108,6 @@ export default function BoardPost(props) {
 
     }
 
-    const reformatShields = (str, replyZaddr,  username) => {
-        let output = []
-        let string = str;
-        if (replyZaddr && username ) {
-            str = str.replace(replyZaddr, zaddrMarker)
-        }
-        str = str.replace(/^board::(\w+)/i, "").trim()
-
-
-        iconsToReplace.forEach(icon => {
-            let char = Object.keys(icon)[0]
-            let Image = icon[char]
-            let shieldUnicode = /\ud83d\udee1/
-
-            
-          
-                for (let i = 0; i < str.length ; i++) {
-                    if (str[i].charCodeAt(0) == char.charCodeAt(0) && str[i+1].charCodeAt(0) == char.charCodeAt(1) && darkMode) {
-                        
-                        output.push(Image)
-                        if (str[i+1] != " ") {
-                            output.push(" ")
-                        }
-                        i++
-                    } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                        output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
-                        i++
-                    } else {
-                        output.push(str[i])
-                    }
-
-                    
-                    if (str[i+1] && str[i+1].charCodeAt(0) === char.charCodeAt(0) && str[i] != " " && darkMode) {
-                        output.push(" ")
-                    }
-                    
-
-                    
-                }
-            
-
-        })
-        return output
-    }
     useEffect( _ => {
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => {
