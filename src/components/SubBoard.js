@@ -199,30 +199,7 @@ export default function Board(props) {
     }
 
     useEffect(_ => {
-        Pusher.logToConsole = false;
-        var pusher = new Pusher('0cea3b0950ab8614f8e9', {
-            cluster: 'us2',
-            forceTLS: true
-        });
-        var channel = pusher.subscribe('board');
-            // todo - Push new like ids ? Only manually refresh posts?
-            channel.bind('new-post', function(data) {
-            
 
-            if (data.liked_post_id) {
-                setNewLike(data.liked_post_id)
-            } else if (data.reply_to) {
-                if (!notificationVis) {
-                    setNewReplyId(data.reply_to)
-                    setNotificationVis(true)
-                }
-            }
-            else {
-                setNewReplyId(null)
-                setNotificationVis(true);
-            }
-            // getNewPosts();
-        });
     }, [])
 
     useEffect( _ => {
