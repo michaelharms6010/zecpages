@@ -14,6 +14,17 @@
         text-shadow: black;
     }
 
+    .leaderboard-icon-one {
+        background-image: url(../images/greaserskull.gif);
+        width: 2rem;
+        height: 2rem;
+        background-size: contain;
+    }
+
+    .leaderboard-icon-two {
+        
+    }
+
 }
 
 #night-1 {
@@ -263,4 +274,59 @@ background-size:100px 100px;
 
 #day-15 {
     
+}
+
+
+.leaderboard-icon {
+    position:absolute;
+}
+
+.leaderboard-icon-one {
+    left: 50%;
+    bottom: 3px;
+}
+
+.leaderboard-icon-two {
+    left: 40%;
+    bottom: 3px;
+}
+
+.leaderboard-icon-three {
+    left: 60%;
+    bottom: 3px;
+}
+
+.leaderboard-icon-four {
+    left: 70%;
+    bottom: 3px;
+}
+
+.leaderboard-icon-five {
+    right: 25px;
+    bottom: 2.5rem;
+}
+
+.leaderboard-icon-six {
+    right: 75%;
+    bottom: 2.5rem;
+}
+
+.leaderboard-icon-seven {
+    right: 65%;
+    bottom: 2.5rem;
+}
+
+.leaderboard-icon-eight {
+    right: 55%;
+    bottom: 2.5rem;
+}
+
+.leaderboard-icon-nine {
+    right: 45%;
+    bottom: 2.5rem;
+}
+
+.leaderboard-icon-ten {
+    right: 35%;
+    bottom: 2.5rem;
 }
