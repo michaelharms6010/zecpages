@@ -1,16 +1,24 @@
 #day-1 {
+    border: 2px solid white;
     background-image: url("../images/daycloud.gif");
     animation: moveclouds 14s linear 0s infinite;
     color: black;
+    border: 4px solid white;
     @keyframes moveclouds {
         0%  {background-position: 0px 0px;}
         100% {background-position: 1134px 0px;}
         }
 
+    p {
+        color: white;
+        text-shadow: black;
+    }
+
 }
 
 #night-1 {
-    background-image: url(../images/starz.gif);
+    border: 2px solid white;
+    background-image: url(../images/sayclubfireworx.gif);
     background-color: #000000;
     animation: nightcolors 12s linear 0s infinite;
     @keyframes nightcolors {
@@ -20,24 +28,41 @@
     }
     
     p {
-        color: cyan;
-        text-shadow: 2px 2px magenta;
+        color: white;
+        text-shadow: -2px 0 #32127a, 0 1px #32127a, 2px 0 #32127a, 0 -1px #32127a;
     }
 }
 
 #night-2 {
-    background-image: url("../images/TVstatic.gif");
-    border: 4px dashed white;
+    background-color: #269;
+    background-image:
+      linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 2px),
+      linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    border: 2px solid white;
+
+    p {
+        color: white;
+        text-shadow: 2px 1px 0px black;
+    }
 }
     
 
 #night-3 {
     background-image: url(../images/cutiecircuits.gif);
-    border: 10px double rgb(228, 236, 236);
+    border: 2px solid rgb(228, 236, 236);
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
     
 }
 
 #night-4 {
+    border: 2px solid white;
     background-image: url(../images/night.jfif);
     background-position: center;
     animation: nightclouds 12s linear 0s infinite;
@@ -45,14 +70,20 @@
         0%  {background-position: 0px -50px;}
         100% {background-position: 474px -50px;}
     }
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
 }
 
 #day-2 {
-    border: 4px double;
+    border: 2px solid black;
     background-image: url(../images/rose-bk2.gif);
 }
 
 #day-3 {
+    border: 2px solid black;
     background-image: url(../images/tiledmikey.gif);
     background-repeat: repeat;
     background-attachment: scroll;
@@ -66,6 +97,7 @@
 }
 
 #day-4 {
+    border: 2px solid black;
     background-image: url(../images/tiledcoloranimation.gif);
     background-repeat: repeat;
     background-attachment: scroll;
@@ -73,17 +105,162 @@
 }
 
 #night-5 {
-    background-image: url(../images/tiledpsych05.gif);
-    background-repeat: repeat;
-    background-attachment: fixed;
+    border: 2px solid white;
+    background-image: url(../images/tiled90s.gif);
     background-position: center;
     
 }
 
 #day-5 {
+    border: 2px solid black;
     background-image: url(../images/tiledwater.gif);
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center;
 
+}
+
+#night-6 {
+    border: 2px solid white;
+    background-image: url(../images/tileddoggoDARKO.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
+}
+
+#night-7 {
+    border: 2px solid white;
+    background-image: url(../images/roses.gif);
+    background-repeat: repeat;
+    background-position: center;
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
+}
+
+#night-8 {
+    border: 2px solid white;
+    background-image: url(../images/tiledmatrixcode.gif);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
+}
+
+#night-9 {
+    border: 2px solid white;
+    background:
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
+    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
+    linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
+    background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
+    background-color: #840b2a;
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
+}
+
+#night-10 {
+    border: 2px solid white;
+    background-image: url(../images/5023.png);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    p {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    }
+    
+}
+
+#day-6 {
+    border: 2px solid black;
+}
+
+#day-7 {
+    border: 2px solid black;
+}
+
+#day-8 {
+    border: 2px solid black;
+}
+
+#day-9 {
+    border: 2px solid black;
+}
+
+#day-10 {
+    border: 2px solid black;
+}
+
+#night-11 {
+    background:
+radial-gradient(circle at 50% 59%, #D2CAAB 3%, #364E27 4%, #364E27 11%, rgba(54,78,39,0) 12%, rgba(54,78,39,0)) 50px 0,
+radial-gradient(circle at 50% 41%, #364E27 3%, #D2CAAB 4%, #D2CAAB 11%, rgba(210,202,171,0) 12%, rgba(210,202,171,0)) 50px 0,
+radial-gradient(circle at 50% 59%, #D2CAAB 3%, #364E27 4%, #364E27 11%, rgba(54,78,39,0) 12%, rgba(54,78,39,0)) 0 50px,
+radial-gradient(circle at 50% 41%, #364E27 3%, #D2CAAB 4%, #D2CAAB 11%, rgba(210,202,171,0) 12%, rgba(210,202,171,0)) 0 50px,
+radial-gradient(circle at 100% 50%, #D2CAAB 16%, rgba(210,202,171,0) 17%),
+radial-gradient(circle at 0% 50%, #364E27 16%, rgba(54,78,39,0) 17%),
+radial-gradient(circle at 100% 50%, #D2CAAB 16%, rgba(210,202,171,0) 17%) 50px 50px,
+radial-gradient(circle at 0% 50%, #364E27 16%, rgba(54,78,39,0) 17%) 50px 50px;
+background-color:#63773F;
+background-size:100px 100px;
+}
+
+#night-12 {
+    background:
+    linear-gradient(180deg, rgba(255, 0, 102, 0) 20%, rgba(255, 0, 102, .1) 20%, rgba(255, 0, 102, .1) 40%, rgba(255, 0, 102, .2) 40%, rgba(255, 0, 102, .2) 60%, rgba(255, 0, 102, .4) 60%, rgba(255, 0, 102, .4) 80%, rgba(255, 0, 102, .6) 80%),
+    linear-gradient(-90deg, rgba(255, 0, 102, 0) 20%, rgba(255, 0, 102, .1) 20%, rgba(255, 0, 102, .1) 40%, rgba(255, 0, 102, .2) 40%, rgba(255, 0, 102, .2) 60%, rgba(255, 0, 102, .4) 60%, rgba(255, 0, 102, .4) 80%, rgba(255, 0, 102, .6) 80%);
+  background-color: #fc0;
+  background-size: 100% 100%;
+  min-height: 100%;
+}
+
+#night-13 {
+    
+}
+
+#night-14 {
+
+}
+
+#night-15 {
+
+}
+
+#day-11 {
+
+}
+
+#day-12 {
+
+}
+
+#day-13 {
+
+}
+
+#day-14 {
+
+}
+
+#day-15 {
+    
 }
