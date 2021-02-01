@@ -327,6 +327,9 @@ $dark-stripe: #ad860e;
     justify-content:space-between;
     align-items:center;
   }
+  
+
+  
 
   .card-bottom-row {
     display:flex;
@@ -409,6 +412,30 @@ $dark-stripe: #ad860e;
 
 $dark-stripe: #7a5f0b;
 $dark-card-background: #0a5e55;
+
+.dark-mode .zaddr-card {
+  background: $dark-card-background;
+  input, textarea {
+    color: black;
+  }
+}
+
+.dark-mode .auth-form {
+  color: #eee;
+  background: $dark-card-background;
+  input {
+    background: none;
+    border: 1px solid black;
+    color: #eee;
+  }
+  h2 {
+    color: #eee;
+  }
+  button {
+    color: black;
+    margin-top: 15px;
+  }
+}
 .dark-mode {
   .copy-all-button {
     background: $dark-card-background;
