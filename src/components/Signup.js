@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import axios from "axios";
 import {UserContext} from "../contexts/UserContext";
 import ReactGA from "react-ga";
@@ -10,10 +10,16 @@ export default function Login({location, history}) {
 
     const [formInfo, setFormInfo] = useState({username: "", password: "", password2: "", referrer: referrer || null});
     const [alert, setAlert] = useState("")
-    const {setLoggedIn} = useContext(UserContext);
+    const {loggedIn, setLoggedIn} = useContext(UserContext);
     const handleChange = e => {
         setFormInfo({...formInfo, [e.target.name]: e.target.value})
     }
+
+    useEffect(_ => {
+        if (loggedIn) {
+            history.push("/")
+        }
+    }, [])
 
     const handleSubmit = e => {
         e.preventDefault();

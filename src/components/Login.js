@@ -1,12 +1,18 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import axios from "axios";
 import {UserContext} from "../contexts/UserContext";
 import ReactGA from "react-ga";
 
 export default function Login({history}) {
-    const {setLoggedIn} = useContext(UserContext);
+    const {loggedIn, setLoggedIn} = useContext(UserContext);
     const [formInfo, setFormInfo] = useState({username: "", password: ""});
     const [error, setError] = useState("");
+
+    useEffect(_ => {
+        if (loggedIn) {
+            history.push("/")
+        }
+    })
 
     const handleChange = e => {
         setFormInfo({...formInfo, [e.target.name]: e.target.value})
