@@ -156,10 +156,15 @@ export default function Board() {
             {posts.map((item, index) => 
                <>
 
-                <div >
                 <div style={{position: "relative"}} id={`${darkMode ? "night" : "day"}-${index+1}`} key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
-                    <LeaderboardIcons />
-                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
+                    {/* <LeaderboardIcons />
+                     */}
+                    <div className="leaderboard-post-container">
+                        <img className="post-gif"></img>
+                        <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
+                        {[2].includes(index) && <img className="reversed-post-gif post-gif"></img>}
+                    </div>
+                    
                     <div className="post-bottom-row">
                     <div className="post-date">
                     {item.likes ?
@@ -187,7 +192,7 @@ export default function Board() {
                     {replyQrVis && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
                 </div> 
-                </div>  
+
                 </>
             )}
             <div className="board-page-buttons">

@@ -1,63 +1,84 @@
+.leaderboard-post-container {
+    display: flex;
+    align-items: center;
+    .post-gif {
+        width: 15%;
+        height: 50%;
+        padding: 1%;
+    }
+    .reversed-post-gif {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+}
+
+.post-text {
+    width: 85%;
+}
+
+.board-post:nth-child(odd) {
+    .leaderboard-post-container {
+        flex-direction: row-reverse;
+    }
+}
+
+
 #day-1 {
     border: 2px solid white;
-    background-image: url("../images/daycloud.gif");
-    animation: moveclouds 14s linear 0s infinite;
+    background-image: url(../images/sayclubg01.gif);
+
     color: black;
-    border: 4px solid white;
-    @keyframes moveclouds {
-        0%  {background-position: 0px 0px;}
-        100% {background-position: 1134px 0px;}
-        }
+    border: 2px solid white;
+   // @keyframes moveclouds {
+   //     0%  {background-position: 0px 0px;}
+   //     100% {background-position: 1134px 0px;}
+        //}
 
-    p {
+    .post-gif {
+        content: url(../icons/leaderboard-icons/clappinghands.gif);
+    }
+
+
+
+    .post-text {
         color: white;
-        text-shadow: black;
+        text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+        font-size: 1.5rem
     }
 
-    .leaderboard-icon-one {
-        background-image: url(../images/greaserskull.gif);
-        width: 2rem;
-        height: 2rem;
-        background-size: contain;
-    }
-
-    .leaderboard-icon-two {
-        
-    }
 
 }
 
 #night-1 {
     border: 2px solid white;
-    background-image: url(../images/sayclubfireworx.gif);
+    background-image: url(../images/sayclubg01.gif);
     background-color: #000000;
-    animation: nightcolors 12s linear 0s infinite;
-    @keyframes nightcolors {
-        0%  {}
-        0%  {background-position: 0px 0px;}
-        100% {background-position: 304px 0px;}
-    }
+    background-repeat: repeat;
+    background-position-x: right;
     
-    p {
+    .post-text {
         color: white;
-        text-shadow: -2px 0 #32127a, 0 1px #32127a, 2px 0 #32127a, 0 -1px #32127a;
+        text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+        font-size: 1.5rem
+    }
+
+    .post-gif {
+        content: url(../icons/leaderboard-icons/clappinghands.gif)
     }
 }
 
 #night-2 {
-    background-color: #269;
-    background-image:
-      linear-gradient(rgba(255,255,255,.5) 2px, transparent 2px),
-      linear-gradient(90deg, rgba(255,255,255,.5) 2px, transparent 2px),
-      linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-image: url(../images/staticGlFO.gif);
     border: 2px solid white;
 
-    p {
+    .post-text {
         color: white;
-        text-shadow: 2px 1px 0px black;
+        text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+        font-size: 1.5rem
+    }
+
+    .post-gif {
+        content: url(../icons/leaderboard-icons/blue-globe.gif)
     }
 }
     
@@ -65,25 +86,37 @@
 #night-3 {
     background-image: url(../images/cutiecircuits.gif);
     border: 2px solid rgb(228, 236, 236);
-    p {
+    .post-text {
         color: white;
-        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+        font-size: 1.5rem;
+        justify-content: center;
     }
-    
+
+    .post-gif {
+        content: url(../icons/leaderboard-icons/computer-and-mouse.gif);
+        padding-left: 5%;
+    }
+
+    .post-gif.reversed-post-gif {
+        
+    }
+
 }
 
 #night-4 {
     border: 2px solid white;
-    background-image: url(../images/night.jfif);
+    background-image: url(../images/starz.gif);
     background-position: center;
-    animation: nightclouds 12s linear 0s infinite;
-    @keyframes nightclouds {
-        0%  {background-position: 0px -50px;}
-        100% {background-position: 474px -50px;}
-    }
-    p {
+    background-color: black;
+    .post-text {
         color: white;
         text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
+    }
+    .post-gif {
+        content: url(../icons/leaderboard-icons/arabbit04.gif);
+        padding-right: 3%;
     }
     
 }
@@ -91,6 +124,16 @@
 #day-2 {
     border: 2px solid black;
     background-image: url(../images/rose-bk2.gif);
+    .post-text {
+        color: white;
+        text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
+        font-size: 1.5rem
+    }
+
+    .post-gif {
+        content: url(../icons/leaderboard-icons/blue-globe.gif)
+    }
+
 }
 
 #day-3 {
@@ -105,20 +148,47 @@
         0%  {background-position: 200px 200px;}
         100% {background-position: 200px 20px;}
         }
+
+    .leaderboard-icon.leaderboard-icon-one {
+        background-image: url(../icons/leaderboard-icons/blue-elephant.gif);
+        right: 20px;
+        bottom: 30px;
+    }
+
 }
 
 #day-4 {
     border: 2px solid black;
-    background-image: url(../images/tiledcoloranimation.gif);
+    background-image: url(../images/daycloud.gif);
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: center;
+    .post-text {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
+    }
+    .post-gif {
+        content: url(../icons/leaderboard-icons/arabbit10.gif);
+        padding-right: 3%;
+    }
 }
 
 #night-5 {
     border: 2px solid white;
-    background-image: url(../images/tiled90s.gif);
+    background-image: url(../images/5023.png);
+    background-repeat: repeat;
+    background-attachment: fixed;
     background-position: center;
+    .post-gif {
+        content: url(../icons/leaderboard-icons/gargoyle.gif)
+    }
+
+    .post-text {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
+    }
     
 }
 
@@ -133,10 +203,12 @@
 
 #night-6 {
     border: 2px solid white;
-    background-image: url(../images/tileddoggoDARKO.jpg);
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background:
+    linear-gradient(63deg, #999 23%, transparent 23%) 7px 0,
+    linear-gradient(63deg, transparent 74%, #999 78%),
+    linear-gradient(63deg, transparent 34%, #999 38%, #999 58%, transparent 62%),
+    #444;
+    background-size: 16px 48px;
     p {
         color: white;
         text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
@@ -146,13 +218,7 @@
 
 #night-7 {
     border: 2px solid white;
-    background-image: url(../images/roses.gif);
-    background-repeat: repeat;
-    background-position: center;
-    p {
-        color: white;
-        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
-    }
+   
     
 }
 
@@ -221,112 +287,5 @@
     border: 2px solid black;
 }
 
-#night-11 {
-    background:
-radial-gradient(circle at 50% 59%, #D2CAAB 3%, #364E27 4%, #364E27 11%, rgba(54,78,39,0) 12%, rgba(54,78,39,0)) 50px 0,
-radial-gradient(circle at 50% 41%, #364E27 3%, #D2CAAB 4%, #D2CAAB 11%, rgba(210,202,171,0) 12%, rgba(210,202,171,0)) 50px 0,
-radial-gradient(circle at 50% 59%, #D2CAAB 3%, #364E27 4%, #364E27 11%, rgba(54,78,39,0) 12%, rgba(54,78,39,0)) 0 50px,
-radial-gradient(circle at 50% 41%, #364E27 3%, #D2CAAB 4%, #D2CAAB 11%, rgba(210,202,171,0) 12%, rgba(210,202,171,0)) 0 50px,
-radial-gradient(circle at 100% 50%, #D2CAAB 16%, rgba(210,202,171,0) 17%),
-radial-gradient(circle at 0% 50%, #364E27 16%, rgba(54,78,39,0) 17%),
-radial-gradient(circle at 100% 50%, #D2CAAB 16%, rgba(210,202,171,0) 17%) 50px 50px,
-radial-gradient(circle at 0% 50%, #364E27 16%, rgba(54,78,39,0) 17%) 50px 50px;
-background-color:#63773F;
-background-size:100px 100px;
-}
-
-#night-12 {
-    background:
-    linear-gradient(180deg, rgba(255, 0, 102, 0) 20%, rgba(255, 0, 102, .1) 20%, rgba(255, 0, 102, .1) 40%, rgba(255, 0, 102, .2) 40%, rgba(255, 0, 102, .2) 60%, rgba(255, 0, 102, .4) 60%, rgba(255, 0, 102, .4) 80%, rgba(255, 0, 102, .6) 80%),
-    linear-gradient(-90deg, rgba(255, 0, 102, 0) 20%, rgba(255, 0, 102, .1) 20%, rgba(255, 0, 102, .1) 40%, rgba(255, 0, 102, .2) 40%, rgba(255, 0, 102, .2) 60%, rgba(255, 0, 102, .4) 60%, rgba(255, 0, 102, .4) 80%, rgba(255, 0, 102, .6) 80%);
-  background-color: #fc0;
-  background-size: 100% 100%;
-  min-height: 100%;
-}
-
-#night-13 {
-    
-}
-
-#night-14 {
-
-}
-
-#night-15 {
-
-}
-
-#day-11 {
-
-}
-
-#day-12 {
-
-}
-
-#day-13 {
-
-}
-
-#day-14 {
-
-}
-
-#day-15 {
-    
-}
 
 
-.leaderboard-icon {
-    position:absolute;
-}
-
-.leaderboard-icon-one {
-    left: 50%;
-    bottom: 3px;
-}
-
-.leaderboard-icon-two {
-    left: 40%;
-    bottom: 3px;
-}
-
-.leaderboard-icon-three {
-    left: 60%;
-    bottom: 3px;
-}
-
-.leaderboard-icon-four {
-    left: 70%;
-    bottom: 3px;
-}
-
-.leaderboard-icon-five {
-    right: 25px;
-    bottom: 2.5rem;
-}
-
-.leaderboard-icon-six {
-    right: 75%;
-    bottom: 2.5rem;
-}
-
-.leaderboard-icon-seven {
-    right: 65%;
-    bottom: 2.5rem;
-}
-
-.leaderboard-icon-eight {
-    right: 55%;
-    bottom: 2.5rem;
-}
-
-.leaderboard-icon-nine {
-    right: 45%;
-    bottom: 2.5rem;
-}
-
-.leaderboard-icon-ten {
-    right: 35%;
-    bottom: 2.5rem;
-}
