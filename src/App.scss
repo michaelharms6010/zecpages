@@ -425,7 +425,8 @@ $dark-card-background: #0a5e55;
   background: $dark-card-background;
   input {
     background: none;
-    border: 1px solid black;
+    border: 1px solid #eee;
+    padding: 2px 5px;
     color: #eee;
   }
   h2 {
