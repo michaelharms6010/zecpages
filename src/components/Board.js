@@ -51,12 +51,14 @@ export default function Board(props) {
 
 
     const iconsToReplace = [{"🦓": <img className="zebra-icon" src={zebraemoji} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
-
+    // const wordsToReplace = [{pattern: /zcash/gi, replacement: "Scamcoin"}]
     const zaddrMarker = "🚠"
 
     const reformatShields = (str, replyZaddr, username) => {
         let output = []
         str = str.replace(/^board::(\w+)/i, "").trim()
+
+        // wordsToReplace.forEach()
         
         let string = str;
         if (replyZaddr && username ) {
