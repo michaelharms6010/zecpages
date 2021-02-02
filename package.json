@@ -28,7 +28,7 @@
     "stream": "0.0.2",
     "styled-components": "^5.2.1"
   },
-    "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "sitemap": "npx babel-node src/sitemap.js.mjs",
     "build": "react-scripts build",

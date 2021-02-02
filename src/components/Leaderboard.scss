@@ -98,10 +98,6 @@
         padding-left: 5%;
     }
 
-    .post-gif.reversed-post-gif {
-        
-    }
-
 }
 
 #night-4 {
@@ -176,9 +172,8 @@
 
 #night-5 {
     border: 2px solid white;
-    background-image: url(../images/5023.png);
+    background-image: url(../images/lardgeDARKBOinverted.gif);
     background-repeat: repeat;
-    background-attachment: fixed;
     background-position: center;
     .post-gif {
         content: url(../icons/leaderboard-icons/gargoyle.gif)
@@ -198,27 +193,36 @@
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center;
+    .post-gif {
+        content: url(../icons/leaderboard-icons/gargoyle.gif)
+    }
+
+    .post-text {
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
+    }
 
 }
 
 #night-6 {
     border: 2px solid white;
-    background:
-    linear-gradient(63deg, #999 23%, transparent 23%) 7px 0,
-    linear-gradient(63deg, transparent 74%, #999 78%),
-    linear-gradient(63deg, transparent 34%, #999 38%, #999 58%, transparent 62%),
-    #444;
-    background-size: 16px 48px;
-    p {
-        color: white;
-        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    background-image: url(../images/7113646.png);
+    background-repeat: repeat;
+    background-position: center;
+    .post-gif {
+
     }
-    
+    .post-text {
+     color: white;
+     text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    font-size: 1.5rem;
+    }
 }
 
 #night-7 {
     border: 2px solid white;
-   
+    background-image: url(../images/lardgeDARKBOinverted.gif)
     
 }
 
