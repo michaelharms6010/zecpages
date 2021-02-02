@@ -24,6 +24,14 @@ import PollChart from "./components/charts/PollChart"
 
 
 function App() {
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const referrer = params.get('referrer');
+  console.log(referrer)
+
+  if (referrer) {
+      localStorage.setItem("referrer", referrer)
+  }
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
   const [copied, setCopied] = useState(0);
