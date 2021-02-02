@@ -236,7 +236,7 @@ export default function Board(props) {
     },[postCount, page])
 
     const stringifyDate = date => {
-        return new Date(Number(date)).toString().split("GMT")[0]
+        return new Date(Number(date)).toLocaleString().replace(/[,] /ig, " ").replace(/(pm|am)$/ig, "")
     }
 
     const handleLikeTooltip = id => {
