@@ -165,7 +165,23 @@ export default function EditUserInfo ({history}) {
             <button onClick={toggleEditing}>{editing? "Submit" : "Edit Info"}</button>
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
+        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
+                <h2>Referrals</h2>
+                <p>You can refer users to ZECpages by sharing the following link. You'll get a bonus 1/5 of a ♥ Like (0.0001 ZEC) for every ♥ Like your referrered user receives.</p>
+                <p>https://zecpages.com/signup?referrer={user.username}</p>
+                <hr></hr>
+                <h2>Tracker</h2>
+                <p>You haven't referred any users yet!</p>
+                {/* {referrals.map(user => {
+                    <div className="referral-tracker-pair">
+                        <p>{user.username}</p>
+                        <p>{user.likes}</p>
+                    </div>
+                })} */}
+
+        </div>
         </>
+
     )
 
 }
