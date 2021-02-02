@@ -3,25 +3,34 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/node": "^7.12.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "aos": "^2.3.4",
     "axios": "^0.21.1",
+    "buffer": "^6.0.3",
+    "chart.js": "^2.9.4",
     "jquery": "^3.5.1",
+    "js-base64": "^3.6.0",
     "node-sass": "^4.14.1",
     "pusher-js": "^5.1.1",
     "qrcode.react": "^1.0.1",
     "react": "^16.14.0",
+    "react-chartjs-2": "^2.11.1",
     "react-confirm-alert": "^2.6.2",
     "react-dom": "^16.14.0",
     "react-drawing-board": "^0.3.5",
     "react-ga": "^2.7.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1"
+    "react-scripts": "3.3.1",
+    "sitemap": "^6.3.5",
+    "stream": "0.0.2",
+    "styled-components": "^5.2.1"
   },
-  "scripts": {
+    "scripts": {
     "start": "react-scripts start",
+    "sitemap": "npx babel-node src/sitemap.js.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

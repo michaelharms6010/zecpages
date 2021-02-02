@@ -1,8 +1,63 @@
+/* in the spirit of cryptocurrency this css is append-only */
 
+$day-main: #fec8fc;
+$day-background: #5e63fd;
+$zcash-yellow: #ffbf00;
 
 
 .z-board {
 
+    min-width: 350px;
+    
+    
+    .update-notification {
+        border: 5px solid $zcash-yellow;
+        width: 20%;
+        min-width: 100px;
+        min-height: 50px;
+        position: fixed;
+        left: 40%;
+        top: 70px;
+        background: black;
+        border-radius: 25px;
+        cursor: pointer;
+        color: $zcash-yellow;
+        margin: 0 auto;
+        padding: 5px;
+        z-index: 9999999999;
+        transition: .3s;
+
+        &:hover {
+            background: rgb(27, 27, 27);
+        }
+    }
+    
+    
+    .post-id {
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+    .pinned-header {
+        margin-left: 10px;
+        display:flex;
+        justify-content: space-between;
+    }
+
+    #top-post {
+        border: 5px dashed turquoise;
+        color: lime;
+        background: magenta;
+        border-radius: 10%;
+        .active {
+            border-radiu: 2%;
+        }
+    }
+    .board-zaddr-link {
+        font-weight: normal;
+        text-decoration: underline;
+        border-radius: 5px;
+
+    }
 
     padding-top: 30px;
     
@@ -12,13 +67,31 @@
     .view-key-link {
         color: #ff879b;
     }
-    canvas {
-        border: 2px solid black;
-    }
+
+    .reply-editor {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        .reply-text-editor {
+            width: 60%;
+            margin-left: 10px;
+        
+            textarea {
+                width: 40%;
+                margin-left: 30px;
+                height: 150px;
+                color: #111;
+                width: 90%;
+            }
+        }
+}
+    
+
     .reply-header {
         padding: 1% 1%;
         border: 5px solid #bec0fe;
-        color: #ffbf00;
+        color: $zcash-yellow;
         width: 30%;
         margin: 1% auto;
         border-radius: 28%;
@@ -34,14 +107,16 @@
         border: 1px solid black;
         margin-bottom: 10px;
         padding: 10px;
+        transition: 1s;
     }
 
 
     .instructions-header {
         width:90%;
         margin: auto;
-        margin-bottom:5px;
         word-break: break-word;
+        font-size: 18px;
+        margin: 10px auto;
         .copy-icon {
             
         }
@@ -56,8 +131,15 @@
         width: 80%;
         padding: 3px 10px;
         margin-top: 20px;
+        font-size: 12px;
         word-break: break-word;
         display: inline;       
+    }
+
+    button {
+        cursor: pointer;
+        border: 1px solid black;
+        border-radius: 3px;
     }
 
 
@@ -65,7 +147,7 @@
         display:flex;
         justify-content:flex-end;
         margin-right:10%;
-        padding:10px;
+        padding:10px 0px;
         height: 50px;
         button {
             border: 1px solid #bec0fe;
@@ -76,18 +158,26 @@
             background: white;
             border: none;
             font-size: 18px;
+            border-radius: 0px;
+            border: 1px solid white;
         }
         .board-next {
+            margin-right: 1px;
             cursor: pointer;
+            border-left: none;
             border-radius: 0px 5px 5px 0px;
         }
         .board-previous {
+            border-right:none;
             cursor: pointer;
             border-radius: 5px 0px 0px 5px;
         }
         .board-next:disabled, .board-previous:disabled {
             opacity: .5;
             cursor: not-allowed;
+            a {
+                pointer-events: none;
+            }
         }
     }
 
@@ -99,20 +189,30 @@
     }
   
     .board-post {
+
         width:80%;
         margin: .5% auto;
         background: #bec0fe;
+        border: 1px solid #bec0fe;
         padding:10px;
         padding-top:0px;
         text-align:left;
         border-radius: 5px;
-        transition: .2s;
-        -webkit-transition: .2s;
+
+        .zebra-icon {
+            height: 19px;
+            width: 20px;
+          }
+        p {
+            code {
+                margin-bottom: 10px;
+            }
+        }
         .post-links {
             padding-top: 15px;
         }
         .post-text {
-            display:inline-block;
+            display:block;
             font-size: 18px;
             padding:10px;
             word-break: break-word;
@@ -120,13 +220,22 @@
             white-space:pre-line;
             margin-bottom:0px;
             margin-top:1px;
+            
+        }
+        .sub-board-link {
+            font-size: 14px;
+            padding-bottom: 0;
         }
         .post-date {
             margin: 0;
+            
             padding-left:10px;
             color:rgb(117, 117, 117);
             display: flex;
             align-items:center;
+            p {
+                margin: 0px 10px;
+            }
             .like-icon {
                 width: 1.7rem;
                 height: 1.7rem;
@@ -169,6 +278,8 @@
     .highlighted-board-post {
         width:80%;
         background:rgb(255, 135, 155);
+        border: 1px solid rgb(255, 135, 155);
+
         .post-date {
             margin: 0;
             padding-left:10px;
@@ -185,6 +296,10 @@
             // text-align:center;
             // font-weight:520;
         }
+        .sub-board-link {
+            font-size: 14px;
+            padding-bottom: 0;
+        }
     }
     .individual-post {
         margin-top:5px;
@@ -196,10 +311,20 @@
         padding-right:10px;
         padding-left:10px;
     }
+    a.page-link {
+        color: #333;
+        font-weight: normal;
+
+    }
     .post-bottom-row {
         display:flex;
         justify-content:space-between;
         text-align:left;
+    }
+
+    .z-link {
+        color: $day-background;
+        padding: 0px 0px 0px 2px;
     }
 }
 
@@ -288,7 +413,7 @@
 
   $dash-size: 5px;
   $theme-color: #bec0fe;
-  $light-outline: #ffbf00;
+  $light-outline: $zcash-yellow;
   $dark-outline: #7a5f0b;
   $fill-color: #ff879b;
   $dark-theme-color:  #353670;
@@ -300,7 +425,6 @@
           text-align: right;
           padding-right: 10px;
       }
-      transition: 1s;
       margin-bottom: 20px;
       padding: 25px;
       max-width: 900px;
@@ -318,6 +442,32 @@
 
 
   .dark-mode .z-board {
+
+    .update-notification {
+        color: $zcash-yellow;
+    }
+    
+
+    button {
+        background: #151632;
+        color: #ddd;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        
+    }
+
+    a.page-link {
+        color: #ddd;
+        font-weight: normal;
+        &:hover {
+            color: $zcash-yellow;
+        }
+    }
+
+    .reply-header {
+        border-color: $dark-theme-color;
+        margin-top: 1%;
+    }
 
     .page-number {
         color: #333;
@@ -339,6 +489,7 @@
         color: #ccc;
         font-weight: 500;
     }
+
     .board-explainer {
         background: #151632;
     }
@@ -350,10 +501,21 @@
             border: 1px solid #aaa;
         }
         .board-next, .board-previous {
-            border: 1px solid #aaa;
+            border-color: #aaa;
             background: #1e1f52;
             color: #ddd;
+            transition: .4s;
+            &:hover {
+                    border-color: $zcash-yellow;
+                    a {
+                        color: $zcash-yellow;
+                    }
+            }
+            &:disabled:hover {
+                border-color: #ccc;
+            }
         }
+        
     }
     #pinned-post {
         background: lighten($dark-theme-color, 20%);
@@ -372,14 +534,23 @@
         a {
             color: #ddd;
         }
+        .z-link {
+            padding: 0;
+            color: $zcash-yellow;
+            padding-left: 2px;
+        }
         .post-text {
         }
         .post-date {
             color: #bbb; 
+            p {
+                margin: 0px 10px;
+            }
         }
         .like-container {
             border-color: #ddd;
             color: #ddd;
+           
             span {
                 border-color: #ddd;
                 color: #ddd;
@@ -394,11 +565,56 @@
     }
 }
 
+@media (max-width: 864px) {
+    .z-board {
+        .reply-editor {
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: space-between;
+    
+            .reply-text-editor {
+                width: 100%;
+                textarea {
+                    margin-left: 0;
+                    width: 95%;
+                    
+                }
+            }
+    }
+    }
+}
+
 $breakpoint-tablet: 864px;
+
+
+@media (max-width: 1000px) {
+    .z-board {
+        .board-page-buttons {
+            margin-right: 2.5%;
+        }
+
+
+        .replying-to-link {
+            width: 97%;
+        }
+
+        .board-post {
+            width: 95%;
+        }
+
+    }
+}
+
+
 @media (max-width: $breakpoint-tablet) {
     .z-board {
+        .board-page-buttons {
+            margin-right: 2.5%;
+        }
+
         .board-explainer {
             width: 90%;
         }
     }
 }
+

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import {UserContext} from "../contexts/UserContext"
 
 import logo from "../icons/zecpageslogo.png"
+import whitestripes from "../icons/negative-space-logo.png"
 
 export default function Navigation() {
     const {loggedIn, setLoggedIn, darkMode, setDarkMode} = useContext(UserContext);
@@ -16,8 +17,8 @@ export default function Navigation() {
         <div className="main-nav-placeholder">
             <nav className="main-nav">
                 
-                    <Link className="zebra-icon" to="/directory">
-                        <span aria-label='Zebra' role='img' className="emoji">🦓</span>
+                    <Link className="zebra-icon" to="/board">
+                        <img src={whitestripes} className="negative-space-zebra"/>
                         <img alt="zecpages logo" className="logo" src={logo} />
                         
 
@@ -26,9 +27,10 @@ export default function Navigation() {
                     
                 <div className="main-nav-inner">
                     <input type="checkbox" className="dark-mode-toggle" checked={darkMode} value={darkMode} onChange={ _ => setDarkMode(!darkMode)} />
-                    <Link to="/board">Board</Link>
-                    <Link to="/directory">Zaddrs</Link>
+                    <Link to="/z/all/1">Board</Link>
+                    <Link to="/directory">Directory</Link>
                     <Link className="about-link" to="/about">About</Link>
+                    <a className="api-link" href="https://github.com/michaelharms6010/be-zeitpages/" rel="noopener noreferrer" target="_blank">API</a>
                     {loggedIn 
                     ? <>
                     

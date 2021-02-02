@@ -1,0 +1,1 @@
+gpg --default-key F50ECEFE --clearsign zecpages-canary.txt

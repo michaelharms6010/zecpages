@@ -1,15 +1,25 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import axios from "axios";
 import {UserContext} from "../contexts/UserContext";
 import ReactGA from "react-ga";
 
-export default function Login({history}) {
-    const [formInfo, setFormInfo] = useState({username: "", password: "", password2: ""});
+export default function Login({location, history}) {
+    const search = location.search;
+    const params = new URLSearchParams(search);
+    const referrer = params.get('referrer');
+
+    const [formInfo, setFormInfo] = useState({username: "", password: "", password2: "", referrer: referrer || null});
     const [alert, setAlert] = useState("")
-    const {setLoggedIn} = useContext(UserContext);
+    const {loggedIn, setLoggedIn} = useContext(UserContext);
     const handleChange = e => {
         setFormInfo({...formInfo, [e.target.name]: e.target.value})
     }
+
+    useEffect(_ => {
+        if (loggedIn) {
+            history.push("/")
+        }
+    }, [])
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -21,7 +31,7 @@ export default function Login({history}) {
         } 
         else {
             const {username, password} = formInfo;
-            axios.post("https://be.zecpages.com/auth/register", {username, password})
+            axios.post("https://be.zecpages.com/auth/register", {username, password, referrer})
                 .then(res => {
                         
                         ReactGA.event({category: "User", action: `created account ${formInfo.username} `});

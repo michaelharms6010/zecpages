@@ -8,12 +8,11 @@ import ReactGA from "react-ga"
 
 
 export default function EditUserInfo ({history}) {
-    const [user, setUser] = useState({website: "", proofposturl: "",})
+    const [user, setUser] = useState({website: "", proofposturl: "", zaddr: ""})
     const [httpsString, setHttpsString] = useState("");
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
-    const {setLoggedIn} = useContext(UserContext);
-    const {zaddrs, setZaddrs} = useContext(ZaddrContext);
+    const {setLoggedIn, darkMode} = useContext(UserContext);
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
@@ -45,7 +44,6 @@ export default function EditUserInfo ({history}) {
                 .then(res => {
                     ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
-                    setZaddrs([ ...zaddrs.filter(zaddr => zaddr.id !== user.id ), user].sort( (a, b) => b.id-a.id));
                     setEditing(false);
                     setError("");})
                 .catch(err => setError("Your z-address is invalid."));
@@ -64,7 +62,6 @@ export default function EditUserInfo ({history}) {
                     label: "Yes",
                     onClick: _ => axiosAuth().delete(`https://be.zecpages.com/users/`)
                     .then( _ => {
-                        setZaddrs( ...zaddrs.filter(zaddr => zaddr.id !== user.id ))
                         setUser({website: ""});
                         logout();
                         ReactGA.event({category: "User", action: "Deleted User"});
@@ -91,10 +88,16 @@ export default function EditUserInfo ({history}) {
         setUser({...user, [e.target.name] : e.target.value})
     }
 
+    const handleZaddrChange = e => {
+        e.target.value = e.target.value.replace(/[ \n]/gi, "")
+        console.log(e.target.value)
+        console.log('hi')
+        setUser({...user, [e.target.name] : e.target.value})
+    }
+
     return(
         <>
-        <h2>Edit your listing:</h2>
-        <div className="zaddr-card">
+        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             
             {!editing
             ?
@@ -124,7 +127,7 @@ export default function EditUserInfo ({history}) {
                 maxlength="128"
                 className="zaddr-input"
                 name="zaddr"
-                onChange={handleChange}
+                onChange={handleZaddrChange}
                 value={user.zaddr} 
                 placeholder="Paste your z-address here"
             />
