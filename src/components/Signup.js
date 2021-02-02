@@ -8,7 +8,11 @@ export default function Login({location, history}) {
     const params = new URLSearchParams(search);
     const referrer = params.get('referrer');
 
-    const [formInfo, setFormInfo] = useState({username: "", password: "", password2: "", referrer: referrer || null});
+    if (referrer) {
+        localStorage.setItem("referrer", referrer)
+    }
+
+    const [formInfo, setFormInfo] = useState({username: "", password: "", password2: "", referrer: referrer || localStorage.getItem(referrer) || null});
     const [alert, setAlert] = useState("")
     const {loggedIn, setLoggedIn} = useContext(UserContext);
     const handleChange = e => {
