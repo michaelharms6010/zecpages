@@ -171,7 +171,7 @@ export default function EditUserInfo ({history}) {
                 <p>You can refer users to ZECpages by sharing the following link. <br/>You'll earn .0001 ZEC for every ♥ Like your referrered users receive.</p>
                 <p>https://zecpages.com/signup?referrer={user.username}</p>
                 <hr></hr>
-                <h2>Tracker</h2>
+                <h2>Referral Tracker</h2>
                 <p>⛏ Under Construction ⛏</p>
                 {/* {referrals.map(user => {
                     <div className="referral-tracker-pair">
