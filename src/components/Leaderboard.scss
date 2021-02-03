@@ -90,13 +90,15 @@
         color: white;
         text-shadow: -2px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
         font-size: 1.5rem;
-        justify-content: center;
+        text-align: center;
     }
 
     .post-gif {
         content: url(../icons/leaderboard-icons/computer-and-mouse.gif);
         padding-left: 5%;
     }
+
+
 
 }
 
@@ -109,10 +111,14 @@
         color: white;
         text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
         font-size: 1.5rem;
+        width: 70%;
     }
     .post-gif {
-        content: url(../icons/leaderboard-icons/arabbit04.gif);
-        padding-right: 3%;
+        content: url(../icons/leaderboard-icons/arabbit11.gif);
+    }
+    .post-gif-2 {
+        content:url(../icons/leaderboard-icons/arabbit04.gif);
+
     }
     
 }
@@ -165,8 +171,11 @@
         font-size: 1.5rem;
     }
     .post-gif {
+        content: url(../icons/leaderboard-icons/arabbit03.gif);
+    }
+
+    .post-gif-2 {
         content: url(../icons/leaderboard-icons/arabbit10.gif);
-        padding-right: 3%;
     }
 }
 
@@ -176,7 +185,7 @@
     background-repeat: repeat;
     background-position: center;
     .post-gif {
-        content: url(../icons/leaderboard-icons/gargoyle.gif)
+        content: url(../icons/leaderboard-icons/gargoyle.gif);
     }
 
     .post-text {
@@ -211,18 +220,20 @@
     background-repeat: repeat;
     background-position: center;
     .post-gif {
-
+        content: url(../icons/leaderboard-icons/pile-o-gold.gif);
+        width: 25%;
     }
     .post-text {
-     color: white;
-     text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
-    font-size: 1.5rem;
+        width: 75%;
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
     }
 }
 
 #night-7 {
     border: 2px solid white;
-    background-image: url(../images/lardgeDARKBOinverted.gif)
+    background-image: url(../images/5023.png)
     
 }
 

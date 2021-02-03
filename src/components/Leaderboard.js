@@ -161,6 +161,7 @@ export default function Board() {
                      */}
                     <div className="leaderboard-post-container">
                         <img className="post-gif"></img>
+                        {[3].includes(index) && <img className="post-gif-2 post-gif"></img>}
                         <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"))}</p>
                         {[2].includes(index) && <img className="reversed-post-gif post-gif"></img>}
                     </div>
