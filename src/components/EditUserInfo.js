@@ -5,6 +5,7 @@ import {ZaddrContext} from "../contexts/ZaddrContext";
 import {confirmAlert} from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
+import zcashLogo from "../zcash-icon.png"
 
 
 export default function EditUserInfo ({history}) {
@@ -98,7 +99,7 @@ export default function EditUserInfo ({history}) {
     return(
         <>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            
+            {user.username ? null : <img style={{width: "150px", height: "150px"}}  id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             {!editing
             ?
             <>
