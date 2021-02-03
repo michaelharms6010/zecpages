@@ -167,7 +167,7 @@ export default function EditUserInfo ({history}) {
         </div>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
                 <h2>Referrals</h2>
-                <p>You can refer users to ZECpages by sharing the following link. You'll get a bonus 10k zat for every ♥ Like your referrered users receive.</p>
+                <p>You can refer users to ZECpages by sharing the following link. <br/>You'll earn .0001 ZEC for every ♥ Like your referrered users receive.</p>
                 <p>https://zecpages.com/signup?referrer={user.username}</p>
                 <hr></hr>
                 <h2>Tracker</h2>
