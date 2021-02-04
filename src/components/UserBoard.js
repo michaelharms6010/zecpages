@@ -180,7 +180,7 @@ export default function UserBoard(props) {
                     setLoaded(true)
                 }
             })
-        .catch(err => console.log(err));
+        .catch(err => {setLoaded(true); console.log(err)});
         axios.get(`https://be.zecpages.com/board/count`)
         .then(res =>{ 
                 setPostCount(Number(res.data));
