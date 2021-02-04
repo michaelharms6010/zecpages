@@ -192,6 +192,13 @@ $zcash-yellow: #ffbf00;
         text-align: left;
         margin: 0 auto;
         display: block;
+        letter-spacing: 1px;
+        color: black;
+        transition: .2s;
+        &:hover {
+            color: black;
+            letter-spacing: 2px;
+        }
     }
   
     .board-post {
@@ -448,6 +455,9 @@ $zcash-yellow: #ffbf00;
 
 
   .dark-mode .z-board {
+    .replying-to-link {
+        color: #eee;
+    }
 
     .update-notification {
         color: $zcash-yellow;
