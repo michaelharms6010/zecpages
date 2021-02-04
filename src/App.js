@@ -19,7 +19,7 @@ import SubBoard from "./components/SubBoard"
 import BoardPost from "./components/BoardPost";
 import Drawing from "./components/Drawing";
 import Leaderboard from "./components/Leaderboard"
-
+import UserBoard from "./components/UserBoard"
 import PollChart from "./components/charts/PollChart"
 
 
@@ -81,6 +81,7 @@ function App() {
               <Route path="/board/z/:boardname" render={props => <SubBoard {...props} />} />
               <Route path="/board/post/:id" component={BoardPost} />
               <Route path="/z/post/:id" component={BoardPost} />
+              <Route path="/feed/:username" component={UserBoard} />
               <Route path="/board/:page" render={props => <Board {...props} />} />
 
               <Route path="/zaddr/:zaddr" render={props => <ZaddrPage zaddr={true} copied={copied} setCopied={setCopied} {...props} /> } />
