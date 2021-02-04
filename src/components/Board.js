@@ -292,7 +292,7 @@ export default function Board(props) {
                 <br/>
                 
                 {qrVis 
-                ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001`} /><br /></> 
+                ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${qrVal}`} /><br /></> 
                 : null}
             </div>
             {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
