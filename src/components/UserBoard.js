@@ -3,7 +3,6 @@ import axios from "axios"
 import "./Board.scss"
 import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
-import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 import like from "../378zheart.png"
 import darklike from "../378zheartdark.png"
@@ -11,7 +10,6 @@ import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import {UserContext} from "../contexts/UserContext";
-import {ZaddrContext} from "../contexts/ZaddrContext";
 import qricondark from "../icons/qrdark.png"
 import shieldicon from "../icons/shieldicon.gif"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
