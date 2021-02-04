@@ -192,7 +192,7 @@ export default function BoardPost(props) {
     {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
     : post.replies.sort((a,b) => a.id - b.id).map(reply => 
         <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        <p className="post-text">{reformatShields(reply.memo.split("â€™").join("'").replace(replyRegex, ""))}</p>
+        <p className="post-text">{reformatShields(reply.memo.split("â€™").join("'").replace(replyRegex, ""), reply.reply_zaddr, reply.username)}</p>
         
         {likeTooltip === reply.id && 
         <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(reply.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`}       
