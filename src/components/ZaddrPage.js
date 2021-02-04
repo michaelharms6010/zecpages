@@ -17,6 +17,8 @@ import zecwallet from "../icons/zecwallet.png";
 import logo from "../icons/zecpageslogo.png";
 import qricon from "../icons/qr.png"
 import qrdark from "../icons/qrdark.png"
+import UserBoard from "../components/UserBoard"
+
 
 
 import {UserContext} from "../contexts/UserContext"
@@ -119,6 +121,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
             <button className="cta-button cta-button-silver"><a target="_new" href="https://zecwallet.co/"><img alt="zecwallet logo" src={zecwallet}/>New to Zcash? Get started in ~60 seconds with ZecWallet Lite. (Mac/PC/Linux)</a></button>
             <button className="cta-button cta-button-black"><Link to="/"><img alt="zecpages logo" src={logo}/>Return to main Z-address Directory</Link></button>
         </div>
+        <UserBoard match={match} cardview={true} />
         </>
         : null}
         <div style={{maxWidth: "900px", margin: "30px auto"}}>

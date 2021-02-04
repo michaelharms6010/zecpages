@@ -36,7 +36,7 @@ export default function UserBoard(props) {
     const [posts, setPosts] = useState([])
     const [qrVis, setQrVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
-    const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
+    const [page, setPage] = useState(1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode} = React.useContext(UserContext)
@@ -224,6 +224,12 @@ export default function UserBoard(props) {
         }
     },[postCount, page])
 
+    useEffect( _ => {
+        if (posts.length > 0) {
+            document.querySelector(".z-board").style.display = "block";
+        }
+    }, [posts])
+
     const stringifyDate = date => {
         return new Date(Number(date)).toString().split("GMT")[0]
     }
@@ -264,11 +270,13 @@ export default function UserBoard(props) {
     }
 
     return (
-        <div className={"z-board"}>
+        
+        <div style={props.cardview ? {paddingTop: "0", display: "none"}: {}} className={"z-board"}>
+    
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h1 style={{marginBottom: "0"}}><Link className="user-page-link" to={`/${props.match.params.username}`}>{props.match.params.username}</Link></h1>
+                <h1 style={{marginBottom: "0"}}><Link style={props.cardview ? {cursor: "default"} : {}} className="user-page-link" to={`/${props.match.params.username}`}>{props.cardview ? "Posts" : props.match.params.username}</Link></h1>
                 <p style={{fontSize: "18px"}}><br/><strong>Admin Note:</strong> It's the nature of a permissionless push system that these posts are only ALLEGED to be by {props.match.params.username}. Feed curation coming soon.</p>
             </div>
             
