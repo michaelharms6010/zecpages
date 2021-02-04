@@ -168,7 +168,6 @@ export default function UserBoard(props) {
         const page = +props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/u/${props.match.params.username}`)
         .then(res =>{ 
-                console.log(res)
                 if (!res.data.posts.length) {
                     setLoaded(true)
                     return
@@ -293,7 +292,7 @@ export default function UserBoard(props) {
                <>
 
                
-                <div className="aos-container" >
+                <div key={item.id} className="aos-container" >
                 <div style={{paddingTop: "10px"}} key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}
                     {!!item.reply_to_post && <Link style={{marginTop: "10px"}} to={`/z/post/${item.reply_to_post}`}>👈 Replying to {item.reply_to_post}</Link> }
