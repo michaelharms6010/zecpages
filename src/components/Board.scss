@@ -108,6 +108,12 @@ $zcash-yellow: #ffbf00;
         margin-bottom: 10px;
         padding: 10px;
         transition: 1s;
+        .user-page-link {
+            color: #333;
+            &:hover {
+                color: black;
+            }
+        }
     }
 
 
@@ -492,6 +498,12 @@ $zcash-yellow: #ffbf00;
 
     .board-explainer {
         background: #151632;
+        .user-page-link {
+            color: #ddd;
+            &:hover {
+                color: white;
+            }
+        }
     }
 
     .board-page-buttons {

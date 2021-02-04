@@ -268,7 +268,8 @@ export default function UserBoard(props) {
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h1 style={{marginBottom: "0"}}>{props.match.params.username}</h1>
+                <h1 style={{marginBottom: "0"}}><Link className="user-page-link" to={`/${props.match.params.username}`}>{props.match.params.username}</Link></h1>
+                <p style={{fontSize: "18px"}}><br/><strong>Admin Note:</strong> It's the nature of a permissionless push system that these posts are only ALLEGED to be by {props.match.params.username}. Feed curation coming soon.</p>
             </div>
             
             
