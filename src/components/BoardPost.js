@@ -13,6 +13,7 @@ import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 import zebraemoji from "../icons/zebra-emoji.png"
+import zebraemojiblack from "../icons/zebra-emoji-black.png"
 
 var Base64 = require("js-base64")
 var Buffer = require('buffer/').Buffer
@@ -44,7 +45,7 @@ export default function BoardPost(props) {
 
 
 
-    const iconsToReplace = [{"🦓": <img className="zebra-icon" src={zebraemoji} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
+    const iconsToReplace = [{"🦓": <img className="zebra-icon" src={darkMode ? zebraemoji : zebraemojiblack} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
 
     const zaddrMarker = "🚠"
 
