@@ -291,7 +291,7 @@ $zcash-yellow: #ffbf00;
     .highlighted-board-post {
         width:80%;
         background:rgb(255, 135, 155);
-        border: 1px solid rgb(255, 135, 155);
+        border: 1px solid gold;
 
         .post-date {
             margin: 0;
@@ -429,8 +429,8 @@ $zcash-yellow: #ffbf00;
   $light-outline: $zcash-yellow;
   $dark-outline: #7a5f0b;
   $fill-color: #ff879b;
-  $dark-theme-color:  #353670;
-  $dark-red: #743943;
+  $dark-theme-color:  #000126;
+  $dark-red: #390009;
   
   #pinned-post {
       .pin-text {
@@ -467,7 +467,6 @@ $zcash-yellow: #ffbf00;
     button {
         background: #151632;
         color: #ddd;
-        border: 1px solid #aaa;
         border-radius: 3px;
         
     }
@@ -507,7 +506,7 @@ $zcash-yellow: #ffbf00;
     }
 
     .board-explainer {
-        background: #151632;
+        background: $dark-theme-color;
         .user-page-link {
             color: #ddd;
             &:hover {
@@ -540,19 +539,14 @@ $zcash-yellow: #ffbf00;
         
     }
     #pinned-post {
-        background: lighten($dark-theme-color, 20%);
-        border: $dash-size dashed $dark-theme-color;
-        box-shadow: 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
-                    0 0 0 ($dash-size * 2.5) #743943,
-                    inset 0 0 0 ($dash-size / 2) darken($dark-theme-color, 20%),
-                    0 $dash-size ($dash-size * 2) ($dash-size * 3) rgba(0,0,0,0.5),
-                    inset 0 0 0 ($dash-size * 1.2) #743943,
-                    inset 0 0 100vw 100vw #743943;
+        background: #007eff;
+        border: 5px dashed #000126;
+        box-shadow: 0 0 0 2.5px #000126, 0 0 0 12.5px #390009, inset 0 0 0 2.5px #000126, 0 5px 10px 15px #620000, inset 0 0 0 6px #390009, inset 0 0 100vw 100vw #390009;
     
     }
     .board-post {
-        background: #1e1f52;
-        border: 1px solid #584304;
+        background: $dark-theme-color;
+        border: 1px solid $dark-theme-color;
         a {
             color: #ddd;
         }
@@ -570,8 +564,8 @@ $zcash-yellow: #ffbf00;
             }
         }
         .like-container {
-            border-color: #ddd;
-            color: #ddd;
+            border-color: #aaa;
+            color: #aaa;
            
             span {
                 border-color: #ddd;
@@ -581,7 +575,8 @@ $zcash-yellow: #ffbf00;
     }
 
     .highlighted-board-post.board-post {
-        background:#743943;
+        border: 1px solid gold;
+        background:$dark-red;
         .post-text {
         }
     }

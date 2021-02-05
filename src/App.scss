@@ -412,7 +412,7 @@ $dark-stripe: #ad860e;
 }
 
 $dark-stripe: #7a5f0b;
-$dark-card-background: #0a5e55;
+$dark-card-background: #00201d;
 
 .dark-mode .zaddr-card {
   background: $dark-card-background;
@@ -471,6 +471,7 @@ $dark-card-background: #0a5e55;
   }
 
   .zaddr-card {
+    border: 1px solid #aaa;
     h2, h3, h4 {
       color: #eee;
     }
