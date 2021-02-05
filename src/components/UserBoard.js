@@ -274,7 +274,7 @@ export default function UserBoard(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h1 style={{marginBottom: "0"}}><Link style={props.cardview ? {cursor: "default"} : {}} className="user-page-link" to={`/${props.match.params.username}`}>{props.cardview ? "Posts" : props.match.params.username}</Link></h1>
-                <p style={{ width: "80%", fontSize: "18px"}}><br/><strong>Admin Note:</strong> It's the nature of an anonymous, permissionless push system that these posts are only ALLEGED to be by {props.match.params.username}. Feed curation coming soon.</p>
+                <p style={{ margin: "1% auto", width: "80%", fontSize: "18px"}}><br/><strong>Admin Note:</strong> It's the nature of an anonymous, permissionless push system that these posts are only ALLEGED to be by {props.match.params.username}. Feed curation coming soon.</p>
             </div>
             
             
