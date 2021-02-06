@@ -523,7 +523,7 @@ $zcash-yellow: #ffbf00;
         }
         .board-next, .board-previous {
             border-color: #aaa;
-            background: #1e1f52;
+            background: $dark-theme-color;
             color: #ddd;
             transition: .4s;
             &:hover {
