@@ -575,7 +575,7 @@ $zcash-yellow: #ffbf00;
     }
 
     .highlighted-board-post.board-post {
-        border: 1px solid gold;
+        border: 1px solid $zcash-yellow;
         background:$dark-red;
         .post-text {
         }
