@@ -6,7 +6,7 @@ import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
 import like from "../380zheart.png"
-import darklike from "../380zheart.png"
+import darklike from "../380zheartdark.png"
 import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
