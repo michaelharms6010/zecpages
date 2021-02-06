@@ -708,11 +708,13 @@ $breakpoint-tablet: 864px;
     }
 
     .pinned-card-back-text {
-
+        padding-left: 10%;
         text-align:left;
         width: 60%;
     }
     .img-container {
+        margin-left: 5px;
+        padding-right: 20%;
         img {
             
         }
@@ -732,6 +734,7 @@ $breakpoint-tablet: 864px;
         }
         .img-container {
             margin: 0;
+            margin-left: 5px;
             padding: 0;
             img {
                 
