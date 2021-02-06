@@ -44,9 +44,11 @@ export default function Board(props) {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [doCardHeight, setDoCardHeight] = useState(false)
     const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
+    const [flipped, setFlipped] = useState(false)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
@@ -189,6 +191,7 @@ export default function Board(props) {
 
     useEffect(_ => {
         Pusher.logToConsole = false;
+        setInterval(adjustCardHeight, 100)
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
             cluster: 'us2',
             forceTLS: true
@@ -213,6 +216,22 @@ export default function Board(props) {
             // getNewPosts();
         });
     }, [])
+
+    const adjustCardHeight = _ => {
+        const flipCard = document.querySelector(".flip-card")
+        const flipCardBack = document.querySelector(".pinned-back")
+        const pinnedPost = document.querySelector("#pinned-post");
+        if (pinnedPost && flipCard && flipCardBack) {
+            const postStyles = getComputedStyle(pinnedPost)
+            console.log(pinnedPost.offsetHeight)
+            const newHeight = pinnedPost.offsetHeight
+            const newHeightWithMargin = pinnedPost.offsetHeight + parseInt(postStyles.marginTop) + parseInt(postStyles.marginBottom) - 24
+            console.log(postStyles.marginTop)
+            flipCard.style.height = `${newHeight}px`
+            flipCardBack.style.height = `${newHeightWithMargin}px`
+        }       
+    }
+
 
     useEffect( _ => {
         fetchPinned();
@@ -275,6 +294,10 @@ export default function Board(props) {
         
     }
 
+    const flipCard = _ => {
+        setFlipped(!flipped)
+    }
+
     return (
         <div className={"z-board"}>
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
@@ -301,47 +324,68 @@ export default function Board(props) {
             {pinned ? <h3 style={{marginBottom: "20px", marginTop: '5px', opacity: "0"}}>.</h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#333" : "#5e63fd"}}>Pinned Post</h3> }
             {pinned && !!posts.length && 
                 <>
-                
-                <div data-aos="flip-left"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="2000"
-                    id="pinned-post"
-                    key={pinned.id} 
-                    className={"highlighted-board-post board-post"}>
-                    <div className="pinned-header">
-                        {/* <h4>{pinned.id}</h4> */}
-                        <h4></h4>
-                        <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
-                    </div>
-                    <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
-                    
-                    {likeTooltip === pinned.id &&
-                    <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
-                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
-                    <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-                    <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
-                    <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                    {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
-                    <div className="post-bottom-row">
-                    <div className="post-date">
-                            <div className="like-container">
-                                <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
-                                <span>{pinned.likes}</span>
-                            </div>
-                        
-                    </div>
-                    <div className="post-links">
-                        <div className="post-date" style={{display:'inline'}}>
-                            <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
+                <div onClick={flipCard} className={`${flipped ? "flipped" : ""} flip-card`}>
+                <div className='flip-card-inner'>
+                <div className="flip-card-front">   
+                    <div data-aos="flip-left"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000"
+                        id="pinned-post"
+                        key={pinned.id} 
+                        className={"highlighted-board-post board-post"}>
+                        <div className="pinned-header">
+                            {/* <h4>{pinned.id}</h4> */}
+                            <h4></h4>
+                            <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
                         </div>
-                        <Link to={`/z/post/${pinned.id}`}> 
-                            {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
-                        </Link>
-                        <Link to={`/z/post/${pinned.id}`}> 
-                            Permalink
-                        </Link>
+                        <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
+                        
+                        {likeTooltip === pinned.id &&
+                        <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
+                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
+                        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+                        <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
+                        <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
+                        {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
+                        <div className="post-bottom-row">
+                        <div className="post-date">
+                                <div className="like-container">
+                                    <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
+                                    <span>{pinned.likes}</span>
+                                </div>
+                            
+                        </div>
+                        <div className="post-links">
+                            <div className="post-date" style={{display:'inline'}}>
+                                <p style={{display: "inline"}}>{stringifyDate(pinned.datetime)}</p>
+                            </div>
+                            <Link to={`/z/post/${pinned.id}`}> 
+                                {pinned.reply_count > 1 ? `${pinned.reply_count} Replies` : pinned.reply_count === 1 ? "1 Reply" : "Reply"}
+                            </Link>
+                            <Link to={`/z/post/${pinned.id}`}> 
+                                Permalink
+                            </Link>
+                        </div>
+                        </div>
                     </div>
+                </div>
+                <div className="flip-card-back">
+                    <div id='pinned-post' className={"highlighted-board-post board-post pinned-back"}>
+
+                        <div className="pinned-header">
+                            {/* <h4>{pinned.id}</h4> */}
+                            <h4></h4>
+                        </div>
+
+    
+                        <div className="icon-card">
+                            <img src={shieldicon} className="pinned-big-icon" />
+                            {/* <img src={darkMode ? zebraemoji : zebraemojiblack} className="pinned-big-icon" /> */}
+
+                        </div>
                     </div>
+                </div>
+                </div>
                 </div>
                 </>
                 }

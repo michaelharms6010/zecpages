@@ -635,3 +635,68 @@ $breakpoint-tablet: 864px;
     }
 }
 
+.flip-card {
+  background-color: transparent;
+  margin-bottom: 25px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+    width: 100%;
+}
+
+/* Style the back side */
+.flip-card-back {
+    max-width: 900px;
+    width: 100%;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.pinned-big-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+.icon-card {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items:center;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .icon-card {
+        flex-direction: column;
+    }
+}
