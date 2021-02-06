@@ -5,8 +5,8 @@ import QRCode from "qrcode.react";
 import logo from "../zcash-icon.png"
 import Pusher from 'pusher-js';
 import {Link} from "react-router-dom";
-import like from "../378zheart.png"
-import darklike from "../378zheartdark.png"
+import like from "../380zheart.png"
+import darklike from "../380zheart.png"
 import qricon from "../icons/qr.png"
 import AOS from 'aos'
 import 'aos/dist/aos.css';
@@ -259,7 +259,8 @@ export default function Board(props) {
         return new Date(Number(date)).toLocaleString().replace(/[,] /ig, " ").replace(/(pm|am)$/ig, "")
     }
 
-    const handleLikeTooltip = id => {
+    const handleLikeTooltip = (id, e) => {
+        if (e) e.stopPropagation();
         if (likeTooltip !== id) {
             setLikeTooltip(id)
         }
@@ -350,7 +351,7 @@ export default function Board(props) {
                         <div className="post-bottom-row">
                         <div className="post-date">
                                 <div className="like-container">
-                                    <img alt="zcash heart" onClick={_ => handleLikeTooltip(pinned.id)} className="like-icon" src={darkMode ? darklike : like} />
+                                    <img alt="zcash heart" onClick={e => handleLikeTooltip(pinned.id, e)} className="like-icon" src={darkMode ? darklike : like} />
                                     <span>{pinned.likes}</span>
                                 </div>
                             
