@@ -155,9 +155,13 @@ $zcash-yellow: #ffbf00;
         margin-right:10%;
         padding:10px 0px;
         height: 50px;
+        input {
+            margin: 0 10px 0px 5px;
+        }
         button {
             border: 1px solid #bec0fe;
             background: #bec0fe;
+            height: 35px;
         }
         .page-number {
             line-height: 1;
@@ -516,6 +520,10 @@ $zcash-yellow: #ffbf00;
     }
 
     .board-page-buttons {
+        display:flex; 
+        align-items: center;
+        height: 50px;
+
         .page-number {
             color: #eee;
             background: #333;

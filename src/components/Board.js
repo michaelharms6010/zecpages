@@ -22,6 +22,7 @@ import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
 import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
+import {useLocalStorage} from "../hooks/useLocalStorage"
 
 export default function Board(props) {
     AOS.init()
@@ -48,7 +49,8 @@ export default function Board(props) {
     const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
-    const [flipped, setFlipped] = useState(false)
+    const [flipped, setFlipped] = useState(false) 
+    const [showReplies, setShowReplies] = useLocalStorage("show-replies", false)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
@@ -138,7 +140,13 @@ export default function Board(props) {
                 if (posts !== newPosts) {
                     const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
                     window.scroll({top: scrollHeight, behavior: "smooth"})
-                    setPosts(newPosts)
+                    if (showReplies) {
+                        console.log(newPosts)
+                        setPosts(newPosts)
+
+                    } else {
+                        setPosts(newPosts.filter(post => !post.reply_to_post ))
+                    }
                     setPage(1)
                     setNotificationVis(false)
                 }
@@ -156,6 +164,15 @@ export default function Board(props) {
         if (newLike) addLike(newLike)
     },[newLike])
 
+    useEffect(_ => {
+            if (showReplies) {
+                getNewPosts()
+            } else {
+                console.log("YOU ARE HERE")
+                setPosts(posts.filter(post => !post.reply_to_post ))
+            }
+    }, [showReplies])
+
     const getNewPosts = () => {
 
         if (props.match.params.page === "0") {
@@ -167,7 +184,14 @@ export default function Board(props) {
         .then(res =>{ 
                 let newPosts= res.data.sort( (a, b) => b.id-a.id)
                 if (posts !== newPosts) {
-                    setPosts(newPosts)
+                    if (showReplies) {
+                        console.log(newPosts)
+                        setPosts(newPosts)
+                    } else {
+                        console.log("YOU ARE HERE LINE 191")
+                        
+                        setPosts(newPosts.filter(post => !post.reply_to_post ))
+                    }
                     setNotificationVis(false)
                 }
             })
@@ -223,10 +247,8 @@ export default function Board(props) {
         const pinnedPost = document.querySelector("#pinned-post");
         if (pinnedPost && flipCard && flipCardBack) {
             const postStyles = getComputedStyle(pinnedPost)
-            console.log(pinnedPost.offsetHeight)
             const newHeight = pinnedPost.offsetHeight
             const newHeightWithMargin = pinnedPost.offsetHeight + parseInt(postStyles.marginTop) + parseInt(postStyles.marginBottom) - 24
-            console.log(postStyles.marginTop)
             flipCard.style.height = `${newHeight}px`
             flipCardBack.style.height = `${newHeightWithMargin}px`
         }       
@@ -396,6 +418,8 @@ export default function Board(props) {
             ? 
             <>
             <BoardPageControls
+                showReplies={showReplies}
+                setShowReplies={setShowReplies}
                 history={props.history} 
                 setPage={setPage}
                 next={next}
