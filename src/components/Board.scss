@@ -696,15 +696,46 @@ $breakpoint-tablet: 864px;
     margin: 0 auto;
 }
 .icon-card {
+    
     display: flex;
     height: 100%;
     justify-content: center;
     align-items:center;
     margin: 0 auto;
+    h5 {
+        color: #eee;
+        font-size: 15px;
+    }
+
+    .pinned-card-back-text {
+        padding-left: 5%;
+        text-align:left;
+        width: 60%;
+    }
+    .img-container {
+        width: 40%;
+        padding-left: 10%;
+        img {
+            
+        }
+    }
 }
 
-@media (max-width: 600px) {
+.dark-mode .z-board .icon-card h5 {
+    color: #eee;
+}
+
+@media (max-width: 800px) {
     .icon-card {
-        flex-direction: column;
+        .pinned-card-back-text {
+            padding: 0%;
+            text-align:left;
+            width: 50%;
+        }
+        .img-container {
+            img {
+                
+            }
+        }
     }
 }

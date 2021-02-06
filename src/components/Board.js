@@ -320,6 +320,17 @@ export default function Board(props) {
     const flipCard = _ => {
         setFlipped(!flipped)
     }
+    const formatTime = datetime => {
+        let timeInSeconds = Math.floor((Date.now() - datetime) / 1000)
+        const days = Math.floor(timeInSeconds / (60 * 60 * 24))
+        timeInSeconds -= (days * (60 * 60 * 24))
+        const hours = Math.floor(timeInSeconds / (60 * 60))
+        timeInSeconds -= (hours * (60 * 60))
+        const minutes = Math.floor(timeInSeconds / (60))
+        timeInSeconds -= (minutes * (60))
+        const seconds = timeInSeconds
+        return `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`
+    }
 
     return (
         <div className={"z-board"}>
@@ -402,7 +413,13 @@ export default function Board(props) {
 
     
                         <div className="icon-card">
-                            <img src={shieldicon} className="pinned-big-icon" />
+                            <div className="pinned-card-back-text">
+                                <h5>Pinned for {formatTime(pinned.datetime)}</h5>
+                                <h5>Current Price To Pin: {pinned.amount + 1} Zatoshis</h5>
+                            </div>
+                            <div className="img-container">
+                                <img src={shieldicon} className="pinned-big-icon" />
+                            </div>
                             {/* <img src={darkMode ? zebraemoji : zebraemojiblack} className="pinned-big-icon" /> */}
 
                         </div>
