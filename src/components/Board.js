@@ -329,7 +329,7 @@ export default function Board(props) {
         const minutes = Math.floor(timeInSeconds / (60))
         timeInSeconds -= (minutes * (60))
         const seconds = timeInSeconds
-        return `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`
+        return `${days} ${days === 1 ? "Day" : "Days"}, ${hours} ${hours === 1 ? "Hour" : "Hours"}`
     }
 
     return (

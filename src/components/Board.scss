@@ -699,7 +699,7 @@ $breakpoint-tablet: 864px;
     
     display: flex;
     height: 100%;
-    justify-content: center;
+    justify-content: space-around;
     align-items:center;
     margin: 0 auto;
     h5 {
@@ -708,13 +708,11 @@ $breakpoint-tablet: 864px;
     }
 
     .pinned-card-back-text {
-        padding-left: 5%;
+
         text-align:left;
         width: 60%;
     }
     .img-container {
-        width: 40%;
-        padding-left: 10%;
         img {
             
         }
@@ -730,9 +728,11 @@ $breakpoint-tablet: 864px;
         .pinned-card-back-text {
             padding: 0%;
             text-align:left;
-            width: 50%;
+            width: 70%;
         }
         .img-container {
+            margin: 0;
+            padding: 0;
             img {
                 
             }
