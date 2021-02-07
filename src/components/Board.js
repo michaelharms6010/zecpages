@@ -332,7 +332,7 @@ export default function Board(props) {
         const minutes = Math.floor(timeInSeconds / (60))
         timeInSeconds -= (minutes * (60))
         const seconds = timeInSeconds
-        return `${days}d ${hours}h ${minutes}m ${seconds}s`
+        return `${days}d\xa0${hours}h\xa0${minutes}m\xa0${seconds}s`
     }
 
     return (
@@ -418,10 +418,10 @@ export default function Board(props) {
                         <div className="icon-card">
                             <div className="pinned-card-back-text">
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
-                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: {inZat 
-                                ? `${Math.max(10000000, +pinned.decayed_amount + 1)} Zatoshis` 
-                                : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000)} ZEC` }</h5>
-                                <h5>Price goes down by {inZat ? "5 Zat" : "0.00000005 ZEC"}/second.</h5>
+                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: <span className="no-break-text">{inZat 
+                                ? `${Math.max(10000000, +pinned.decayed_amount + 1)}\xa0Zatoshis` 
+                                : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000)}\xa0ZEC` }</span></h5>
+                                <h5>Price decays by <span className="no-break-text">{inZat ? "5\xa0Zat" : "0.00000005\xa0ZEC"}/second</span></h5>
                                 <button className="unit-toggle" onClick={e => {e.stopPropagation(); setInZat(!inZat)}}>{"Toggle Unit"}</button>
                             </div>
                             <div className="img-container">

@@ -746,6 +746,8 @@ $breakpoint-tablet: 864px;
 
 @media (max-width: 800px) {
     .icon-card {
+        justify-content: space-between;
+
         .pinned-card-back-text {
             padding: 0%;
             text-align:left;
@@ -758,6 +760,15 @@ $breakpoint-tablet: 864px;
             img {
                 
             }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .icon-card {
+        .pinned-big-icon {
+            width: 80px;
+            height: 85px;
         }
     }
 }
