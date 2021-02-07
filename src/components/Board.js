@@ -51,7 +51,8 @@ export default function Board(props) {
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [flipped, setFlipped] = useState(false)
-    const [inZat, setInZat] = useState(false) 
+    const [inUsd, setInUsd] = useState(false) 
+    const [zecPrice, setZecPrice] = useState(null)
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
@@ -216,6 +217,12 @@ export default function Board(props) {
     }
 
     useEffect(_ => {
+
+
+        axios.get("https://api.coingecko.com/api/v3/simple/price?ids=zcash&vs_currencies=usd")
+            .then(r => setZecPrice(r.data.zcash.usd)).catch(err => console.log(err))
+
+
         Pusher.logToConsole = false;
         setInterval(adjustCardHeight, 100)
         var pusher = new Pusher('0cea3b0950ab8614f8e9', {
@@ -242,6 +249,10 @@ export default function Board(props) {
             // getNewPosts();
         });
     }, [])
+
+    useEffect( _ => {
+        console.log(zecPrice)
+    },[zecPrice])
 
     const adjustCardHeight = _ => {
         const flipCard = document.querySelector(".flip-card")
@@ -418,11 +429,11 @@ export default function Board(props) {
                         <div className="icon-card">
                             <div className="pinned-card-back-text">
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
-                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: <span className="no-break-text">{inZat 
-                                ? `${Math.max(10000000, +pinned.decayed_amount + 1)}\xa0Zatoshis` 
+                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: <span className="no-break-text">{inUsd 
+                                ? `$${Math.max(0.001 * zecPrice, ((+pinned.decayed_amount + 1) / 100000000) * zecPrice ).toFixed(2)}` 
                                 : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000)}\xa0ZEC` }</span></h5>
-                                <h5>Price decays by <span className="no-break-text">{inZat ? "5\xa0Zat" : "0.00000005\xa0ZEC"}/second</span></h5>
-                                <button className="unit-toggle" onClick={e => {e.stopPropagation(); setInZat(!inZat)}}>{"Toggle Unit"}</button>
+                                <h5>Price decaying by <span className="no-break-text">{inUsd ? `$${(0.00000005 * zecPrice).toFixed(8)}` : "0.00000005\xa0ZEC"}/second</span></h5>
+                                <button className="unit-toggle" onClick={e => {e.stopPropagation(); setInUsd(!inUsd)}}>{"Toggle Unit"}</button>
                             </div>
                             <div className="img-container">
                                 <img src={shieldicon} className="pinned-big-icon" />
