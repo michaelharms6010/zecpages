@@ -45,6 +45,7 @@ export default function Board(props) {
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
+    const [decay, setDecay] = useState(false);
     const [doCardHeight, setDoCardHeight] = useState(false)
     const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
@@ -204,7 +205,7 @@ export default function Board(props) {
     }
 
     const fetchPinned = _ => {
-        axios.get(`https://be.zecpages.com/board/pinned`)
+        axios.get(`https://be.zecpages.com/board/decayedpinned`)
         .then(res => {
             if (!pinned || res.data.id !== pinned.id) {
                 setPinned(res.data)
@@ -415,7 +416,8 @@ export default function Board(props) {
                         <div className="icon-card">
                             <div className="pinned-card-back-text">
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
-                                <h5>Current Price To Pin: {pinned.amount + 1} Zatoshis</h5>
+                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: {pinned.decayed_amount + 1} Zatoshis</h5>
+                                <h5>Price goes down by 5 Zatoshi / second.</h5>
                             </div>
                             <div className="img-container">
                                 <img src={shieldicon} className="pinned-big-icon" />
