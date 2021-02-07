@@ -207,8 +207,11 @@ export default function Board(props) {
     const fetchPinned = _ => {
         axios.get(`https://be.zecpages.com/board/decayedpinned`)
         .then(res => {
+
             if (!pinned || res.data.id !== pinned.id) {
                 setPinned(res.data)
+            } else if (res.data.id === pinned.id) {
+                setPinned({...pinned, decayed_amount: res.data.decayed_amount})
             }
         })
         .catch(err => console.log(err))
@@ -319,6 +322,7 @@ export default function Board(props) {
     }
 
     const flipCard = _ => {
+        fetchPinned();
         setFlipped(!flipped)
     }
     const formatTime = datetime => {
@@ -330,7 +334,7 @@ export default function Board(props) {
         const minutes = Math.floor(timeInSeconds / (60))
         timeInSeconds -= (minutes * (60))
         const seconds = timeInSeconds
-        return `${days} ${days === 1 ? "Day" : "Days"}, ${hours} ${hours === 1 ? "Hour" : "Hours"}`
+        return `${days}d ${hours}h ${minutes}m ${seconds}s`
     }
 
     return (
