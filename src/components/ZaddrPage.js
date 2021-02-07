@@ -30,8 +30,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
+    const [myId, setMyId] = useState(localStorage.getItem("user_id") || null)
     const { zaddrs } = useContext(ZaddrContext);
-    const {darkMode} = useContext(UserContext)
+    const {darkMode, loggedIn} = useContext(UserContext)
     const [done, setDone] = useState(false)
     const [showSubInfo, setShowSubInfo] = useState(false)
     const [numMonths, setNumMonths] = useState(1)
@@ -44,6 +45,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         if (localStorage.getItem("jwt") && !localStorage.getItem("user_id")) {
             const decodedToken = jwt.decode(localStorage.getItem("jwt"))
             localStorage.setItem("user_id", decodedToken.id)
+            setMyId(decodedToken.id)
         }
 
 
@@ -124,7 +126,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             <h2>{user.username}{"  "}<button className="subscribe-button" onClick={_ => setShowSubInfo(!showSubInfo)}>{showSubInfo ? "Close Form" : "Subscribe"}</button></h2>
             {showSubInfo 
-                ?   <div> 
+                ?   
+                loggedIn ? <div> 
                         <hr />
                         <h2 style={{textAlign: "center"}}>Support {user.username} by subscribing for .06{"\xa0"}ZEC/month!<br/><br/>
                             
@@ -132,7 +135,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         </h2>
                         <h2 style={{textAlign: "left"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
                         <hr />
-                        <h4 className="zaddr">{`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`}
+                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>
+                        <h4 className="zaddr">{`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`}
                             <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
@@ -148,6 +152,11 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         </div>
                         <hr/>
                     </div>
+                : <div>
+                    <hr/>
+                    <h2>You need to log in to use subscriptions.</h2>
+                    <hr/>
+                    </div> 
                 : null 
             }
             {user.description ? <p className="user-description">{user.description}</p> : null }
