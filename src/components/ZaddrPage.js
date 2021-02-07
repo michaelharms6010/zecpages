@@ -18,7 +18,8 @@ import logo from "../icons/zecpageslogo.png";
 import qricon from "../icons/qr.png"
 import qrdark from "../icons/qrdark.png"
 import UserBoard from "../components/UserBoard"
-
+import copyicon from "../icons/zecpagescopyicondaymode01.png"
+import copyicondark from "../icons/bignightcopy.png"
 
 
 import {UserContext} from "../contexts/UserContext"
@@ -32,7 +33,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const { zaddrs } = useContext(ZaddrContext);
     const {darkMode} = useContext(UserContext)
     const [done, setDone] = useState(false)
-
+    const [showSubInfo, setShowSubInfo] = useState(false)
+    const [numMonths, setNumMonths] = useState(1)
+    const BOARD_ADDRESS = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
     useEffect( _ => {
         let userInfo;
@@ -92,6 +95,23 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         setCopied(user.id)
         ReactGA.event({category: "User", action: `Copied a zaddr`});
     }
+
+    const flagClickedIcon = e => {
+        document.querySelector(".copy-icon.icon").classList.add('clicked')
+    }
+    
+    const flagUnClickedIcon = e => {
+        document.querySelector(".copy-icon.icon").classList.remove('clicked')
+    }
+    const showCopyTooltip = e => {
+        document.querySelector(".copied-tooltip").classList.add('visible')
+        setTimeout(_ => document.querySelector(".copied-tooltip").classList.remove('visible'), 1000)
+    }
+
+    const showCopyTooltipById = (id) => {
+        document.querySelector(`.copied-tooltip-${id}`).classList.add('visible')
+        setTimeout(_ => document.querySelector(`.copied-tooltip-${id}`).classList.remove('visible'), 1000)
+    }
       
 
     return(
@@ -99,7 +119,33 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         {user.username ? 
         <>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            <h2>{user.username}</h2>
+            <h2>{user.username}{"  "}<button className="subscribe-button" onClick={_ => setShowSubInfo(!showSubInfo)}>{showSubInfo ? "Close Form" : "Subscribe"}</button></h2>
+            {showSubInfo 
+                ?   <div> 
+                        <hr />
+                        <h2 style={{textAlign: "left"}}>Subscribe to a user for .06 ZEC/month!<br/><br/>
+                            Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.
+                            
+                        </h2>
+                        <hr />
+                        <h4 className="zaddr">{`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`}
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
+                                <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
+                            <span className='copied-tooltip'>Copied!</span></span>
+                        </h4>
+                        <div className="subscription-form">
+                            <label>Number of Months:
+                            <input
+                                type="number"
+                                name="numberOfMonths"
+                                value={numMonths}
+                                onChange={e => setNumMonths(e.target.value)} /></label>
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`} />
+                        </div>
+                        <hr/>
+                    </div>
+                : null 
+            }
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
                 <p>{user.zaddr}</p>

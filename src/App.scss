@@ -47,6 +47,8 @@ $dark-stripe: #ad860e;
   cursor:  pointer;
 }
 
+
+
 .copied-tooltip {
   position: absolute;
   top: 30px;
@@ -312,6 +314,7 @@ $dark-stripe: #ad860e;
   canvas {
     margin: 2% auto;
   }
+  
 
   .card-top-row {
     p{
@@ -328,8 +331,31 @@ $dark-stripe: #ad860e;
     justify-content:space-between;
     align-items:center;
   }
-  
+  .subscribe-button {
 
+    cursor: pointer;
+  }
+  
+  .subscription-form {
+    margin: 1% auto;
+
+
+    
+    label {
+      color: black;
+    }
+    canvas {
+      margin: 0;
+    }
+    input {
+      margin-left: 10px;
+      margin-right: 20px;
+      width: 40px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
 
   .card-bottom-row {
@@ -416,6 +442,26 @@ $dark-card-background: #00201d;
 
 .dark-mode .zaddr-card {
   background: $dark-card-background;
+  .subscribe-button {
+    background: #00665c;
+    color: #eee;
+  }
+
+  .subscription-form {
+
+    label {
+      color: #eee;
+    }
+
+    input {
+      background: #00201d;
+      color: #eee;
+      border: 1px solid #eee;
+
+      text-select: none;  
+    }
+  }
+
   input, textarea {
     color: black;
   }
