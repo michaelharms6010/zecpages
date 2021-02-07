@@ -331,7 +331,9 @@ export default function Board(props) {
     }
 
     const flipCard = _ => {
-        fetchPinned();
+        if (!flipped) {
+            fetchPinned();
+        }
         setFlipped(!flipped)
     }
     const formatTime = datetime => {
