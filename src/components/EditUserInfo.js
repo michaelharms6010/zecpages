@@ -23,7 +23,7 @@ export default function EditUserInfo ({history}) {
 
     useEffect( _ => {
         axiosAuth().get("https://be.zecpages.com/users/me")
-        .then(res => setUser(res.data))
+        .then(res => { if (res.data) localStorage.setItem("user_id", res.data.id); setUser(res.data)})
         .catch(err => console.error(err))
     },[])
 

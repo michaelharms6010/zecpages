@@ -4,6 +4,7 @@ import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
 import {Link} from "react-router-dom"
 import axios from "axios"
+import jwt from "jsonwebtoken"
 
 import proofactive from "../icons/proof-active.png";
 import proofinactive from "../icons/proof-inactive.png";
@@ -21,7 +22,6 @@ import UserBoard from "../components/UserBoard"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
 
-
 import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext";
 
@@ -37,15 +37,19 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [numMonths, setNumMonths] = useState(1)
     const BOARD_ADDRESS = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
+    
+
     useEffect( _ => {
         let userInfo;
-
+        if (localStorage.getItem("jwt") && !localStorage.getItem("user_id")) {
+            const decodedToken = jwt.decode(localStorage.getItem("jwt"))
+            localStorage.setItem("user_id", decodedToken.id)
+        }
 
 
         if (zaddr) {
             axios.get(`https://be.zecpages.com/users/zaddr/${match.params.zaddr}`)
             .then(r => {
-                console.log('1',r)
                 userInfo = r;
                 if (userInfo) {
                     setUser(userInfo.data)
@@ -58,7 +62,6 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         } else {
             axios.get(`https://be.zecpages.com/users/${match.params.username}.json`)
             .then(r => {
-                console.log('2',r)
                 userInfo = r;
                 if (userInfo) {
                     setUser(userInfo.data)
@@ -123,10 +126,11 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
             {showSubInfo 
                 ?   <div> 
                         <hr />
-                        <h2 style={{textAlign: "left"}}>Subscribe to a user for .06 ZEC/month!<br/><br/>
-                            Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.
+                        <h2 style={{textAlign: "center"}}>Support {user.username} by subscribing for .06{"\xa0"}ZEC/month!<br/><br/>
+                            
                             
                         </h2>
+                        <h2 style={{textAlign: "left"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
                         <hr />
                         <h4 className="zaddr">{`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`}
                             <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
