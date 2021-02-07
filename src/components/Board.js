@@ -416,7 +416,7 @@ export default function Board(props) {
                         <div className="icon-card">
                             <div className="pinned-card-back-text">
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
-                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: {pinned.decayed_amount + 1} Zatoshis</h5>
+                                <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: {Math.max(10000000, +pinned.decayed_amount + 1)} Zatoshis</h5>
                                 <h5>Price goes down by 5 Zat/second.</h5>
                             </div>
                             <div className="img-container">
