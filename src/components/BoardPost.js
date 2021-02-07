@@ -157,16 +157,12 @@ export default function BoardPost(props) {
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
-        {likeTooltip === post.id && 
-            <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(post.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`}       
-            <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
-            <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-            <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
-            <br/> or simply make a board post with the memo "{`LIKE::${post.id}`}"</code></p>
-        }
-        {likeQrVis === post.id && likeTooltip === post.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`} />}
-        <hr></hr>
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+       <hr></hr>
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} 
+        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`); showLikeCopyTooltipById(99999999);}}>
+        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+        <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span>
+        or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
         {!!qrVis && 
             <div className="reply-editor">
                 <div className="reply-text-editor">
@@ -177,6 +173,15 @@ export default function BoardPost(props) {
                 <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} />
             </div>    
         }
+         {likeTooltip === post.id && 
+            <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(post.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`}       
+            <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
+            <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+            <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
+            <br/> or simply make a board post with the memo "{`LIKE::${post.id}`}"</code></p>
+        }
+        {likeQrVis === post.id && likeTooltip === post.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`} />}
+        
          <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
