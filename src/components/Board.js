@@ -356,7 +356,7 @@ export default function Board(props) {
                 <h4 className="board-zaddr">{qrVal} 
                     
                 </h4>
-                <h4>**Include your zaddr in your post and you'll receive 50k zat for every like**</h4>
+                <h4>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}<span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></code>
                 <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginLeft: "5px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
@@ -384,7 +384,7 @@ export default function Board(props) {
                         <div className="pinned-header">
                             {/* <h4>{pinned.id}</h4> */}
                             <h4></h4>
-                            <h3 className="pin-text">Pinned for {pinned.amount} Zats</h3>
+                            <h3 className="pin-text">Pinned for {(pinned.amount / 100000000).toFixed(8)}{"\xa0"}ZEC</h3>
                         </div>
                         <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                         
@@ -431,7 +431,7 @@ export default function Board(props) {
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
                                 <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: <span className="no-break-text">{inUsd 
                                 ? `$${Math.max(0.001 * zecPrice, ((+pinned.decayed_amount + 1) / 100000000) * zecPrice ).toFixed(2)}` 
-                                : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000)}\xa0ZEC` }</span></h5>
+                                : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000).toFixed(8)}\xa0ZEC` }</span></h5>
                                 <h5>Price decaying by <span className="no-break-text">{inUsd ? `$${(0.00000005 * zecPrice).toFixed(8)}` : "0.00000005\xa0ZEC"}/second</span></h5>
                                 <button className="unit-toggle" onClick={e => {e.stopPropagation(); setInUsd(!inUsd)}}>{"Toggle Unit"}</button>
                             </div>
