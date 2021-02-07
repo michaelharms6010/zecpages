@@ -450,6 +450,13 @@ $zcash-yellow: #ffbf00;
           text-align: right;
           padding-right: 10px;
       }
+      .unit-toggle {
+        background: lighten($fill-color, 5%);
+        border: 1px solid $dark-red;
+        color: #111;
+    }
+
+
       margin-bottom: 20px;
       padding: 25px;
       max-width: 900px;
@@ -556,9 +563,14 @@ $zcash-yellow: #ffbf00;
     }
     #pinned-post {
         background: #007eff;
+        
         border: 5px dashed #000126;
         box-shadow: 0 0 0 2.5px #000126, 0 0 0 12.5px #390009, inset 0 0 0 2.5px #000126, 0 5px 10px 15px #620000, inset 0 0 0 6px #390009, inset 0 0 100vw 100vw #390009;
-    
+        .unit-toggle {
+            background: #620000;
+            border: 1px solid #800000;
+            color: #eee;
+        }
     }
     .board-post {
         background: $dark-theme-color;
