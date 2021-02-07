@@ -153,7 +153,7 @@ export default function BoardPost(props) {
 
     {post.memo ? 
     <>
-    {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : null}
+    {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : <Link  className="replying-to-link" to="/board">← Back to board</Link>}
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
@@ -229,7 +229,7 @@ export default function BoardPost(props) {
     </div>
     )}
     
-        <Link to="/board"><button>Back to the board!</button></Link>
+        
         </>
     : null }
     </div>
