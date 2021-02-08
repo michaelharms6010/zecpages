@@ -506,6 +506,11 @@ $dark-stripe: #7a5f0b;
 $dark-card-background: #00201d;
 
 .dark-mode {
+  .subscription-explainer {
+    h1 {
+      color: #eee;
+    }
+  }
   .back-button-container {
 
     a {

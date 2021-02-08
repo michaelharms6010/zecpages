@@ -6,8 +6,8 @@ export default function SubscriptionInfo(props) {
 
     return (
         <>
-        <div className="zaddr-card">
-            <h1 style={{color: "#eee"}}>ZECstack Subscriptions</h1>
+        <div className="zaddr-card subscription-explainer">
+            <h1>ZECstack Subscriptions</h1>
             <h3>ZECpages allows users to monetize their content and publish to subscribers via Zcash memo. Subscribing to a user costs .06{"\xa0"}ZEC/month. (.05 goes to creator, .01 ZECpages fee)</h3>
             <hr/>
             <h3>Publish to your subscribers using the <Link to="/publish" >ZECpages publishing interface.</Link></h3>
