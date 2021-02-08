@@ -220,7 +220,8 @@ export default function Board(props) {
 
 
         axios.get("https://api.coingecko.com/api/v3/simple/price?ids=zcash&vs_currencies=usd")
-            .then(r => setZecPrice(r.data.zcash.usd)).catch(err => console.log(err))
+            .then(r => setZecPrice(r.data.zcash.usd))
+            .catch(err => console.log(err))
 
 
         Pusher.logToConsole = false;

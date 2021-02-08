@@ -1,8 +1,13 @@
-import React from "react";
-import {Link} from "react-router-dom"
+import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 export default function SubscriptionInfo(props) {
-
+    const [subscribers, setSubscribers] = useState([])
+    const [subscriptions, setSubscriptions] = useState([])
+    useEffect( _ => {
+        // axiosWithAuth().get("https://be.zecpages.com/")
+    },[])
 
     return (
         <>
@@ -15,11 +20,11 @@ export default function SubscriptionInfo(props) {
         <div className="subscription-info-container">
 
             <div className="subscription-panel subscribed-to-panel">
-                <h3>Subscriptions</h3>
+                <h3 style={{marginTop: "6px", marginBottom: "11px"}}>Subscriptions</h3>
                 <hr/>
             </div>
             <div className="subscription-panel subscribers-panel">
-                <h3>Subscribers<Link to="/publish"><button>Publish</button></Link></h3>
+                <h3 style={{marginTop: "0px", marginBottom: "0px"}}>Subscribers<Link to="/publish"><button>Publish</button></Link></h3>
                 <hr/>
             </div>
         </div>

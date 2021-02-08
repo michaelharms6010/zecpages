@@ -137,7 +137,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         <hr />
                         <h4>The memo should read "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>
                         <h4 className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
                         </h4>
@@ -148,7 +148,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                                 name="numberOfMonths"
                                 value={numMonths}
                                 onChange={e => setNumMonths(e.target.value)} /></label>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`} />
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`} />
                         </div>
                         <hr/>
                     </div>

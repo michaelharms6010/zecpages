@@ -451,6 +451,7 @@ $dark-stripe: #ad860e;
       color: black;
       cursor: pointer;
       margin: 5px 10px;
+      margin-bottom: 0px;
     }
   }
 }
@@ -942,7 +943,15 @@ $dark-card-background: #00201d;
   .search-controls {
     width: 70%;
   }
+  .subscription-info-container, .dark-mode .subscription-info-container {
+    flex-direction: column;
+    width: 95%;
+    .subscription-panel {
+      width: 95%;
+      margin: 10px auto;
 
+    }
+  }
   
 
 }
@@ -1149,6 +1158,16 @@ $dark-card-background: #00201d;
   }
 
   @media (max-width: 720px) {
+    
+    .subscription-info-container, .dark-mode .subscription-info-container {
+      flex-direction: column;
+      width: 95%;
+      .subscription-panel {
+        width: 95%;
+        margin: 10px auto;
+
+      }
+    }
     .form-container {
       
       flex-direction: column;
