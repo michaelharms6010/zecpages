@@ -36,7 +36,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [done, setDone] = useState(false)
     const [showSubInfo, setShowSubInfo] = useState(false)
     const [numMonths, setNumMonths] = useState(1)
-    const BOARD_ADDRESS = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
+    const SUBSCRIBE_ADDRESS = "zs19k7jr4lajl285r96jzuhc4xdkh978qkgqutmla74t9ayxa6rppj2e8z3zcme88lyz90gqz92tam"
 
     
 
@@ -136,8 +136,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         <h2 style={{textAlign: "left"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
                         <hr />
                         <h4>The memo should read "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>
-                        <h4 className="zaddr">{`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
+                        <h4 className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`}
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
                         </h4>
@@ -148,7 +148,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                                 name="numberOfMonths"
                                 value={numMonths}
                                 onChange={e => setNumMonths(e.target.value)} /></label>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${BOARD_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`} />
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}`)}`} />
                         </div>
                         <hr/>
                     </div>
