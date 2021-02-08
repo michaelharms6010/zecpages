@@ -5,11 +5,13 @@ export default function SubscriptionInfo(props) {
 
     return (
         <div className="subscription-info-container">
-            <div className="subscribed-to-panel">
-                <h3>My Subscriptions Go Here</h3>
+            <div className="subscription-panel subscribed-to-panel">
+                <h3>Subscriptions</h3>
+                <hr/>
             </div>
-            <div className="subscribers-panel">
-                <h3>Subscribers go here</h3>
+            <div className="subscription-panel subscribers-panel">
+                <h3>Subscribers</h3>
+                <hr/>
             </div>
         </div>
     )

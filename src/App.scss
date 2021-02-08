@@ -390,6 +390,17 @@ $dark-stripe: #ad860e;
   }
 }
 
+.subscription-info-container {
+  display:flex;
+  justify-content: space-between;
+  width: 80%;
+  .subscription-panel {
+    width: 49%;
+    background: turquoise;
+    color: #eee;
+  }
+}
+
 
 .zaddr-page-buttons {
   width: 80%;
@@ -440,8 +451,29 @@ $dark-stripe: #ad860e;
 $dark-stripe: #7a5f0b;
 $dark-card-background: #00201d;
 
+.dark-mode {
+  .subscription-info-container {
+    display:flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: .5% auto;
+    .subscription-panel {
+      width: 49%;
+      background: $dark-card-background;
+      color: #eee;
+      border: 1px solid #aaa;
+      h3 {
+        color: #eee;
+        margin-top: .5%;
+      }
+    }
+  }
+}
+
+
 .dark-mode .zaddr-card {
   background: $dark-card-background;
+
   .subscribe-button {
     background: #00665c;
     color: #eee;
