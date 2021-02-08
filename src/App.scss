@@ -438,10 +438,20 @@ $dark-stripe: #ad860e;
   display:flex;
   justify-content: space-between;
   width: 80%;
+  margin: .5% auto;
   .subscription-panel {
     width: 49%;
     background: turquoise;
     color: #eee;
+    border: 1px solid black;
+    h3 {
+      margin-top: .5%;
+    }
+    button {
+      color: black;
+      cursor: pointer;
+      margin: 5px 10px;
+    }
   }
 }
 
@@ -504,11 +514,11 @@ $dark-card-background: #00201d;
     }
   }
   button {
-    border: 1px dashed #aaa;
+    border: 2px dashed #ccc;
     background: $dark-card-background;
     cursor: pointer;
     color: #eee;
-    margin: 5px 10px;
+
   }
   .publish-page {
     background: $dark-card-background;
@@ -521,7 +531,7 @@ $dark-card-background: #00201d;
       button {
 
         background: $dark-card-background;
-
+        
       }
       
       textarea {
@@ -543,6 +553,9 @@ $dark-card-background: #00201d;
       background: $dark-card-background;
       color: #eee;
       border: 1px solid #aaa;
+      button {
+        color: #eee;
+      }
       h3 {
         color: #eee;
         margin-top: .5%;
