@@ -390,6 +390,50 @@ $dark-stripe: #ad860e;
   }
 }
 
+.back-button-container {
+  width: 95%;
+  margin: 5px auto;
+  display: flex;
+  max-width: 900px;
+  a {
+    color: black;
+    font-weight: bold;
+  }
+}
+.publish-page {
+  background: turquoise;
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  h3 {
+    margin-bottom: 0;
+  }
+  .publish-form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    textarea {
+      width: 90%;
+      max-width: 700px;
+      font-size: 17px;
+      height: 300px;
+      margin: 20px;
+    }
+    button {
+      padding: 10px;
+      cursor:pointer;
+      font-size: 16px;
+     &:disabled {
+       cursor: default;
+     } 
+    }
+  }
+}
+
 .subscription-info-container {
   display:flex;
   justify-content: space-between;
@@ -452,6 +496,43 @@ $dark-stripe: #7a5f0b;
 $dark-card-background: #00201d;
 
 .dark-mode {
+  .back-button-container {
+
+    a {
+      color: #eee;
+
+    }
+  }
+  button {
+    border: 1px dashed #aaa;
+    background: $dark-card-background;
+    cursor: pointer;
+    color: #eee;
+    margin: 5px 10px;
+  }
+  .publish-page {
+    background: $dark-card-background;
+    border: 1px solid #eee;
+    h3 {
+      color: #eee;
+    }
+    .publish-form {
+      
+      button {
+
+        background: $dark-card-background;
+
+      }
+      
+      textarea {
+        color: #eee;
+        background: $dark-card-background;
+        border: 1px solid #aaa;
+      }
+    }
+  }
+
+
   .subscription-info-container {
     display:flex;
     justify-content: space-between;

@@ -21,6 +21,7 @@ import Drawing from "./components/Drawing";
 import Leaderboard from "./components/Leaderboard"
 import UserBoard from "./components/UserBoard"
 import PollChart from "./components/charts/PollChart"
+import Publish from "./components/Publish"
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
               <Route exact path="/board" component={Board} />
+              <Route exact path="/publish" component={Publish} />
               <Route exact path="/about" component={About} />
               <Route exact path="/leaderboard" component={Leaderboard} />
               <Route exact path="/bitcoin" render={_ => window.location.href = "/bitcoin.pdf" } />
