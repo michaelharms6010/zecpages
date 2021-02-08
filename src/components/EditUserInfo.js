@@ -3,6 +3,7 @@ import axiosAuth from "../utils/AxiosWithAuth";
 import {UserContext} from "../contexts/UserContext";
 import {ZaddrContext} from "../contexts/ZaddrContext";
 import {confirmAlert} from "react-confirm-alert";
+import SubscriptionInfo from "./SubscriptionInfo"
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
 import zcashLogo from "../zcash-icon.png"
@@ -181,6 +182,7 @@ export default function EditUserInfo ({history}) {
                 })} */}
 
         </div>
+        <SubscriptionInfo />
         </>
 
     )
