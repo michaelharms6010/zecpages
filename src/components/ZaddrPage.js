@@ -146,6 +146,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                             <input
                                 type="number"
                                 name="numberOfMonths"
+                                min="1"
                                 value={numMonths}
                                 onChange={e => setNumMonths(e.target.value)} /></label>
                             <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`} />
