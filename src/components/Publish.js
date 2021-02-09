@@ -42,16 +42,18 @@ export default function Publish(props) {
         <div style={{position: "relative"}} className="publish-page">
 
             <h3>Publish to {`${subscribers.length}`} {subscribers.length === 1 ? "subscriber" : "subscribers"}:</h3>
-            {lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 4) ? <h3>You can't publish willy-nilly. You can publish again in { Math.floor(((Date.now() - new Date(lastArticle.date_created).getTime()) / 1000) / 60) } minutes </h3> : null }
+            {lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 4) ? <h3>You can't publish willy-nilly. You can publish again in { 240 - Math.floor(((Date.now() - new Date(lastArticle.date_created).getTime()) / 1000) / 60) } minutes </h3> : null }
             <form className="publish-form" onSubmit={handleSubmit}>
                 {!!subscribers.length && 
                 <textarea maxLength="500"
                     value={memo}
                     name="memo"
+                    disabled={(lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 4)) || !subscribers.length || done}
                     onChange={e => setMemo(e.target.value)} />}
                 <button disabled={(lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 4)) || !subscribers.length || done} type="submit">{subscribers.length ? "Publish To Subscribers" : "You need subscribers to publish"}</button>
             </form>
             <h3 style={{position: "absolute", bottom: "10px", right: "10px"}}>{memo.length}/500</h3>
+            {done && <h3>Your content is being published. It should be included in the next few ZEC blocks.</h3>}
         </div>
         </>
     )

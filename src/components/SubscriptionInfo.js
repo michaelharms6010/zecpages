@@ -17,7 +17,7 @@ export default function SubscriptionInfo(props) {
     return (
         <>
         <div className="zaddr-card subscription-explainer">
-            <h1>ZECstack Subscriptions</h1>
+            <h1>Subscriptions</h1>
             <h3>ZECpages allows users to monetize their content and publish to subscribers via Zcash memo. Subscribing to a user costs .06{"\xa0"}ZEC/month. (.05 goes to creator, .01 ZECpages fee)</h3>
             <hr/>
             <h3>Publish to your subscribers using the <Link to="/publish" >ZECpages publishing interface.</Link></h3>
@@ -47,7 +47,7 @@ export default function SubscriptionInfo(props) {
                 </table>}
             </div>
             <div className="subscription-panel subscribers-panel">
-                <h3 style={{marginTop: "0px", marginBottom: "0px"}}>Subscribers<Link to="/publish"><button>Publish</button></Link></h3>
+                <h3 style={{marginTop: "0px", marginBottom: "0px"}}>Subscribers{!!subscribers.length && <Link to="/publish"><button>Publish</button></Link>}</h3>
                 <hr/>
                 {!!subscribers.length && <table width="100%">
                     <tbody>
