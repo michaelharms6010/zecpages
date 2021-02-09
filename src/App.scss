@@ -391,6 +391,7 @@ $dark-stripe: #ad860e;
 }
 
 .back-button-container {
+
   width: 95%;
   margin: 5px auto;
   display: flex;
@@ -398,6 +399,11 @@ $dark-stripe: #ad860e;
   a {
     color: black;
     font-weight: bold;
+    transition: .4s;
+    &:hover {
+      letter-spacing: 1px;
+      color: black;
+    }
   }
 }
 .publish-page {

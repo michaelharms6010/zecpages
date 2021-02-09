@@ -28,7 +28,7 @@ export default function Publish(props) {
     return (
         <>
         <div className="back-button-container">
-            <Link to="/edit">← Back to Profile</Link>
+            <Link className="back-profile-link" to="/edit">← Back to Profile</Link>
         </div>
         <div style={{position: "relative"}} className="publish-page">
 
