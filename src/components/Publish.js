@@ -42,7 +42,7 @@ export default function Publish(props) {
         <div style={{position: "relative"}} className="publish-page">
 
             <h3>Publish to {`${subscribers.length}`} {subscribers.length === 1 ? "subscriber" : "subscribers"}:</h3>
-            {lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2) ? <h3>You can't publish willy-nilly. You can publish again in { 240 - Math.floor(((Date.now() - new Date(lastArticle.date_created).getTime()) / 1000) / 60) } minutes </h3> : null }
+            {lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2) ? <h3>You can't publish willy-nilly. You can publish again in { 120 - Math.floor(((Date.now() - new Date(lastArticle.date_created).getTime()) / 1000) / 60) } minutes </h3> : null }
             <form className="publish-form" onSubmit={handleSubmit}>
                 {!!subscribers.length && 
                 <textarea maxLength="500"
