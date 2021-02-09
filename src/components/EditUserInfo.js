@@ -3,6 +3,7 @@ import axiosAuth from "../utils/AxiosWithAuth";
 import {UserContext} from "../contexts/UserContext";
 import {ZaddrContext} from "../contexts/ZaddrContext";
 import {confirmAlert} from "react-confirm-alert";
+import SubscriptionInfo from "./SubscriptionInfo"
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
 import zcashLogo from "../zcash-icon.png"
@@ -14,6 +15,7 @@ export default function EditUserInfo ({history}) {
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
     const {setLoggedIn, darkMode} = useContext(UserContext);
+    const [showReferralInfo, setShowReferralInfo] = useState(false)
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
@@ -23,7 +25,7 @@ export default function EditUserInfo ({history}) {
 
     useEffect( _ => {
         axiosAuth().get("https://be.zecpages.com/users/me")
-        .then(res => setUser(res.data))
+        .then(res => { if (res.data) localStorage.setItem("user_id", res.data.id); setUser(res.data)})
         .catch(err => console.error(err))
     },[])
 
@@ -167,7 +169,9 @@ export default function EditUserInfo ({history}) {
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-                <h2>Referrals</h2>
+                <h2>Referrals{" "}<span style={{cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
+                {showReferralInfo &&
+                <>
                 <p>You can refer users to ZECpages by sharing the following link. <br/>You'll earn .0001 ZEC for every ♥ Like your referrered users receive.</p>
                 <p>https://zecpages.com/?referrer={user.username}</p>
                 <hr></hr>
@@ -179,8 +183,10 @@ export default function EditUserInfo ({history}) {
                         <p>{user.likes}</p>
                     </div>
                 })} */}
+                </>}
 
         </div>
+        <SubscriptionInfo />
         </>
 
     )

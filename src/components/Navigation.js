@@ -30,11 +30,11 @@ export default function Navigation() {
                     <Link to="/z/all/1">Board</Link>
                     <Link to="/directory">Users</Link>
                     <Link className="about-link" to="/about">About</Link>
-                    <a className="api-link" href="https://github.com/michaelharms6010/be-zeitpages/" rel="noopener noreferrer" target="_blank">API</a>
+                    {/* <a className="api-link" href="https://github.com/michaelharms6010/be-zeitpages/" rel="noopener noreferrer" target="_blank">API</a> */}
                     {loggedIn 
                     ? <>
                     
-                    <Link to="/edit">Edit Card</Link>
+                    <Link to="/edit">Profile</Link>
                     <Link onClick={logout}>Log Out</Link>
                     </>
                     : <>
