@@ -15,6 +15,7 @@ export default function EditUserInfo ({history}) {
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
     const {setLoggedIn, darkMode} = useContext(UserContext);
+    const [showReferralInfo, setShowReferralInfo] = useState(false)
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const logout = _ => {
@@ -168,7 +169,9 @@ export default function EditUserInfo ({history}) {
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-                <h2>Referrals</h2>
+                <h2>Referrals{" "}<span style={{cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
+                {showReferralInfo &&
+                <>
                 <p>You can refer users to ZECpages by sharing the following link. <br/>You'll earn .0001 ZEC for every ♥ Like your referrered users receive.</p>
                 <p>https://zecpages.com/?referrer={user.username}</p>
                 <hr></hr>
@@ -180,6 +183,7 @@ export default function EditUserInfo ({history}) {
                         <p>{user.likes}</p>
                     </div>
                 })} */}
+                </>}
 
         </div>
         <SubscriptionInfo />
