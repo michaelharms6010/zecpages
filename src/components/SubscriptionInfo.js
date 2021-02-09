@@ -5,6 +5,7 @@ import axiosWithAuth from "../utils/AxiosWithAuth";
 export default function SubscriptionInfo(props) {
     const [subscribers, setSubscribers] = useState([])
     const [subscriptions, setSubscriptions] = useState([])
+    const [user, setUser] = useState({username: ""})
     useEffect( _ => {
         axiosWithAuth().get("https://be.zecpages.com/users/getsubscriptions")
         .then(r => setSubscriptions(r.data))
@@ -12,13 +13,20 @@ export default function SubscriptionInfo(props) {
         axiosWithAuth().get("https://be.zecpages.com/users/getsubs")
         .then(r => setSubscribers(r.data))
         .catch(err => console.log(err))
+
+        axiosWithAuth().get("https://be.zecpages.com/users/me")
+        .then(res => { if (res.data) localStorage.setItem("user_id", res.data.id); setUser(res.data)})
+        .catch(err => console.error(err))
+
     },[])
 
     return (
         <>
         <div className="zaddr-card subscription-explainer">
             <h1>Subscriptions</h1>
-            <h3>ZECpages allows users to monetize their content and publish to subscribers via Zcash memo. Subscribing to a user costs .06{"\xa0"}ZEC/month. (.05 goes to creator, .01 ZECpages fee)</h3>
+            <h3>ZECpages allows users to monetize their content and publish to subscribers via Zcash memo. Subscribing to a user costs .06{"\xa0"}ZEC/month. (.05 goes to creator, .01 ZECpages fee)
+            </h3>
+            <h3>Users can subscribe via your user shortlink:<br/><Link to={`/${user.username}`}>https://zecpages.com/{user.username}</Link></h3>
             <hr/>
             <h3>Publish to your subscribers using the <Link to="/publish" >ZECpages publishing interface.</Link></h3>
         </div>
