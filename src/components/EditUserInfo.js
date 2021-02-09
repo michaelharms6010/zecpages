@@ -169,7 +169,7 @@ export default function EditUserInfo ({history}) {
             <button onClick={deleteUser}>Delete Your Entry</button>
         </div>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-                <h2>Referrals{" "}<span style={{cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
+                <h2>Referrals{" "}<span style={{width: "15px", display: 'inline-block', cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
                 {showReferralInfo &&
                 <>
                 <p>You can refer users to ZECpages by sharing the following link. <br/>You'll earn .0001 ZEC for every ♥ Like your referrered users receive.</p>
