@@ -7,11 +7,14 @@ export default function Publish(props) {
     const [memo, setMemo] = React.useState("")
 
     React.useEffect(_ => {
-        //get Subscriber count
+        axiosWithAuth().get("https://be.zecpages.com/users/getsubs")
+        .then(r => setSubscribers(r.data))
+        .catch(err => console.log(err))
     },[])
 
 
     const handleSubmit = e => {
+        e.preventDefault();
         axiosWithAuth().post("https://be.zecpages.com/users/publish", {memo})
         .then(r => {
             console.log(r)
@@ -27,7 +30,7 @@ export default function Publish(props) {
         </div>
         <div className="publish-page">
 
-            <h3>Publish to {`${subscribers.length}`} subscribers:</h3>
+            <h3>Publish to {`${subscribers.length}`} {subscribers.length === 1 ? "subscriber" : "subscribers"}:</h3>
             <form className="publish-form" onSubmit={handleSubmit}>
                 {!!subscribers.length && 
                 <textarea maxLength="500"

@@ -944,7 +944,7 @@ $dark-card-background: #00201d;
     width: 70%;
   }
   .subscription-info-container, .dark-mode .subscription-info-container {
-    flex-direction: column;
+    flex-direction: column-reverse;
     width: 95%;
     .subscription-panel {
       width: 95%;
