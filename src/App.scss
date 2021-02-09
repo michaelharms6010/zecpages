@@ -444,6 +444,7 @@ $dark-stripe: #ad860e;
     background: turquoise;
     color: #eee;
     border: 1px solid black;
+    padding: 0px 10px 10px 10px;
     h3 {
       margin-top: .5%;
     }
@@ -506,7 +507,20 @@ $dark-stripe: #ad860e;
 $dark-stripe: #7a5f0b;
 $dark-card-background: #00201d;
 
+table {
+  color: black;
+  a {
+    color: $day-background;
+  }
+}
+
 .dark-mode {
+  table {
+    color: #eee;
+    a {
+      color: dodgerblue;
+    }
+  }
   .subscription-explainer {
     h1 {
       color: #eee;
@@ -559,6 +573,7 @@ $dark-card-background: #00201d;
       background: $dark-card-background;
       color: #eee;
       border: 1px solid #aaa;
+      
       button {
         color: #eee;
       }
@@ -932,6 +947,9 @@ $dark-card-background: #00201d;
   }
   
 }
+
+
+
 @media (max-width: 1100px) {
   .main-nav .about-link, .main-nav .api-link {
     display:none;
