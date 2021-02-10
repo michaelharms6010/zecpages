@@ -36,7 +36,7 @@ Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
 The faucet lives on its own server and isn't even linked from ZECpages, but this seems like an appropriate place to link it.
 
-UPDATE: This is taken down from lack of use - If you need TAZ just dm me.
+UPDATE: This is taken down from lack of use - If you need TAZ just dm me or open an issue here with a testnet address.
 
 ## Contributing
 
