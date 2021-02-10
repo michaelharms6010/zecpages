@@ -26,7 +26,9 @@ Likes are paid 50% to eligible posts (a post is eligible if it contains a valid 
 
 Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
-## Testnet Faucet - DOWN
+## Testnet Faucet - TAKEN DOWN - see update
+
+UPDATE: This is taken down from lack of use - If you need TAZ just dm me or open an issue here with a testnet address.
 
 https://faucet.zecpages.com
 
@@ -35,8 +37,6 @@ Minimal React app with just enough node backend to middleman cors for the browse
 Faucet code: https://github.com/michaelharms6010/zcash-faucet
 
 The faucet lives on its own server and isn't even linked from ZECpages, but this seems like an appropriate place to link it.
-
-UPDATE: This is taken down from lack of use - If you need TAZ just dm me or open an issue here with a testnet address.
 
 ## Contributing
 
