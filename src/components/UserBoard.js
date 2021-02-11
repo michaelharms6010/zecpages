@@ -18,7 +18,8 @@ import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
-
+import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
 
 export default function UserBoard(props) {
     AOS.init()
@@ -341,7 +342,7 @@ export default function UserBoard(props) {
         <h3>{props.match.params.username} hasn't posted yet.</h3>
         : 
         <h3>
-            <img id="spinner" alt="spinning zcash logo" src={logo} />
+            {darkMode ? <img id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             
         </h3>}
 

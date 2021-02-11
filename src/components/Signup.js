@@ -44,7 +44,10 @@ export default function Login({location, history}) {
                         history.push("/edit")
                     
                 })
-                .catch(err => console.error(err))
+                .catch(err => { 
+                    console.error(err)
+                    setAlert("That username already exists.")
+                })
         }
     }
     

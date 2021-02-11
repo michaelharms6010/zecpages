@@ -20,6 +20,8 @@ import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
+import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
 
 
 export default function Board(props) {
@@ -346,7 +348,7 @@ export default function Board(props) {
         <h3>There isn't a board for /z/{props.match.params.boardname} yet.</h3>
         : 
         <h3>
-            <img id="spinner" alt="spinning zcash logo" src={logo} />
+            {darkMode ? <img id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             
         </h3>}
 

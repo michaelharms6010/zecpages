@@ -7,6 +7,7 @@ import SubscriptionInfo from "./SubscriptionInfo"
 import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
 import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
 
 
 export default function EditUserInfo ({history}) {
@@ -103,7 +104,7 @@ export default function EditUserInfo ({history}) {
         <>
         {loggedIn ?
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            {user.username ? null : <img style={{width: "150px", height: "150px"}}  id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
+            {user.username ? null : darkMode ? <img style={{width: "150px", height: "150px"}}  id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img style={{width: "150px", height: "150px"}}  id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             {!editing
             ?
             <>

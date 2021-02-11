@@ -621,6 +621,8 @@ table {
   }
 }
 
+
+
 .dark-mode .auth-form {
   color: #eee;
   background: $dark-card-background;
@@ -638,7 +640,7 @@ table {
   }
   button {
     color: #eee;
-    margin-top: 15px;
+
   }
 }
 .dark-mode {
@@ -905,7 +907,7 @@ table {
     }
     button {
       margin: 10px auto;
-      margin-top: 0;
+      margin-top: 15px;
       width: 50%;
     }
   }

@@ -23,6 +23,8 @@ import BoardPageControls from "./BoardPageControls"
 import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
 import {useLocalStorage} from "../hooks/useLocalStorage"
+import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
 
 export default function Board(props) {
     AOS.init()
@@ -521,7 +523,7 @@ export default function Board(props) {
             </>
         : 
         <>
-            <img id="spinner" alt="spinning zcash logo" src={logo} />
+            {darkMode ? <img  id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img  id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             
         </>}
 

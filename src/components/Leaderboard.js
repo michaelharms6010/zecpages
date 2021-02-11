@@ -18,6 +18,8 @@ import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 import {copyTextToClipboard} from "../utils/copy"
 import PollChart from "./charts/PollChart"
+import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
 
 
 export default function Board() {
@@ -187,7 +189,7 @@ export default function Board() {
             </>
         : 
         <>
-            <img id="spinner" alt="spinning zcash logo" src={logo} />
+            {darkMode ? <img id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             
         </>}
 

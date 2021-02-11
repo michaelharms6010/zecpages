@@ -4,6 +4,10 @@ import ZaddrCard from "./ZaddrCard";
 import logo from "../zcash-icon.png"
 import {copyTextToClipboard } from "../utils/copy";
 import axios from "axios"
+import zcashLogo from "../zcash-icon.png"
+import zcashLogoDark from "../zcash-icon-dark.png"
+import {UserContext} from "../contexts/UserContext"
+
 
 export default function ZaddrList (props) {
     const { copied, setCopied, loaded, setLoaded} = useContext(ZaddrContext);    
@@ -13,6 +17,7 @@ export default function ZaddrList (props) {
     const [zaddrs, setZaddrs] = useState([])
     const [userCount, setUserCount] = useState(0)
     const [searching, setSearching] = useState(false)
+    const {darkMode} = useContext(UserContext)
     const [loadingSearch, setLoadingSearch] = useState(false)
     const [filters, setFilters] = useState({
         needs_twitter: false,
@@ -147,7 +152,7 @@ export default function ZaddrList (props) {
             </>
             : 
             <>
-                <img id="spinner" alt="spinning zcash logo" src={logo} />
+                {darkMode ? <img id="spinner" alt="spinning zcash logo" src={zcashLogoDark} /> : <img id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
                 
             </>
         }    
