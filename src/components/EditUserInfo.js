@@ -14,7 +14,7 @@ export default function EditUserInfo ({history}) {
     const [httpsString, setHttpsString] = useState("");
     const [editing, setEditing] = useState(false);
     const [error, setError] = useState("");
-    const {setLoggedIn, darkMode} = useContext(UserContext);
+    const {loggedIn, setLoggedIn, darkMode} = useContext(UserContext);
     const [showReferralInfo, setShowReferralInfo] = useState(false)
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
@@ -99,7 +99,9 @@ export default function EditUserInfo ({history}) {
     }
 
     return(
+        
         <>
+        {loggedIn ?
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             {user.username ? null : <img style={{width: "150px", height: "150px"}}  id="spinner" alt="spinning zcash logo" src={zcashLogo} />}
             {!editing
@@ -168,7 +170,10 @@ export default function EditUserInfo ({history}) {
             <button onClick={toggleEditing}>{editing? "Submit" : "Edit Info"}</button>
             {/* <button onClick={deleteUser}>Delete Your Entry</button> */}
         </div>
-        <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
+        : <div className="zaddr-card" >
+            <h3>You must log into edit your info or manage subscriptions.</h3>
+        </div>}
+        {loggedIn && <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
                 <h2>Referrals{" "}<span style={{userSelect: "none", width: "15px", display: 'inline-block', cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
                 {showReferralInfo &&
                 <>
@@ -185,8 +190,8 @@ export default function EditUserInfo ({history}) {
                 })} */}
                 </>}
 
-        </div>
-        <SubscriptionInfo />
+        </div>}
+        {loggedIn && <SubscriptionInfo />}
         </>
 
     )
