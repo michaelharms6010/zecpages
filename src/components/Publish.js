@@ -55,9 +55,9 @@ export default function Publish(props) {
                 <textarea maxLength="500"
                     value={memo}
                     name="memo"
-                    disabled={(user_id && user_id !== 2 && lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2)) || !subscribers.length || done}
+                    disabled={(user_id && ![2,720].includes(user_id) && lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2)) || !subscribers.length || done}
                     onChange={e => setMemo(e.target.value)} />}
-                <button disabled={(user_id && user_id !== 2 && lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2)) || !subscribers.length || done} type="submit">{subscribers.length ? "Publish To Subscribers" : "You need subscribers to publish"}</button>
+                <button disabled={(user_id && ![2,720].includes(user_id) && lastArticle && lastArticle.date_created && new Date(lastArticle.date_created).getTime() > Date.now() - (1000 * 60 * 60 * 2)) || !subscribers.length || done} type="submit">{subscribers.length ? "Publish To Subscribers" : "You need subscribers to publish"}</button>
             </form>
             <h3 style={{position: "absolute", bottom: "10px", right: "10px"}}>{memo.length}/500</h3>
             {done && <h3 style={{marginTop: "10px"}}>Your content is being published. It should be included in the next few ZEC blocks.</h3>}
