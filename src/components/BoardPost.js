@@ -14,6 +14,7 @@ import copyicondark from "../icons/bignightcopy.png"
 import copyiconb from "../icons/copyiconb.png"
 import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
+import URLSafeBase64 from 'urlsafe-base64';
 
 var Base64 = require("js-base64")
 var Buffer = require('buffer/').Buffer
@@ -110,6 +111,7 @@ export default function BoardPost(props) {
     }
 
     useEffect( _ => {
+        console.log(URLSafeBase64.encode(Buffer.from("hello world")))
         axios.get(`https://be.zecpages.com/board/post/${props.match.params.id}`)
             .then(res => {
                 setTimeout(_ => setPost(res.data), 100)
@@ -158,8 +160,8 @@ export default function BoardPost(props) {
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
        <hr></hr>
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`} 
-        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${Base64.encode(`REPLY::${post.id} ${replyBody}`)}`); showLikeCopyTooltipById(99999999);}}>
+        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/>{`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`} 
+        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`); showLikeCopyTooltipById(99999999);}}>
         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
         <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span><br/>
         or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>

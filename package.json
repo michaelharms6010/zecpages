@@ -27,7 +27,8 @@
     "react-scripts": "3.3.1",
     "sitemap": "^6.3.5",
     "stream": "0.0.2",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "urlsafe-base64": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
