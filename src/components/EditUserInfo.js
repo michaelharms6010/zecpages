@@ -172,7 +172,7 @@ export default function EditUserInfo ({history}) {
             {/* <button onClick={deleteUser}>Delete Your Entry</button> */}
         </div>
         : <div className="zaddr-card" >
-            <h3>You must log into edit your info or manage subscriptions.</h3>
+            <h3>You must log into edit your profile or view subscription information.</h3>
         </div>}
         {loggedIn && <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
                 <h2>Referrals{" "}<span style={{userSelect: "none", width: "15px", display: 'inline-block', cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
