@@ -90,7 +90,7 @@ export default function Board(props) {
                     }
                     i++
                 } else if (str[i].charCodeAt(0) == zaddrMarker.charCodeAt(0) && str[i+1].charCodeAt(0) === zaddrMarker.charCodeAt(1) ) {
-                    output.push(<Link className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
+                    output.push(<Link style={{padding: "0"}} className="board-zaddr-link" to={`/${username}`}>{replyZaddr}</Link>)
                     i++
                 } else {
                     output.push(str[i])
@@ -392,8 +392,8 @@ export default function Board(props) {
                         <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                         
                         {likeTooltip === pinned.id &&
-                        <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
-                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
+                        <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation(); setReplyQrVis(!replyQrVis) } } style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
+                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={e => {e.stopPropagation(); copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
                         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                         <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
                         <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
@@ -473,12 +473,12 @@ export default function Board(props) {
                     {/* <h4 className="post-id">{item.id}</h4> */}
                     {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     {!!item.reply_to_post && <p className="post-text sub-board-link">Replying to <Link className="z-link" to={`/z/post/${item.reply_to_post}`}>{item.reply_to_post}</Link></p>}
-                    <p className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
+                    <p onClick={e=> e.stopPropagation()} className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
                     
                     
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} 
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation() ;  setReplyQrVis(!replyQrVis) } } style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} 
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
                     <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                     <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>
@@ -489,11 +489,11 @@ export default function Board(props) {
                     <div className="post-date">
                     {item.likes ?
                     <div className="like-container">
-                            <img alt="zcash heart" onClick={_ => handleLikeTooltip(item.id)} className="like-icon" src={darkMode ? darklike : like} /> 
+                            <img alt="zcash heart" onClick={e => {e.stopPropagation() ; handleLikeTooltip(item.id)} } className="like-icon" src={darkMode ? darklike : like} /> 
                          <span>{item.likes}</span> 
                     </div>
                     : <div className="like-icon-container" style={{width:"2rem", marginRight: '5px'}}>
-                        <img alt="zcash heart" src={darkMode ? darklike : like} onClick={_ => handleLikeTooltip(item.id)} className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
+                        <img alt="zcash heart" src={darkMode ? darklike : like} onClick={e => { e.stopPropagation() ; handleLikeTooltip(item.id) } } className="like-icon" style={{ marginRight: '5px', cursor: "pointer"}}></img></div> }
                         
                         <p style={{display: "inline"}}>{stringifyDate(item.datetime)}</p>
                     </div>
