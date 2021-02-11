@@ -166,7 +166,7 @@ export default function EditUserInfo ({history}) {
             </>}
             {error ? <p className="error-text">{error}</p> : null}
             <button onClick={toggleEditing}>{editing? "Submit" : "Edit Info"}</button>
-            <button onClick={deleteUser}>Delete Your Entry</button>
+            {/* <button onClick={deleteUser}>Delete Your Entry</button> */}
         </div>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
                 <h2>Referrals{" "}<span style={{userSelect: "none", width: "15px", display: 'inline-block', cursor: "pointer"}} onClick={_ => setShowReferralInfo(!showReferralInfo)}>{!showReferralInfo ? "+" : "-" }</span></h2>
