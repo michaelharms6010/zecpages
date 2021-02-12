@@ -535,10 +535,16 @@ table {
 }
 
 .dark-mode {
+
+
+
   table {
     color: #eee;
     a {
       color: dodgerblue;
+      &:hover {
+        color: $day-main;
+      }
     }
   }
   .subscription-explainer {
@@ -601,6 +607,13 @@ table {
         color: #eee;
         margin-top: .5%;
       }
+      a {
+          color: dodgerblue;
+          &:hover {
+            color: $day-main;
+          }
+        
+      }
     }
   }
 }
@@ -608,9 +621,9 @@ table {
 
 .dark-mode .zaddr-card {
   a {
-    color: #ddd;
+    color: dodgerblue;
     &:hover {
-      color: #eee;
+      color: $day-main;
     }
   }
   background: $dark-card-background;
@@ -620,7 +633,12 @@ table {
     color: #eee;
   }
 
-  .subscription-form {
+  .subscription-info-container {
+    a {
+      &:hover {
+        color: $day-main;
+      }
+    }
 
     label {
       color: #eee;
@@ -995,6 +1013,11 @@ table {
     .subscription-panel {
       width: 95%;
       margin: 10px auto;
+      a {
+        &:hover {
+          color: $day-main;
+        }
+      }
 
     }
   }
