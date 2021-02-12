@@ -607,6 +607,12 @@ table {
 
 
 .dark-mode .zaddr-card {
+  a {
+    color: #ddd;
+    &:hover {
+      color: #eee;
+    }
+  }
   background: $dark-card-background;
 
   .subscribe-button {
