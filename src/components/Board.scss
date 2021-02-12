@@ -108,6 +108,12 @@ $zcash-yellow: #ffbf00;
         margin-bottom: 10px;
         padding: 10px;
         transition: 1s;
+        a {
+            color: darken($day-background, 20);
+            &:hover {
+                color: darken($day-background, 50)
+            }
+        }
         .user-page-link {
             color: #333;
             &:hover {
@@ -123,6 +129,7 @@ $zcash-yellow: #ffbf00;
         word-break: break-word;
         font-size: 18px;
         margin: 10px auto;
+        margin-bottom: 0;
         .copy-icon {
             
         }
@@ -526,6 +533,12 @@ $zcash-yellow: #ffbf00;
 
     .board-explainer {
         background: $dark-theme-color;
+        a {
+            color: #ddd;
+            &:hover {
+                color: $zcash-yellow;
+            }
+        }
         .user-page-link {
             color: #ddd;
             &:hover {

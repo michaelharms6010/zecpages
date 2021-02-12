@@ -361,7 +361,8 @@ export default function Board(props) {
                 <h4 className="board-zaddr">{qrVal} 
                     
                 </h4>
-                <h4>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
+                <h4 style={{marginTop: "5px"}}>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
+                <h4 className="highlight-cta">Send at least .01 ZEC to <a style={{padding: "0"}} target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesraw">tweet your post</a>!</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001`}<span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></code>
                 <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginLeft: "5px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>

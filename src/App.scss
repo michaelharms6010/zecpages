@@ -270,6 +270,13 @@ $dark-stripe: #ad860e;
     cursor:pointer;
   }
 
+  a {
+    color: darken($day-background,20);
+    &:hover {
+      color: darken($day-background,40);
+    }
+  }
+
   button {
     margin: 1% 10px;
     height: auto;
@@ -446,6 +453,12 @@ $dark-stripe: #ad860e;
   justify-content: space-between;
   width: 80%;
   margin: .5% auto;
+  a {
+    color: darken($day-background,20);
+    &:hover {
+      color: darken($day-background,40);
+    }
+  }
   .subscription-panel {
     width: 49%;
     background: turquoise;
@@ -998,6 +1011,7 @@ table {
     }
     }
   .zaddr-card {
+
     width: 90%;
   }
   #faucet-link {

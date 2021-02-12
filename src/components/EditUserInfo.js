@@ -8,6 +8,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"
 import ReactGA from "react-ga"
 import zcashLogo from "../zcash-icon.png"
 import zcashLogoDark from "../zcash-icon-dark.png"
+import {Link} from "react-router-dom"
 
 
 export default function EditUserInfo ({history}) {
@@ -108,7 +109,7 @@ export default function EditUserInfo ({history}) {
             {!editing
             ?
             <>
-            <h2>{user.username}</h2>
+            <h2><Link to={`/${user.username}`}>{user.username}</Link></h2>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <p>{user.zaddr}</p>
             
