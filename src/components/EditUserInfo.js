@@ -11,6 +11,7 @@ import zcashLogoDark from "../zcash-icon-dark.png"
 import {Link} from "react-router-dom"
 
 
+
 export default function EditUserInfo ({history}) {
     const [user, setUser] = useState({website: "", proofposturl: "", zaddr: ""})
     const [httpsString, setHttpsString] = useState("");
