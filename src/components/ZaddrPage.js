@@ -39,6 +39,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [done, setDone] = useState(false)
     const [showSubInfo, setShowSubInfo] = useState(!!query)
     const [numMonths, setNumMonths] = useState(1)
+    const [inputZaddr, setInputZaddr] = useState("")
     const SUBSCRIBE_ADDRESS = "zs19k7jr4lajl285r96jzuhc4xdkh978qkgqutmla74t9ayxa6rppj2e8z3zcme88lyz90gqz92tam"
 
     
@@ -89,6 +90,11 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     },[match.params.zaddr, match.params.username])
   
     const [httpsString, setHttpsString] = useState("");
+
+    const isValidZaddr = str => {
+        return /^zs[a-z0-9]{76}$/.test(str)
+    }
+
     useEffect( _ => {
         if (user.website && !user.website.includes("http")) {
             setHttpsString("https://")
@@ -137,23 +143,30 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         </h2>
                         <h2 style={{textAlign: "center"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
                         <hr />
-                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${"zs1yourzaddrhere"}`}"</h4>
+                        <label>Paste your zaddr:</label>
+                        <input
+                        style={inputZaddr && isValidZaddr(inputZaddr) ? {width: "300px", margin: "10px 5px", borderColor: `${darkMode ? "lime" : "green"}` } : inputZaddr ? {width: "300px", margin: "10px 5px", borderColor: "red"} : {width: "300px", margin: "10px 5px"}}
+                        name="zaddr-input"
+                        value={inputZaddr}
+                        onChange={e => setInputZaddr(e.target.value)} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid!" : inputZaddr ? "Invalid" : ""}</span>
+                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${inputZaddr || "zs1yourzaddr"}`}"</h4>
                         {!!myId && <h4>or subscribe with your ZECpages information with: "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>}
                         <label>Number of Months:
                             <input
+                                
                                 type="number"
                                 name="numberOfMonths"
                                 min="1"
                                 value={numMonths}
-                                onChange={e => setNumMonths(e.target.value)} /></label>
+                                onChange={e => setNumMonths(e.target.value.replace(/ /g, ""))} /></label>
                         <div className="subscription-form">
 
-                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
+                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`}
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
                         </h4>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`} />
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`} />
                         </div>
                         <hr/>
                     </div>
