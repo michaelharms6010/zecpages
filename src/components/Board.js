@@ -298,7 +298,9 @@ export default function Board(props) {
     }
 
     const handleLikeTooltip = (id, e) => {
+ 
         if (e) e.stopPropagation();
+
         if (likeTooltip !== id) {
             setLikeTooltip(id)
         }
@@ -339,6 +341,9 @@ export default function Board(props) {
         }
         setFlipped(!flipped)
     }
+
+    useEffect(_ => { console.log(pinned)},[pinned])
+
     const formatTime = datetime => {
         let timeInSeconds = Math.floor((Date.now() - datetime) / 1000)
         const days = Math.floor(timeInSeconds / (60 * 60 * 24))
@@ -392,6 +397,8 @@ export default function Board(props) {
                             <h4></h4>
                             <h3 className="pin-text">Pinned for {(pinned.amount / 100000000).toFixed(8)}{"\xa0"}ZEC</h3>
                         </div>
+                        {!!pinned.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${pinned.board_name}`}>z/{pinned.board_name}</Link></p>}
+                        {!!pinned.reply_to_post && <p className="post-text sub-board-link">Replying to <Link className="z-link" to={`/z/post/${pinned.reply_to_post}`}>{pinned.reply_to_post}</Link></p>}
                         <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                         
                         {likeTooltip === pinned.id &&
