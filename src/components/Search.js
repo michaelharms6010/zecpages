@@ -289,7 +289,6 @@ export default function Search(props) {
                 </>
             )}
 
-            <h5>{`There are currently ${posts.length} posts by ${props.match.params.username}`}</h5>
             </>
         : 
         loaded 
