@@ -33,9 +33,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const [user, setUser] = useState({website: "", username: ""});
     const [QRId, setQRId] = useState(false);
     const [proofHttps, setProofHttps] = useState("");
-    const [myId, setMyId] = useState(localStorage.getItem("user_id") || null)
     const { zaddrs } = useContext(ZaddrContext);
     const {darkMode, loggedIn} = useContext(UserContext)
+    const [myId, setMyId] = useState(loggedIn && localStorage.getItem("user_id") ? localStorage.getItem("user_id") : null)
     const [done, setDone] = useState(false)
     const [showSubInfo, setShowSubInfo] = useState(!!query)
     const [numMonths, setNumMonths] = useState(1)
@@ -129,8 +129,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
             <h2>{user.username}{"  "}<button className="subscribe-button" onClick={_ => setShowSubInfo(!showSubInfo)}>{showSubInfo ? "Close Form" : "Subscribe"}</button></h2>
             {showSubInfo 
-                ?   
-                loggedIn ? <div> 
+                ?    <div> 
                         <hr />
                         <h2 style={{textAlign: "center"}}>Support {user.username} by subscribing for .06{"\xa0"}ZEC/month!<br/>
                             
@@ -138,7 +137,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         </h2>
                         <h2 style={{textAlign: "center"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
                         <hr />
-                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>
+                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${"zs1yourzaddrhere"}`}"</h4>
+                        {!!myId && <h4>or subscribe with your ZECpages information with: "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>}
                         <label>Number of Months:
                             <input
                                 type="number"
@@ -148,22 +148,18 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                                 onChange={e => setNumMonths(e.target.value)} /></label>
                         <div className="subscription-form">
 
-                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`); showCopyTooltip();}}>
+                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`}
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
                         </h4>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${myId}`)}`} />
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : "zs1yourzaddrhere"}`)}`} />
                         </div>
                         <hr/>
                     </div>
-                : <div>
-                    <hr/>
-                    <h2>You need to log in to use subscriptions.</h2>
-                    <hr/>
-                    </div> 
-                : null 
-            }
+                : null}
+        
+            
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <div className="card-top-row">
                 <p>{user.zaddr}</p>
