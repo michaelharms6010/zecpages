@@ -10,13 +10,14 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
         let params = new URLSearchParams(search);
         let query = params.get('query');
         if (query) {
-            doSearch(query)
             setSearch(query)
+            doSearch(query)
         }
     }, [])
 
-    const doSearch = _ => {
-        axios.post("https://be.zecpages.com/board/search", {search})
+    const doSearch = query => {
+        
+        axios.post("https://be.zecpages.com/board/search", {search: query ? query : search})
         .then(r =>{ console.log(r)
         setPosts(r.data)})
         .catch(err => console.log(err))
