@@ -148,8 +148,8 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         style={inputZaddr && isValidZaddr(inputZaddr) ? {width: "300px", margin: "10px 5px", borderColor: `${darkMode ? "lime" : "green"}` } : inputZaddr ? {width: "300px", margin: "10px 5px", borderColor: "red"} : {width: "300px", margin: "10px 5px"}}
                         name="zaddr-input"
                         value={inputZaddr}
-                        onChange={e => setInputZaddr(e.target.value)} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid Zaddr!" : inputZaddr ? "Invalid Zaddr" : ""}</span>
-                        <h4>The memo should read "{`SUBSCRIBE::${user.id}::${inputZaddr || "zs1yourzaddr"}`}"</h4>
+                        onChange={e => setInputZaddr(e.target.value.replace(/ /g, ""))} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid Zaddr!" : inputZaddr ? "Invalid Zaddr" : ""}</span>
+                        <h4 style={{wordBreak: "break-word"}}>The memo should read "{`SUBSCRIBE::${user.id}::${inputZaddr || "zs1yourzaddr"}`}"</h4>
                         {!!myId && <h4>or subscribe with your ZECpages information with: "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>}
                         <label>Number of Months:
                             <input
@@ -158,15 +158,15 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                                 name="numberOfMonths"
                                 min="1"
                                 value={numMonths}
-                                onChange={e => setNumMonths(e.target.value.replace(/ /g, ""))} /></label>
+                                onChange={e => setNumMonths(e.target.value)} /></label>
                         <div className="subscription-form">
 
-                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
+                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`}
+                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
                                 <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
                             <span className='copied-tooltip'>Copied!</span></span>
                         </h4>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${loggedIn ? myId : inputZaddr ? inputZaddr : "zs1yourzaddrhere"}`)}`} />
+                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`} />
                         </div>
                         <hr/>
                     </div>
