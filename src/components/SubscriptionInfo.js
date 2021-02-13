@@ -44,6 +44,15 @@ export default function SubscriptionInfo(props) {
         }
     },[user])
 
+    useEffect(_ => console.log(subscribers), [subscribers])
+
+    const formatLongString = str => {
+        if (str.length > 20) {
+            return `${str.slice(0,5)}...${str.slice(-5)}`
+        }
+        return str
+    }
+
     return (
         <>
         <div className="zaddr-card subscription-explainer">
@@ -98,7 +107,7 @@ export default function SubscriptionInfo(props) {
                 {subscribers.map(subscriber  => {
                     return(
                         <tr>
-                           <td><Link to={`/${subscriber.username}`}>{subscriber.username}</Link></td> 
+                           <td><Link disabled={!subscriber.username} to={`/${subscriber.username}`}>{subscriber.username || formatLongString(subscriber.subscriber_zaddr)}</Link>{!!subscriber.subscriber_zaddr && <CopyIcon value={subscriber.subscriber_zaddr} />}</td> 
                            <td>{subscriber.amount}</td> 
                            <td>{new Date(subscriber.cutoff_date).toUTCString()}</td> 
                         </tr>
