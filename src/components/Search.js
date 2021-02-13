@@ -289,6 +289,7 @@ export default function Search(props) {
                 </>
             )}
 
+            <h5>{`${posts.length} Results`}</h5>
             </>
         : 
         loaded 
