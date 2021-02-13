@@ -358,7 +358,7 @@ export default function Board(props) {
 
     return (
         <div className={"z-board"}>
-            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZECpages Anonymous Memo Board</h2>
@@ -401,17 +401,17 @@ export default function Board(props) {
                         {!!pinned.reply_to_post && <p className="post-text sub-board-link">Replying to <Link className="z-link" to={`/z/post/${pinned.reply_to_post}`}>{pinned.reply_to_post}</Link></p>}
                         <p className="post-text">{reformatShields(lineReducer(pinned.memo.split("â€™").join("'")).split("\\n").join("\n"), pinned.reply_zaddr, pinned.username)}</p>
                         
-                        {likeTooltip === pinned.id &&
+                        {likeTooltip === "pinned" &&
                         <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation(); setReplyQrVis(!replyQrVis) } } style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}       
                         <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={e => {e.stopPropagation(); copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
                         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                         <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
                         <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                        {replyQrVis && likeTooltip === pinned.id && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
+                        {replyQrVis && likeTooltip === "pinned" && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                         <div className="post-bottom-row">
                         <div className="post-date">
                                 <div className="like-container">
-                                    <img alt="zcash heart" onClick={e => handleLikeTooltip(pinned.id, e)} className="like-icon" src={darkMode ? darklike : like} />
+                                    <img alt="zcash heart" onClick={e => handleLikeTooltip("pinned", e)} className="like-icon" src={darkMode ? darklike : like} />
                                     <span>{pinned.likes}</span>
                                 </div>
                             

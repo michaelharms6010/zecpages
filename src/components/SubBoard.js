@@ -267,7 +267,7 @@ export default function Board(props) {
 
     return (
         <div className={"z-board"}>
-            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h1>z/{props.match.params.boardname}</h1>

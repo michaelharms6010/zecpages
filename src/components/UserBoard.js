@@ -271,7 +271,7 @@ export default function UserBoard(props) {
         
         <div style={props.cardview ? {paddingTop: "0", display: "none"}: {}} className={"z-board"}>
     
-            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h1 style={{marginBottom: "0"}}><Link style={props.cardview ? {cursor: "default"} : {}} className="user-page-link" to={`/${props.match.params.username}`}>{props.cardview ? "Posts" : props.match.params.username}</Link></h1>

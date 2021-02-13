@@ -232,7 +232,7 @@ export default function Search(props) {
         
         <div style={{paddingTop: "0"}} className={"z-board"}>
     
-            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New posts/likes</h2>}
+            {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <BoardPageControls setPosts={setPosts} onlySearch={true} />
 
