@@ -22,6 +22,7 @@ import Leaderboard from "./components/Leaderboard"
 import UserBoard from "./components/UserBoard"
 import PollChart from "./components/charts/PollChart"
 import Publish from "./components/Publish"
+import Search from "./components/Search"
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
               <Redirect exact from="/" to="/z/all" />
               {/* <Route exact path="/poll" render={() => <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />} /> */}
               <Route exact path="/directory" render={() => <ZaddrList />} />
+              <Route exact path="/search" render={(props) => <Search {...props} />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />

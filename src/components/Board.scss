@@ -8,7 +8,28 @@ $zcash-yellow: #ffbf00;
 .z-board {
 
     min-width: 350px;
-    
+    .board-controls-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 80%;
+        align-items: center;
+        .board-search {
+            margin-bottom: 10px;
+            input {
+                height: 35px;
+                border: 1px solid #bec0fe;
+                color: black;
+            }
+            button  {
+            border: 1px solid #bec0fe;
+            background: #bec0fe;
+            height: 35px;
+            border-radius: 0px 3px 3px 0px;
+            padding: 5px 14px;
+                }
+        }
+    }
     
     .update-notification {
         border: 5px solid $zcash-yellow;
@@ -159,7 +180,6 @@ $zcash-yellow: #ffbf00;
     .board-page-buttons {
         display:flex;
         justify-content:flex-end;
-        margin-right:10%;
         padding:10px 0px;
         height: 50px;
         align-items: center;
@@ -481,6 +501,20 @@ $zcash-yellow: #ffbf00;
 
 
   .dark-mode .z-board {
+    .board-search {
+        input {
+            height: 35px;
+            border: 1px solid #eee;
+            color: black;
+            
+        }
+        button  {
+        border: 1px solid #eee;
+        background: $dark-theme-color;
+        height: 35px;
+        border-radius: 0px 3px 3px 0px;
+            }
+    }
     .replying-to-link {
         color: #eee;
     }
@@ -647,8 +681,8 @@ $breakpoint-tablet: 864px;
 
 @media (max-width: 1000px) {
     .z-board {
-        .board-page-buttons {
-            margin-right: 2.5%;
+        .board-controls-container {
+            width: 95%;
         }
 
 
@@ -666,9 +700,15 @@ $breakpoint-tablet: 864px;
 
 @media (max-width: $breakpoint-tablet) {
     .z-board {
-        .board-page-buttons {
-            margin-right: 2.5%;
+        .board-controls-container {
+            margin-top: 35px;
+            flex-direction: column;
         }
+        .board-page-buttons {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
 
         .board-explainer {
             width: 90%;
