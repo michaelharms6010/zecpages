@@ -342,26 +342,28 @@ $dark-stripe: #ad860e;
 
     cursor: pointer;
   }
+  label {
+    color: black;
+  }
+  input {
+    margin-left: 10px;
+    margin-right: 20px;
+    width: 40px;
+  }
   
   .subscription-form {
     margin: 1% auto;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
 
     
-    label {
-      color: black;
-    }
+ 
     canvas {
       margin: 0;
     }
-    input {
-      margin-left: 10px;
-      margin-right: 20px;
-      width: 40px;
-    }
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
   }
   
 
@@ -635,6 +637,14 @@ table {
       color: $day-main;
     }
   }
+  label {
+    color: #eee;
+  }
+  input {
+    border: 1px solid #eee;
+    color: #eee;
+    background: $dark-card-background;
+  }
   background: $dark-card-background;
 
   .subscribe-button {
@@ -662,9 +672,7 @@ table {
     }
   }
 
-  input, textarea {
-    color: black;
-  }
+
 }
 
 
@@ -1036,6 +1044,9 @@ table {
 
 @media (max-width: $breakpoint-tablet) {
   .App {
+    .zaddr-card .subscription-form {
+      flex-direction: column;
+    }
     .form-container {
       align-items: flex-start;
     }

@@ -50,7 +50,7 @@ export default function SubscriptionInfo(props) {
             <h1>Subscriptions</h1>
             <h3>ZECpages allows users to monetize their content and publish to subscribers via Zcash memo. Subscribing to a user costs .06{"\xa0"}ZEC/month. (.05 goes to creator, .01 ZECpages fee)
             </h3>
-            <h3>Users can subscribe via your user shortlink:<br/><Link to={`/${user.username}`}>https://zecpages.com/{user.username}</Link></h3>
+            <h3>Users can subscribe via your user shortlink:<br/><Link to={`/${user.username}`}>https://zecpages.com/{user.username}?subscribe=true</Link></h3>
             <h3>Share to the board: <img style={{marginLeft: "5px", cursor: "pointer", width: "25px", height: "25px"}} src={darkMode? qricondark: qricon} onClick={_ => setQrVis(!qrVis)} /></h3>
             
             {qrVis && <div>
