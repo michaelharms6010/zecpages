@@ -148,7 +148,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
                         style={inputZaddr && isValidZaddr(inputZaddr) ? {width: "300px", margin: "10px 5px", borderColor: `${darkMode ? "lime" : "green"}` } : inputZaddr ? {width: "300px", margin: "10px 5px", borderColor: "red"} : {width: "300px", margin: "10px 5px"}}
                         name="zaddr-input"
                         value={inputZaddr}
-                        onChange={e => setInputZaddr(e.target.value)} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid!" : inputZaddr ? "Invalid" : ""}</span>
+                        onChange={e => setInputZaddr(e.target.value)} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid Zaddr!" : inputZaddr ? "Invalid Zaddr" : ""}</span>
                         <h4>The memo should read "{`SUBSCRIBE::${user.id}::${inputZaddr || "zs1yourzaddr"}`}"</h4>
                         {!!myId && <h4>or subscribe with your ZECpages information with: "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>}
                         <label>Number of Months:
