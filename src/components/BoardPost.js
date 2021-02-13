@@ -157,6 +157,7 @@ export default function BoardPost(props) {
     <>
     {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : <Link  className="replying-to-link" to="/board">← Back to board</Link>}
     <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
+    {!!post.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${post.board_name}`}>z/{post.board_name}</Link></p>}
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
        <hr></hr>
