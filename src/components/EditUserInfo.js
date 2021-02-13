@@ -124,7 +124,8 @@ export default function EditUserInfo ({history}) {
             : 
             <>
             <h2>{user.username}</h2>
-            <textarea maxlength="512"
+            <textarea 
+                maxlength="512"
                 className="desc-input"
                 name="description"
                 onChange={handleChange}

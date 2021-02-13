@@ -640,7 +640,7 @@ table {
   label {
     color: #eee;
   }
-  input {
+  input, textarea {
     border: 1px solid #eee;
     color: #eee;
     background: $dark-card-background;
@@ -663,7 +663,7 @@ table {
       color: #eee;
     }
 
-    input {
+    input, textarea {
       background: #00201d;
       color: #eee;
       border: 1px solid #eee;
