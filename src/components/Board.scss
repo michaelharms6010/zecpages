@@ -23,9 +23,11 @@ $zcash-yellow: #ffbf00;
             select{
                 height: 35px;
                 margin-left: 5px;
+                border-radius: 3px;
             }
             
             input {
+                border-radius: 3px 0px 0px 3px; 
                 height: 35px;
                 border: 1px solid #bec0fe;
                 color: black;
@@ -37,7 +39,7 @@ $zcash-yellow: #ffbf00;
             height: 35px;
             border-radius: 0px 3px 3px 0px;
             padding: 5px 14px;
-            margin-right: 20px;
+            margin-right: 10px;
             
             border-left: none;
                 }
