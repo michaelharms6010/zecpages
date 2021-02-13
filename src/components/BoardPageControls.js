@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import {Link} from "react-router-dom"
+import BoardDropdown from "./BoardDropdown";
 
 export default function BoardPagecontrols({posts, setPosts, page, prev, setPage, next, history, setShowReplies, showReplies, onlySearch}) {
     const [search, setSearch] = useState("")
@@ -60,6 +61,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
             onChange={e => setSearch(e.target.value)} />
         <button>Search</button>
         </form>
+        <BoardDropdown history={history} />
     </div>
     <div className="board-page-buttons">
 

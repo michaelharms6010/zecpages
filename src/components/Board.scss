@@ -15,18 +15,31 @@ $zcash-yellow: #ffbf00;
         width: 80%;
         align-items: center;
         .board-search {
+            display: flex;
+            align-items:flex-end;
             margin-bottom: 10px;
+
+
+            select{
+                height: 35px;
+                margin-left: 5px;
+            }
+            
             input {
                 height: 35px;
                 border: 1px solid #bec0fe;
                 color: black;
             }
             button  {
+            
             border: 1px solid #bec0fe;
             background: #bec0fe;
             height: 35px;
             border-radius: 0px 3px 3px 0px;
             padding: 5px 14px;
+            margin-right: 20px;
+            
+            border-left: none;
                 }
         }
     }
@@ -502,17 +515,29 @@ $zcash-yellow: #ffbf00;
 
   .dark-mode .z-board {
     .board-search {
+        
         input {
             height: 35px;
             border: 1px solid #eee;
-            color: black;
+            color: #eee;
+            background: #111;
             
+        }
+        select {
+            background: #111;
+            border: 1px solid #ddd;
         }
         button  {
         border: 1px solid #eee;
         background: $dark-theme-color;
         height: 35px;
         border-radius: 0px 3px 3px 0px;
+        border-left: none;
+        &:hover {
+            
+            border-color: $zcash-yellow;
+            color: $zcash-yellow;
+        }
             }
     }
     .replying-to-link {
@@ -700,10 +725,32 @@ $breakpoint-tablet: 864px;
 
 @media (max-width: $breakpoint-tablet) {
     .z-board {
+
         .board-controls-container {
             margin-top: 35px;
             flex-direction: column;
+
+            .board-search {
+                flex-direction: column;
+                align-items: center;
+                form {
+                    width: 100%;
+                }
+                .board-dropdown-pair {
+                    min-width: 230px;
+                }
+               
+                button {
+                    margin-right: 0;
+                }
+                select {
+                    margin-left: 20px;
+                    margin-top: 10px;
+                    width: 100%;
+                }
+            }
         }
+        
         .board-page-buttons {
             width: 100%;
             justify-content: flex-end;
