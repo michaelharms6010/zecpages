@@ -18,7 +18,7 @@ export default function BoardDropdown({history}) {
 
     return(
         <div className="board-dropdown-pair" style={{display: "flex", alignItems: "center"}}>
-        <label>Boards: </label>
+        <label>Board: </label>
         <select onChange={handleChange}>
             <option value={"all"}>z/all</option>
             {boards.map(board => 
