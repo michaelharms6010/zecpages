@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 
-export default function BoardDropdown({history}) {
+export default function BoardDropdown({history, boardName, boardPostCount}) {
     const [boards, setBoards] = useState(["Loading Boards"])
+    const [filteredBoards, setFilteredBoards] = useState(["Loading Boards"])
 
     useEffect(_ => {
         axios.get('https://be.zecpages.com/board/boardlist')
@@ -20,8 +21,10 @@ export default function BoardDropdown({history}) {
         <div className="board-dropdown-pair" style={{display: "flex", alignItems: "center"}}>
         <label>Board: </label>
         <select onChange={handleChange}>
-            <option value={"all"}>z/all</option>
+            <option value={boardName || "all"}>{boardName ? `z/${boardName}, (${boardPostCount})` : "z/all"}</option>
+            {!!boardName && <option value="all">z/all</option>}
             {boards.map(board => 
+                
                 <option value={board.board_name}>
                     z/{board.board_name} ({board.post_count})
                 </option>    

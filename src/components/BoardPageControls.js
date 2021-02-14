@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom"
 import BoardDropdown from "./BoardDropdown";
 
-export default function BoardPagecontrols({posts, setPosts, page, prev, setPage, next, history, setShowReplies, showReplies, onlySearch}) {
+export default function BoardPagecontrols({onlyDropdown, posts, setPosts, page, prev, setPage, next, history, setShowReplies, showReplies, onlySearch}) {
     const [search, setSearch] = useState("")
 
     React.useEffect(_ => {
@@ -39,7 +39,10 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
     
     return (
     <>
-    {onlySearch?
+    {onlyDropdown ? 
+     <BoardDropdown history={history} />
+     :
+    onlySearch?
     <div className="board-controls-container" style={{margin: "20px auto", justifyContent: "center"}}>
     <div className="board-search">
     <form className="search-form" onSubmit={handleSubmit}>

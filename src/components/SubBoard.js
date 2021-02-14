@@ -22,6 +22,7 @@ import PollChart from "./charts/PollChart"
 import BoardPageControls from "./BoardPageControls"
 import zcashLogo from "../zcash-icon.png"
 import zcashLogoDark from "../zcash-icon-dark.png"
+import BoardDropdown from "./BoardDropdown"
 
 
 export default function Board(props) {
@@ -216,7 +217,7 @@ export default function Board(props) {
             getNewPosts();
             setPrev(true)
         }
-    },[props.match.params.page])
+    },[props.match.params.boardname])
 
     useEffect( _ => {
         if (page * 25 >= postCount) {
@@ -283,6 +284,12 @@ export default function Board(props) {
                 {qrVis 
                 ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`} /><br /></> 
                 : null}
+            </div>
+            <div className="board-controls-container">
+                <div className="board-search">
+                    <BoardDropdown boardPostCount={posts.length} boardName={props.match.params.boardname} history={props.history} />
+                </div>
+
             </div>
             
             
