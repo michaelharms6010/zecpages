@@ -14,10 +14,15 @@ $zcash-yellow: #ffbf00;
         margin: 0 auto;
         width: 80%;
         align-items: center;
+        button:disabled {
+            pointer-events:none;
+            }
         .board-search {
+
             display: flex;
             align-items:flex-end;
             margin-bottom: 10px;
+            
 
 
             select{
@@ -33,13 +38,13 @@ $zcash-yellow: #ffbf00;
                 color: black;
             }
             button  {
-            
-            border: 1px solid #bec0fe;
-            background: #bec0fe;
-            height: 35px;
-            border-radius: 0px 3px 3px 0px;
-            padding: 5px 14px;
-            margin-right: 10px;
+                font-size: 16px;
+                border: 1px solid #bec0fe;
+                background: #bec0fe;
+                height: 35px;
+                border-radius: 0px 3px 3px 0px;
+                padding: 5px 14px;
+                margin-right: 10px;
             
             border-left: none;
                 }
@@ -520,21 +525,24 @@ $zcash-yellow: #ffbf00;
         margin-left: 1px;
         input {
             height: 35px;
-            border: 1px solid #eee;
+            border: 1px solid #ccc;
             color: #eee;
             background: #111;
-            
+            border-right: none;
         }
         select {
             background: #111;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
         }
         button  {
-        border: 1px solid #eee;
+        border: 1px solid #ccc;
         background: $dark-theme-color;
         height: 35px;
         border-radius: 0px 3px 3px 0px;
-        border-left: none;
+        
+        &:disabled {
+            
+        }
         &:hover {
             
             border-color: $zcash-yellow;
