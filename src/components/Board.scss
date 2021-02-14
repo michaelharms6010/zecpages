@@ -26,11 +26,16 @@ $zcash-yellow: #ffbf00;
                 align-items: flex-end;
                 display: flex;
             }
-
+            label {
+                margin-right: 5px;
+                font-size: 18px;
+            }
 
             select{
+                height: 35px;
                 margin-left: 5px;
                 border-radius: 3px;
+                font-size: 18px;
             }
             
             input {
@@ -40,12 +45,12 @@ $zcash-yellow: #ffbf00;
                 color: black;
             }
             button  {
-                font-size: 16px;
+                font-size: 18px;
                 border: 1px solid #bec0fe;
                 background: #bec0fe;
                 height: 35px;
                 border-radius: 0px 5px 5px 0px;
-                padding: 5px 14px;
+                padding: 0px 14px;
                 margin-right: 10px;
             
             border-left: none;
@@ -231,11 +236,13 @@ $zcash-yellow: #ffbf00;
             margin-right: 1px;
             cursor: pointer;
             border-left: none;
+            font-size: 18px;
             border-radius: 0px 5px 5px 0px;
         }
         .board-previous {
             border-right:none;
             cursor: pointer;
+            font-size: 18px;
             border-radius: 5px 0px 0px 5px;
         }
         .board-next:disabled, .board-previous:disabled {
@@ -620,7 +627,9 @@ $zcash-yellow: #ffbf00;
 
     .board-page-buttons {
         display:flex; 
-
+        button {
+            font-size: 18px;
+        }
 
 
         .page-number {
@@ -633,6 +642,7 @@ $zcash-yellow: #ffbf00;
             background: $dark-theme-color;
             color: #ddd;
             transition: .4s;
+            
             &:hover {
                     border-color: $zcash-yellow;
                     a {
@@ -714,7 +724,7 @@ $zcash-yellow: #ffbf00;
 }
 
 $breakpoint-tablet: 864px;
-$breakpoint-mobile: 440px;
+$breakpoint-mobile: 500px;
 
 
 @media (max-width: 1000px) {
@@ -738,6 +748,15 @@ $breakpoint-mobile: 440px;
 
 @media (max-width: $breakpoint-tablet) {
     .z-board {
+        .board-page-buttons {
+        
+            .page-number {
+
+            }
+            .board-next, .board-previous {
+
+            }
+        }
 
         .board-controls-container {
             margin-top: 35px;
@@ -755,6 +774,8 @@ $breakpoint-mobile: 440px;
                     width: 100%;
                     margin-top: 10px;
                 }
+
+                
                
                 button {
                     margin-right: 0;
