@@ -42,7 +42,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
     {onlySearch?
     <div className="board-controls-container" style={{margin: "20px auto", justifyContent: "center"}}>
     <div className="board-search">
-    <form onSubmit={handleSubmit}>
+    <form className="search-form" onSubmit={handleSubmit}>
     <input
     style={{transform: "scale(1)", margin: "0", marginLeft: "1px"}}
         name="search"
@@ -53,7 +53,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
 </div></div> :
     <div className="board-controls-container">
     <div className="board-search">
-        <form onSubmit={handleSubmit}>
+        <form  className="search-form" onSubmit={handleSubmit}>
         <input
         style={{transform: "scale(1)", margin: "0", marginTop: "10px", marginLeft: "1px"}}
             name="search"

@@ -22,11 +22,13 @@ $zcash-yellow: #ffbf00;
             display: flex;
             align-items:flex-end;
             margin-bottom: 10px;
-            
+            .search-form {
+                align-items: flex-end;
+                display: flex;
+            }
 
 
             select{
-                height: 35px;
                 margin-left: 5px;
                 border-radius: 3px;
             }
