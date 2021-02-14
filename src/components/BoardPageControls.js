@@ -66,16 +66,17 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
     <div className="board-page-buttons">
 
         {showReplies !== undefined ? 
-        <>
+        <div>
             <label>Show Replies: </label>
             <input type="checkbox"
                     autocomplete="off"
                     checked={showReplies}
                     value={showReplies}
                     onChange={_ => setShowReplies(!showReplies)} />
-        </>
+        </div>
         :
         null}
+        <div style={{display:"flex"}}>
             <button disabled={prev ? "" : "disabled"} onClick={_ => history.push(`/z/all/${page-1}`)} className="board-previous">
                 <Link className="page-link" to={`/z/all/${page-1}`}>Previous</Link>
             </button> 
@@ -84,6 +85,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
             <button disabled={next ? "" : "disabled"}  onClick={_ => history.push(`/z/all/${page+1}`)} className="board-next">
                 <Link className="page-link" to={`/z/all/${page+1}`}>Next</Link>
             </button> 
+        </div>
                 
     </div>
     </div>}

@@ -714,6 +714,7 @@ $zcash-yellow: #ffbf00;
 }
 
 $breakpoint-tablet: 864px;
+$breakpoint-mobile: 440px;
 
 
 @media (max-width: 1000px) {
@@ -773,6 +774,17 @@ $breakpoint-tablet: 864px;
 
         .board-explainer {
             width: 90%;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .z-board {
+
+        .board-controls-container {
+            .board-page-buttons {
+                justify-content: space-between;
+            }
         }
     }
 }
