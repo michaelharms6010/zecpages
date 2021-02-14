@@ -44,7 +44,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
     <div className="board-search">
     <form onSubmit={handleSubmit}>
     <input
-    style={{transform: "scale(1)", margin: "0"}}
+    style={{transform: "scale(1)", margin: "0", marginLeft: "1px"}}
         name="search"
         value={search}
         onChange={e => setSearch(e.target.value)} />
@@ -55,7 +55,7 @@ export default function BoardPagecontrols({posts, setPosts, page, prev, setPage,
     <div className="board-search">
         <form onSubmit={handleSubmit}>
         <input
-        style={{transform: "scale(1)", margin: "0", marginTop: "10px"}}
+        style={{transform: "scale(1)", margin: "0", marginTop: "10px", marginLeft: "1px"}}
             name="search"
             value={search}
             onChange={e => setSearch(e.target.value)} />
