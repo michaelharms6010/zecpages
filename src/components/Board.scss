@@ -34,7 +34,7 @@ $zcash-yellow: #ffbf00;
             }
             
             input {
-                border-radius: 3px 0px 0px 3px; 
+                border-radius: 5px 0px 0px 5px; 
                 height: 35px;
                 border: 1px solid #bec0fe;
                 color: black;
@@ -44,7 +44,7 @@ $zcash-yellow: #ffbf00;
                 border: 1px solid #bec0fe;
                 background: #bec0fe;
                 height: 35px;
-                border-radius: 0px 3px 3px 0px;
+                border-radius: 0px 5px 5px 0px;
                 padding: 5px 14px;
                 margin-right: 10px;
             
@@ -750,14 +750,16 @@ $breakpoint-tablet: 864px;
                 }
                 .board-dropdown-pair {
                     min-width: 230px;
+                    max-width: 300px;
+                    width: 100%;
+                    margin-top: 10px;
                 }
                
                 button {
                     margin-right: 0;
                 }
                 select {
-                    margin-left: 20px;
-                    margin-top: 10px;
+
                     width: 100%;
                 }
             }
