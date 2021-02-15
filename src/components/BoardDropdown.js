@@ -21,7 +21,7 @@ export default function BoardDropdown({history, boardName, boardPostCount}) {
         <div className="board-dropdown-pair" style={{display: "flex", alignItems: "center"}}>
         <label>Board: </label>
         <select onChange={handleChange}>
-            <option value={boardName || "all"}>{boardName ? `z/${boardName}, (${boardPostCount})` : "z/all"}</option>
+            <option value={boardName || "all"}>{boardName ? `z/${boardName} (${boardPostCount})` : "z/all"}</option>
             {!!boardName && <option value="all">z/all</option>}
             {boards.map(board => 
                 
