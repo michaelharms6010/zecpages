@@ -71,7 +71,7 @@ export default function ZaddrList (props) {
         .then(r => {
             setSearching(true)
             setLoadingSearch(false)
-            setZaddrs(r.data.filter(zaddr=> zaddr.zaddr))
+            setZaddrs(r.data.filter(zaddr=> zaddr.zaddr).sort( (a,b) =>  b.id-a.id))
         })
         .catch(err => console.log(err))
     }
