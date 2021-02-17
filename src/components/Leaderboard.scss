@@ -185,7 +185,7 @@
     background-repeat: repeat;
     background-position: center;
     .post-gif {
-        content: url(../icons/leaderboard-icons/gargoyle.gif);
+        content: url(../icons/leaderboard-icons/liltv.gif);
     }
 
     .post-text {
@@ -203,7 +203,7 @@
     background-attachment: fixed;
     background-position: center;
     .post-gif {
-        content: url(../icons/leaderboard-icons/gargoyle.gif)
+        content: url(../icons/leaderboard-icons/bigrobot.gif);
     }
 
     .post-text {
@@ -233,7 +233,16 @@
 
 #night-7 {
     border: 2px solid white;
-    background-image: url(../images/5023.png)
+    background-image: url(../images/5023.png);
+    .post-gif {
+        content: url(../icons/leaderboard-icons/mint.gif);
+    }
+    .post-text {
+        width: 75%;
+        color: white;
+        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
+    }
     
 }
 
@@ -243,29 +252,20 @@
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center;
-    p {
+    .post-gif {
+        content: url(../icons/leaderboard-icons/baby06.gif);
+    }
+    .post-text {
+        width: 75%;
         color: white;
         text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+        font-size: 1.5rem;
     }
-    
+
 }
 
 #night-9 {
     border: 2px solid white;
-    background:
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
-    radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
-    linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
-    background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
-    background-color: #840b2a;
-    p {
-        color: white;
-        text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
-    }
     
 }
 
