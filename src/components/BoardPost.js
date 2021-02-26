@@ -15,6 +15,7 @@ import copyiconb from "../icons/copyiconb.png"
 import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
 import URLSafeBase64 from 'urlsafe-base64';
+import PostEntry from "./PostEntry"
 
 var Base64 = require("js-base64")
 var Buffer = require('buffer/').Buffer
@@ -167,14 +168,18 @@ export default function BoardPost(props) {
         <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span><br/>
         or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
         {!!qrVis && 
-            <div className="reply-editor">
-                <div className="reply-text-editor">
-                    <h2>Write reply</h2>
-                    <textarea maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
-                </div>
-                {/* #bec0fe #0a5e55*/}
-                <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`} />
-            </div>    
+        // qrVal
+        //replyBody
+        //darkMode
+        // formatReplyBody
+            <PostEntry
+                isReply={true}
+                qrVal={qrVal}
+                post={post}
+                darkMode={darkMode}
+                formatReplyBody={formatReplyBody}
+                replyBody={replyBody}
+            />
         }
          {likeTooltip === post.id && 
 
