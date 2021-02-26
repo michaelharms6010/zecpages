@@ -443,8 +443,8 @@ export default function Board(props) {
                             <div className="pinned-card-back-text">
                                 <h5>Pinned for {formatTime(pinned.datetime)}</h5>
                                 <h5 onClick={e => e.stopPropagation() }>Current Price To Pin: <span className="no-break-text">{inUsd 
-                                ? `$${Math.max(0.001 * zecPrice, ((+pinned.decayed_amount + 1) / 100000000) * zecPrice ).toFixed(2)}` 
-                                : `${Math.max(0.001, (+pinned.decayed_amount + 1) / 100000000).toFixed(8)}\xa0ZEC` }</span></h5>
+                                ? `$${Math.max(0.10000001 * zecPrice, ((+pinned.decayed_amount + 1) / 100000000) * zecPrice ).toFixed(2)}` 
+                                : `${Math.max(0.10000001, (+pinned.decayed_amount + 1) / 100000000).toFixed(8)}\xa0ZEC` }</span></h5>
                                 <h5>Price decaying by <span className="no-break-text">{inUsd ? `$${(0.00000005 * zecPrice).toFixed(8)}` : "0.00000005\xa0ZEC"}/second</span></h5>
                                 <button className="unit-toggle" onClick={e => {e.stopPropagation(); setInUsd(!inUsd)}}>{"Toggle Unit"}</button>
                             </div>
