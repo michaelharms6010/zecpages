@@ -127,7 +127,7 @@ $zcash-yellow: #ffbf00;
         
             textarea {
                 width: 40%;
-                margin-left: 30px;
+                margin-left: 0px;
                 height: 150px;
                 color: #111;
                 width: 90%;
@@ -710,12 +710,13 @@ $zcash-yellow: #ffbf00;
             flex-direction: column-reverse;
             align-items: center;
             justify-content: space-between;
-    
+            margin-left: 0;
             .reply-text-editor {
+                margin-left: 0;
                 width: 100%;
                 textarea {
                     margin-left: 0;
-                    width: 95%;
+                    width: 100%;
                     
                 }
             }

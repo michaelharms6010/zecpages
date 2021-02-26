@@ -15,7 +15,7 @@ export default function PostEntry({qrVal, replyBody, darkMode, formatReplyBody, 
     return (
         <div className="reply-editor">
         <div className="reply-text-editor">
-            <h2>Write reply</h2>
+            <h2>{isReply ? "Write reply:" : "Write a post:"}</h2>
             <textarea maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
         </div>
         {/* #bec0fe #0a5e55*/}
