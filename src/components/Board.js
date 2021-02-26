@@ -381,6 +381,7 @@ export default function Board(props) {
                 {qrVis 
                 // ADD POSTING UI HERE 
                 ? <>
+                <br/>
                 <PostEntry
                     isReply={false}
                     post={{amount: "100000"}}
