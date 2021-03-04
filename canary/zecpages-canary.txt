@@ -1,4 +1,4 @@
-As of March 4, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. Newsdemon has never placed any backdoors in our hardware or software and has not received any requests to do so. Newsdemon has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on Newsdemon assets.
+As of March 4, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.
 
 Recent headlines:
 Voter ID bill sails out of the House on final vote, moves to the Senate - https://news.yahoo.com/voter-id-bill-sails-house-024700764.html
