@@ -5,8 +5,12 @@ $day-background: #5e63fd;
 $zcash-yellow: #ffbf00;
 
 
-.z-board {
 
+.z-board {
+    .uri-link {
+        text-decoration: underline;
+        padding-left: 0px;
+    }
     min-width: 350px;
     .board-controls-container {
         display: flex;
@@ -161,6 +165,13 @@ $zcash-yellow: #ffbf00;
             color: darken($day-background, 20);
             &:hover {
                 color: darken($day-background, 50)
+            }
+        }
+        .uri-link {
+            text-decoration: underline;
+            color: darken($day-background, 20);
+            &:hover {
+                color: darken($day-background, 20);
             }
         }
         .user-page-link {
@@ -616,6 +627,12 @@ $zcash-yellow: #ffbf00;
             color: #ddd;
             &:hover {
                 color: $zcash-yellow;
+            }
+        }
+        .uri-link {
+            color: #ddd;
+            &:hover {
+                color: #ddd;
             }
         }
         .user-page-link {
