@@ -44,27 +44,28 @@ export default function About() {
             <div id="canary" style={{textAlign: 'left'}} className="about-content">
                 <h2 style={{textAlign: "center"}}>Canary</h2>
                <code  className="canary">
-               -----BEGIN PGP SIGNED MESSAGE-----<br/>
-                Hash: SHA256<br/><br/>
-
-                As of January 20th, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/><br/>
-
+              -----BEGIN PGP SIGNED MESSAGE-----<br/>
+                Hash: SHA256<br/>
+                <br/>
+                As of March 4, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
+                <br/>
                 Recent headlines:<br/>
-                DHS pauses some deportations for 100 days - https://www.cnn.com/2021/01/20/politics/homeland-security-pause-some-deportations/index.html<br/><br/>
-
-                Amanda Gorman calls on Americans - https://www.cnn.com/2021/01/20/politics/amanda-gorman-inauguration-poem-trnd/index.html<br/><br/>
-
-                -----BEGIN PGP SIGNATURE-----<br/><br/>
-
-                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmAJBgsACgkQ3x/m0fUO<br/>
-                zv496gf+Kk4A4pY1cDfPbSMVw67Bvmydc2TF/x/HqChKF1ehrtm4EEoWrWO8waTx<br/>
-                1QiCYtJ7T2llcqtqyTQRxumSX8iLnWfjxkD12lwUCX8EQy11GJ9PA+KmZ4dPFcap<br/>
-                Nn/dRv8gMaFhNTy1qrPncN/Le6k8L4Bgr0r1GAEbGz2MnBZgXL6tpa1YUtmT1j/o<br/>
-                iGgbnU4H4UEMobxbtgI15SezxZB+BCvMU/0Olf0sk7bOpGy0wfYjQL5u6LV05vL4<br/>
-                WF90FbpnGvvvTO1D9k2lo9VCaNfGvxht7YBBk76HvMckScFSeqOrwn5Hph0SHLZZ<br/>
-                ZeqtOLuDQbpvN1dhFCPCzpOGUWIXFQ==<br/>
-                =lRxJ<br/>
+                Voter ID bill sails out of the House on final vote, moves to the Senate - https://news.yahoo.com/voter-id-bill-sails-house-024700764.html<br/>
+                <br/>
+                White House responds to Cuomo allegations: 'Every woman coming forward should be heard' - https://news.yahoo.com/white-house-press-briefing-cuomo-allegations-222007718.html
+                <br/><br/>
+                -----BEGIN PGP SIGNATURE-----
+                <br/><br/>
+                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmBA96EACgkQ3x/m0fUO
+                zv5svwgApKaBsX1XpH8cATmPO0+1kul3iOUrXQC1MVd7jgO8A0tP6aswsLl8ix2y
+                ql7OoshuinUbahGKVk+ddxNjm3tnng+x34jSgJQzz/Y6Om51gLCZiyOh8OIEUpXC
+                81qB8q7I76HjXb5FACgwJ5E8yvSZyD+uet9T9bBEQF6ToXkFOQNsKzkKqoIi+UB/
+                o5iEAHcr8yu4H0aey3ZOIxx9KmxrhxU1S9pi81ZamXBRdAO3jEL3R8UX5wS5qqXE
+                1vk5vSaJZxZ3/bUTawQVAKKyiCvu3Ji89W/hd7oD1IrKa8jfHlqx+0xAzh556rqf
+                1JGEx0Jd1roqxxnrmky951ZcMySYwA==
+                =d88h<br/>
                 -----END PGP SIGNATURE-----<br/>
+
 
                </code>
                <hr style={{border: "1px solid black", borderBottom: "none"}} />
