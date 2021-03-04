@@ -10,6 +10,7 @@ $zcash-yellow: #ffbf00;
     .uri-link {
         text-decoration: underline;
         padding-left: 0px;
+        cursor: default;
     }
     min-width: 350px;
     .board-controls-container {
@@ -164,14 +165,14 @@ $zcash-yellow: #ffbf00;
         a {
             color: darken($day-background, 20);
             &:hover {
-                color: darken($day-background, 50)
+                color: darken($day-background, 30);
             }
         }
         .uri-link {
             text-decoration: underline;
-            color: darken($day-background, 20);
+            color: black;
             &:hover {
-                color: darken($day-background, 20);
+                color: black;
             }
         }
         .user-page-link {
