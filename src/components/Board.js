@@ -64,6 +64,12 @@ export default function Board(props) {
     const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
+    const [boardInput, setBoardInput] = useState("")
+    
+    useEffect(_ => {
+        setBoardInput(boardInput.replace(/(\/z\/all|\/z)/ig, ""))
+    }, [boardInput])
+
 
     const iconsToReplace = [{"🦓": <img className="zebra-icon" src={darkMode ? zebraemoji : zebraemojiblack} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
     // const wordsToReplace = [{pattern: /zcash/gi, replacement: "Scamcoin"}]
@@ -373,8 +379,9 @@ export default function Board(props) {
                 </h4>
                 <h4 style={{marginTop: "5px"}}>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
                 <h4 className="highlight-cta">Send at least .01 ZEC to <a style={{padding: "0"}} target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesraw">tweet your post</a>!</h4>
-                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(replyBody))}` : ""}`}<span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(replyBody))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></code>
+                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>               
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}
+                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span></code>
                 <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer',  marginLeft: "5px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 
@@ -389,6 +396,8 @@ export default function Board(props) {
                     darkMode={darkMode}
                     formatReplyBody={formatReplyBody}
                     replyBody={replyBody}
+                    boardInput={boardInput}
+                    setBoardInput={setBoardInput}
                 />
                 
                 {/* <br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${qrVal}`} /><br /> */}
