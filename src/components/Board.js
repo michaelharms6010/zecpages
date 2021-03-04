@@ -77,7 +77,7 @@ export default function Board(props) {
 
     const reformatShields = (str, replyZaddr, username) => {
         let output = []
-        str = str.replace(/^board::(\d+)/i, "").replace(/^reply::(\d+)/i, "").trim()
+        str = str.replace(/^board::(\w+)/i, "").replace(/^reply::(\d+)/i, "").trim()
 
         // wordsToReplace.forEach()
         
