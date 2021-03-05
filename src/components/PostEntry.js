@@ -20,7 +20,7 @@ export default function PostEntry({qrVal, replyBody, darkMode, formatReplyBody, 
         <div className="reply-text-editor">
             {!isReply && <h2>Post to Board:</h2>}
             {!isReply ? <input style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {}} placeholder="Defaults to all" name="boardInput" value={boardInput} onChange={e => setBoardInput(e.target.value.replace(/ /g, "_").replace(/(z\/all|z\/|[^a-z0-9_])/ig, ""))}></input> : null}
-            <h2>{isReply ? "Write reply:" : "Write a post:"}</h2>
+            <h2>{isReply ? "Write reply:" : "Post text:"}</h2>
             <textarea style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {} } maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
         </div>
         {/* #bec0fe #0a5e55*/}

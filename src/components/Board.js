@@ -383,7 +383,9 @@ export default function Board(props) {
                 <a className="uri-link" href={`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}>
                     <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}</code></a>
                 <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
-                <button style={{padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>Make a Post<img alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></button>
+                <div style={{display: "inline-block"}}>
+                    <button style={{display: "flex", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>Make a Post<img alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></button>
+                </div>
                 <br/>
                 
                 {qrVis 
