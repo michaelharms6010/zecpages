@@ -47,7 +47,7 @@ export default function About() {
               -----BEGIN PGP SIGNED MESSAGE-----<br/>
                 Hash: SHA256<br/>
                 <br/>
-                As of March 4, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
+                As of March 4, 2021, The ZECpages Company has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. The ZECpages Company has never placed any backdoors in our hardware or software and has not received any requests to do so. The ZECpages Company has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on The ZECpages Company's assets.<br/>
                 <br/>
                 Recent headlines:<br/>
                 Voter ID bill sails out of the House on final vote, moves to the Senate - https://news.yahoo.com/voter-id-bill-sails-house-024700764.html<br/>
