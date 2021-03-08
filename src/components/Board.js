@@ -408,9 +408,8 @@ export default function Board(props) {
                 : null}
             </div>
             {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
-            <button onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
+            <button style={{marginBottom: "18px"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
-            {pinned ? <h3 style={{color: "#111", marginBottom: "20px", marginTop: '5px', opacity: "0"}}>.</h3> : <h3 style={{marginBottom: "20px", marginTop: '5px', color: darkMode ? "#111" : "#5e63fd"}}>Pinned Post</h3> }
             {pinned && !!posts.length && 
                 <>
                 <div onClick={flipCard} className={`${flipped ? "flipped" : ""} flip-card`}>
