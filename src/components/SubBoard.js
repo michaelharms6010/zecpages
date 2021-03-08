@@ -23,6 +23,8 @@ import BoardPageControls from "./BoardPageControls"
 import zcashLogo from "../zcash-icon.png"
 import zcashLogoDark from "../zcash-icon-dark.png"
 import BoardDropdown from "./BoardDropdown"
+import PostEntry from "./PostEntry"
+import URLSafeBase64 from 'urlsafe-base64';
 
 
 export default function Board(props) {
@@ -34,6 +36,7 @@ export default function Board(props) {
       "Yes IU think thats fine": 8,
       "Maybe that's ok but idk i'm silly": 24
     }
+    const [replyBody, setReplyBody] = useState("")
     const [newLike, setNewLike] = useState(null)
     const [ab, setAb] = useState(Math.random() > .9)
     const [posts, setPosts] = useState([])
@@ -277,13 +280,24 @@ export default function Board(props) {
                     
                 </h4>
                 <h4 style={{fontSize: "18px", margin: "10px"}} className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`}</code> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`}</code> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
                 <img alt="qr code" onClick={_ => setQrVis(!qrVis)} style={{ cursor: 'pointer', marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                 <br/>
                 
                 {qrVis 
-                ? <><br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`BOARD::${props.match.params.boardname}`)}`} /><br /></> 
-                : null}
+                ? 
+                    <>
+                        <br/>
+                        <PostEntry
+                        isReply={false}
+                        post={{amount: "100000"}}
+                        qrVal={qrVal}
+                        darkMode={darkMode}
+                        formatReplyBody={setReplyBody}
+                        replyBody={replyBody}
+                        boardName={props.match.params.boardname}
+                        />
+                    </>: null}
             </div>
             <div className="board-controls-container">
                 <div className="board-search">
