@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Switch, Route, BrowserRouter as Router, Redirect} from "react-router-dom";
 import './App.scss';
-import ReactGA from "react-ga"
 import axios from "axios"
 import {useLocalStorage} from "./hooks/useLocalStorage"
 import {ZaddrContext} from "./contexts/ZaddrContext"
@@ -47,12 +46,7 @@ function App() {
   }
 
   // initialize services
-  useEffect( _ => {
 
-    ReactGA.initialize("UA-156199574-2");
-    ReactGA.pageview("/");
-    ReactGA.event({category: "App", action: "Loaded app"});
-  }, [])
   useEffect( _ => {
     axios.get('https://www.cloudflare.com/cdn-cgi/trace')
       .then(res => setIp(res.data.split("\n")[2].replace("ip=","")))

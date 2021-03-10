@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {copyTextToClipboard } from "../utils/copy";
-import ReactGA from "react-ga";
 import QRCode from "qrcode.react";
 import {Link} from "react-router-dom"
 
@@ -34,7 +33,6 @@ export default function ZaddrCard ({user, copied, setCopied}) {
     const handleCopy = ( zaddr, id) => {
         copyTextToClipboard(zaddr)
         setCopied(user.id)
-        ReactGA.event({category: "User", action: `Copied a zaddr`});
     }
       
     return(

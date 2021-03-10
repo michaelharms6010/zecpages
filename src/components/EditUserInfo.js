@@ -5,7 +5,6 @@ import {ZaddrContext} from "../contexts/ZaddrContext";
 import {confirmAlert} from "react-confirm-alert";
 import SubscriptionInfo from "./SubscriptionInfo"
 import "react-confirm-alert/src/react-confirm-alert.css"
-import ReactGA from "react-ga"
 import zcashLogo from "../zcash-icon.png"
 import zcashLogoDark from "../zcash-icon-dark.png"
 import {Link} from "react-router-dom"
@@ -48,7 +47,6 @@ export default function EditUserInfo ({history}) {
             else {
             axiosAuth().put("https://be.zecpages.com/users", user)
                 .then(res => {
-                    ReactGA.event({category: "User", action: "Edited User"});
                     setUser(res.data);
                     setEditing(false);
                     setError("");})
@@ -70,7 +68,6 @@ export default function EditUserInfo ({history}) {
                     .then( _ => {
                         setUser({website: ""});
                         logout();
-                        ReactGA.event({category: "User", action: "Deleted User"});
                         history.push("/");   
                         window.location.reload()
                     })

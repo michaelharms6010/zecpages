@@ -1,7 +1,6 @@
 import React, {useState, useContext, useEffect} from "react";
 import axios from "axios";
 import {UserContext} from "../contexts/UserContext";
-import ReactGA from "react-ga";
 
 export default function Login({location, history}) {
     const search = location.search;
@@ -38,7 +37,6 @@ export default function Login({location, history}) {
             axios.post("https://be.zecpages.com/auth/register", {username, password, referrer})
                 .then(res => {
                         
-                        ReactGA.event({category: "User", action: `created account ${formInfo.username} `});
                         localStorage.setItem("jwt", res.data.token)
                         setLoggedIn(true)
                         history.push("/edit")
