@@ -39,12 +39,6 @@ function App() {
   const [copied, setCopied] = useState(0);
   const [loaded, setLoaded] = useState(true);
   const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false)
-  const POLL_TITLE= "Are You A Chill Dude?"
-  const TEST_POLL_DATA = {
-    "No": 15,
-    "Yes": 8,
-    "Maybe": 24
-  }
 
   // initialize services
   useEffect( _ => {
@@ -68,7 +62,6 @@ function App() {
             <Navigation />
             <Switch>
               <Redirect exact from="/" to="/z/all" />
-              {/* <Route exact path="/poll" render={() => <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />} /> */}
               <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/search" render={(props) => <Search {...props} />} />
               <Route exact path="/signup" render={(props) => <Signup {...props} />} />

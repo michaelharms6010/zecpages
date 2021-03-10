@@ -7,6 +7,14 @@ $zcash-yellow: #ffbf00;
 
 
 .z-board {
+
+
+    .poll-chart-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
     .uri-link {
         text-decoration: underline;
         padding-left: 0px;

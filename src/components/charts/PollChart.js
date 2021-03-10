@@ -1,33 +1,33 @@
 import React from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
 import { defaults } from 'react-chartjs-2'
-export default function PollChart(props) {
+export default function PollChart({pollData, pollTitle}) {
     defaults.global.defaultFontColor = 'white'
     const data = {
-        labels: Object.keys(props.pollData),
+        labels: Object.keys(pollData),
 
         datasets: [
           {
-            borderColor: "white",
-            label: "",
-            data: [12, 19, 3, 5, 2, 3],
+            borderColor: "black",
+            label: pollTitle,
+            data: Object.values(pollData),
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
+              'rgba(54, 162, 235, .1)',
+              'rgba(54, 162, 235, .3)',
+              'rgba(54, 162, 235, .5)',
+              'rgba(54, 162, 235, .7)',
+              'rgba(94, 202, 255, 1)',
+              'rgba(164, 232, 255, 1)',
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
               'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(164, 232, 255, 1)',
+              'rgba(164, 232, 255, 1)',
             ],
-            borderWidth: 1,
+            borderWidth: 2,
           },
         ],
       }
@@ -43,6 +43,12 @@ export default function PollChart(props) {
             
             xAxes: [
               {
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18,
+                  stepSize: 1,
+                  beginAtZero: true
+              },
                 display: false,
                 gridLines: {
                   display: false,
@@ -55,7 +61,12 @@ export default function PollChart(props) {
             ],
             yAxes: [
               {
-                
+                ticks: {
+                  fontColor: "black",
+                  fontSize: 18,
+                  stepSize: 1,
+                  beginAtZero: true
+              },
                   
                 display: true,
                 

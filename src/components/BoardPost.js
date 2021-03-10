@@ -16,6 +16,7 @@ import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
 import URLSafeBase64 from 'urlsafe-base64';
 import PostEntry from "./PostEntry"
+import PollChart from "./charts/PollChart";
 
 var Base64 = require("js-base64")
 var Buffer = require('buffer/').Buffer
@@ -151,6 +152,13 @@ export default function BoardPost(props) {
         }
     }
 
+    const POLL_TITLE= "Are You A Chill Dude?"
+    const TEST_POLL_DATA = {
+      "No": 15,
+      "Yes": 8,
+      "Maybe": 24
+    }
+
     return (
     <div className={darkMode ? "dark-mode z-board" : "z-board"}>
 
@@ -161,6 +169,12 @@ export default function BoardPost(props) {
     {!!post.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${post.board_name}`}>z/{post.board_name}</Link></p>}
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
+        <div className="poll-chart-container">
+            <h2 style={{textAlign: 'center'}}>{POLL_TITLE}</h2>
+            <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />
+        </div>
+        {/* Poll here */}
+
        <hr></hr>
         <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> 
         <br/>
@@ -170,10 +184,6 @@ export default function BoardPost(props) {
         <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span><br/>
         or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
         {!!qrVis && 
-        // qrVal
-        //replyBody
-        //darkMode
-        // formatReplyBody
             <PostEntry
                 isReply={true}
                 qrVal={qrVal}
