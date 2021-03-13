@@ -6,8 +6,24 @@ $zcash-yellow: #ffbf00;
 
 
 
-.z-board {
+.dark-mode {
+    .simple-board-info {
+        color: #ddd;
+    }
+}
 
+.z-board {
+    
+
+    .create-post-button {
+        width: 150px;
+        margin: 5px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
     .price-selector {
         text-align: left;
         margin-left: 12%;
@@ -223,6 +239,7 @@ $zcash-yellow: #ffbf00;
         font-size: 18px;
         margin: 10px auto;
         margin-bottom: 0;
+
         .copy-icon {
             
         }

@@ -43,7 +43,7 @@ export default function Board(props) {
     const [newLike, setNewLike] = useState(null)
     const [ab, setAb] = useState(Math.random() > .9)
     const [posts, setPosts] = useState([])
-    const [qrVis, setQrVis] = useState(false)
+    const [editorVis, setEditorVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
     const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
@@ -61,6 +61,7 @@ export default function Board(props) {
     const [inUsd, setInUsd] = useState(false) 
     const [zecPrice, setZecPrice] = useState(null)
     const [replyBody, setReplyBody] = useState("")
+    const [qrVis, setQrVis] = useState(false)
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
     const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
@@ -374,15 +375,19 @@ export default function Board(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZEC-powered anonymous memo board</h2>
-                <h3 style={{margin: "0 auto", width: "95%", wordBreak: 'break-all'}}>{boardZaddr}<CopyIcon value={boardZaddr} /></h3>
-                
+                <h3 style={{margin: "10px auto", width: "95%", wordBreak: 'break-all'}}>Board Info:<img onClick={_ => setQrVis(!qrVis)} alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></h3>
+                {qrVis &&
+                <div className="simple-board-info">
+                    {boardZaddr}<CopyIcon value={boardZaddr} /><br/><br/>
+                    <QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${boardZaddr}`} /><br />
+                </div>}
                 
                 <div style={{display: "block"}}>
-                    
-                    <button style={{width: "150px", margin: "5px auto", display: "flex", justifyContent: "center", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide editor" : "Create a Post"}<img alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></button>
+                     
+                    <button className="create-post-button" onClick={_ => setEditorVis(!editorVis)}>{editorVis ? "Hide editor" : "Create a Post"}</button>
                 </div>
                 
-                {qrVis 
+                {editorVis 
                 ? <>
                 <br/>
                 <PostEntry
