@@ -46,7 +46,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
                 name="price"
                 type="radio"
                 value="0.01" />
-                <label>Post and <a className="label-link" href="https://twitter.com/zecpagesRAW">Tweet</a></label>
+                <label>Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a></label>
                 </div>
                 <div className="price-selector-pair">    
                 <input
