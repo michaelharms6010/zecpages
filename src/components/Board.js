@@ -375,10 +375,10 @@ export default function Board(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZEC-powered anonymous memo board</h2>
-                <h3 style={{margin: "10px auto", width: "95%", wordBreak: 'break-all'}}>Board Address:<img onClick={_ => setQrVis(!qrVis)} alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></h3>
+                <h3 style={{margin: "10px auto", width: "95%", wordBreak: 'break-all'}}>{boardZaddr}<CopyIcon value={boardZaddr} /><img onClick={_ => setQrVis(!qrVis)} alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></h3>
                 {qrVis &&
                 <div className="simple-board-info">
-                    {boardZaddr}<CopyIcon value={boardZaddr} /><br/><br/>
+                    
                     <QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${boardZaddr}`} /><br />
                 </div>}
                 

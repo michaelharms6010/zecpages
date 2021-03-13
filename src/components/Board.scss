@@ -7,14 +7,23 @@ $zcash-yellow: #ffbf00;
 
 
 .dark-mode {
-    .simple-board-info {
-        color: #ddd;
+    .z-board {
+        .create-post-button {
+            border-color: #ddd;
+        }
+        .simple-board-info {
+            color: #ddd;
+        }
     }
 }
-
+.icon.copy-icon {
+    margin-left: 8px;
+}
 .z-board {
     
-
+    .copied-tooltip {
+        pointer-events: none;
+    }
     .create-post-button {
         width: 150px;
         margin: 5px auto;
@@ -22,7 +31,7 @@ $zcash-yellow: #ffbf00;
         justify-content: center;
         align-items: center;
         padding: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid black;
     }
     .price-selector {
         text-align: left;
@@ -240,9 +249,7 @@ $zcash-yellow: #ffbf00;
         margin: 10px auto;
         margin-bottom: 0;
 
-        .copy-icon {
-            
-        }
+
     }
 
     .highlight-cta {
