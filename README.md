@@ -6,7 +6,7 @@ ZECpages is built and maintained by [Michael Harms](https://twitter.com/michaelh
 
 ## Backend
 
-Expressjs api / pg db. Hosted w/AWS EB / RDS. I wouldn't choose them again, but here we are. 
+Expressjs api / pg db. Hosted w/AWS EB / RDS. I wouldn't choose EB/RDS again, but here we are. 
 
 JSON API details, db schema, and deployment information are here: https://github.com/michaelharms6010/be-zeitpages
 
