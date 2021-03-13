@@ -30,7 +30,8 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
             {!isReply && !boardName ? <input style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {}} placeholder="Defaults to all" name="boardInput" value={boardInput} onChange={e => setBoardInput(e.target.value.replace(/ /g, "_").replace(/(z\/all|z\/|[^a-z0-9_])/ig, ""))}></input> : null}
             <h2>{isReply ? "Write reply:" : boardName ? `Post to z/${boardName}` : "Post text:"}</h2>
             <textarea style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {} } maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
-            <div className="price-selector">                
+            <div className="price-selector">   
+                <div className="price-selector-pair">             
                 <input
                 onChange={handleChange}
                 name="price"
@@ -38,18 +39,23 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
                 value="0.001" 
                 defaultChecked />
                 <label>Post</label>
+                </div>
+                <div className="price-selector-pair">    
                 <input
                 onChange={handleChange}
                 name="price"
                 type="radio"
                 value="0.01" />
-                <label>Post and Tweet</label>
+                <label>Post and <a className="label-link" href="https://twitter.com/zecpagesRAW">Tweet</a></label>
+                </div>
+                <div className="price-selector-pair">    
                 <input
                 onChange={handleChange}
                 name="price"
                 type="radio"
                 value="0.1" />
-                <label>Highlight Post and Tweet</label>
+                <label>Highlight</label>
+                </div>
             </div>
         </div>
         {/* #bec0fe #0a5e55*/}
