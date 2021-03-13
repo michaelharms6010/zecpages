@@ -26,6 +26,7 @@ import {useLocalStorage} from "../hooks/useLocalStorage"
 import zcashLogo from "../zcash-icon.png"
 import zcashLogoDark from "../zcash-icon-dark.png"
 import PostEntry from "./PostEntry"
+import CopyIcon from "./CopyIcon"
 import URLSafeBase64 from 'urlsafe-base64';
 var Buffer = require('buffer/').Buffer
 
@@ -373,7 +374,7 @@ export default function Board(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZEC-powered anonymous memo board</h2>
-                <h3 style={{margin: "0 auto", width: "80%", wordBreak: 'break-all'}}>{boardZaddr}</h3>
+                <h3 style={{margin: "0 auto", width: "95%", wordBreak: 'break-all'}}>{boardZaddr}<CopyIcon value={boardZaddr} /></h3>
                 
                 
                 <div style={{display: "block"}}>
