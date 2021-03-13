@@ -276,11 +276,9 @@ export default function Board(props) {
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h1>z/{props.match.params.boardname}</h1>
                 <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC to`}</h4>
-                <h4 className="board-zaddr">{qrVal} 
+                <h2 className="board-zaddr">{qrVal} 
                     
-                </h4>
-                <h4 style={{fontSize: "18px", margin: "10px"}} className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
-                <a href={`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`} style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`}</a> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+                </h2>
                 <button style={{margin: "10px auto", cursor: "pointer", display: "flex", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>
                     Create New Post
                     <img alt="qr code" style={{ cursor: 'pointer', marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>

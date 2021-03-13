@@ -162,13 +162,9 @@ export default function BoardPost(props) {
         <p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
        
        <hr></hr>
-        <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> 
+        <button onClick={_ => setQrVis(!qrVis)} style={{wordBreak: "break-word", padding: "8px"}}><code>Reply to this post: <img alt='qr code' style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> </code></button>
         <br/>
-        <a className="uri-link" href={`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}>{`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}</a>
-        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`); showLikeCopyTooltipById(99999999);}}>
-        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-        <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span><br/>
-        or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>
+        <code>You can manually make a new board post with a memo starting with {`REPLY::${post.id}`}</code>
         {!!qrVis && 
         // qrVal
         //replyBody

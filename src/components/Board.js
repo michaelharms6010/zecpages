@@ -61,7 +61,7 @@ export default function Board(props) {
     const [zecPrice, setZecPrice] = useState(null)
     const [replyBody, setReplyBody] = useState("")
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
-    const qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
+    const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
     const [boardInput, setBoardInput] = useState("")
@@ -372,17 +372,10 @@ export default function Board(props) {
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h2>ZECpages Anonymous Memo Board</h2>
-                <h4 className="instructions-header">{`Post to the board anonymously by sending a memo along with 0.001 ZEC (or more) to`}</h4>
-                <h4 className="board-zaddr">{qrVal} 
-                    
-                </h4>
-                <h4 style={{marginTop: "5px"}}>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
-                <h4 className="highlight-cta">Send at least .01 ZEC to <a style={{padding: "0"}} target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesraw">tweet your post</a>!</h4>
-                <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>               
-                <a className="uri-link" href={`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}>
-                    <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}</code></a>
-                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span onClick={e => {e.stopPropagation(); setQrVis(!qrVis)}} className='copied-tooltip'>Copied!</span></span>
+                <h2>ZEC-powered anonymous memo board</h2>
+                <h3 style={{margin: "0 auto", width: "80%", wordBreak: 'break-all'}}>{boardZaddr}</h3>
+                
+                
                 <div style={{display: "block"}}>
                     
                     <button style={{width: "150px", margin: "5px auto", display: "flex", justifyContent: "center", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide editor" : "Create a Post"}<img alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></button>
@@ -394,7 +387,7 @@ export default function Board(props) {
                 <PostEntry
                     isReply={false}
                     post={{amount: "100000"}}
-                    qrVal={qrVal}
+                    boardZaddr={boardZaddr}
                     darkMode={darkMode}
                     formatReplyBody={formatReplyBody}
                     replyBody={replyBody}
@@ -402,11 +395,16 @@ export default function Board(props) {
                     setBoardInput={setBoardInput}
                 />
                 
-                {/* <br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${qrVal}`} /><br /> */}
+                {/* <br/><QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${boardZaddr}`} /><br /> */}
                 </> 
                 : null}
             </div>
-            {showViewKey ? <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>{viewKey} <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">What's a viewing key?</a> </p> : null}
+            {showViewKey && 
+            <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>
+                {viewKey}
+                <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">
+                    What's a viewing key?</a> 
+            </p>}
             <button style={{marginBottom: "18px"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
             
             {pinned && !!posts.length && 
@@ -432,12 +430,12 @@ export default function Board(props) {
                         {likeTooltip === "pinned" &&
                         <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation(); setReplyQrVis(!replyQrVis) } } style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
                         <br/> 
-                        <a className="uri-link" onClick={e=> e.stopPropagation()} href={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}</a> 
-                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={e => {e.stopPropagation(); copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
+                        <a className="uri-link" onClick={e=> e.stopPropagation()} href={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}>{`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`}</a> 
+                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={e => {e.stopPropagation(); copyTextToClipboard(`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`); showCopyTooltipById(pinned.id);}}>
                         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                         <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${pinned.id}`}>Copied!</span></span>
                         <br/> or simply make a board post with the memo "{`LIKE::${pinned.id}`}"</code></p>}
-                        {replyQrVis && likeTooltip === "pinned" && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
+                        {replyQrVis && likeTooltip === "pinned" && <QRCode bgColor={darkMode ? "#111111" : '#743943'} fgColor={darkMode ? "#C46274" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${pinned.id}`)}`} />}
                         <div className="post-bottom-row">
                         <div className="post-date">
                                 <div className="like-container">
@@ -521,12 +519,12 @@ export default function Board(props) {
                     <>
                     <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation() ;  setReplyQrVis(!replyQrVis) } } style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> 
                     <br/> 
-                    <a className="uri-link" href={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} </a>
-                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
+                    <a className="uri-link" href={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} </a>
+                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
                     <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                     <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>
                     <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
-                    {replyQrVis && <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
+                    {replyQrVis && <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
                     </>}
                     <div className="post-bottom-row">
                     <div className="post-date">
