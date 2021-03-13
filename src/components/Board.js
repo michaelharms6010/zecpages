@@ -412,9 +412,7 @@ export default function Board(props) {
                 <div onClick={flipCard} className={`${flipped ? "flipped" : ""} flip-card`}>
                 <div className='flip-card-inner'>
                 <div className="flip-card-front">   
-                    <div data-aos="flip-left"
-                        data-aos-easing="ease-out-cubic"
-                        data-aos-duration="2000"
+                    <div 
                         id="pinned-post"
                         key={pinned.id} 
                         className={"highlighted-board-post board-post"}>
