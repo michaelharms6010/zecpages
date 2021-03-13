@@ -10,11 +10,11 @@ $zcash-yellow: #ffbf00;
 
     .price-selector {
         text-align: left;
-        margin-left: 6%;
-
+        margin-left: 12%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        user-select:none;
 
         .price-selection-pair {
             display: flex;
@@ -575,6 +575,7 @@ $zcash-yellow: #ffbf00;
 
   .dark-mode .z-board {
     .price-selector {
+        
         label {
             .label-link {
                 color: $zcash-yellow;
@@ -764,8 +765,9 @@ $zcash-yellow: #ffbf00;
 @media (max-width: 864px) {
     .z-board {
         .price-selector {
+            justify-content: center;
             text-align: center;
-            marign-left: 0;
+            margin-left: 0;
         }
         .reply-editor {
             flex-direction: column-reverse;

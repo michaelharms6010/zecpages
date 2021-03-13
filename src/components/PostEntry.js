@@ -30,33 +30,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
             {!isReply && !boardName ? <input style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {}} placeholder="Defaults to all" name="boardInput" value={boardInput} onChange={e => setBoardInput(e.target.value.replace(/ /g, "_").replace(/(z\/all|z\/|[^a-z0-9_])/ig, ""))}></input> : null}
             <h2>{isReply ? "Write reply:" : boardName ? `Post to z/${boardName}` : "Post text:"}</h2>
             <textarea style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {} } maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
-            <div className="price-selector">   
-                <div className="price-selector-pair">             
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                value="0.001" 
-                defaultChecked />
-                <label>Post</label>
-                </div>
-                <div className="price-selector-pair">    
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                value="0.01" />
-                <label>Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a></label>
-                </div>
-                <div className="price-selector-pair">    
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                value="0.1" />
-                <label>Highlight</label>
-                </div>
-            </div>
+
         </div>
         {/* #bec0fe #0a5e55*/}
         <div>
@@ -67,7 +41,36 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
 
 
         </div>    
-
+        <div className="price-selector">   
+                <div className="price-selector-pair">             
+                <input
+                onChange={handleChange}
+                name="price"
+                type="radio"
+                value="0.001" 
+                id="0.001" 
+                defaultChecked />
+                <label for="0.001">Post</label>
+                </div>
+                <div className="price-selector-pair">    
+                <input
+                onChange={handleChange}
+                name="price"
+                type="radio"
+                id="0.01"
+                value="0.01" />
+                <label for="0.01">Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a></label>
+                </div>
+                <div className="price-selector-pair">    
+                <input
+                onChange={handleChange}
+                name="price"
+                type="radio"
+                id="0.1"
+                value="0.1" />
+                <label for="0.1">Highlight</label>
+                </div>
+            </div>
         </>
     )
 }
