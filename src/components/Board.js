@@ -374,7 +374,7 @@ export default function Board(props) {
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
-                <h2>ZEC-powered anonymous memo board</h2>
+                <h2>ZEC-powered anonymous memo board <Link style={{color: darkMode ? "#ffbf00" : "#5e63fd", padding: "0"}} to="/boardinfo">(how it works)</Link></h2>
                 <h3 style={{margin: "10px auto", width: "95%", wordBreak: 'break-all'}}>{boardZaddr}<img onClick={_ => setQrVis(!qrVis)} alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "8px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></h3>
                 {qrVis &&
                 <div className="simple-board-info">
