@@ -29,7 +29,7 @@ import PostEntry from "./PostEntry"
 import CopyIcon from "./CopyIcon"
 import URLSafeBase64 from 'urlsafe-base64';
 var Buffer = require('buffer/').Buffer
-
+const ab = Math.random() > .9
 
 export default function Board(props) {
     AOS.init()
@@ -41,19 +41,16 @@ export default function Board(props) {
       "Maybe that's ok but idk i'm silly": 24
     }
     const [newLike, setNewLike] = useState(null)
-    const [ab, setAb] = useState(Math.random() > .9)
+    
     const [posts, setPosts] = useState([])
     const [editorVis, setEditorVis] = useState(false)
     const [replyQrVis, setReplyQrVis] = useState(false)
     const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
-    const [showViewKey, setShowViewKey] = useState(false)
     const {darkMode, amount} = React.useContext(UserContext)
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
-    const [decay, setDecay] = useState(false);
-    const [doCardHeight, setDoCardHeight] = useState(false)
     const [newReplyId, setNewReplyId] = useState(null)
     const [notificationVis, setNotificationVis] = useState(false)
     const [likeTooltip, setLikeTooltip] = useState(null)
@@ -64,7 +61,6 @@ export default function Board(props) {
     const [qrVis, setQrVis] = useState(false)
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
     const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
-    const viewKey = "zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz"
 
     const [boardInput, setBoardInput] = useState("")
     
@@ -405,14 +401,7 @@ export default function Board(props) {
                 </> 
                 : null}
             </div>
-            {showViewKey && 
-            <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>
-                {viewKey}
-                <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">
-                    What's a viewing key?</a> 
-            </p>}
-            <button style={{marginBottom: "18px"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
-            
+
             {pinned && !!posts.length && 
                 <>
                 <div onClick={flipCard} className={`${flipped ? "flipped" : ""} flip-card`}>

@@ -75,7 +75,7 @@ $zcash-yellow: #ffbf00;
         justify-content: space-between;
         margin: 0 auto;
         width: 80%;
-        align-items: center;
+        align-items: flex-end;
         button:disabled {
             pointer-events:none;
             }
@@ -83,7 +83,6 @@ $zcash-yellow: #ffbf00;
 
             display: flex;
             align-items:flex-end;
-            margin-bottom: 10px;
             .search-form {
                 align-items: flex-end;
                 display: flex;
@@ -216,7 +215,7 @@ $zcash-yellow: #ffbf00;
         width: 75%;
         margin: 0 auto;
         border: 1px solid black;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         padding: 10px;
         transition: 1s;
         a {
@@ -276,8 +275,8 @@ $zcash-yellow: #ffbf00;
     .board-page-buttons {
         display:flex;
         justify-content:flex-end;
-        padding:10px 0px;
-        height: 50px;
+        padding: 0px;
+        height: 35px;
         align-items: center;
         input {
             margin: 0 20px 0px 10px;
@@ -850,6 +849,7 @@ $breakpoint-mobile: 500px;
         .board-controls-container {
             margin-top: 35px;
             flex-direction: column;
+            align-items: center;
 
             .board-search {
                 flex-direction: column;
