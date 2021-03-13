@@ -6,13 +6,15 @@ ZECpages is built and maintained by [Michael Harms](https://twitter.com/michaelh
 
 ## Backend
 
-Expressjs api / pg db. Hosted w/AWS EB / RDS. I wouldn't choose them again, but here we are. 
+Expressjs api / pg db. Hosted w/AWS EB / RDS. I wouldn't choose EB/RDS again, but here we are. 
 
 JSON API details, db schema, and deployment information are here: https://github.com/michaelharms6010/be-zeitpages
 
 ## Zcash Jobs
 
-These jobs run on a t2.micro instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli).
+These jobs run on a t3.large instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli). 
+
+This is probably oversized, but it's for safety - ime a t2.micro is totally fine for lightwallet testing and even modest use (not too many tx's firing at once).
 
 ### Wallet Daemon
 
