@@ -12,7 +12,9 @@ JSON API details, db schema, and deployment information are here: https://github
 
 ## Zcash Jobs
 
-These jobs run on a t2.micro instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli).
+These jobs run on a t3.large instance using adityapk00's [zecwallet-cli](https://github.com/adityapk00/zecwallet-light-cli). 
+
+This is probably oversized, but it's for safety - ime a t2.micro is totally fine for lightwallet testing and even modest use (not too many tx's firing at once).
 
 ### Wallet Daemon
 
