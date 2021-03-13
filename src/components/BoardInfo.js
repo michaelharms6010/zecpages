@@ -12,7 +12,7 @@ export default function BoardInfo() {
                 
                 Events on ZECpages (making a post, liking a post, subscribing to a user, publishing to users) are driven by transactions on the Zcash blockchain. 
 
-                <br/><br/>Using Zcash blockchain data makes ZECpages's data globally available, private, and immutable.<br/><br/>
+                <br/><br/>tl;dr: Because it uses Zcash blockchain data source, ZECpages's data is globally available, private, and immutable.<br/><br/>
                 ZECpages currently recommends using <a target="_blank" rel="noopener noreferrer" style={{padding: '0', margin: '0'}}  href="https://zecwallet.co">ZecWallet</a> for best experience on PC, Android, and iOS.
                 </p>
             </div>
