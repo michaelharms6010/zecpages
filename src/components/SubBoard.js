@@ -45,7 +45,7 @@ export default function Board(props) {
     const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
-    const {darkMode} = React.useContext(UserContext)
+    const {darkMode, amount} = React.useContext(UserContext)
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -280,7 +280,7 @@ export default function Board(props) {
                     
                 </h4>
                 <h4 style={{fontSize: "18px", margin: "10px"}} className="instructions-header">Begin your memo with <strong> BOARD::{props.match.params.boardname}</strong></h4>
-                <a href={`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`} style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`}</a> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+                <a href={`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`} style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`}</a> <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${props.match.params.boardname ? `BOARD::${props.match.params.boardname} ` : ""}${replyBody}`))}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
                 <button style={{margin: "10px auto", cursor: "pointer", display: "flex", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>
                     Create New Post
                     <img alt="qr code" style={{ cursor: 'pointer', marginLeft: "3px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/>
@@ -292,13 +292,12 @@ export default function Board(props) {
                     <>
                         <br/>
                         <PostEntry
-                        isReply={false}
-                        post={{amount: "100000"}}
-                        qrVal={qrVal}
-                        darkMode={darkMode}
-                        formatReplyBody={setReplyBody}
-                        replyBody={replyBody}
-                        boardName={props.match.params.boardname}
+                            isReply={false}
+                            post={{amount: "100000"}}
+                            qrVal={qrVal}
+                            formatReplyBody={setReplyBody}
+                            replyBody={replyBody}
+                            boardName={props.match.params.boardname}
                         />
                     </>: null}
             </div>
@@ -330,7 +329,7 @@ export default function Board(props) {
                     
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} 
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => setReplyQrVis(!replyQrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> <br/> {`zcash:${qrVal}?amount=${amount}&memo=${btoa(`LIKE::${item.id}`)}`} 
                     <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
                     <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                     <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>

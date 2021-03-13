@@ -7,6 +7,20 @@ $zcash-yellow: #ffbf00;
 
 
 .z-board {
+
+    .price-selector {
+        text-align: left;
+        margin-left: 6%;
+        label {
+            color: black;
+            
+        }
+        input {
+            margin: 5px;
+        }
+        
+    }
+    
     .uri-link {
         text-decoration: underline;
         padding-left: 0px;
@@ -125,7 +139,7 @@ $zcash-yellow: #ffbf00;
         display: flex;
         justify-content: space-between;
         margin-left: 10px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         .reply-text-editor {
             width: 60%;
             margin-left: 10px;
@@ -718,13 +732,15 @@ $zcash-yellow: #ffbf00;
     .highlighted-board-post.board-post {
         border: 1px solid $zcash-yellow;
         background:$dark-red;
-        .post-text {
-        }
     }
 }
 
 @media (max-width: 864px) {
     .z-board {
+        .price-selector {
+            text-align: center;
+            marign-left: 0;
+        }
         .reply-editor {
             flex-direction: column-reverse;
             align-items: center;

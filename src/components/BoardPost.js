@@ -25,7 +25,7 @@ var encoder = new TextEncoder();
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
     const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
-    const {darkMode} = React.useContext(UserContext)
+    const {darkMode, amount} = React.useContext(UserContext)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
@@ -164,8 +164,8 @@ export default function BoardPost(props) {
        <hr></hr>
         <p style={{wordBreak: "break-word", paddingLeft: "10px"}}><code>Reply to this post: <img alt='qr code' onClick={_ => setQrVis(!qrVis)} style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> 
         <br/>
-        <a className="uri-link" href={`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}>{`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}</a>
-        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`); showLikeCopyTooltipById(99999999);}}>
+        <a className="uri-link" href={`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}>{`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`}</a>
+        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`REPLY::${post.id} ${replyBody}`))}`); showLikeCopyTooltipById(99999999);}}>
         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
         <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${99999999}`}>Copied!</span></span><br/>
         or simply make a new board post with a memo starting with {`REPLY::${post.id}`}</code></p>

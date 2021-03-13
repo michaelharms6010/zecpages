@@ -47,7 +47,7 @@ export default function Board(props) {
     const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
     const [showViewKey, setShowViewKey] = useState(false)
-    const {darkMode} = React.useContext(UserContext)
+    const {darkMode, amount} = React.useContext(UserContext)
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -380,16 +380,15 @@ export default function Board(props) {
                 <h4 style={{marginTop: "5px"}}>**Include your zaddr in your post and you'll receive 0.0005{"\xa0"}ZEC for every like**</h4>
                 <h4 className="highlight-cta">Send at least .01 ZEC to <a style={{padding: "0"}} target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesraw">tweet your post</a>!</h4>
                 <h4 className="highlight-cta">Send at least .1 ZEC to highlight your post!</h4>               
-                <a className="uri-link" href={`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}>
-                    <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}</code></a>
-                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+                <a className="uri-link" href={`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}>
+                    <code style={{wordBreak: 'break-word'}}>{`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}</code></a>
+                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span onClick={e => {e.stopPropagation(); setQrVis(!qrVis)}} className='copied-tooltip'>Copied!</span></span>
                 <div style={{display: "block"}}>
                     
                     <button style={{width: "150px", margin: "5px auto", display: "flex", justifyContent: "center", alignItems: "center", padding: "5px"}} onClick={_ => setQrVis(!qrVis)}>{qrVis ? "Hide editor" : "Create a Post"}<img alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "10px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></button>
                 </div>
                 
                 {qrVis 
-                // ADD POSTING UI HERE 
                 ? <>
                 <br/>
                 <PostEntry
