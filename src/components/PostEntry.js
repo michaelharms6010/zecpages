@@ -81,9 +81,9 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
                 <label for="0.1">Highlight (.1)</label>
                 </div>
             </div>
-            <a className="uri-link" href={`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}>
-                <code style={{wordBreak: 'break-word'}}>{`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`}</code></a>
-                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${boardInput ? `BOARD::${boardInput} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip("editor");}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className={`copied-tooltip editor-tooltip`}>Copied!</span></span>
+            <a className="uri-link" href={`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`}>
+                <code style={{wordBreak: 'break-word'}}>{`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`}</code></a>
+                <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip("editor");}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className={`copied-tooltip editor-tooltip`}>Copied!</span></span>
         </>
     )
 }
