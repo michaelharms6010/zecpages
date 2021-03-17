@@ -527,7 +527,7 @@ export default function Board(props) {
                             {item.amount < 10000000 && <h4>Highlight for {0.1 - (item.amount / 100000000)} ZEC</h4>}
                             {item.amount < 10000000 && 
                             <>
-                            <label>Like Post
+                            <label>Like This Post
                             <input
                                 checked={likeAmount === 0.001}
                                 name="likeAmount"
@@ -536,7 +536,7 @@ export default function Board(props) {
                                 onChange={e => setLikeAmount(+e.target.value)} />
                             </label>
                             
-                            <label>Highlight Post
+                            <label>Like & Highlight This Post
                             <input
                                 checked={likeAmount === 0.1 - (item.amount / 100000000) }
                                 name="likeAmount"

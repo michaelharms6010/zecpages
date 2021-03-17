@@ -33,6 +33,8 @@ export default function BoardPost(props) {
     const [replyBody, setReplyBody] = useState("")
     const [likeQrVis, setLikeQrVis] = useState(0)
     const [ab, setAb] = useState(Math.random() > .9)
+    const [likeAmount, setLikeAmount] = useState(0.001)
+    const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
     const [post, setPost] = useState({
         memo: "",
         amount: 0,
@@ -183,15 +185,49 @@ export default function BoardPost(props) {
 
             <>
             <hr />
-                <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(post.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`}       
-                <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
+                <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post:</h2>
+                <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${post.id}`}" </code>
+                </p>
+                <div className="like-form-container">
+                
+                
+                    <form className="like-amount-form">
+                        <h3>Post power: {(post.amount / 100000000)} ZEC</h3>
+                        <h4>Like for 0.001 ZEC.</h4>
+                        {post.amount < 10000000 && <h4>Highlight for {0.1 - (post.amount / 100000000)} ZEC</h4>}
+                        {post.amount < 10000000 && 
+                        <>
+                        <label>Like This Post
+                        <input
+                            checked={likeAmount === 0.001}
+                            name="likeAmount"
+                            value={0.001}
+                            type="radio"
+                            onChange={e => setLikeAmount(+e.target.value)} />
+                        </label>
+                        
+                        <label>Like & Highlight This Post
+                        <input
+                            checked={likeAmount === 0.1 - (post.amount / 100000000) }
+                            name="likeAmount"
+                            value={0.1 - (post.amount / 100000000)}
+                            type="radio"
+                            onChange={e => setLikeAmount(+e.target.value)} />
+                        </label>
+                        </>}
+                    </form>
+                
+                <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${post.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${post.id}`)}`} />
+                </div>
+                
+                
+                <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <br/> {`zcash:${boardZaddr}?amount=${post.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${post.id}`)}`}       
+                <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${post.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
                 <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                 <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
-                <br/> or simply make a board post with the memo "{`LIKE::${post.id}`}"</code></p>
+                </code></p>
             </>
         }
-        {likeQrVis === post.id && likeTooltip === post.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${post.id}`)}`} />}
-        
          <div className="post-date">
             <div className="like-container">
                 <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />

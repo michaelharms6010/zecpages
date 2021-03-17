@@ -627,6 +627,14 @@ $zcash-yellow: #ffbf00;
 
 
   .dark-mode .z-board {
+
+        .like-form-container {
+            form {
+                label {
+                    color: #eee;
+                }
+            }
+        }
     .price-selector {
         
         label {
