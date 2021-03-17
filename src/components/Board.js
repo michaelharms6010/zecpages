@@ -174,7 +174,7 @@ export default function Board(props) {
 
 
     useEffect(_ => {
-        if (newLike) addLike(newLike)
+        if (newLike) addLike(newLike.liked_post_id, newLike.new_amount)
     },[newLike])
 
     useEffect(_ => {
@@ -247,7 +247,7 @@ export default function Board(props) {
             
 
             if (data.liked_post_id) {
-                setNewLike(data.liked_post_id)
+                setNewLike({new_amount: data.new_amount, liked_post_id: data.liked_post_id})
             } else if (data.reply_to) {
                 if (!notificationVis) {
                     setNewReplyId(data.reply_to)
