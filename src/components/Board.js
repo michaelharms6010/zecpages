@@ -174,6 +174,7 @@ export default function Board(props) {
 
 
     useEffect(_ => {
+        console.log(newLike)
         if (newLike) addLike(newLike.liked_post_id, newLike.new_amount)
     },[newLike])
 
@@ -245,8 +246,9 @@ export default function Board(props) {
             // todo - Push new like ids ? Only manually refresh posts?
             channel.bind('new-post', function(data) {
             
-
+            console.log("data", data)
             if (data.liked_post_id) {
+                
                 setNewLike({new_amount: data.new_amount, liked_post_id: data.liked_post_id})
             } else if (data.reply_to) {
                 if (!notificationVis) {
