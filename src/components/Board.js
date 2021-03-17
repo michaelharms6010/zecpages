@@ -28,6 +28,7 @@ import zcashLogoDark from "../zcash-icon-dark.png"
 import PostEntry from "./PostEntry"
 import CopyIcon from "./CopyIcon"
 import URLSafeBase64 from 'urlsafe-base64';
+import { post } from "jquery";
 var Buffer = require('buffer/').Buffer
 const ab = Math.random() > .9
 
@@ -59,6 +60,7 @@ export default function Board(props) {
     const [zecPrice, setZecPrice] = useState(null)
     const [replyBody, setReplyBody] = useState("")
     const [qrVis, setQrVis] = useState(false)
+    const [likeAmount, setLikeAmount] = useState(0.001)
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
     const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
@@ -512,14 +514,47 @@ export default function Board(props) {
                     
                     {likeTooltip === item.id && 
                     <>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={e => { e.stopPropagation() ;  setReplyQrVis(!replyQrVis) } } style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> 
-                    <br/> 
-                    <a className="uri-link" href={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} </a>
-                    <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
-                    <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-                    <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>
-                    <br/> or simply make a board post with the memo "{`LIKE::${item.id}`}"</code></p>
-                    {replyQrVis && <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=0.001&memo=${btoa(`LIKE::${item.id}`)}`} />}
+                    <hr></hr>
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post:</h2>
+                    <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${item.id}`}" </code>
+                    </p>
+                    <div className="like-form-container">
+                    
+                    
+                        <form className="like-amount-form">
+                            <h3>Post power: {(item.amount / 100000000)} ZEC</h3>
+                            <h4>Like for 0.001 ZEC.</h4>
+                            {item.amount < 10000000 && <h4>Highlight for {0.1 - (item.amount / 100000000)} ZEC</h4>}
+                            {item.amount < 10000000 && 
+                            <>
+                            <label>Like Post
+                            <input
+                                checked={likeAmount === 0.001}
+                                name="likeAmount"
+                                value={0.001}
+                                type="radio"
+                                onChange={e => setLikeAmount(+e.target.value)} />
+                            </label>
+                            
+                            <label>Highlight Post
+                            <input
+                                checked={likeAmount === 0.1 - (item.amount / 100000000) }
+                                name="likeAmount"
+                                value={0.1 - (item.amount / 100000000)}
+                                type="radio"
+                                onChange={e => setLikeAmount(+e.target.value)} />
+                            </label>
+                            </>}
+                        </form>
+                    
+                    <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`} />
+                    </div>
+                    <code>  
+                        <a className="uri-link" href={`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`} </a>
+                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
+                        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+                        <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>
+                    </code>
                     </>}
                     <div className="post-bottom-row">
                     <div className="post-date">

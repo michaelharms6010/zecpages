@@ -20,6 +20,26 @@ $zcash-yellow: #ffbf00;
     margin-left: 8px;
 }
 .z-board {
+
+    .like-form-container {
+        form {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            label {
+                color: black;
+            }
+            input {
+                margin-left: 5px;
+            }
+        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+    }
     
     .copied-tooltip {
         pointer-events: none;
@@ -68,6 +88,10 @@ $zcash-yellow: #ffbf00;
         text-decoration: underline;
         padding-left: 0px;
         cursor: default;
+        word-break: break-all;
+        &:hover {
+            color: #222;
+        }
     }
     min-width: 350px;
     .board-controls-container {
@@ -348,6 +372,10 @@ $zcash-yellow: #ffbf00;
         text-align:left;
         border-radius: 5px;
 
+        a:hover {
+
+        }
+
         .zebra-icon {
             height: 23px;
             width: 24px;
@@ -455,10 +483,11 @@ $zcash-yellow: #ffbf00;
     }
     a {
         text-decoration: none;
-        color:rgb(93, 93, 93);
+        color:#222;
         font-weight:bold;
         padding-right:10px;
         padding-left:10px;
+
     }
     a.page-link {
         color: #333;
@@ -697,9 +726,7 @@ $zcash-yellow: #ffbf00;
         }
         .uri-link {
             color: #ddd;
-            &:hover {
-                color: #ddd;
-            }
+            word-break: break-all;
         }
         .user-page-link {
             color: #ddd;
@@ -788,6 +815,12 @@ $zcash-yellow: #ffbf00;
 
 @media (max-width: 864px) {
     .z-board {
+        .like-form-container {
+            flex-direction: column;
+            form {
+                align-items:center;
+            }
+        }
         .price-selector {
             justify-content: center;
             text-align: center;
