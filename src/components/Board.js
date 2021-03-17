@@ -334,12 +334,12 @@ export default function Board(props) {
         setTimeout(_ => document.querySelector(`.copied-tooltip-${id}`).classList.remove('visible'), 1000)
     }
 
-    const addLike = postId => {
+    const addLike = (postId, newAmount) => {
         const post = posts.find(post => post.id === postId)
-        if (pinned.id === postId) setPinned({...pinned, likes: pinned.likes + 1})
+        if (pinned.id === postId) setPinned({...pinned, amount: newAmount, likes: pinned.likes + 1})
         if (!post) return
         let newPosts = posts.filter(post => post.id !== postId)
-        newPosts.push({...post, likes: post.likes + 1})
+        newPosts.push({...post, amount: newAmount, likes: post.likes + 1})
         setPosts(newPosts.sort( (a, b) => b.id-a.id))
         
     }
