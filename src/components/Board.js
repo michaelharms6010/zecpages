@@ -567,8 +567,8 @@ export default function Board(props) {
                     <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`} />
                     </div>
                     <code>  
-                        <a className="uri-link" href={`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`} </a>
-                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
+                        <a className="uri-link" href={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${item.id}`)}`}>{`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${item.id}`)}`} </a>
+                        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${item.id}`)}`); showCopyTooltipById(item.id);}}>
                         <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
                         <span style={{textAlign: "center"}} className={`copied-tooltip copied-tooltip-${item.id}`}>Copied!</span></span>
                     </code>
