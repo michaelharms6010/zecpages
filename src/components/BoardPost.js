@@ -197,48 +197,51 @@ export default function BoardPost(props) {
                 <div className="like-form-container">
                 
                 
-                    <form className="like-amount-form">
-
-                        
-                        <>
-                        <label>Like This Post (0.001 ZEC)
-                        <input
-                            checked={likeAmount === 0.001}
-                            name="likeAmount"
-                            value={0.001}
-                            type="radio"
-                            onChange={e => handleLikeAmount(+e.target.value)} />
-                        </label>
-                        {post.amount < 10000000 && 
-                            <label>Like & Highlight This Post
+                <form className="like-amount-form">
+                            
+                            
+                            <>
+                            <strong>This post's power: {(post.amount / 100000000)} ZEC</strong>
+                            <label>Like
                             <input
-                                checked={likeAmount === 0.1 - (post.amount / 100000000) }
+                                checked={likeAmount >= 0.001 && likeAmount < 0.1 - (post.amount / 100000000) }
+                                name="likeAmount"
+                                value={0.001}
+                                type="radio"
+                                onChange={e => handleLikeAmount(+e.target.value)} />
+                            </label>
+                            {post.amount < 10000000 && 
+                            <label>Like & Highlight
+                            <input
+                                checked={likeAmount >= 0.1 - (post.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 ) }
                                 name="likeAmount"
                                 value={0.1 - (post.amount / 100000000)}
                                 type="radio"
                                 onChange={e => handleLikeAmount(+e.target.value)} />
-                            </label>
-                        }
-                        <label>Like & Pin This Post
+                            </label>}
+                            <label>Like & Pin
                             <input
-                                checked={likeAmount >= (pinnedCost - post.amount) / 100000000 }
+                                checked={likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 }
                                 name="likeAmount"
-                                value={(pinnedCost - post.amount) / 100000000}
+                                value={((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000)}
                                 type="radio"
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
+                            <label>You're adding: 
                             <input
-                                style={likeAmount < (pinnedCost - post.amount) / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                style={{textAlign: "right", width: "80px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - post.amount) / 100000000) handleLikeAmount(e.target.value) } }
+                                onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
-                                min={(pinnedCost - post.amount) / 100000000}
-                                disabled={likeAmount < (pinnedCost - post.amount) / 100000000 }
-                                />
-                        </>
-                    </form>
+                                />ZEC</label>
+                            <div className="after-liking-total">
+                                <p>Post power after liking:</p>
+                                <p> {+(post.amount / 100000000 + likeAmount).toFixed(8)} ZEC</p>
+                            </div>
+                            </>
+                        </form>
                 
                 <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`} />
                 </div>

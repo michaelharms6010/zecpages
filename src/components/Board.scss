@@ -3,7 +3,16 @@
 $day-main: #fec8fc;
 $day-background: #5e63fd;
 $zcash-yellow: #ffbf00;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .dark-mode {
     .z-board {
@@ -22,11 +31,17 @@ $zcash-yellow: #ffbf00;
 
     .like-form-container {
         form {
+            .after-liking-total {
+                width: 100%;
+                display:flex;
+                justify-content: space-between;
+            }
+
             display:flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            width: 260px;
+            width: 250px;
             label {
                 color: black;
             }
@@ -826,7 +841,6 @@ $zcash-yellow: #ffbf00;
         .like-form-container {
             flex-direction: column;
             form {
-                width: auto;
                 align-items:flex-end;
             }
         }

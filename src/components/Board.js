@@ -518,7 +518,7 @@ export default function Board(props) {
                     {likeTooltip === item.id && 
                     <>
                     <hr></hr>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current power: {(item.amount / 100000000)} ZEC)</h2>
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: </h2>
                     <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${item.id}`}" </code><br/>
                     </p>
                     <div className="like-form-container">
@@ -528,7 +528,8 @@ export default function Board(props) {
                             
                             
                             <>
-                            <label>Like This Post (0.001 ZEC)
+                            <strong>This post's power: {(item.amount / 100000000)} ZEC</strong>
+                            <label>Like
                             <input
                                 checked={likeAmount >= 0.001 && likeAmount < 0.1 - (item.amount / 100000000) }
                                 name="likeAmount"
@@ -537,7 +538,7 @@ export default function Board(props) {
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             {item.amount < 10000000 && 
-                            <label>Like & Highlight This Post
+                            <label>Like & Highlight
                             <input
                                 checked={likeAmount >= 0.1 - (item.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ) }
                                 name="likeAmount"
@@ -545,7 +546,7 @@ export default function Board(props) {
                                 type="radio"
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>}
-                            <label>Like & Pin This Post
+                            <label>Like & Pin
                             <input
                                 checked={likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 }
                                 name="likeAmount"
@@ -553,15 +554,19 @@ export default function Board(props) {
                                 type="radio"
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
+                            <label>You're adding: 
                             <input
-                                style={{textAlign: "right", width: "100px"}}
+                                style={{textAlign: "right", width: "80px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
                                 onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
-                                />
-                            <p>Post total after liking: {item.amount / 100000000 + likeAmount} ZEC</p>
+                                />ZEC</label>
+                            <div className="after-liking-total">
+                                <p>Post power after liking:</p>
+                                <p> {+(item.amount / 100000000 + likeAmount).toFixed(8)} ZEC</p>
+                            </div>
                             </>
                         </form>
                     
