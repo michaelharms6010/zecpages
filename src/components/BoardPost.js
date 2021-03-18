@@ -25,7 +25,7 @@ var encoder = new TextEncoder();
 export default function BoardPost(props) {
     const replyRegex = /REPLY::\d+/i
     const initial_qrVal = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
-    const {darkMode, amount} = React.useContext(UserContext)
+    const {pinnedCost, setPinnedCost, darkMode, amount} = React.useContext(UserContext)
     const [likeTooltip, setLikeTooltip] = useState(null)
     const [qrVal, setQrVal] = useState(initial_qrVal)
     const [qrVis, setQrVis] = useState(false)
@@ -42,6 +42,12 @@ export default function BoardPost(props) {
         replies: [],
         reply_to_post: null
     })
+
+
+    
+    useEffect(_ => { if (pinned) setPinnedCost(pinned.decayed_amount > 10000000 ? pinned.decayed_amount : 10000000) },[pinned])
+
+
     const showLikeCopyTooltipById = id => {
         document.querySelector(`.like-copied-${id}`).classList.add('visible')
         setTimeout(_ => document.querySelector(`.like-copied-${id}`).classList.remove('visible'), 1000)
@@ -123,7 +129,7 @@ export default function BoardPost(props) {
                 
             })
             .catch(err => console.log(err))
-        axios.get(`https://be.zecpages.com/board/pinned`)
+        axios.get(`https://be.zecpages.com/board/decayedpinned`)
             .then(res => {
                 setPinned(res.data)
                 
@@ -193,9 +199,8 @@ export default function BoardPost(props) {
                 
                     <form className="like-amount-form">
                         <h3>Post power: {(post.amount / 100000000)} ZEC</h3>
-                        <h4>Like for 0.001 ZEC.</h4>
-                        {post.amount < 10000000 && <h4>Highlight for {0.1 - (post.amount / 100000000)} ZEC</h4>}
-                        {post.amount < 10000000 && 
+
+                        
                         <>
                         <label>Like This Post
                         <input
@@ -205,16 +210,35 @@ export default function BoardPost(props) {
                             type="radio"
                             onChange={e => setLikeAmount(+e.target.value)} />
                         </label>
-                        
-                        <label>Like & Highlight This Post
-                        <input
-                            checked={likeAmount === 0.1 - (post.amount / 100000000) }
-                            name="likeAmount"
-                            value={0.1 - (post.amount / 100000000)}
-                            type="radio"
-                            onChange={e => setLikeAmount(+e.target.value)} />
-                        </label>
-                        </>}
+                        {post.amount < 10000000 && 
+                            <label>Like & Highlight This Post
+                            <input
+                                checked={likeAmount === 0.1 - (post.amount / 100000000) }
+                                name="likeAmount"
+                                value={0.1 - (post.amount / 100000000)}
+                                type="radio"
+                                onChange={e => setLikeAmount(+e.target.value)} />
+                            </label>
+                        }
+                        <label>Like & Pin This Post
+                            <input
+                                checked={likeAmount >= pinnedCost / 100000000 }
+                                name="likeAmount"
+                                value={pinnedCost / 100000000}
+                                type="radio"
+                                onChange={e => setLikeAmount(+e.target.value)} />
+                            </label>
+                            <input
+                                style={likeAmount < pinnedCost / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                value={likeAmount}
+                                placeholder={likeAmount}
+                                onChange={e => { if (+e.target.value && e.target.value > pinnedCost / 100000000) setLikeAmount(e.target.value) } }
+                                step="0.001"
+                                type="number"
+                                min={pinnedCost / 100000000}
+                                disabled={likeAmount < pinnedCost / 100000000 }
+                                />
+                        </>
                     </form>
                 
                 <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${post.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${post.id}`)}`} />

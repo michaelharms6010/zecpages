@@ -5,7 +5,6 @@ $day-background: #5e63fd;
 $zcash-yellow: #ffbf00;
 
 
-
 .dark-mode {
     .z-board {
         .create-post-button {
@@ -826,7 +825,7 @@ $zcash-yellow: #ffbf00;
         .like-form-container {
             flex-direction: column;
             form {
-                align-items:center;
+                align-items:flex-end;
             }
         }
         .price-selector {

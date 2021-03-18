@@ -48,7 +48,7 @@ export default function Board(props) {
     const [replyQrVis, setReplyQrVis] = useState(false)
     const [page, setPage] = useState(props.match.params.page ? +props.match.params.page : 1)
     const [postCount, setPostCount] = useState(0)
-    const {darkMode, amount} = React.useContext(UserContext)
+    const {pinnedCost, setPinnedCost, darkMode, amount} = React.useContext(UserContext)
     const [pinned, setPinned] = useState(null)
     const [next, setNext] = useState(true);
     const [prev, setPrev] = useState(true);
@@ -62,6 +62,7 @@ export default function Board(props) {
     const [qrVis, setQrVis] = useState(false)
     const [likeAmount, setLikeAmount] = useState(0.001)
     const [showReplies, setShowReplies] = useLocalStorage("show-replies", true)
+
     const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
     const [boardInput, setBoardInput] = useState("")
@@ -355,7 +356,7 @@ export default function Board(props) {
         setFlipped(!flipped)
     }
 
-    useEffect(_ => { console.log(pinned)},[pinned])
+    useEffect(_ => { if (pinned) setPinnedCost(pinned.decayed_amount > 10000000 ? pinned.decayed_amount : 10000000) },[pinned])
 
     const formatTime = datetime => {
         let timeInSeconds = Math.floor((Date.now() - datetime) / 1000)
@@ -523,9 +524,7 @@ export default function Board(props) {
                     
                         <form className="like-amount-form">
                             <h3>Post power: {(item.amount / 100000000)} ZEC</h3>
-                            <h4>Like for 0.001 ZEC.</h4>
-                            {item.amount < 10000000 && <h4>Highlight for {0.1 - (item.amount / 100000000)} ZEC</h4>}
-                            {item.amount < 10000000 && 
+                            
                             <>
                             <label>Like This Post
                             <input
@@ -535,7 +534,7 @@ export default function Board(props) {
                                 type="radio"
                                 onChange={e => setLikeAmount(+e.target.value)} />
                             </label>
-                            
+                            {item.amount < 10000000 && 
                             <label>Like & Highlight This Post
                             <input
                                 checked={likeAmount === 0.1 - (item.amount / 100000000) }
@@ -543,8 +542,26 @@ export default function Board(props) {
                                 value={0.1 - (item.amount / 100000000)}
                                 type="radio"
                                 onChange={e => setLikeAmount(+e.target.value)} />
+                            </label>}
+                            <label>Like & Pin This Post
+                            <input
+                                checked={likeAmount >= pinnedCost / 100000000 }
+                                name="likeAmount"
+                                value={pinnedCost / 100000000}
+                                type="radio"
+                                onChange={e => setLikeAmount(+e.target.value)} />
                             </label>
-                            </>}
+                            <input
+                                style={likeAmount < pinnedCost / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                value={likeAmount}
+                                placeholder={likeAmount}
+                                onChange={e => { if (+e.target.value && e.target.value > pinnedCost / 100000000) setLikeAmount(e.target.value) } }
+                                step="0.001"
+                                type="number"
+                                min={pinnedCost / 100000000}
+                                disabled={likeAmount < pinnedCost / 100000000 }
+                                />
+                            </>
                         </form>
                     
                     <QRCode bgColor={darkMode ? "#111111" : item.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? item.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${item.amount < 10000000 ? likeAmount : "0.001"}&memo=${btoa(`LIKE::${item.id}`)}`} />

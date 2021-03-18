@@ -34,6 +34,7 @@ function App() {
   if (referrer) {
       localStorage.setItem("referrer", referrer)
   }
+  const [pinnedCost, setPinnedCost] = useState(10000000)
   const [amount, setAmount] = useState(0.001)
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem("jwt") ? true : false)
   const [ip, setIp] = useState("");
@@ -57,7 +58,7 @@ function App() {
 
 
   return (
-    <UserContext.Provider value={{amount, setAmount, loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
+    <UserContext.Provider value={{pinnedCost, setPinnedCost, amount, setAmount, loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
       <ZaddrContext.Provider value={{ copied, setCopied, loaded, setLoaded}}>
         <Router>
           <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#eee", background: "#111"} : {}}>
