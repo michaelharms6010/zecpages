@@ -47,7 +47,7 @@ export default function BoardPost(props) {
     
     useEffect(_ => { if (pinned) setPinnedCost(pinned.decayed_amount > 10000000 ? pinned.decayed_amount : 10000000) },[pinned])
 
-
+    const handleLikeAmount = amount => setLikeAmount(+(+amount).toFixed(8))
     const showLikeCopyTooltipById = id => {
         document.querySelector(`.like-copied-${id}`).classList.add('visible')
         setTimeout(_ => document.querySelector(`.like-copied-${id}`).classList.remove('visible'), 1000)
@@ -191,24 +191,23 @@ export default function BoardPost(props) {
 
             <>
             <hr />
-                <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post:</h2>
+                <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current value:  {(post.amount / 100000000)} ZEC)</h2>
                 <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${post.id}`}" </code>
                 </p>
                 <div className="like-form-container">
                 
                 
                     <form className="like-amount-form">
-                        <h3>Post power: {(post.amount / 100000000)} ZEC</h3>
 
                         
                         <>
-                        <label>Like This Post
+                        <label>Like This Post (0.001 ZEC)
                         <input
                             checked={likeAmount === 0.001}
                             name="likeAmount"
                             value={0.001}
                             type="radio"
-                            onChange={e => setLikeAmount(+e.target.value)} />
+                            onChange={e => handleLikeAmount(+e.target.value)} />
                         </label>
                         {post.amount < 10000000 && 
                             <label>Like & Highlight This Post
@@ -217,7 +216,7 @@ export default function BoardPost(props) {
                                 name="likeAmount"
                                 value={0.1 - (post.amount / 100000000)}
                                 type="radio"
-                                onChange={e => setLikeAmount(+e.target.value)} />
+                                onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                         }
                         <label>Like & Pin This Post
@@ -226,13 +225,13 @@ export default function BoardPost(props) {
                                 name="likeAmount"
                                 value={(pinnedCost - post.amount) / 100000000}
                                 type="radio"
-                                onChange={e => setLikeAmount(+e.target.value)} />
+                                onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             <input
                                 style={likeAmount < (pinnedCost - post.amount) / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - post.amount) / 100000000) setLikeAmount(e.target.value) } }
+                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - post.amount) / 100000000) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
                                 min={(pinnedCost - post.amount) / 100000000}

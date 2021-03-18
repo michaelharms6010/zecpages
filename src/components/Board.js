@@ -518,17 +518,17 @@ export default function Board(props) {
                     {likeTooltip === item.id && 
                     <>
                     <hr></hr>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post:</h2>
-                    <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${item.id}`}" </code>
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current value: {(item.amount / 100000000)} ZEC)</h2>
+                    <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${item.id}`}" </code><br/>
                     </p>
                     <div className="like-form-container">
                     
                     
                         <form className="like-amount-form">
-                            <h3>Post power: {(item.amount / 100000000)} ZEC</h3>
+                            
                             
                             <>
-                            <label>Like This Post
+                            <label>Like This Post (0.001 ZEC)
                             <input
                                 checked={likeAmount === 0.001}
                                 name="likeAmount"
