@@ -518,7 +518,7 @@ export default function Board(props) {
                     {likeTooltip === item.id && 
                     <>
                     <hr></hr>
-                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current value: {(item.amount / 100000000)} ZEC)</h2>
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current power: {(item.amount / 100000000)} ZEC)</h2>
                     <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${item.id}`}" </code><br/>
                     </p>
                     <div className="like-form-container">
@@ -530,7 +530,7 @@ export default function Board(props) {
                             <>
                             <label>Like This Post (0.001 ZEC)
                             <input
-                                checked={likeAmount === 0.001}
+                                checked={likeAmount >= 0.001 && likeAmount < 0.1 - (item.amount / 100000000) }
                                 name="likeAmount"
                                 value={0.001}
                                 type="radio"
@@ -539,7 +539,7 @@ export default function Board(props) {
                             {item.amount < 10000000 && 
                             <label>Like & Highlight This Post
                             <input
-                                checked={likeAmount === 0.1 - (item.amount / 100000000) }
+                                checked={likeAmount >= 0.1 - (item.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ) }
                                 name="likeAmount"
                                 value={0.1 - (item.amount / 100000000)}
                                 type="radio"
@@ -554,14 +554,14 @@ export default function Board(props) {
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             <input
-                                style={likeAmount < ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                style={{textAlign: "right", width: "100px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
                                 onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
-                                min={((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000)}
                                 />
+                            <p>Post total after liking: {item.amount / 100000000 + likeAmount} ZEC</p>
                             </>
                         </form>
                     

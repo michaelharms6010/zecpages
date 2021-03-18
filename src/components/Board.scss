@@ -26,6 +26,7 @@ $zcash-yellow: #ffbf00;
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
+            width: 260px;
             label {
                 color: black;
             }
@@ -825,6 +826,7 @@ $zcash-yellow: #ffbf00;
         .like-form-container {
             flex-direction: column;
             form {
+                width: auto;
                 align-items:flex-end;
             }
         }
