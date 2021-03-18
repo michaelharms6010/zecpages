@@ -547,21 +547,20 @@ export default function Board(props) {
                             </label>}
                             <label>Like & Pin This Post
                             <input
-                                checked={likeAmount >= (pinnedCost - item.amount) / 100000000 }
+                                checked={likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 }
                                 name="likeAmount"
-                                value={(pinnedCost - item.amount) / 100000000}
+                                value={((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000)}
                                 type="radio"
                                 onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             <input
-                                style={likeAmount < (pinnedCost - item.amount) / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                style={likeAmount < ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ? {display: "none"} : {textAlign: "right", width: "100px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - item.amount) / 100000000) handleLikeAmount(e.target.value) } }
+                                onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
-                                min={(pinnedCost - item.amount) / 100000000}
-                                disabled={likeAmount < (pinnedCost - item.amount) / 100000000 }
+                                min={((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000)}
                                 />
                             </>
                         </form>
