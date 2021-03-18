@@ -66,6 +66,8 @@ export default function Board(props) {
     const boardZaddr = "zs1j29m7zdhhyy2eqrz89l4zhk0angqjh368gqkj2vgdyqmeuultteny36n3qsm47zn8du5sw3ts7f"
 
     const [boardInput, setBoardInput] = useState("")
+
+    const handleLikeAmount = amount => setLikeAmount(+(+amount).toFixed(8))
     
     useEffect(_ => {
         setBoardInput(boardInput.replace(/(\/z\/all|\/z)/ig, ""))
@@ -532,7 +534,7 @@ export default function Board(props) {
                                 name="likeAmount"
                                 value={0.001}
                                 type="radio"
-                                onChange={e => setLikeAmount(+e.target.value)} />
+                                onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             {item.amount < 10000000 && 
                             <label>Like & Highlight This Post
@@ -541,7 +543,7 @@ export default function Board(props) {
                                 name="likeAmount"
                                 value={0.1 - (item.amount / 100000000)}
                                 type="radio"
-                                onChange={e => setLikeAmount(+e.target.value)} />
+                                onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>}
                             <label>Like & Pin This Post
                             <input
@@ -549,13 +551,13 @@ export default function Board(props) {
                                 name="likeAmount"
                                 value={(pinnedCost - item.amount) / 100000000}
                                 type="radio"
-                                onChange={e => setLikeAmount(+e.target.value)} />
+                                onChange={e => handleLikeAmount(+e.target.value)} />
                             </label>
                             <input
                                 style={likeAmount < (pinnedCost - item.amount) / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - item.amount) / 100000000) setLikeAmount(e.target.value) } }
+                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - item.amount) / 100000000) handleLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
                                 min={(pinnedCost - item.amount) / 100000000}
