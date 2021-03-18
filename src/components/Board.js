@@ -312,7 +312,7 @@ export default function Board(props) {
     }
 
     const handleLikeTooltip = (id, e) => {
- 
+        setLikeAmount(0.001)
         if (e) e.stopPropagation();
 
         if (likeTooltip !== id) {
@@ -545,21 +545,21 @@ export default function Board(props) {
                             </label>}
                             <label>Like & Pin This Post
                             <input
-                                checked={likeAmount >= pinnedCost / 100000000 }
+                                checked={likeAmount >= (pinnedCost - item.amount) / 100000000 }
                                 name="likeAmount"
-                                value={pinnedCost / 100000000}
+                                value={(pinnedCost - item.amount) / 100000000}
                                 type="radio"
                                 onChange={e => setLikeAmount(+e.target.value)} />
                             </label>
                             <input
-                                style={likeAmount < pinnedCost / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
+                                style={likeAmount < (pinnedCost - item.amount) / 100000000 ? {display: "none"} : {textAlign: "right", width: "100px"}}
                                 value={likeAmount}
                                 placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value && e.target.value > pinnedCost / 100000000) setLikeAmount(e.target.value) } }
+                                onChange={e => { if (+e.target.value && e.target.value > (pinnedCost - item.amount) / 100000000) setLikeAmount(e.target.value) } }
                                 step="0.001"
                                 type="number"
-                                min={pinnedCost / 100000000}
-                                disabled={likeAmount < pinnedCost / 100000000 }
+                                min={(pinnedCost - item.amount) / 100000000}
+                                disabled={likeAmount < (pinnedCost - item.amount) / 100000000 }
                                 />
                             </>
                         </form>
