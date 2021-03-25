@@ -399,7 +399,6 @@ input[type=number] {
         a.board-zaddr-link:hover {
             color: black;
             font-size: 18.02px;
-            text-shadow: 6px 6px 2px #888;
         }
 
         .zebra-icon {
@@ -656,14 +655,11 @@ input[type=number] {
     pre {
         background: #ffffff09;
         border: 1px solid #333;
-        padding: 5px;
-        border-radius: 5px;
     }
     .board-post {
         a.board-zaddr-link:hover {
             color: white;
             font-size: 18.02px;
-            text-shadow: 6px 6px 2px #888;
         }
     }
 
