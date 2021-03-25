@@ -29,6 +29,13 @@ input[type=number] {
 }
 .z-board {
 
+    pre {
+        background: #ffffff55;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #999;
+        cursor: text;
+    }
     .like-form-container {
         form {
             .after-liking-total {
@@ -386,9 +393,13 @@ input[type=number] {
         padding-top:0px;
         text-align:left;
         border-radius: 5px;
-
-        a:hover {
-
+        a {
+            transition: .2s;
+        }
+        a.board-zaddr-link:hover {
+            color: black;
+            font-size: 18.02px;
+            text-shadow: 6px 6px 2px #888;
         }
 
         .zebra-icon {
@@ -642,6 +653,19 @@ input[type=number] {
 
 
   .dark-mode .z-board {
+    pre {
+        background: #ffffff09;
+        border: 1px solid #333;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .board-post {
+        a.board-zaddr-link:hover {
+            color: white;
+            font-size: 18.02px;
+            text-shadow: 6px 6px 2px #888;
+        }
+    }
 
         .like-form-container {
             form {

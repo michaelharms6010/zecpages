@@ -29,6 +29,13 @@ import PostEntry from "./PostEntry"
 import CopyIcon from "./CopyIcon"
 import URLSafeBase64 from 'urlsafe-base64';
 import { post } from "jquery";
+
+import ReactMarkdown from 'react-markdown'
+
+
+
+
+
 var Buffer = require('buffer/').Buffer
 const ab = Math.random() > .9
 
@@ -75,7 +82,7 @@ export default function Board(props) {
 
 
     const iconsToReplace = [{"🦓": <img className="zebra-icon" src={darkMode ? zebraemoji : zebraemojiblack} />}, {"🛡": <img className="shield-icon" src={shieldicon} />}]
-    // const wordsToReplace = [{pattern: /zcash/gi, replacement: "Scamcoin"}]
+
     const zaddrMarker = "🚠"
 
     const reformatShields = (str, replyZaddr, username) => {
@@ -155,7 +162,7 @@ export default function Board(props) {
         fetchPinned();
         axios.get(`https://be.zecpages.com/board/1`)
         .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                let newPosts= res.data.sort( (a, b) => b.id-a.id).map(post => {return { ...post, memo: post.memo.replace(/^board( *):( *):( *)\w+|^reply( *):( *):( *)\d+/i, "")}})
                 if (posts !== newPosts) {
                     const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
                     window.scroll({top: scrollHeight, behavior: "smooth"})
@@ -201,7 +208,7 @@ export default function Board(props) {
         const page = +props.match.params.page || 1
         axios.get(`https://be.zecpages.com/board/${page}`)
         .then(res =>{ 
-                let newPosts= res.data.sort( (a, b) => b.id-a.id)
+                let newPosts= res.data.sort( (a, b) => b.id-a.id).map(post => {return { ...post, memo: post.memo.replace(/^board( *):( *):( *)\w+|^reply( *):( *):( *)\d+/i, "")}})
                 if (posts !== newPosts) {
                     if (showReplies) {
                         setPosts(newPosts)
@@ -378,6 +385,7 @@ export default function Board(props) {
 
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZEC-powered anonymous memo board <Link style={{fontSize: "15px", color: darkMode ? "#ffbf00" : "#5e63fd", padding: "0"}} to="/boardinfo">(how it works)</Link></h2>
+                
                 <h3 style={{margin: "10px auto", width: "95%", wordBreak: 'break-all'}}>{boardZaddr}<img onClick={_ => setQrVis(!qrVis)} alt="qr code"  style={{ cursor: 'pointer',  marginLeft: "8px", marginTop: '0px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/></h3>
                 {qrVis &&
                 <div className="simple-board-info">
@@ -511,7 +519,13 @@ export default function Board(props) {
                     {/* <h4 className="post-id">{item.id}</h4> */}
                     {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     {!!item.reply_to_post && <p className="post-text sub-board-link">Replying to <Link className="z-link" to={`/z/post/${item.reply_to_post}`}>{item.reply_to_post}</Link></p>}
-                    <p onClick={e=> e.stopPropagation()} className="post-text">{reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}</p>
+                    { (item.memo.includes(".md") || item.memo.includes("`") || item.memo.includes("- ") || item.memo.includes("##"))
+                    ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
+                        {item.memo.replace(/( *).md( *)/ig, "")}
+                      </ReactMarkdown> 
+                    : <p onClick={e=> e.stopPropagation()} className="post-text">
+                        {reformatShields(lineReducer(item.memo.split("â€™").join("'")).split("\\n").join("\n"), item.reply_zaddr, item.username)}
+                      </p>}
                     {/* <p onClick={e=> e.stopPropagation()} className="post-text">{item.memo}</p> */}
                     
                     
