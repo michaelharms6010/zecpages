@@ -869,12 +869,21 @@ table {
   word-break: break-all
 }
 
+#private-board-activation-button { 
+  opacity: .4;
+  cursor: not-allowed;
+}
+
 
 
 .zaddr-input {
   margin-top:1rem;
   width:90%;
   height:2rem;
+}
+
+.zaddr-input.view-key-input {
+  height: 5rem;
 }
 
 .desc-input {

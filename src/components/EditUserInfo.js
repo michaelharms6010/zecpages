@@ -112,7 +112,7 @@ export default function EditUserInfo ({history}) {
             <h2><Link to={`/${user.username}`}>{user.username}</Link></h2>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <p>{user.zaddr}</p>
-            {!!user.viewing_key && <p>View key: zxviews...{user.viewing_key.slice(275)}</p>}
+            {!!user.viewing_key && <p>Viewing key: zxviews...{user.viewing_key.slice(275)} <button id="private-board-activation-button" disabled>Activate private board<br/>(coming soon)</button></p>}
             
             <div className="card-bottom-row">
                 {user.proofposturl ? <div><h3 className="title">Proof Link:</h3> {user.proofposturl}</div> : null}
@@ -141,8 +141,9 @@ export default function EditUserInfo ({history}) {
                 placeholder="Paste your z-address here"
             />
             <textarea 
+
                 maxLength="285"
-                className="zaddr-input"
+                className="zaddr-input view-key-input"
                 name="viewing_key"
                 onChange={handleZaddrChange}
                 value={user.viewing_key} 
