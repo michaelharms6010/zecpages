@@ -20,6 +20,7 @@ export default function EditUserInfo ({history}) {
     const [showReferralInfo, setShowReferralInfo] = useState(false)
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
+    const viewkeyRegex = /^zxviews\w{278}$/
     const logout = _ => {
         localStorage.removeItem("jwt")
         setLoggedIn(false)
@@ -41,10 +42,13 @@ export default function EditUserInfo ({history}) {
         if (editing) {
             if (!zaddrRegex.test(user.zaddr)) {
                 setError("That z-address is invalid.")
+            } else if(user.viewing_key && !viewkeyRegex.test(user.viewing_key)) {
+                setError("That viewing key looks invalid.")
             } else if (user.proofposturl && !proofRegex.test(user.proofposturl)) {
                 setError("Your proof of identity should link to a post on another website that indicates your ownership of this account.")
             }
             else {
+            console.log(user)
             axiosAuth().put("https://be.zecpages.com/users", user)
                 .then(res => {
                     setUser(res.data);
@@ -93,8 +97,6 @@ export default function EditUserInfo ({history}) {
 
     const handleZaddrChange = e => {
         e.target.value = e.target.value.replace(/[ \n]/gi, "")
-        console.log(e.target.value)
-        console.log('hi')
         setUser({...user, [e.target.name] : e.target.value})
     }
 
@@ -110,6 +112,7 @@ export default function EditUserInfo ({history}) {
             <h2><Link to={`/${user.username}`}>{user.username}</Link></h2>
             {user.description ? <p className="user-description">{user.description}</p> : null }
             <p>{user.zaddr}</p>
+            {!!user.viewing_key && <p>View key: zxviews...{user.viewing_key.slice(275)}</p>}
             
             <div className="card-bottom-row">
                 {user.proofposturl ? <div><h3 className="title">Proof Link:</h3> {user.proofposturl}</div> : null}
@@ -122,7 +125,7 @@ export default function EditUserInfo ({history}) {
             <>
             <h2>{user.username}</h2>
             <textarea 
-                maxlength="512"
+                maxLength="512"
                 className="desc-input"
                 name="description"
                 onChange={handleChange}
@@ -130,12 +133,20 @@ export default function EditUserInfo ({history}) {
                 placeholder="A Brief Description of yourself (Limit 512 Chars)"
             />
             <textarea 
-                maxlength="128"
+                maxLength="128"
                 className="zaddr-input"
                 name="zaddr"
                 onChange={handleZaddrChange}
                 value={user.zaddr} 
                 placeholder="Paste your z-address here"
+            />
+            <textarea 
+                maxLength="285"
+                className="zaddr-input"
+                name="viewing_key"
+                onChange={handleZaddrChange}
+                value={user.viewing_key} 
+                placeholder="Paste a view key here"
             />
 
             <p className="zaddr-link" ><a className="zaddr-a" target="_new" href="https://www.zecwallet.co/">Don't have a zaddr yet? Get one!</a></p>

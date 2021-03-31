@@ -554,7 +554,7 @@ export default function Board(props) {
                             {item.amount < 10000000 && 
                             <label>Like & Highlight
                             <input
-                                checked={likeAmount >= 0.1 - (item.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ) }
+                                checked={likeAmount >= 0.1 - (+item.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +item.datetime ) / 200) - item.amount)) / 100000000) -.001 ) }
                                 name="likeAmount"
                                 value={0.1 - (item.amount / 100000000)}
                                 type="radio"
