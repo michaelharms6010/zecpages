@@ -204,7 +204,7 @@ export default function EditUserInfo ({history}) {
                 </>}
 
         </div>}
-        {loggedIn && <SubscriptionInfo />}
+        {/* {loggedIn && <SubscriptionInfo />} */}
         </>
 
     )

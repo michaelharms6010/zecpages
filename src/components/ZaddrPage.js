@@ -131,7 +131,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         {user.username ? 
         <>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            <h2>{user.username}{"  "}<button className="subscribe-button" onClick={_ => setShowSubInfo(!showSubInfo)}>{showSubInfo ? "Close Form" : "Subscribe"}</button></h2>
+            <h2>{user.username}</h2>
             {showSubInfo 
                 ?    <div> 
                         <hr />
