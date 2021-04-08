@@ -77,10 +77,9 @@ input[type=number] {
     }
     .price-selector {
         text-align: left;
-        margin-left: 12%;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         user-select:none;
         margin-bottom: 10px;
 
@@ -225,8 +224,9 @@ input[type=number] {
 
     .reply-editor {
         display: flex;
-        justify-content: space-between;
-        margin-left: 10px;
+        justify-content: space-around;
+        max-width: 1000px;
+        margin: 5px auto;
         margin-bottom: 5px;
         .reply-text-editor {
             width: 60%;

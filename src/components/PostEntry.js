@@ -41,6 +41,37 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
             <h2>{isReply ? "Write reply:" : boardName ? `Post to z/${boardName}` : "Post text:"}</h2>
             <textarea style={darkMode ? {borderColor: "#ddd", color: "#eee", background:  "#000126"} : {} } maxlength="500" placeholder="Type your message, then scan the QR code from your wallet app." value={replyBody} onChange={e => { formatReplyBody(e.target.value) }} />
 
+            <div className="price-selector">   
+                    <div className="price-selector-pair">             
+                    <input
+                    onChange={handleChange}
+                    name="price"
+                    type="radio"
+                    value="0.001" 
+                    id="0.001" 
+                    defaultChecked />
+                    <label for="0.001">Post (.001)</label>
+                    </div>
+                    <div className="price-selector-pair">    
+                    <input
+                    onChange={handleChange}
+                    name="price"
+                    type="radio"
+                    id="0.01"
+                    value="0.01" />
+                    <label for="0.01">Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a> (.01)</label>
+                    </div>
+                    <div className="price-selector-pair">    
+                    <input
+                    onChange={handleChange}
+                    name="price"
+                    type="radio"
+                    id="0.1"
+                    value="0.1" />
+                    <label for="0.1">Highlight (.1)</label>
+                    </div>
+                </div>
+
         </div>
         {/* #bec0fe #0a5e55*/}
         <div>
@@ -49,38 +80,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
         <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${boardName ? `BOARD::${boardName} ` : boardInput ? `BOARD::${boardInput} ` : ""}${isReply ? `REPLY::${post.id} ` : ""}${replyBody}`))}`} />
         </div>
 
-
         </div>    
-        <div className="price-selector">   
-                <div className="price-selector-pair">             
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                value="0.001" 
-                id="0.001" 
-                defaultChecked />
-                <label for="0.001">Post (.001)</label>
-                </div>
-                <div className="price-selector-pair">    
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                id="0.01"
-                value="0.01" />
-                <label for="0.01">Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a> (.01)</label>
-                </div>
-                <div className="price-selector-pair">    
-                <input
-                onChange={handleChange}
-                name="price"
-                type="radio"
-                id="0.1"
-                value="0.1" />
-                <label for="0.1">Highlight (.1)</label>
-                </div>
-            </div>
             <a className="uri-link" href={`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`}>
                 <code style={{wordBreak: 'break-word'}}>{`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`}</code></a>
                 <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip("editor");}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span className={`copied-tooltip editor-tooltip`}>Copied!</span></span>
