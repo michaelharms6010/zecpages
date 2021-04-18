@@ -10,7 +10,7 @@ export default function SendDm({userName, userZaddr}) {
     const [uri, setUri] = useState("")
     const {darkMode} = useContext(UserContext)
     useEffect(_ => {
-        setUri(`zcash:${userZaddr}?amount=0.00000001&memo=${URLSafeBase64.encode(Buffer.from(content))}`)
+        setUri(`zcash:${userZaddr}?amount=0.0001&memo=${URLSafeBase64.encode(Buffer.from(content))}`)
     }, [content])
     return (
         <>
