@@ -132,7 +132,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         {user.username ? 
         <>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            <h2>{user.username}</h2><button onClick={_ => setShowSubInfo(!showSubInfo)}>Send z2z</button>
+            <h2>{user.username}<button onClick={_ => setShowSubInfo(!showSubInfo)}>Send ZEC</button></h2>
             {showSubInfo 
                 ? <SendDm userZaddr={user.zaddr} userName={user.username} />
                 : null}

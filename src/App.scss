@@ -1070,6 +1070,21 @@ table {
 
 @media (max-width: $breakpoint-tablet) {
   .App {
+    .zaddr-card {
+      .DM-form {
+        flex-direction: column;
+        canvas {
+          margin: 0 auto;
+        }
+        textarea {
+          width: 300px;
+          height: 150px;
+          margin: 10px;
+        }
+      }
+    }
+
+
     .zaddr-card .subscription-form {
       flex-direction: column;
     }
