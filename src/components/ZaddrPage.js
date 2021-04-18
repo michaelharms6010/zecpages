@@ -20,6 +20,7 @@ import qrdark from "../icons/qrdark.png"
 import UserBoard from "../components/UserBoard"
 import copyicon from "../icons/zecpagescopyicondaymode01.png"
 import copyicondark from "../icons/bignightcopy.png"
+import SendDm from "./SendDm"
 
 import {UserContext} from "../contexts/UserContext"
 import {ZaddrContext} from "../contexts/ZaddrContext";
@@ -131,43 +132,9 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         {user.username ? 
         <>
         <div className={darkMode ? "zaddr-card dark-mode" : "zaddr-card"}>
-            <h2>{user.username}</h2>
+            <h2>{user.username}</h2><button onClick={_ => setShowSubInfo(!showSubInfo)}>Send z2z</button>
             {showSubInfo 
-                ?    <div> 
-                        <hr />
-                        <h2 style={{textAlign: "center"}}>Support {user.username} by subscribing for .06{"\xa0"}ZEC/month!<br/>
-                            
-                            
-                        </h2>
-                        <h2 style={{textAlign: "center"}}>Users can publish text, or link subscribers to richer content via Zcash memo using the ZECpages Publishing Interface.</h2>
-                        <hr />
-                        <label>Paste your zaddr:</label>
-                        <input
-                        style={inputZaddr && isValidZaddr(inputZaddr) ? {width: "300px", margin: "10px 5px", borderColor: `${darkMode ? "lime" : "green"}` } : inputZaddr ? {width: "300px", margin: "10px 5px", borderColor: "red"} : {width: "300px", margin: "10px 5px"}}
-                        name="zaddr-input"
-                        value={inputZaddr}
-                        onChange={e => setInputZaddr(e.target.value.replace(/ /g, ""))} /><span style={{color: `${isValidZaddr(inputZaddr) ? `${darkMode ? "lime" : "green"}`: "red"}`}}>{inputZaddr && isValidZaddr(inputZaddr) ? "Valid Zaddr!" : inputZaddr ? "Invalid Zaddr" : ""}</span>
-                        <h4 style={{wordBreak: "break-word"}}>The memo should read "{`SUBSCRIBE::${user.id}::${inputZaddr || "zs1yourzaddr"}`}"</h4>
-                        {!!myId && <h4>or subscribe with your ZECpages information with: "{`SUBSCRIBE::${user.id}::${myId}`}"</h4>}
-                        <label>Number of Months:
-                            <input
-                                
-                                type="number"
-                                name="numberOfMonths"
-                                min="1"
-                                value={numMonths}
-                                onChange={e => setNumMonths(e.target.value)} /></label>
-                        <div className="subscription-form">
-
-                        <h4 style={{maxWidth: "480px" }} className="zaddr">{`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`}
-                            <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`); showCopyTooltip();}}>
-                                <img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img>
-                            <span className='copied-tooltip'>Copied!</span></span>
-                        </h4>
-                            <QRCode bgColor={darkMode ? "#111111" : '#0a5e55'} fgColor={darkMode ? "#087f73" : '#bec0fe'} includeMargin={true} size={256} value={`zcash:${SUBSCRIBE_ADDRESS}?amount=${(0.06 * numMonths).toFixed(2)}&memo=${btoa(`SUBSCRIBE::${user.id}::${isValidZaddr(inputZaddr) ? inputZaddr : loggedIn ? myId  : "zs1yourzaddrhere"}`)}`} />
-                        </div>
-                        <hr/>
-                    </div>
+                ? <SendDm userZaddr={user.zaddr} userName={user.username} />
                 : null}
         
             
