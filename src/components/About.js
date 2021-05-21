@@ -48,23 +48,25 @@ export default function About() {
                     -----BEGIN PGP SIGNED MESSAGE-----<br/>
                     Hash: SHA256<br/>
                     <br/>
-                    As of April 17, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
+                    As of As of May 21, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
                     <br/>
                     Recent headlines:<br/>
-                    Edward Snowden NFT sells for more than $5.4 million - https://www.msn.com/en-us/money/other/edward-snowden-nft-sells-for-more-than-54-million/ar-BB1fJL12<br/>
+                    Edward An interview with Emily Wilder, recent Stanford grad fired from AP job over criticisms of Israel - https://www.sfgate.com/politics/article/Emily-Wilder-Associated-Press-Israel-Palestine-AP-16192391.php
                     <br/>
-                    Edward Snowden Auctions NFT Titled ‘Stay Free’ on Foundation Platform - https://finance.yahoo.com/news/edward-snowden-auctions-nft-titled-100300841.html<br/>
+                    <br/>
+                    Israel and Palestinian militant group Hamas agree to a ceasefire - https://www.cnn.com/2021/05/20/middleeast/israel-palestinian-gaza-conflict-ceasefire-intl/index.html
+                    <br/>
                     <br/>
                     -----BEGIN PGP SIGNATURE-----<br/>
                     <br/>
-                    iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmB7CR0ACgkQ3x/m0fUO<br/>
-                    zv7YzAgAyqoGKmxyirr+hOc8pfiwKQJqTNYEk0rSaKAVKOTiLgbhDwoa1YLe39Kr<br/>
-                    rI3AwKsKerTP8hRngr8w0znvnqUrnP86ubrpQBGx6AWxBPJGok6uMWJZOfgpnx80<br/>
-                    jXXLBsS9MIOQmz3bDUSM/V6VQfyxeUyskJr4zqC7lTAEqvnS/imdBuR3hgCGFD81<br/>
-                    qNfDlsnH2GdRqA5QYo8yEjYOVRDb+4hePaTC8IsimONgr6oPLaDtAdqr6dfxHnIY<br/>
-                    fi3+PV97NGrSsHMCuU25MI56z4kX3saMRytbMQiM2ea+oQqhH0WtZ/+Hu2EhPMo3<br/>
-                    e6d0LwDyFsyvr6jVdQLD6fsSN17xfg==<br/>
-                    =jUOu<br/>
+                    iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmCnpEkACgkQ3x/m0fUO<br/>
+                    zv76MggAurUFgnGMvw7Irl/X7n0GZbnrYx3a63BjgXNRVVgu2eY6UxVSG7n7isu2<br/>
+                    PSsriyBClcznfnT8NKDszjIytwn3blT49kmDIpd9kj5Ms8lrEmZoHkDaTklUrvOp<br/>
+                    fedgw27mEC2NPeigPxd4i6cLWpBlay7E+h1LZqidgp+jRSnliULa4+Qac73cCVPU<br/>
+                    yZp31lv02utilvVo5f3Wkvy+SsYlTxfxLKWA92xSA9PjPhmyS5HxlKA+Tatn8Mbm<br/>
+                    G8MhIzcSsBoI8f4FhdtfNUy38y3gbOygKyM4OC+5qE/5LZby9MlG1FHqxVTsYcWD<br/>
+                    JMlqXFulVgpTSBLZlnybYuUesQkdtw==<br/>
+                    =Nw9G<br/>
                     -----END PGP SIGNATURE-----<br/>
                     <br/>
                </code>
