@@ -43,9 +43,7 @@ export default function BoardInfo() {
                     <div style={{wordBreak: 'normal', paddingTop: 20, padding: 10, borderRadius: 50, textAlign: 'left'}} className="python-script">
                         <code>
                         # zecpages_audit.py<br/>
-                        import sys, json<br/>
-                        import requests<br/>
-                        import re<br/>
+                        import sys, json, requests, re<br/>
 
                         txs = json.load(sys.stdin)<br/>
                         r = requests.get('https://be.zecpages.com/board/txids')<br/>
