@@ -50,8 +50,6 @@ export default function BoardInfo() {
 
                         savedTxids = map(lambda tx: re.sub(r'-\d+', "", tx['txid']), r.json())<br/>
 
-                        print(savedTxids)<br/>
-
                         txs = filter(lambda tx: tx.get("memo") and tx['amount'] > 0 and tx['txid'] not in savedTxids and not re.search('like:', tx['memo'], re.IGNORECASE) and not re.search('SUBSCRIBE:', tx['memo'], re.IGNORECASE) and 'TElLRT' not in tx['memo'], txs)<br/>
 
                         print(txs)<br/>
