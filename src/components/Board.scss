@@ -222,6 +222,10 @@ input[type=number] {
         border: 5px solid #817324;
         border-radius: 10%;
         padding: 12px;
+        .wallet-link {
+            padding: 0;
+            color: $day-background;
+        }
         .code-snippet, h4 {
             text-align: left;
         }
@@ -752,10 +756,11 @@ input[type=number] {
     .view-key {
         color: cyan;
         background: repeating-linear-gradient(30deg, transparent, transparent 10px, #0057ad 10px, #be6800 20px), linear-gradient(to bottom, #870087, #006c00);
-
-        .view-key-link {
+        
+        .view-key-link, .wallet-link {
             color: lime;
         }
+
     }
     
     h1, h2, h3, h4, h5, h6 {

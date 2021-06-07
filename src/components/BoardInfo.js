@@ -25,7 +25,7 @@ export default function BoardInfo() {
                     <button onClick={_ => setFullNodeInstructions(!fullNodeInstructions)}>{fullNodeInstructions ? "Light wallet (zecwallet-cli) instructions" : "See full node instructions"}</button>
                 {fullNodeInstructions 
                 ? <>
-                    <h2>How to duplicate/audit ZECpages (Full node):</h2>
+                    <h2>How to duplicate/audit ZECpages <a className="wallet-link" href="https://z.cash/download/">(Full node)</a>:</h2>
                     <h4>1. Import ZECpages key:</h4>
                     <div className="code-snippet"><code>zcash-cli z_importviewingkey "{viewKey}" whenkeyisnew 419200</code></div>
                     <br/>
@@ -33,7 +33,7 @@ export default function BoardInfo() {
                     <div className="code-snippet"><code>zcash-cli z_listreceivedbyaddress "{boardZaddr}"</code></div>
                   </>
                 : <>
-                    <h2>How to duplicate/audit ZECpages (Light wallet):</h2>
+                    <h2>How to duplicate/audit ZECpages <a className="wallet-link" href="https://github.com/adityapk00/zecwallet-light-cli">(Light wallet)</a>:</h2>
                     <h4>1. Import ZECpages key:</h4>
                     <div className="code-snippet"><code>zecwallet-cli import {viewKey} 419200</code></div>
                     <br/>
