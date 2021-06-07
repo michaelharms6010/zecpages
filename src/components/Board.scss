@@ -216,7 +216,15 @@ input[type=number] {
     padding-top: 30px;
     
     .view-key {
-        color: #eee;
+        background: turquoise;
+        color: black;
+        margin-bottom: 5px;
+        border: 5px solid #817324;
+        border-radius: 10%;
+        padding: 12px;
+        .code-snippet, h4 {
+            text-align: left;
+        }
     }
     .view-key-link {
         color: #ff879b;
@@ -742,12 +750,9 @@ input[type=number] {
         color: #333;
     }
     .view-key {
-        margin-bottom: 5px;
         color: cyan;
         background: repeating-linear-gradient(30deg, transparent, transparent 10px, #0057ad 10px, #be6800 20px), linear-gradient(to bottom, #870087, #006c00);
-        border: 5px solid #817324;
-        border-radius: 10%;
-        padding: 10px;
+
         .view-key-link {
             color: lime;
         }
