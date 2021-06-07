@@ -22,7 +22,7 @@ export default function BoardInfo() {
                 {viewKey}
                 <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">
                     What's a viewing key?</a> 
-                    <button onClick={_ => setFullNodeInstructions(!fullNodeInstructions)}>{fullNodeInstructions ? "See light wallet instructions" : "See full node instructions"}</button>
+                    <button onClick={_ => setFullNodeInstructions(!fullNodeInstructions)}>{fullNodeInstructions ? "Light wallet (zecwallet-cli) instructions" : "See full node instructions"}</button>
                 {fullNodeInstructions 
                 ? <>
                     <h2>How to duplicate/audit ZECpages (Full node):</h2>
@@ -33,7 +33,7 @@ export default function BoardInfo() {
                     <div className="code-snippet"><code>zcash-cli z_listreceivedbyaddress "{boardZaddr}"</code></div>
                   </>
                 : <>
-                    <h2>How to duplicate/audit ZECpages (light wallet):</h2>
+                    <h2>How to duplicate/audit ZECpages (Light wallet):</h2>
                     <h4>1. Import ZECpages key:</h4>
                     <div className="code-snippet"><code>zecwallet-cli import {viewKey} 419200</code></div>
                     <br/>
