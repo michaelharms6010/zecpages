@@ -28,9 +28,7 @@ Likes are paid 50% to eligible posts (a post is eligible if it contains a valid 
 
 Like job code: https://github.com/michaelharms6010/zecpages-likes-payout-script
 
-## Testnet Faucet - TAKEN DOWN - see update
-
-UPDATE: This is taken down from lack of use - If you need TAZ just dm me or open an issue here with a testnet address.
+## Testnet Faucet
 
 https://faucet.zecpages.com
 
