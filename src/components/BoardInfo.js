@@ -17,8 +17,9 @@ export default function BoardInfo() {
                 ZECpages currently recommends using <a target="_blank" rel="noopener noreferrer" style={{padding: '0', margin: '0'}}  href="https://zecwallet.co">ZecWallet</a> for best experience on PC, Android, and iOS.
                 </p>
             </div>
-            {showViewKey && 
+            {true && 
             <p className="view-key" style={{margin: "5px auto", width: "60%", wordBreak: "break-all"}}>
+                <h2>ZECpages View Key:</h2>
                 {viewKey}
                 <a className="view-key-link" style={{margin: "1%", display: "block", textDecoration: "underline"}} target="_blank" rel="noopener noreferrer" href="https://electriccoin.co/blog/explaining-viewing-keys/">
                     What's a viewing key?</a> 
@@ -63,7 +64,7 @@ export default function BoardInfo() {
                   </>}
                 
             </p>}
-            <button style={{marginBottom: "18px"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/>
+            {/* <button style={{marginBottom: "18px"}} onClick={_ => setShowViewKey(!showViewKey)} >{showViewKey ? "Hide View Key" : "Show View Key"}</button><br/> */}
 
         </div>
     )
