@@ -45,30 +45,30 @@ export default function About() {
             <div id="canary" style={{textAlign: 'left'}} className="about-content">
                 <h2 style={{textAlign: "center"}}>Canary</h2>
                <code  className="canary">
-                    -----BEGIN PGP SIGNED MESSAGE-----<br/>
-                    Hash: SHA256<br/>
-                    <br/>
-                    As of As of May 21, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
-                    <br/>
-                    Recent headlines:<br/>
-                    Edward An interview with Emily Wilder, recent Stanford grad fired from AP job over criticisms of Israel - https://www.sfgate.com/politics/article/Emily-Wilder-Associated-Press-Israel-Palestine-AP-16192391.php
-                    <br/>
-                    <br/>
-                    Israel and Palestinian militant group Hamas agree to a ceasefire - https://www.cnn.com/2021/05/20/middleeast/israel-palestinian-gaza-conflict-ceasefire-intl/index.html
-                    <br/>
-                    <br/>
-                    -----BEGIN PGP SIGNATURE-----<br/>
-                    <br/>
-                    iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmCnpEkACgkQ3x/m0fUO<br/>
-                    zv76MggAurUFgnGMvw7Irl/X7n0GZbnrYx3a63BjgXNRVVgu2eY6UxVSG7n7isu2<br/>
-                    PSsriyBClcznfnT8NKDszjIytwn3blT49kmDIpd9kj5Ms8lrEmZoHkDaTklUrvOp<br/>
-                    fedgw27mEC2NPeigPxd4i6cLWpBlay7E+h1LZqidgp+jRSnliULa4+Qac73cCVPU<br/>
-                    yZp31lv02utilvVo5f3Wkvy+SsYlTxfxLKWA92xSA9PjPhmyS5HxlKA+Tatn8Mbm<br/>
-                    G8MhIzcSsBoI8f4FhdtfNUy38y3gbOygKyM4OC+5qE/5LZby9MlG1FHqxVTsYcWD<br/>
-                    JMlqXFulVgpTSBLZlnybYuUesQkdtw==<br/>
-                    =Nw9G<br/>
-                    -----END PGP SIGNATURE-----<br/>
-                    <br/>
+                -----BEGIN PGP SIGNED MESSAGE-----<br/>
+                Hash: SHA256<br/>
+                <br/>
+                <br/>
+                As of July 6, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
+                <br/>
+                Recent headlines:<br/>
+                The Delta variant is causing more than 80% of new COVID-19 infections in 4 US states, including 96% of new cases in Missouri - https://www.businessinsider.com/delta-variant-in-us-covid-infections-states-kansas-arkansas-missouri-2021-7<br/>
+                <br/>
+                Elon Musk wants to 'Free Britney' too, joining the list of celebrities coming out in Spears' defense amid her conservatorship battle - https://www.insider.com/elon-musk-wants-to-free-britney-too-2021-7<br/>
+                <br/>
+                -----BEGIN PGP SIGNATURE-----<br/>
+                <br/>
+                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmDkWREACgkQ3x/m0fUO<br/>
+                zv4OBggAwNnwghj7PG+qk+e5QwEZC9zdwSm6KpxzbgnGb3/VUs1pbKp76QsS/JAs<br/>
+                FzBiN5WTiG+DJ0mw/1+iBQH/eS4LEg/rtSCcZIohx8KFT2jPcdLWN1IM7J+uHP+g<br/>
+                kHpq7mxT5PGGCcW1uDeOr+Xm3u3a/UecqGF6y/CVQSLjwdPs9JLXrR36ub1y8Oq7<br/>
+                HJqBe14irW4EJWRGa1ta/J/oQlOJ7poZRpfQyo1mKKm2BnlPcSkQkufJmVvp4+H1<br/>
+                WBVRTFgsATQR030ajuS7WkXn9MNwJ9/vxtz6+ZV3gzfGru060Mr/FDH8LglDfFeF<br/>
+                FX8nCim8ur+vihcQyBwkjXDwVw8pWw==<br/>
+                =a3FB<br/>
+                -----END PGP SIGNATURE-----<br/>
+
+                <br/>
                </code>
                <hr style={{border: "1px solid black", borderBottom: "none"}} />
                <code>
