@@ -408,6 +408,10 @@ input[type=number] {
         a {
             transition: .2s;
         }
+        a.board-zaddr-link:hover {
+            color: black;
+            
+        }
 
         .zebra-icon {
             height: 23px;
@@ -664,6 +668,13 @@ input[type=number] {
         background: #ffffff09;
         border: 1px solid #333;
     }
+    .board-post {
+        a.board-zaddr-link:hover {
+            color: white;
+            
+        }
+    }
+
         .like-form-container {
             form {
                 label {
