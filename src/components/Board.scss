@@ -22,13 +22,64 @@ input[type=number] {
         .simple-board-info {
             color: #ddd;
         }
+        .poll-options {
+            
+
+            label {
+                color: #ccc;
+            }
+            input {
+                color: #ccc;
+            }
+
+        }
+        .poll-entry-form {
+            label {
+                color: #ccc;
+            }
+            input {
+                background: none;
+                color: #ccc;
+                border-width: 0px 0px 1px 0px;
+            }
+        }
     }
 }
 .icon.copy-icon {
     margin-left: 8px;
 }
-.z-board {
 
+.z-board {
+    .poll-entry-form {
+        width: 350px;
+        display: flex;
+        flex-direction:column;
+        label {
+            color: #111;
+            margin-top: 10px;
+
+        }
+
+
+    }
+    .poll-options {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-end;
+        max-width: 500px;
+        .form-pair {
+            display: flex;
+            align-items:center;
+            margin-bottom: 6px;
+            height: 28px;
+        }
+        label {
+            color: black;
+        }
+        .poll-radio {
+            margin-left: 5px;
+        }
+    }
     pre {
         background: #ffffff55;
         padding: 5px;

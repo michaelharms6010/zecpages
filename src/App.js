@@ -19,7 +19,7 @@ import BoardPost from "./components/BoardPost";
 import Drawing from "./components/Drawing";
 import Leaderboard from "./components/Leaderboard"
 import UserBoard from "./components/UserBoard"
-import PollChart from "./components/charts/PollChart"
+import PollCard from "./components/PollCard"
 import Publish from "./components/Publish"
 import Search from "./components/Search"
 import BoardInfo from "./components/BoardInfo"
@@ -31,6 +31,13 @@ function App() {
   const referrer = params.get('referrer');
   console.log(referrer)
 
+  const TEST_POLL_POST = {
+    id: 999999999,
+    amount: 1000000,
+    txid: "fewj;ahgfs;amfn"
+  }
+
+
   if (referrer) {
       localStorage.setItem("referrer", referrer)
   }
@@ -41,12 +48,6 @@ function App() {
   const [copied, setCopied] = useState(0);
   const [loaded, setLoaded] = useState(true);
   const [darkMode, setDarkMode] = useLocalStorage("dark-mode", false)
-  const POLL_TITLE= "Are You A Chill Dude?"
-  const TEST_POLL_DATA = {
-    "No": 15,
-    "Yes": 8,
-    "Maybe": 24
-  }
 
   // initialize services
 
@@ -65,7 +66,7 @@ function App() {
             <Navigation />
             <Switch>
               <Redirect exact from="/" to="/z/all" />
-              {/* <Route exact path="/poll" render={() => <PollChart pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />} /> */}
+              <Route exact path="/poll" render={() => <PollCard post={TEST_POLL_POST} />} />
               <Route exact path="/directory" render={() => <ZaddrList />} />
               <Route exact path="/boardinfo" render={() => <BoardInfo />} />
               <Route exact path="/search" render={(props) => <Search {...props} />} />
