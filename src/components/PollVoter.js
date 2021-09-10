@@ -18,7 +18,7 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
     const [uri, setUri] = useState("")
 
     React.useEffect(_ => {
-        setUri(`zcash:${boardZaddr}?amount=${0.001}&memo=${URLSafeBase64.encode(Buffer.from(`VOTE::${poll.txid}::${chosenOption}`))}`)
+        setUri(`zcash:${boardZaddr}?amount=${0.001}&memo=${URLSafeBase64.encode(Buffer.from(`VOTE::${post.txid}::${chosenOption}`))}`)
     }, [post, poll, chosenOption])
 
     
@@ -29,7 +29,7 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
     return( 
         <div>
         <form>
-            <h2>{activePoll.q}</h2>
+            <h2 style={{textAlign: 'center'}}>{activePoll.q}</h2>
             <div className="poll-options">
                 {activePoll.o1 && <div className="form-pair"><label for="o1">{activePoll.o1}</label>
                 <input

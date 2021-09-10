@@ -59,6 +59,7 @@ export default function PollChart(props) {
                 },
                 ticks: {
                   beginAtZero: true,
+                  fontColor: darkMode ? '#ccc' : 'black',
                 },
               },
             ],

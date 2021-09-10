@@ -26,6 +26,12 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
     const {amount, setAmount, darkMode} = useContext(UserContext)
     const [isPoll, setIsPoll] = useState(false)
     const [pollBuilder, setPollBuilder] = useState(INITIAL_POLL)
+    const [valid, setValid] = useState(true)
+    const [memoLength, setMemoLength] = useState(0)
+
+    React.useEffect(_ => {
+        setMemoLength(6 + JSON.stringify(pollBuilder).length)
+    },[pollBuilder])
     
 
     const handleChange = e => {
@@ -47,7 +53,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
         <div className="reply-editor">
         {isPoll 
         ? <div>
-            <h1>Poll Entry</h1>
+            <h1 style={{marginBottom: 0}}>Create Poll</h1>
             <form className="poll-entry-form">
                 <label>Question</label>
                 <input
@@ -57,23 +63,28 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
                 <label>Option 1</label>
                 <input
                     name="o1"
+                    maxLength="80"
                     value={pollBuilder.o1}
                     onChange={handlePollChange} />
                 <label>Option 2</label>
                 <input
                     name="o2"
+                    maxLength="80"
                     value={pollBuilder.o2}
                     onChange={handlePollChange} />
                 <label>Option 3</label>
                 <input
                     name="o3"
+                    maxLength="80"
                     value={pollBuilder.o3}
                     onChange={handlePollChange} />
                 <label>Option 4</label>
                 <input
                     name="o4"
+                    maxLength="80"
                     value={pollBuilder.o4}
                     onChange={handlePollChange} />
+                {memoLength > 512 && <p style={{color: 'red'}}>Your poll is too long! {memoLength}/512</p>}
             </form>
         </div>
         : <div className="reply-text-editor">
