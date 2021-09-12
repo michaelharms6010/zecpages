@@ -18,6 +18,10 @@ export default function PollCard({post}) {
       "Who are these people?": 24
     }
 
+    const pollString = post.memo.replace(/poll::/i, "")
+
+    const pollJson = JSON.parse(pollString)
+
     const poll = JSON.stringify({
         q: "What's the deal with corn nuts?",
         o1: "It's a corn",
@@ -36,9 +40,9 @@ export default function PollCard({post}) {
         <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
             {
                 showResults
-                ? <PollChart darkMode={darkMode} pollTitle={POLL_TITLE} pollData={TEST_POLL_DATA} />
+                ? <PollChart darkMode={darkMode} pollTitle={pollJson.q} pollData={TEST_POLL_DATA} poll_id={post.id}  />
                 
-                : <PollVoter chosenOption={chosenOption} handleChange={handleChange} darkMode={darkMode} post={post} poll={poll} />
+                : <PollVoter chosenOption={chosenOption} handleChange={handleChange} darkMode={darkMode} post={post} poll={pollString} />
             }
             <button onClick={toggleShowResults}>{!showResults ? "Show Results" : "Vote"}</button>
         </div>

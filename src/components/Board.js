@@ -516,7 +516,7 @@ export default function Board(props) {
 
                
                 <div className="aos-container" >
-                {/poll::/ig.test(item.body) 
+                {item.ispoll 
                 ? <PollCard post={item} />
                 
                 : <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>

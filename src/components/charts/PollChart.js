@@ -1,27 +1,44 @@
-import React, {useContext} from 'react'
+import axios from 'axios'
+import React, {useContext, useState} from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
 import { defaults } from 'react-chartjs-2'
 import {UserContext} from "../../contexts/UserContext"
 export default function PollChart(props) {
+    const [results, setResults] = useState({})
+
+    React.useEffect(_ => {
+      axios.get("https://be.zecpages.com/poll/" + props.poll_id)
+        .then(r => {
+          delete r.data.results.q
+          console.log(r.data.results)
+          setResults(r.data.results)
+          
+        })
+        .catch(err => console.log(err))
+
+    },[])
+
     const {darkMode} = useContext(UserContext)
     defaults.global.defaultFontColor = 'white'
     const data = {
-        labels: Object.keys(props.pollData),
+        labels: Object.keys(results),
 
         datasets: [
           {
             borderColor: "white",
             label: "",
-            data: Object.values(props.pollData),
+            data: Object.values(results),
             backgroundColor: [
               'dodgerblue',
               'green',
-              'magenta'
+              'magenta',
+              "cyan"
             ],
             borderColor: [
               'goldenrod',
               'papayawhip',
-              'cyan'
+              'cyan',
+              "lime"
             ],
             borderWidth: 1,
           },

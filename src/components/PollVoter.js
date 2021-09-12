@@ -77,7 +77,7 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
                 <h3>Send your vote with ZECwallet:</h3>
                 <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={uri} />
                 <p>
-                    {uri}
+                    <code style={{wordBreak: 'break-word'}}>{uri}</code>
                     <CopyIcon value={uri} />
                 </p>
             </div> 
