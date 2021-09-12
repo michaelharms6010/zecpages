@@ -39,7 +39,9 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
     }
 
     const handlePollChange = e => {
-        setPollBuilder({...pollBuilder, [e.target.name]: e.target.value})
+        const newPollBuilder = {...pollBuilder, [e.target.name]: e.target.value}
+        if (JSON.stringify(newPollBuilder).length >= 510) return
+        setPollBuilder(newPollBuilder)
     }
 
     const isChosen = e => {
@@ -48,7 +50,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
     }
 
     return (
-        <>
+        <div className="post-entry-container">
         <button onClick={_ => setIsPoll(!isPoll)}>{isPoll ? "Make a post" : "Make a poll? (new)"}</button>
         <div className="reply-editor">
         {isPoll 
@@ -149,6 +151,6 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
                 <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${amount}${replyBody ? `&memo=${URLSafeBase64.encode(Buffer.from(`${isReply ? `REPLY::${post.id} ` : boardInput || boardName ? `BOARD::${boardInput || boardName} ` : ""}${replyBody}`))}` : ""}`); showCopyTooltip("editor");}}><img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img><span style={{textAlign: 'center'}}  className={`copied-tooltip editor-tooltip`}>Copied!</span></span>
             </>
             }
-        </>
+        </div>
     )
 }
