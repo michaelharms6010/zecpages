@@ -1,31 +1,44 @@
-import React from 'react'
+import axios from 'axios'
+import React, {useContext, useState} from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
 import { defaults } from 'react-chartjs-2'
+import {UserContext} from "../../contexts/UserContext"
 export default function PollChart(props) {
+    const [results, setResults] = useState({})
+
+    React.useEffect(_ => {
+      axios.get("https://be.zecpages.com/poll/" + props.poll_id)
+        .then(r => {
+          delete r.data.results.q
+          console.log(r.data.results)
+          setResults(r.data.results)
+          
+        })
+        .catch(err => console.log(err))
+
+    },[])
+
+    const {darkMode} = useContext(UserContext)
     defaults.global.defaultFontColor = 'white'
     const data = {
-        labels: Object.keys(props.pollData),
+        labels: Object.keys(results),
 
         datasets: [
           {
             borderColor: "white",
             label: "",
-            data: [12, 19, 3, 5, 2, 3],
+            data: Object.values(results),
             backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
+              'dodgerblue',
+              'green',
+              'magenta',
+              "cyan"
             ],
             borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
+              'goldenrod',
+              'papayawhip',
+              'cyan',
+              "lime"
             ],
             borderWidth: 1,
           },
@@ -39,17 +52,31 @@ export default function PollChart(props) {
             display: false,
             position: "top",
           },
+
+        title: {
+          fontColor: darkMode ? 'white' : 'black',
+          fontSize: 16,
+          display: true,
+          text: props.pollTitle,
+        },
+        
         scales: {
             
             xAxes: [
               {
-                display: false,
+                
+                display: true,
                 gridLines: {
-                  display: false,
+                  display: true,
                 },
                 scaleLabel: {
                   display: false,
                   labelString: "Percent",
+
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontColor: darkMode ? '#ccc' : 'black',
                 },
               },
             ],
@@ -62,13 +89,15 @@ export default function PollChart(props) {
                 gridLines: {
                   display: false,
                 },
+                ticks: {
+                  padding: 0,
+                  fontColor: darkMode ? 'white' : 'black',
+                  beginAtZero: true,
+                },
                 scaleLabel: {
                   display: false,
                   labelString: "Household income",
-                  ticks: {
-                      
-                    beginAtZero: true,
-                  },
+
                 },
               },
             ],
@@ -79,6 +108,7 @@ export default function PollChart(props) {
       
     return (
         <HorizontalBar data={data} options={options} />
+
     )
 }
 

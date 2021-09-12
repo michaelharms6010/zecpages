@@ -24,6 +24,6 @@ export default function CopyIcon({value}) {
     }
 
     return(
-        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(value); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img><span className='copied-tooltip'>Copied!</span></span>
+        <span className="copy-icon icon" onMouseDown={flagClickedIcon} onMouseLeave={flagUnClickedIcon} onMouseUp={flagUnClickedIcon} onClick={_ => {copyTextToClipboard(value); showCopyTooltip();}}><img alt="copy" title="Copy to Clipboard" src={darkMode ? copyicondark : copyicon}></img><span style={{textAlign: 'center'}} className='copied-tooltip'>Copied!</span></span>
     )
 }

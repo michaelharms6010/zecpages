@@ -29,6 +29,7 @@ import PostEntry from "./PostEntry"
 import CopyIcon from "./CopyIcon"
 import URLSafeBase64 from 'urlsafe-base64';
 import { post } from "jquery";
+import PollCard from "./PollCard"
 
 import ReactMarkdown from 'react-markdown'
 
@@ -515,7 +516,10 @@ export default function Board(props) {
 
                
                 <div className="aos-container" >
-                <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
+                {item.ispoll 
+                ? <PollCard post={item} />
+                
+                : <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}
                     {!!item.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${item.board_name}`}>z/{item.board_name}</Link></p>}
                     {!!item.reply_to_post && <p className="post-text sub-board-link">Replying to <Link className="z-link" to={`/z/post/${item.reply_to_post}`}>{item.reply_to_post}</Link></p>}
@@ -615,6 +619,7 @@ export default function Board(props) {
                     </div>
                     </div>
                 </div> 
+                }
                 </div>  
                 
                 </>
