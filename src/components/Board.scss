@@ -22,6 +22,9 @@ input[type=number] {
         .simple-board-info {
             color: #ddd;
         }
+        .poll-form {
+            
+        }
         .poll-options {
             
 
@@ -50,10 +53,11 @@ input[type=number] {
 }
 
 .z-board {
+
     .poll-entry-form {
-        width: 40vw;
+        width: 80%;
         min-width: 350px;
-        max-width: 450px;
+        max-width: 800px;
         display: flex;
         flex-direction:column;
         margin-bottom: 10px;
@@ -65,12 +69,19 @@ input[type=number] {
 
 
     }
+
+
+    .poll-form {
+        padding: 5px;
+        border-radius: 5px;
+        
+    }
     .poll-options {
         display: flex;
         flex-direction: column;
-        align-items:flex-end;
-        max-width: 200px;
-        margin: 0 auto;
+        align-items:flex-start;
+        max-width: 280px;
+
         padding-right: 40px;
         .form-pair {
             display: flex;
@@ -80,9 +91,11 @@ input[type=number] {
         }
         label {
             color: black;
+            margin-left: 5px;
         }
         .poll-radio {
             margin-left: 5px;
+
         }
     }
     pre {
