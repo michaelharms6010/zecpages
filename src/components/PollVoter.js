@@ -31,7 +31,7 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
         <form>
             <h2 style={{textAlign: 'center'}}>{activePoll.q}</h2>
             <div className="poll-options">
-                {activePoll.o1 && <div className="form-pair"><label for="o1">{activePoll.o1}</label>
+                {activePoll.o1 && <div className="form-pair">
                 <input
                     className="poll-radio"
                     id="o1"
@@ -40,8 +40,8 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
                     type="radio" 
                     checked={chosenOption == 1}
                     onChange={handleChange}
-                    /></div> }
-                {activePoll.o2 && <div className="form-pair"><label for="o2">{activePoll.o2}</label>
+                    /><label for="o1">{activePoll.o1}</label></div> }
+                {activePoll.o2 && <div className="form-pair">
                 <input 
                     className="poll-radio"
                     id="o2"
@@ -49,8 +49,8 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
                     name="poll-vote" 
                     onChange={handleChange}
                     checked={chosenOption == 2}
-                    type="radio" /></div> }
-                {activePoll.o3 &&<div className="form-pair"><label for="o3">{activePoll.o3}</label> 
+                    type="radio" /><label for="o2">{activePoll.o2}</label></div> }
+                {activePoll.o3 &&<div className="form-pair"> 
                 <input 
                     className="poll-radio"
                     id="o3"
@@ -58,8 +58,8 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
                     name="poll-vote"
                     onChange={handleChange}
                     checked={chosenOption == 3}
-                    type="radio" /></div>}
-                {activePoll.o4 && <div className="form-pair"><label for="o4">{activePoll.o4}</label>
+                    type="radio" /><label for="o3">{activePoll.o3}</label></div>}
+                {activePoll.o4 && <div className="form-pair">
                 <input 
                      className="poll-radio"
                      id="o4"
@@ -67,7 +67,7 @@ export default function PollVoter({chosenOption, handleChange, post, poll, darkM
                      name="poll-vote"
                      onChange={handleChange}
                      checked={chosenOption == 4}
-                     type="radio" /></div> }
+                     type="radio" /><label for="o4">{activePoll.o4}</label></div> }
             </div>
         </form>
         {chosenOption && 

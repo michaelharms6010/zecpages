@@ -35,16 +35,20 @@ export default function PollCard({post}) {
 
     
     return ( 
-    <div className={darkMode ? "dark-mode z-board" : "z-board"}>
+    <div>
 
-        <div key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-            {
-                showResults
-                ? <PollChart darkMode={darkMode} pollTitle={pollJson.q} pollData={TEST_POLL_DATA} poll_id={post.id}  />
-                
-                : <PollVoter chosenOption={chosenOption} handleChange={handleChange} darkMode={darkMode} post={post} poll={pollString} />
-            }
-            <button onClick={toggleShowResults}>{!showResults ? "Show Results" : "Vote"}</button>
+        <div style={{padding: 5}} key={post.id} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
+            <div className="poll-form">
+                {
+                    showResults
+                    ? <PollChart darkMode={darkMode} pollTitle={pollJson.q} pollData={TEST_POLL_DATA} poll_id={post.id}  />
+                    
+                    : <PollVoter chosenOption={chosenOption} handleChange={handleChange} darkMode={darkMode} post={post} poll={pollString} />
+                }
+                <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                    <button onClick={toggleShowResults}>{!showResults ? "Show Results" : "Vote"}</button>
+                </div>
+            </div>
         </div>
     </div>
     )
