@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useContext, useState} from 'react'
-import { HorizontalBar } from 'react-chartjs-2'
+import { HorizontalBar, Bar } from 'react-chartjs-2'
 import { defaults } from 'react-chartjs-2'
 import {UserContext} from "../../contexts/UserContext"
 export default function PollChart(props) {
@@ -64,7 +64,7 @@ export default function PollChart(props) {
             
             xAxes: [
               {
-                
+
                 display: true,
                 gridLines: {
                   display: true,
@@ -72,31 +72,36 @@ export default function PollChart(props) {
                 scaleLabel: {
                   display: false,
                   labelString: "Percent",
-
+                  
                 },
                 ticks: {
+                  maxTicksLimit: 6,
+                  scaleSteps: 1,
+                  max: Object.values(results).reduce((a, v) => a+v, 0) || 1,
                   beginAtZero: true,
                   fontColor: darkMode ? '#ccc' : 'black',
                 },
+                
               },
             ],
             yAxes: [
               {
                 
-                  
                 display: true,
                 
                 gridLines: {
                   display: false,
                 },
                 ticks: {
+                  max: Object.values(results).reduce((a, v) => a+v, 0) || 1,
+
+                  scaleSteps: 1,
                   padding: 0,
                   fontColor: darkMode ? 'white' : 'black',
                   beginAtZero: true,
                 },
                 scaleLabel: {
                   display: false,
-                  labelString: "Household income",
 
                 },
               },
@@ -109,6 +114,7 @@ export default function PollChart(props) {
     return (
       <>
         <h2 style={{textAlign: 'center'}}>{props.pollTitle}</h2>
+        {/* <Bar data={data} options={options} /> */}
         {Object.keys(results).length !== 0 && <HorizontalBar data={data} options={options} />}
       </>
     )
