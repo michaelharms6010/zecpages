@@ -165,7 +165,10 @@ export default function BoardPost(props) {
     <div className={darkMode ? "dark-mode z-board" : "z-board"}>
 
     {post.ispoll 
-    ? <PollCard onListView={false} post={post} />
+    ? <>
+        <Link  className="replying-to-link" to="/board">← Back to board</Link>
+        <PollCard onListView={false} post={post} />
+    </>
     : post.memo 
         ? 
         <>
