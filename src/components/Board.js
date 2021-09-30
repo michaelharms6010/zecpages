@@ -517,7 +517,7 @@ export default function Board(props) {
                
                 <div className="aos-container" >
                 {item.ispoll 
-                ? <PollCard post={item} />
+                ? <PollCard onListView={true} post={item} />
                 
                 : <div key={item.id} className={item.amount >= 10000000 ? "highlighted-board-post board-post" : "board-post"}>
                     {/* <h4 className="post-id">{item.id}</h4> */}

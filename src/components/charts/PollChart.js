@@ -115,7 +115,9 @@ export default function PollChart(props) {
       <>
         <h2 style={{textAlign: 'center'}}>{props.pollTitle}</h2>
         {/* <Bar data={data} options={options} /> */}
-        {Object.keys(results).length !== 0 && <HorizontalBar data={data} options={options} />}
+        <div style={{margin: '0 auto', maxWidth: "800px"}}>
+          {Object.keys(results).length !== 0 && <HorizontalBar data={data} options={options} />}
+        </div>
       </>
     )
 }

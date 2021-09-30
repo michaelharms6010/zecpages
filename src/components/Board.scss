@@ -79,8 +79,9 @@ input[type=number] {
     .poll-options {
         display: flex;
         flex-direction: column;
-        align-items:flex-start;
-        max-width: 280px;
+        align-items:center;
+        max-width: 90%;
+        margin: 0 auto;
 
         padding-right: 40px;
         .form-pair {
