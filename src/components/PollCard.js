@@ -2,8 +2,9 @@ import React, {useContext, useState} from "react"
 import {UserContext} from "../contexts/UserContext"
 import PollChart from "./charts/PollChart"
 import PollVoter from "./PollVoter"
+import {Link} from "react-router-dom";
 
-export default function PollCard({post}) {
+export default function PollCard({post, onListView}) {
     
     const {darkMode} = useContext(UserContext)
     const [showResults, setShowResults] = useState(false)
@@ -47,6 +48,7 @@ export default function PollCard({post}) {
                 }
                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
                     <button onClick={toggleShowResults}>{!showResults ? "Show Results" : "Vote"}</button>
+                    {!!onListView && <Link to={`/z/post/${post.id}`}>Permalink</Link>}
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ import zebraemoji from "../icons/zebra-emoji.png"
 import zebraemojiblack from "../icons/zebra-emoji-black.png"
 import URLSafeBase64 from 'urlsafe-base64';
 import PostEntry from "./PostEntry"
+import PollCard from "./PollCard"
 import ReactMarkdown from 'react-markdown'
 
 var Base64 = require("js-base64")
@@ -163,155 +164,161 @@ export default function BoardPost(props) {
     return (
     <div className={darkMode ? "dark-mode z-board" : "z-board"}>
 
-    {post.memo ? 
-    <>
-    {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : <Link  className="replying-to-link" to="/board">← Back to board</Link>}
-    <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-    {!!post.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${post.board_name}`}>z/{post.board_name}</Link></p>}
-        
-        
-    { (post.memo.includes(".md") || post.memo.includes("`") || post.memo.includes("- ") || post.memo.includes("##"))
-        ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
-            {post.memo.replace(/( *).md( *)/ig, "")}
-          </ReactMarkdown> 
-        :<p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
-    }
-       <hr></hr>
-        <button onClick={_ => setQrVis(!qrVis)} style={{wordBreak: "break-word", padding: "8px"}}><code>Reply to this post: <img alt='qr code' style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> </code></button>
-        <br/>
-        <code>You can manually make a new board post with a memo starting with {`REPLY::${post.id}`}</code>
-        {!!qrVis && 
-        // qrVal
-        //replyBody
-        //darkMode
-        // formatReplyBody
-            <PostEntry
-                isReply={true}
-                qrVal={qrVal}
-                post={post}
-                darkMode={darkMode}
-                formatReplyBody={formatReplyBody}
-                replyBody={replyBody}
-            />
-        }
-         {likeTooltip === post.id && 
-
-            <>
-            <hr />
-                <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current value:  {(post.amount / 100000000)} ZEC)</h2>
-                <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${post.id}`}" </code>
-                </p>
-                <div className="like-form-container">
-                
-                
-                <form className="like-amount-form">
-                            
-                            
-                            <>
-                            <strong>This post's power: {(post.amount / 100000000)} ZEC</strong>
-                            <label>Like
-                            <input
-                                checked={likeAmount >= 0.001 && likeAmount < 0.1 - (post.amount / 100000000) }
-                                name="likeAmount"
-                                value={0.001}
-                                type="radio"
-                                onChange={e => handleLikeAmount(+e.target.value)} />
-                            </label>
-                            {post.amount < 10000000 && 
-                            <label>Like & Highlight
-                            <input
-                                checked={likeAmount >= 0.1 - (post.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 ) }
-                                name="likeAmount"
-                                value={0.1 - (post.amount / 100000000)}
-                                type="radio"
-                                onChange={e => handleLikeAmount(+e.target.value)} />
-                            </label>}
-                            <label>Like & Pin
-                            <input
-                                checked={likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 }
-                                name="likeAmount"
-                                value={((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000)}
-                                type="radio"
-                                onChange={e => handleLikeAmount(+e.target.value)} />
-                            </label>
-                            <label>You're adding: 
-                            <input
-                                style={{textAlign: "right", width: "80px"}}
-                                value={likeAmount}
-                                placeholder={likeAmount}
-                                onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
-                                step="0.001"
-                                type="number"
-                                />ZEC</label>
-                            <div className="after-liking-total">
-                                <p>Post power after liking:</p>
-                                <p> {+(post.amount / 100000000 + likeAmount).toFixed(8)} ZEC</p>
-                            </div>
-                            </>
-                        </form>
-                
-                <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`} />
-                </div>
-                
-                
-                <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <br/> {`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`}       
-                <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
-                <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-                <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
-                </code></p>
-            </>
-        }
-         <div className="post-date">
-            <div className="like-container">
-                <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
-                <span>{post.likes}</span>
-            </div>
-            <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
+    {post.ispoll 
+    ? <>
+        <Link  className="replying-to-link" to="/board">← Back to board</Link>
+        <PollCard onListView={false} post={post} />
+    </>
+    : post.memo 
+        ? 
+        <>
+        {post.reply_to_post ? <Link className="replying-to-link" to={`/board/post/${post.reply_to_post}`}>← Replying to post {post.reply_to_post}</Link> : <Link  className="replying-to-link" to="/board">← Back to board</Link>}
+        <div key={post.id} id={post.id === pinned.id ? "pinned-post" : ""} className={post.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
+        {!!post.board_name && <p className="post-text sub-board-link">Posted to <Link className="z-link" to={`/z/${post.board_name}`}>z/{post.board_name}</Link></p>}
             
-        </div>
-        
-
-    </div>
-    
-    <h3 style={{cursor: "pointer"}} onClick={_ => setQrVis(!qrVis)} className="reply-header">Replies {`(${post.replies.length})` || ""}</h3>
-    {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
-    : post.replies.sort((a,b) => a.id - b.id).map(reply => 
-        <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
-        
+            
         { (post.memo.includes(".md") || post.memo.includes("`") || post.memo.includes("- ") || post.memo.includes("##"))
-                    ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
-                        {post.memo.replace(/( *).md( *)/ig, "")}
-                      </ReactMarkdown> 
-                    : <p className="post-text">{reformatShields(reply.memo.split("â€™").join("'").replace(replyRegex, ""), reply.reply_zaddr, reply.username)}</p>
-    }
-        {likeTooltip === reply.id && 
-        <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(reply.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`}       
-        <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`); showLikeCopyTooltipById(reply.id);}}>
-        <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
-        <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${reply.id}`}>Copied!</span></span>
-        <br/> or simply make a board post with the memo "{`LIKE::${reply.id}`}"</code></p>}
-        {likeQrVis === reply.id && likeTooltip === reply.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? reply.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`} />}
-        <div className="post-date">
-            <div className="like-container">
-                <img alt='zcash heart' onClick={_ => handleLikeTooltip(reply.id)} className="like-icon" src={like} />
-                <span>{reply.likes}</span>
+            ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
+                {post.memo.replace(/( *).md( *)/ig, "")}
+            </ReactMarkdown> 
+            :<p className="post-text">{reformatShields(post.memo.split("â€™").join("'").replace(replyRegex, ""), post.reply_zaddr, post.username)}</p>
+        }
+        <hr></hr>
+            <button onClick={_ => setQrVis(!qrVis)} style={{wordBreak: "break-word", padding: "8px"}}><code>Reply to this post: <img alt='qr code' style={{cursor: 'pointer', marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/> </code></button>
+            <br/>
+            <code>You can manually make a new board post with a memo starting with {`REPLY::${post.id}`}</code>
+            {!!qrVis && 
+            // qrVal
+            //replyBody
+            //darkMode
+            // formatReplyBody
+                <PostEntry
+                    isReply={true}
+                    qrVal={qrVal}
+                    post={post}
+                    darkMode={darkMode}
+                    formatReplyBody={formatReplyBody}
+                    replyBody={replyBody}
+                />
+            }
+            {likeTooltip === post.id && 
+
+                <>
+                <hr />
+                    <p style={{margin: 0, marginBottom: "10px", marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><h2>Like this post: (Current value:  {(post.amount / 100000000)} ZEC)</h2>
+                    <code>Use the QR or copy the URI to like the post, or send a Zcash memo reading "{`LIKE::${post.id}`}" </code>
+                    </p>
+                    <div className="like-form-container">
+                    
+                    
+                    <form className="like-amount-form">
+                                
+                                
+                                <>
+                                <strong>This post's power: {(post.amount / 100000000)} ZEC</strong>
+                                <label>Like
+                                <input
+                                    checked={likeAmount >= 0.001 && likeAmount < 0.1 - (post.amount / 100000000) }
+                                    name="likeAmount"
+                                    value={0.001}
+                                    type="radio"
+                                    onChange={e => handleLikeAmount(+e.target.value)} />
+                                </label>
+                                {post.amount < 10000000 && 
+                                <label>Like & Highlight
+                                <input
+                                    checked={likeAmount >= 0.1 - (post.amount / 100000000) && !(likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 ) }
+                                    name="likeAmount"
+                                    value={0.1 - (post.amount / 100000000)}
+                                    type="radio"
+                                    onChange={e => handleLikeAmount(+e.target.value)} />
+                                </label>}
+                                <label>Like & Pin
+                                <input
+                                    checked={likeAmount >= ((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000) -.001 }
+                                    name="likeAmount"
+                                    value={((pinnedCost + Math.floor((( Date.now() - +post.datetime ) / 200) - post.amount)) / 100000000)}
+                                    type="radio"
+                                    onChange={e => handleLikeAmount(+e.target.value)} />
+                                </label>
+                                <label>You're adding: 
+                                <input
+                                    style={{textAlign: "right", width: "80px"}}
+                                    value={likeAmount}
+                                    placeholder={likeAmount}
+                                    onChange={e => { if (+e.target.value) handleLikeAmount(e.target.value) } }
+                                    step="0.001"
+                                    type="number"
+                                    />ZEC</label>
+                                <div className="after-liking-total">
+                                    <p>Post power after liking:</p>
+                                    <p> {+(post.amount / 100000000 + likeAmount).toFixed(8)} ZEC</p>
+                                </div>
+                                </>
+                            </form>
+                    
+                    <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`} />
+                    </div>
+                    
+                    
+                    <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <br/> {`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`}       
+                    <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`); showLikeCopyTooltipById(post.id);}}>
+                    <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+                    <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${post.id}`}>Copied!</span></span>
+                    </code></p>
+                </>
+            }
+            <div className="post-date">
+                <div className="like-container">
+                    <img alt='zcash heart' onClick={_ => handleLikeTooltip(post.id)} className="like-icon" src={like} />
+                    <span>{post.likes}</span>
+                </div>
+                <p style={{display: "inline"}}>{stringifyDate(post.datetime)}</p>
+                
             </div>
-            <p style={{display: "inline"}}>{stringifyDate(reply.datetime)}</p>
+            
+
         </div>
-        <div className="post-links">
-                        <Link to={`/board/post/${reply.id}`}> 
-                            {reply.reply_count > 1 ? `${reply.reply_count} Replies` : reply.reply_count === 1 ? "1 Reply" : "Reply"}
-                        </Link>
-                        <Link to={`/board/post/${reply.id}`}> 
-                            Permalink
-                        </Link>
-        </div>  
-    </div>
-    )}
-    
         
-        </>
-    : null }
+        <h3 style={{cursor: "pointer"}} onClick={_ => setQrVis(!qrVis)} className="reply-header">Replies {`(${post.replies.length})` || ""}</h3>
+        {post && post.replies && !post.replies.length ? <h4>No replies yet!</h4> 
+        : post.replies.sort((a,b) => a.id - b.id).map(reply => 
+            <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
+            
+            { (post.memo.includes(".md") || post.memo.includes("`") || post.memo.includes("- ") || post.memo.includes("##"))
+                        ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
+                            {post.memo.replace(/( *).md( *)/ig, "")}
+                        </ReactMarkdown> 
+                        : <p className="post-text">{reformatShields(reply.memo.split("â€™").join("'").replace(replyRegex, ""), reply.reply_zaddr, reply.username)}</p>
+        }
+            {likeTooltip === reply.id && 
+            <p style={{margin: 0, marginBottom: "10px", wordBreak: "break-word", paddingLeft: "10px"}}><code>Like this post: <img alt="qr code" onClick={_ => handleLikeQR(reply.id)} style={{ cursor: 'pointer',  marginLeft: '10px', height: "2rem", width: "2rem"}} src={darkMode ? qricondark : qricon}/><br/> {`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`}       
+            <span className="copy-icon icon" onClick={_ => {copyTextToClipboard(`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`); showLikeCopyTooltipById(reply.id);}}>
+            <img alt="copy" title="Copy to Clipboard" src={ab ? copyiconb : darkMode ? copyicondark : copyicon}></img>
+            <span style={{textAlign: "center"}} className={`copied-tooltip like-copied-${reply.id}`}>Copied!</span></span>
+            <br/> or simply make a board post with the memo "{`LIKE::${reply.id}`}"</code></p>}
+            {likeQrVis === reply.id && likeTooltip === reply.id && <QRCode bgColor={darkMode ? "#111111" : '#eeeeee'} fgColor={darkMode ? reply.amount >= 10000000 ? "#C46274" : "#7377EF" : '#111111'} style={{margin: '.5% auto', display: 'block'}} includeMargin={true} size={256} value={`zcash:${qrVal}?amount=0.001&memo=${btoa(`LIKE::${reply.id}`)}`} />}
+            <div className="post-date">
+                <div className="like-container">
+                    <img alt='zcash heart' onClick={_ => handleLikeTooltip(reply.id)} className="like-icon" src={like} />
+                    <span>{reply.likes}</span>
+                </div>
+                <p style={{display: "inline"}}>{stringifyDate(reply.datetime)}</p>
+            </div>
+            <div className="post-links">
+                            <Link to={`/board/post/${reply.id}`}> 
+                                {reply.reply_count > 1 ? `${reply.reply_count} Replies` : reply.reply_count === 1 ? "1 Reply" : "Reply"}
+                            </Link>
+                            <Link to={`/board/post/${reply.id}`}> 
+                                Permalink
+                            </Link>
+            </div>  
+        </div>
+        )}
+        
+            
+            </>
+        : null }
     </div>
     
     )
