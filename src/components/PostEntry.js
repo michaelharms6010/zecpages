@@ -59,29 +59,34 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
             <form className="poll-entry-form">
                 <label>Question</label>
                 <input
+                    autocomplete='off'
                     name="q"
                     value={pollBuilder.q}
                     onChange={handlePollChange} />
                 <label>Option 1</label>
                 <input
+                    autocomplete='off'
                     name="o1"
                     maxLength="80"
                     value={pollBuilder.o1}
                     onChange={handlePollChange} />
                 <label>Option 2</label>
                 <input
+                    autocomplete='off'
                     name="o2"
                     maxLength="80"
                     value={pollBuilder.o2}
                     onChange={handlePollChange} />
                 <label>Option 3</label>
                 <input
+                    autocomplete='off'
                     name="o3"
                     maxLength="80"
                     value={pollBuilder.o3}
                     onChange={handlePollChange} />
                 <label>Option 4</label>
                 <input
+                    autocomplete='off'
                     name="o4"
                     maxLength="80"
                     value={pollBuilder.o4}
