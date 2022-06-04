@@ -384,6 +384,8 @@ export default function Board(props) {
         <div className={"z-board"}>
             {notificationVis && <h2 onClick={getNotifiedContent} className='update-notification'>New Posts</h2>}
 
+            <p class="alert">An issue exists preventing memo parsing of memos sent from the Orchard pool. I am working to resolve this ASAP!</p>
+
             <div className={darkMode ? "board-explainer dark-mode" : "board-explainer"}>
                 <h2>ZEC-powered anonymous memo board <Link style={{fontSize: "15px", color: darkMode ? "#ffbf00" : "#5e63fd", padding: "0"}} to="/boardinfo">(how it works)</Link></h2>
                 

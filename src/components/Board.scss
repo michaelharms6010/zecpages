@@ -16,6 +16,11 @@ input[type=number] {
 
 .dark-mode {
     .z-board {
+        .alert {
+            background: maroon;
+            border-color: pink;
+        }
+        
         .create-post-button {
             border-color: #ddd;
         }
@@ -53,6 +58,12 @@ input[type=number] {
 }
 
 .z-board {
+    .alert {
+        border: 1px solid maroon;
+        background-color: pink;
+        display: inline-block;
+        padding: 3px 6px;
+    }
 
     .poll-entry-form {
         width: 80%;
