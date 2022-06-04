@@ -3,6 +3,7 @@
 $day-main: #fec8fc;
 $day-background: #5e63fd;
 $zcash-yellow: #ffbf00;
+$dark-red: #390009;
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -17,8 +18,9 @@ input[type=number] {
 .dark-mode {
     .z-board {
         .alert {
-            background: maroon;
-            border-color: pink;
+            background: $dark-red;
+            border-color: $zcash-yellow;
+            color: #ddd;
         }
         
         .create-post-button {
@@ -715,7 +717,7 @@ input[type=number] {
   $dark-outline: #7a5f0b;
   $fill-color: #ff879b;
   $dark-theme-color:  #000126;
-  $dark-red: #390009;
+ 
   
   #pinned-post {
       .pin-text {
