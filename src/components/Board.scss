@@ -21,6 +21,12 @@ input[type=number] {
             background: $dark-red;
             border-color: $zcash-yellow;
             color: #ddd;
+            a {
+                color: cyan;
+                &:hover {
+                    color: magenta;
+                }
+            }
         }
         
         .create-post-button {
@@ -65,6 +71,11 @@ input[type=number] {
         background-color: pink;
         display: inline-block;
         padding: 3px 6px;
+        a {
+            
+            padding-right: 0;
+            padding-left: 0;
+        }
     }
 
     .poll-entry-form {
