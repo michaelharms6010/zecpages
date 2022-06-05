@@ -14,7 +14,7 @@
     "jquery": "^3.5.1",
     "js-base64": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "pusher-js": "^5.1.1",
     "qrcode.react": "^1.0.1",
     "react": "^16.14.0",
