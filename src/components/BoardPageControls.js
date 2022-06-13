@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom"
 import BoardDropdown from "./BoardDropdown";
 
-export default function BoardPagecontrols({onlyDropdown, posts, setPosts, page, prev, setPage, next, history, setShowReplies, showReplies, onlySearch}) {
+export default function BoardPagecontrols({offset, onlyDropdown, posts, setPosts, page, prev, setPage, next, history, setShowReplies, showReplies, onlySearch}) {
     const [search, setSearch] = useState("")
 
     React.useEffect(_ => {
@@ -35,6 +35,11 @@ export default function BoardPagecontrols({onlyDropdown, posts, setPosts, page, 
 
         
         
+    }
+
+    const scrollTop = _ => {
+        const scrollHeight = offset(document.querySelector(".board-page-buttons")).top;
+        window.scroll({top: scrollHeight, behavior: "smooth"})
     }
     
     return (
@@ -80,12 +85,12 @@ export default function BoardPagecontrols({onlyDropdown, posts, setPosts, page, 
         :
         null}
         <div style={{display:"flex"}}>
-            <button disabled={prev ? "" : "disabled"} onClick={_ => history.push(`/z/all/${page-1}`)} className="board-previous">
+            <button disabled={prev ? "" : "disabled"} onClick={_ => {history.push(`/z/all/${page-1}`); scrollTop()}} className="board-previous">
                 <Link className="page-link" to={`/z/all/${page-1}`}>Previous</Link>
             </button> 
             <button className="page-number" disabled="disabled">{page}</button>
             
-            <button disabled={next ? "" : "disabled"}  onClick={_ => history.push(`/z/all/${page+1}`)} className="board-next">
+            <button disabled={next ? "" : "disabled"}  onClick={_ => {history.push(`/z/all/${page+1}`); scrollTop()}} className="board-next">
                 <Link className="page-link" to={`/z/all/${page+1}`}>Next</Link>
             </button> 
         </div>

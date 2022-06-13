@@ -507,6 +507,7 @@ export default function Board(props) {
                 setShowReplies={setShowReplies}
                 history={props.history} 
                 setPage={setPage}
+                offset={offset}
                 next={next}
                 prev={prev}
                 page={page} />
@@ -627,6 +628,7 @@ export default function Board(props) {
             <BoardPageControls 
                 history={props.history}
                 setPage={setPage}
+                offset={offset}
                 next={next}
                 prev={prev}
                 page={page} />
