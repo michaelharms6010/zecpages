@@ -134,7 +134,7 @@ export default function EditUserInfo ({history}) {
                 placeholder="A Brief Description of yourself (Limit 512 Chars)"
             />
             <textarea 
-                maxLength="128"
+                maxLength="213"
                 className="zaddr-input"
                 name="zaddr"
                 onChange={handleZaddrChange}
