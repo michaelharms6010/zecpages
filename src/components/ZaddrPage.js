@@ -28,6 +28,7 @@ import {ZaddrContext} from "../contexts/ZaddrContext";
 export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
     const zaddrRegex = /^zs[a-z0-9]{76}$/i
     const uaddrRegex = /u1\w{211}/
+    const oaddrRegex = /^u1\w{104}$/
     let search = window.location.search;
     let params = new URLSearchParams(search);
     let query = params.get('subscribe');
@@ -164,7 +165,7 @@ export default function ZaddrCard ({match, history, copied, setCopied, zaddr}) {
         </>
         : null}
         <div style={{maxWidth: "900px", margin: "30px auto"}}>
-            {done && zaddr && !user.username ? (zaddrRegex.test(match.params.zaddr) || uaddrRegex.test(match.params.zaddr)) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't in the ZECpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't a a valid sapling z-address.</h2>: null}
+            {done && zaddr && !user.username ? (zaddrRegex.test(match.params.zaddr) || uaddrRegex.test(match.params.zaddr) || oaddrRegex.test(match.params.zaddr)) ? <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't in the ZECpages database.</h2> : <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.zaddr}<br/> isn't a a valid sapling z-address.</h2>: null}
             {done && !zaddr && !user.username && <h2 style={{color: darkMode ? "#ccc" : "#111"}}>{match.params.username} isn't in the ZECpages database. Try <Link to="/directory">searching the directory</Link>.</h2> }
         </div>
         </>

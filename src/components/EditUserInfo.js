@@ -20,6 +20,7 @@ export default function EditUserInfo ({history}) {
     const [showReferralInfo, setShowReferralInfo] = useState(false)
     const zaddrRegex = /^zs[a-z0-9]{76}$/;
     const uaddrRegex = /u1\w{211}/
+    const oaddrRegex = /^u1\w{104}$/
     const proofRegex = /([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]/;
     const viewkeyRegex = /^zxviews\w{278}$/
     const logout = _ => {
@@ -41,7 +42,7 @@ export default function EditUserInfo ({history}) {
 
     const toggleEditing = _ => {
         if (editing) {
-            if (!zaddrRegex.test(user.zaddr) && !uaddrRegex.test(user.zaddr)) {
+            if (!zaddrRegex.test(user.zaddr) && !uaddrRegex.test(user.zaddr) && !oaddrRegex.test(user.zaddr)) {
                 setError("That z-address is invalid.")
             } else if(user.viewing_key && !viewkeyRegex.test(user.viewing_key)) {
                 setError("That viewing key looks invalid.")
@@ -55,7 +56,10 @@ export default function EditUserInfo ({history}) {
                     setUser(res.data);
                     setEditing(false);
                     setError("");})
-                .catch(err => setError("Your z-address is invalid."));
+                .catch(err => {
+                    console.log(err.response)
+                    setError("Your z-address is invalid.")
+                });
             }
         } else {
             setEditing(true);
