@@ -285,9 +285,9 @@ export default function BoardPost(props) {
         : post.replies.sort((a,b) => a.id - b.id).map(reply => 
             <div key={reply.id} className={reply.amount >= 10000000 ? "highlighted-board-post board-post individual-post" : "board-post individual-post"}>
             
-            { (post.memo.includes(".md") || post.memo.includes("`") || post.memo.includes("- ") || post.memo.includes("##"))
+            { (reply.memo.includes(".md") || reply.memo.includes("`") || reply.memo.includes("- ") || reply.memo.includes("##"))
                         ? <ReactMarkdown skipHtml={true} className="post-text" onClick={e=> e.stopPropagation()}>
-                            {post.memo.replace(/( *).md( *)/ig, "")}
+                            {reply.memo.replace(/( *).md( *)/ig, "")}
                         </ReactMarkdown> 
                         : <p className="post-text">{reformatShields(reply.memo.split("â€™").join("'").replace(replyRegex, ""), reply.reply_zaddr, reply.username)}</p>
         }
