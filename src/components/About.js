@@ -31,11 +31,6 @@ export default function About() {
                 <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
             </div>
             <div className="about-content">
-                <h2>lightwalletd server</h2>
-                <h4 style={{textAlign: "center"}}>ZECpages is powered by its own lightwalletd server. You are welcome to connect as well.</h4>
-                <p><strong style={{marginTop: "10px"}}>https://lightwalletd.zecpages.com:443</strong></p>
-            </div>
-            <div className="about-content">
                 <h2>Team ZECpages</h2>
                 <a href="https://twitter.com/michaelharms70">Michael Harms</a>
                 <p className="zaddr">zs150xua0qxun6lf7p2rexz2kz2t75aqecaguh80rq2ruaj7vwn9rxuhphgm9qpce4j6runxqm3e2u</p>
