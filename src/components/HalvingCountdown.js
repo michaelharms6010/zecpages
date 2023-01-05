@@ -14,21 +14,21 @@ export default function HalvingCountdown() {
 
     // Renderer callback with condition
     const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-        // Render a completed state
-        return <Completionist />;
-    } else {
+
         // Render a countdown
         return  (
-                    <div className="countdown-container">
-                        <CountdownContainer title="Days" value={days}/>
-                        <CountdownContainer title="Hours" value={hours}/>
-                        <CountdownContainer title="Minutes" value={minutes}/>
-                        <CountdownContainer title="Seconds" value={seconds}/>
-                    </div>
+                    !completed
+                    ?    <div className="countdown-container">
+                            <CountdownContainer title="Days" value={days}/>
+                            <CountdownContainer title="Hours" value={hours}/>
+                            <CountdownContainer title="Minutes" value={minutes}/>
+                            <CountdownContainer title="Seconds" value={seconds}/>
+                        </div>
+                    : <div className="countdown-container-complete">Zcash has halved! 🎉</div>
+                    
                 )
 
-    }
+    
     };
 
     function CountdownContainer({title, value}) {

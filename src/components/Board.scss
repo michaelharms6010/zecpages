@@ -25,6 +25,14 @@ input[type=number] {
         margin: 20px auto;
         border-radius: 20px;
     }
+    .countdown-container-complete {
+        background: $day-main;
+        padding: 15px 5px;
+        width: 500px;
+        border-radius: 20px;
+        margin: 10px auto;
+        font-size: 24px;
+    }
     .countdown-container {
         display: flex;
         justify-content: center;
@@ -1056,6 +1064,9 @@ $breakpoint-mobile: 500px;
     .halving-countdown {
         margin-top: 10px;
         .countdown-header {
+            width: 80%;
+        }
+        .countdown-container-complete {
             width: 80%;
         }
         .countdown-container {
