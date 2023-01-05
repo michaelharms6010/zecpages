@@ -75,7 +75,7 @@ function App() {
               <Route exact path="/login" render={(props) => <Login {...props} />} />
               <Route exact path="/edit" render={(props) => <EditUserInfo {...props} /> } />
               <Route exact path="/board" component={Board} />
-              <Route exact path="/halvingcountdown" component={HalvingCountdown} />
+              <Route exact path="/tools/halvingcountdown" component={HalvingCountdown} />
               <Route exact path="/publish" component={Publish} />
               <Route exact path="/about" component={About} />
               <Route exact path="/leaderboard" component={Leaderboard} />

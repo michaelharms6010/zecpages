@@ -16,7 +16,7 @@ input[type=number] {
 }
 
 .halving-countdown {
-    margin-top: 200px;
+    margin-top: 100px;
     .countdown-container {
         display: flex;
         justify-content: center;
@@ -1041,6 +1041,15 @@ $breakpoint-mobile: 500px;
 
 
 @media (max-width: $breakpoint-tablet) {
+    .halving-countdown {
+        margin-top: 10px;
+        .countdown-container {
+            flex-direction: column;
+            .countdown-container-number {
+                width: 80%;
+            }
+        }
+    }
     .z-board {
         .board-page-buttons {
         

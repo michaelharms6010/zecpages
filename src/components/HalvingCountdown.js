@@ -55,6 +55,7 @@ export default function HalvingCountdown() {
     return(
         <div className="halving-countdown">
             <h2>Zcash's next halving will take place at approximately {new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>
+            <h2>Halving block: {halvingBlock}</h2>            
             <h2>Current block: {blockHeight}</h2>
             <h2>Seconds To Halving: {secondsToHalving}</h2>
             {!!secondsToHalving && 
