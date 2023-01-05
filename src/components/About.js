@@ -43,7 +43,7 @@ export default function About() {
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
                 Hash: SHA256<br/>
                 <br/>
-                As of July 6, 2021, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
+                As of January 5, 2023, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
                 <br/>
                 Recent headlines:<br/>
                 Prince Harry accuses Prince William of physical attack in book<br/>
@@ -51,14 +51,14 @@ export default function About() {
                 Evacuations ordered as California storm knocks out power<br/>
                 -----BEGIN PGP SIGNATURE-----<br/>
                 <br/>
-                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmO3Ez8ACgkQ3x/m0fUO<br/>
-                zv59mgf/YzO+Xa2QP5Hr2FaK4FAIaz2vBLeKez/LODG3fu5eSCg6xKSAW4l8naCF<br/>
-                vm5fSmrTyGhUdKQFB6Q0yaW0LBGAutCkUUsofCWkkZSFPnfX6y5ug4cR3e1PcjeZ<br/>
-                JSzqUv9pvzzlRR3lXRXz+AvCZvx4xVH3IkSIW0fUIUXmASwBV8EHk15kp0tIVQ4/<br/>
-                xvuw8MZqRJAb4pp9x5Brk4MluvzufDvVPmI3kzLiJTV6L4m6LB6lFJAGD1QtoTpU<br/>
-                NJTeBqS+wRHeWX0ohDd4DhF6Brk8gG1snSLM8Lpryk006KOU3fZTzuLcq4OZjtgy<br/>
-                +c5lCAcju4qFPETyLkGKDRLjoCq76g==<br/>
-                =exIv<br/>
+                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmO3FZ0ACgkQ3x/m0fUO<br/>
+                zv4S5QgAkMTYchJfrpPYtmBSWNwRhbeA16n441jzn4d7ESmubFDKsWXJBpJLcsWd<br/>
+                PWF3E9nIIrXHzaT8rZm7ys1GvqhdKiJ//xsZ7I0hUOKzQH8/jpYzMgq875lZ7myY<br/>
+                rS2sC1aWw2qyXAQcOutgfW7Krz/NQM8/fAizVBcF4ruM1AlVh3YATsB1Lg9RpZVz<br/>
+                v/nWWSv8B/7tTkun5zy0kzhqwkMWpj5WkyT+8sBj+2M7hfXppCfECVYqOojfowv+<br/>
+                ovKFOuzpL2IWVkCdH7Feyps6hg4FOQnSaS0Dzv8aiPWeykRNekrjL/0VJLSRuST2<br/>
+                L3jaPGpbglhaLEBLEBO0TqD5YkwZww==<br/>
+                =gKuB<br/>
                 -----END PGP SIGNATURE-----<br/>
                 <br/>
                </code>
