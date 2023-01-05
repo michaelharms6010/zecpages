@@ -16,14 +16,22 @@ input[type=number] {
 }
 
 .halving-countdown {
-    margin-top: 100px;
+    margin-top: 20px;
+    .countdown-header {
+        background: $day-main;
+        border: 1px solid $day-main;
+        padding:10px;
+        width: 500px;
+        margin: 20px auto;
+        border-radius: 20px;
+    }
     .countdown-container {
         display: flex;
         justify-content: center;
         align-items: center;
         .countdown-container-number {
             width: 100px;
-            background: $zcash-yellow;
+            background: $day-main;
             border-radius: 20px;
             margin: 10px 30px;
             padding: 15px 5px;
@@ -33,8 +41,12 @@ input[type=number] {
 
 .dark-mode {
     .halving-countdown {
+        .countdown-header {
+            background: #000126;
+            border: 1px solid #000126;
+        }
         .countdown-container-number {
-            background: #555;
+            background: #000126;
         }
         h1, h2, h3, h4, h5 {
             color: #ccc;
@@ -1043,6 +1055,9 @@ $breakpoint-mobile: 500px;
 @media (max-width: $breakpoint-tablet) {
     .halving-countdown {
         margin-top: 10px;
+        .countdown-header {
+            width: 80%;
+        }
         .countdown-container {
             flex-direction: column;
             .countdown-container-number {

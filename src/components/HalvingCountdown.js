@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios"
 import Countdown from 'react-countdown';
+import logo from "../icons/shieldicon.gif"
 
 export default function HalvingCountdown() {
     const [blockHeight, setBlockHeight] = useState(null)
@@ -54,10 +55,12 @@ export default function HalvingCountdown() {
 
     return(
         <div className="halving-countdown">
-            <h2>Zcash's next halving will take place at approximately {new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>
-            <h2>Halving block: {halvingBlock}</h2>            
-            <h2>Current block: {blockHeight}</h2>
-            <h2>Seconds To Halving: {secondsToHalving}</h2>
+            <img height={200} width={173} src={logo}></img>
+            <div className="countdown-header">
+                <h2>Zcash's next halving will take place at  <br/>~{new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>
+                <h2>Halving block: {halvingBlock}</h2>            
+                {!!blockHeight && <h2>Current block: {blockHeight} ({halvingBlock - blockHeight} blocks to go)</h2>}
+            </div>
             {!!secondsToHalving && 
                 <Countdown
                 date={Date.now() + secondsToHalving * 1000}
