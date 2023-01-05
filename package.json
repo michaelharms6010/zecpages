@@ -19,6 +19,7 @@
     "react": "^16.14.0",
     "react-chartjs-2": "^2.11.1",
     "react-confirm-alert": "^2.6.2",
+    "react-countdown": "^2.3.5",
     "react-dom": "^16.14.0",
     "react-drawing-board": "^0.3.5",
     "react-ga": "^2.7.0",

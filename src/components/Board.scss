@@ -15,7 +15,31 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.halving-countdown {
+    margin-top: 200px;
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .countdown-container-number {
+            width: 100px;
+            background: $zcash-yellow;
+            border-radius: 20px;
+            margin: 10px 30px;
+            padding: 15px 5px;
+        }
+    }
+}
+
 .dark-mode {
+    .halving-countdown {
+        .countdown-container-number {
+            background: #555;
+        }
+        h1, h2, h3, h4, h5 {
+            color: #ccc;
+        }
+    }
     .z-board {
         .alert {
             background: $dark-red;
