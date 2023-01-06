@@ -24,6 +24,7 @@ import Publish from "./components/Publish"
 import Search from "./components/Search"
 import BoardInfo from "./components/BoardInfo"
 import HalvingCountdown from "./components/HalvingCountdown"
+import HalvingCountdownWidget from "./components/widgets/HalvingCountdown"
 
 
 function App() {
@@ -63,6 +64,8 @@ function App() {
     <UserContext.Provider value={{pinnedCost, setPinnedCost, amount, setAmount, loggedIn, setLoggedIn, ip, darkMode, setDarkMode}}>
       <ZaddrContext.Provider value={{ copied, setCopied, loaded, setLoaded}}>
         <Router>
+          <Switch>
+          <Route exact path="/widgets/halvingcountdown" render={(props) => <HalvingCountdownWidget {...props} role="widget" />} />
           <div className={darkMode ? "dark-mode App" : "App"}style={darkMode ? {color: "#eee", background: "#111"} : {}}>
             <Navigation />
             <Switch>
@@ -94,6 +97,7 @@ function App() {
               <Route path="/:username" render={props => <ZaddrPage copied={copied} setCopied={setCopied} {...props} /> } />
             </Switch>
           </div>
+          </Switch>
         </Router>
       </ZaddrContext.Provider>
     </UserContext.Provider>
