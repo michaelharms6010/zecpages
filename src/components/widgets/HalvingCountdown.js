@@ -6,6 +6,7 @@ import "../Board.scss"
 
 export default function HalvingCountdown({role, location}) {
     const [styles, setStyles] = useState({foreground: {}, background: {}})
+    const [windowHeight, setWindowHeight] = useState('300px')
     useEffect(_ => {
 
         if (role == "widget") {
@@ -31,6 +32,7 @@ export default function HalvingCountdown({role, location}) {
         
             })
         }
+        setWindowHeight(`${window.innerHeight}px`)
     },[])
     
     const [blockHeight, setBlockHeight] = useState(null)
@@ -76,7 +78,7 @@ export default function HalvingCountdown({role, location}) {
     }, [blockHeight])
 
     return(
-        <div style={styles.background} className="halving-countdown halving-countdown-widget">
+        <div style={{minHeight: windowHeight, ...styles.background}} className="halving-countdown halving-countdown-widget">
             <img style={styles.logo} height={200} width={173} src={logo}></img>
             <div style={styles.foreground} className="countdown-header">
                 <h2 style={styles.foreground}>Zcash's next halving will take place at  <br/>~{new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>

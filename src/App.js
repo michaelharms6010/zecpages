@@ -55,7 +55,7 @@ function App() {
 
   useEffect( _ => {
     axios.get('https://www.cloudflare.com/cdn-cgi/trace')
-      .then(res => setIp(res.data.split("\n")[2].replace("ip=","")))
+      .then(res => setIp((res.data.split("\n")[2] || "").replace("ip=","")))
       .catch(err => console.log(err))
   }, [])
 
