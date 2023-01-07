@@ -15,6 +15,7 @@ export default function HalvingCountdown({role, location}) {
 
         const fgColor = params.get('fgcolor');
         const fontColor = params.get('fontcolor')
+        const vertical = params.get('vertical')
         const noLogo = params.get('nologo')
         setStyles({
             logo: {
@@ -28,7 +29,8 @@ export default function HalvingCountdown({role, location}) {
             },
             background: {
                 background: bgColor || 'white',
-            }
+            },
+            vertical: !!vertical
         
         })
         
@@ -80,8 +82,8 @@ export default function HalvingCountdown({role, location}) {
     }, [blockHeight])
 
     return(
-        <div style={{minHeight: windowHeight, ...styles.background}} className="halving-countdown halving-countdown-widget">
-            {!loading && blockHeight && <div>
+        <div style={{minHeight: windowHeight, ...styles.background}} className={`${!!styles.vertical && "vertical"} halving-countdown-widget`}>
+            {!loading && blockHeight && <div style={{width: "100%"}}>
 
             <img style={styles.logo} height={200} width={173} src={logo}></img>
             <div style={styles.foreground} className="countdown-header">

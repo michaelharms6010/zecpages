@@ -57,6 +57,40 @@ input[type=number] {
     text-align:center;
     margin: 0;
     padding: 10px;
+    h1, h2, h3, h4, h5 {
+        font-size: 3vw;
+    }
+    .countdown-header {
+        background: $day-main;
+        border: 1px solid $day-main;
+        padding:10px;
+        width: 80%;
+        // max-width: 500px;
+        margin: 0px auto;
+        border-radius: 20px;
+    }
+    .countdown-container-complete {
+        background: $day-main;
+        padding: 15px 5px;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 20px;
+        margin: 10px auto;
+        font-size: 3vw;
+    }
+    .countdown-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+        .countdown-container-number {
+            width: 20%;
+            min-width: 70px;
+            border-radius: 20px;
+            margin: 10px;
+            padding: 15px 5px;
+        }
+    }
 }
 
 .dark-mode {
@@ -1071,6 +1105,21 @@ $breakpoint-mobile: 500px;
     }
 }
 
+
+
+.halving-countdown-widget.vertical {
+
+    .countdown-container {
+        flex-direction: column;
+        width: 80%;
+        align-items:center;
+        justify-content:center;
+        margin: 0 auto;
+        .countdown-container-number {
+            width: 80%;
+        }
+    }
+}
 
 @media (max-width: $breakpoint-tablet) {
     .halving-countdown {
