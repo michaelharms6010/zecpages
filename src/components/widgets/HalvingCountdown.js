@@ -5,14 +5,14 @@ import logo from "../../icons/shieldicon.gif"
 import "../Board.scss"
 
 export default function HalvingCountdown({role, location}) {
-    const [styles, setStyles] = useState({foreground: {}, background: {}})
-    const [windowHeight, setWindowHeight] = useState('300px')
+    const search = location.search;
+    const params = new URLSearchParams(search);
+    const bgColor = params.get('bgcolor');
+    const [styles, setStyles] = useState({foreground: {}, background: {background: bgColor || 'white'}})
+    const [windowHeight, setWindowHeight] = useState(`${window.innerHeight}px`)
+    const [loading, setLoading] = useState(true)
     useEffect(_ => {
 
-        if (role == "widget") {
-            const search = location.search;
-        const params = new URLSearchParams(search);
-        const bgColor = params.get('bgcolor');
         const fgColor = params.get('fgcolor');
         const fontColor = params.get('fontcolor')
         const noLogo = params.get('nologo')
@@ -30,9 +30,10 @@ export default function HalvingCountdown({role, location}) {
                 background: bgColor || 'white',
             }
         
-            })
-        }
-        setWindowHeight(`${window.innerHeight}px`)
+        })
+        
+        
+        
     },[])
     
     const [blockHeight, setBlockHeight] = useState(null)
@@ -74,11 +75,14 @@ export default function HalvingCountdown({role, location}) {
     useEffect(_ => {
         if (blockHeight) {
             setSecondsToHalving((halvingBlock - blockHeight) * 75)
+            setTimeout(_ => setLoading(false), 50)
         }
     }, [blockHeight])
 
     return(
         <div style={{minHeight: windowHeight, ...styles.background}} className="halving-countdown halving-countdown-widget">
+            {!loading && blockHeight && <div>
+
             <img style={styles.logo} height={200} width={173} src={logo}></img>
             <div style={styles.foreground} className="countdown-header">
                 <h2 style={styles.foreground}>Zcash's next halving will take place at  <br/>~{new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>
@@ -91,7 +95,9 @@ export default function HalvingCountdown({role, location}) {
                 renderer={renderer}
                 />
             }
+            </div>}
         </div>
+        
         
     )
 }
