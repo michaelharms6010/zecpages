@@ -42,8 +42,12 @@ export default function HalvingCountdown() {
 
 
     useEffect(_ => {
-        axios.get("https://api.zcha.in/v2/mainnet/network")
-            .then(({data}) => setBlockHeight(data.blockNumber))
+        axios.get("https://zecblockexplorer.com/api/")
+            .then(({data}) => {
+                console.log(data)
+                    setBlockHeight(+data.blockbook.bestHeight)
+                
+            })
             .catch(console.error)
     },[])
 
