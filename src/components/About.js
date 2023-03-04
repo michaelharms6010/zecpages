@@ -37,9 +37,9 @@ export default function About() {
                
                 <h2 style={{display: 'inline-block', fontSize: "12px", margin: "1% auto", borderRadius: "4px", padding: "5px"}}>ZECpages 2021 cloud costs were <a href="https://grants.zfnd.org/proposals/284405689-1-year-of-zecpages-servers">provided</a> by a <a href="https://zcashomg.org/">Zcash OMG</a> grant. </h2>
             </div>
-            <div id="canary" style={{textAlign: 'left'}} className="about-content">
+            <div id="canary" style={{wordBreak: 'break-all', textAlign: 'left'}} className="about-content">
                 <h2 style={{textAlign: "center"}}>Canary</h2>
-               <code  className="canary">
+               <code className="canary">
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
                 Hash: SHA256<br/>
                 <br/>
@@ -69,7 +69,7 @@ export default function About() {
                 gpg --verify zecpages_canary_message.asc<br/><br/>
                </code>
             </div>
-            <p>Your ip is {ip}. Think about that.</p>
+            <p>Your ip is {ip || "not visible. Nice."}. Think about that.</p>
          </div>
     </> 
     )
