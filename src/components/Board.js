@@ -391,7 +391,7 @@ export default function Board(props) {
                 {qrVis &&
                 <div className="simple-board-info">
                     
-                    <QRCode bgColor={darkMode ? "#111111" : '#5e63fd'} fgColor={darkMode ? "#7377EF" : '#d1d2ff'} includeMargin={true} size={256} value={`${boardZaddr}`} /><br />
+                    <QRCode bgColor={darkMode ? "#ccc" : '#d1d2ff'} fgColor={darkMode ? "#000126" : '#4349ff'} includeMargin={true} size={256} value={`${boardZaddr}`} /><br />
                 </div>}
                 
                 <div style={{display: "block"}}>

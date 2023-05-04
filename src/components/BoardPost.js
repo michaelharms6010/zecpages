@@ -257,7 +257,7 @@ export default function BoardPost(props) {
                                 </>
                             </form>
                     
-                    <QRCode bgColor={darkMode ? "#111111" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`} />
+                    <QRCode bgColor={darkMode ? "#ccc" : post.amount >= 10000000 ? '#743943' : '#5e63fd'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : '#ffe8ec'} style={{margin: '10px 25px', display: 'block'}} includeMargin={true} size={256} value={`zcash:${boardZaddr}?amount=${likeAmount}&memo=${btoa(`LIKE::${post.id}`)}`} />
                     </div>
                     
                     

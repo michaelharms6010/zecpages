@@ -140,7 +140,7 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
         <div>
 
 
-        <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? post.amount >= 10000000 ? "#C46274" : "#7377EF" : post.amount >= 10000000 ? "#ff879b" : '#bec0fe'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={isPoll ? `zcash:${boardZaddr}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from("POLL::" + JSON.stringify(pollBuilder)))}` : `zcash:${boardZaddr}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${boardName ? `BOARD::${boardName} ` : boardInput ? `BOARD::${boardInput} ` : ""}${isReply ? `REPLY::${post.id} ` : ""}${replyBody}`))}`} />
+        <QRCode bgColor={darkMode ? "#ccc" : '#d1d2ff'} fgColor={darkMode ? post.amount >= 10000000 ? "#220005" : "#000126" : post.amount >= 10000000 ? "#58000f" : '#000126'} style={{display: 'inline-block', margin: '0 auto'}} includeMargin={true} size={256} value={isPoll ? `zcash:${boardZaddr}?amount=0.001&memo=${URLSafeBase64.encode(Buffer.from("POLL::" + JSON.stringify(pollBuilder)))}` : `zcash:${boardZaddr}?amount=${amount}&memo=${URLSafeBase64.encode(Buffer.from(`${boardName ? `BOARD::${boardName} ` : boardInput ? `BOARD::${boardInput} ` : ""}${isReply ? `REPLY::${post.id} ` : ""}${replyBody}`))}`} />
         </div>
 
         </div>    

@@ -24,7 +24,7 @@ export default function SendDm({userName, userZaddr}) {
                 value={content} 
                 onChange={e => { setContent(e.target.value) }} />
                 </div>
-                <QRCode bgColor={darkMode ? "#111111" : 'black'} fgColor={darkMode ? "#087f73" : '#bec0fe'} style={{display: 'inline-block'}} includeMargin={true} size={256} value={uri} />
+                <QRCode bgColor={darkMode ? "#ccc" : '#d1d2ff'} fgColor={darkMode ? "#00201d" : '#000126'} style={{display: 'inline-block'}} includeMargin={true} size={256} value={uri} />
             </div>
             <p>
                 {uri}
