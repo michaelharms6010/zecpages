@@ -41,25 +41,25 @@ export default function About() {
                 <h2 style={{textAlign: "center"}}>Canary</h2>
                <code className="canary">
                -----BEGIN PGP SIGNED MESSAGE-----<br/>
-                Hash: SHA256<br/>
-                <br/>
-                As of January 5, 2023, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party. No searches or seizures of any kind have ever been performed on ZECpages assets.<br/>
-                <br/>
-                Recent headlines:<br/>
-                Prince Harry accuses Prince William of physical attack in book<br/>
-                Mexico arrests capo Ovidio Guzman, son of "El Chapo" - sources<br/>
-                Evacuations ordered as California storm knocks out power<br/>
-                -----BEGIN PGP SIGNATURE-----<br/>
-                <br/>
-                iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmO3FZ0ACgkQ3x/m0fUO<br/>
-                zv4S5QgAkMTYchJfrpPYtmBSWNwRhbeA16n441jzn4d7ESmubFDKsWXJBpJLcsWd<br/>
-                PWF3E9nIIrXHzaT8rZm7ys1GvqhdKiJ//xsZ7I0hUOKzQH8/jpYzMgq875lZ7myY<br/>
-                rS2sC1aWw2qyXAQcOutgfW7Krz/NQM8/fAizVBcF4ruM1AlVh3YATsB1Lg9RpZVz<br/>
-                v/nWWSv8B/7tTkun5zy0kzhqwkMWpj5WkyT+8sBj+2M7hfXppCfECVYqOojfowv+<br/>
-                ovKFOuzpL2IWVkCdH7Feyps6hg4FOQnSaS0Dzv8aiPWeykRNekrjL/0VJLSRuST2<br/>
-                L3jaPGpbglhaLEBLEBO0TqD5YkwZww==<br/>
-                =gKuB<br/>
-                -----END PGP SIGNATURE-----<br/>
+               Hash: SHA256<br/>
+               <br/>
+               As of June 1, 2023, ZECpages.com has not received any National Security Letters or FISA court orders, and we have not been subject to any gag order(s) by a FISA court, or any other similar court(s) of any government. ZECpages has never placed any backdoors in our hardware or software and has not received any requests to do so. ZECpages has never disclosed any user communications to any third party.<br/>
+               Recent headlines:<br/>
+               US Senate set to pass debt limit suspension bill Thursday night<br/>
+               Russia says it repels border incurs<br/>
+               ion, strikes on Kyiv kill three<br/>
+               Wall Street rises on hopes of Fed pausing hikes, debt ceiling deal cheer<br/>
+               -----BEGIN PGP SIGNATURE-----<br/>
+               <br/>
+               iQEzBAEBCAAdFiEEHR4JGHTE2yF9R32s3x/m0fUOzv4FAmR5QPwACgkQ3x/m0fUO<br/>
+               zv6tzQgAiAihAzoMpo/90ZFF4kTxRRoX8IIeSQ+7OUx73V7gj727KDnHEusAYjwo<br/>
+               40QoOMo4Vmi6nQkxLnpNWC8U4VYa4pxRIBSH5gsRx9INR7OPlmQi6RqF34pO6kb/<br/>
+               qnMETqLhV+koRksBrhisF3GUmtqm6uXpOpydk9evQtM0fFmoRQpF8n2ltA8REExI<br/>
+               Q9qUmr05XVrJaZwapIuFtqVxyharqDNGHjm710JYm+SZ63Pk1YHOBq67+X3kkx/1<br/>
+               eLUSihaHEaiH1Q8pLAyJERFFCrsSqZrHMM7QdUv91UKrmL0FicQ3sEooWXxTpcIR<br/>
+               ruhW/cBR9Bby84uwnqocG9ORWiYgGw==<br/>
+               =FnQt<br/>
+               -----END PGP SIGNATURE-----<br/>
                 <br/>
                </code>
                <hr style={{border: "1px solid black", borderBottom: "none"}} />
