@@ -27,7 +27,7 @@ export default function About() {
                 <h2>What is Zcash?</h2>
                 <p>Zcash (aka ZEC) is Bitcoin + Encryption. Learn about it <a target="_blank" href="https://z.cash">here</a></p>
                 <p>A blockchain is public. Blockchain-level privacy is super important.</p>
-                <p>Want a lil Zcash to take this blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at ZECpages!</a></p>
+                <p>Want a lil Zcash to take this blockchain for a spin? <a target="_new" href="https://twitter.com/michaelharms70">Tweet at me!</a></p>
                 <a target="_new" href="https://ywallet.app/"><button className="cta">Get started in under a minute!</button></a>
             </div>
             <div className="about-content">
