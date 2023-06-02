@@ -28,14 +28,14 @@ export default function About() {
                 <p>Zcash (aka ZEC) is Bitcoin + Encryption. Learn about it <a target="_blank" href="https://z.cash">here</a></p>
                 <p>A blockchain is public. Blockchain-level privacy is super important.</p>
                 <p>Want a lil Zcash to take this blockchain for a spin? <a target="_new" href="https://twitter.com/zecpages">Tweet at ZECpages!</a></p>
-                <a target="_new" href="https://www.zecwallet.co/"><button className="cta">Get started in under a minute!</button></a>
+                <a target="_new" href="https://ywallet.app/"><button className="cta">Get started in under a minute!</button></a>
             </div>
             <div className="about-content">
                 <h2>Team ZECpages</h2>
                 <a href="https://twitter.com/michaelharms70">Michael Harms</a>
                 <p className="zaddr">zs150xua0qxun6lf7p2rexz2kz2t75aqecaguh80rq2ruaj7vwn9rxuhphgm9qpce4j6runxqm3e2u</p>
                
-                <h2 style={{display: 'inline-block', fontSize: "12px", margin: "1% auto", borderRadius: "4px", padding: "5px"}}>ZECpages 2021 cloud costs were <a href="https://grants.zfnd.org/proposals/284405689-1-year-of-zecpages-servers">provided</a> by a <a href="https://zcashomg.org/">Zcash OMG</a> grant. </h2>
+                <h2 style={{display: 'inline-block', fontSize: "12px", margin: "1% auto", borderRadius: "4px", padding: "5px"}}>ZECpages 2021 cloud costs were provided by a <a href="https://zcashcommunitygrants.org/">ZCG</a> grant. </h2>
             </div>
             <div id="canary" style={{wordBreak: 'break-all', textAlign: 'left'}} className="about-content">
                 <h2 style={{textAlign: "center"}}>Canary</h2>
