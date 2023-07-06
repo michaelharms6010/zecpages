@@ -4,8 +4,8 @@ import Countdown from 'react-countdown';
 import logo from "../icons/shieldicon.gif"
 
 export default function HalvingCountdown() {
-    const [blockHeight, setBlockHeight] = useState(null)
-    const [secondsToHalving, setSecondsToHalving] = useState(null)
+    const [blockHeight, setBlockHeight] = useState(2146585)
+    const [secondsToHalving, setSecondsToHalving] = useState(((new Date("2024-11-15")).getTime() - Date.now() + (3600000 * 6)) / 1000)
     const halvingBlock = 2726400
 
 
@@ -42,17 +42,17 @@ export default function HalvingCountdown() {
 
 
     useEffect(_ => {
-        axios.get("https://zecblockexplorer.com/api/")
-            .then(({data}) => {
-                console.log(data)
-                    setBlockHeight(+data.blockbook.bestHeight)
+        // axios.get("https://zecblockexplorer.com/api/")
+        //     .then(({data}) => {
+        //         console.log(data)
+        //             setBlockHeight(+data.blockbook.bestHeight)
                 
-            })
-            .catch(console.error)
+        //     })
+        //     .catch(console.error)
     },[])
 
     useEffect(_ => {
-        if (blockHeight) {
+        if (false && blockHeight) {
             setSecondsToHalving((halvingBlock - blockHeight) * 75)
         }
     }, [blockHeight])
@@ -63,7 +63,7 @@ export default function HalvingCountdown() {
             <div className="countdown-header">
                 <h2>Zcash's next halving will take place at  <br/>~{new Date(Date.now() + secondsToHalving * 1000).toLocaleString()}</h2>
                 <h2>Halving block: {halvingBlock}</h2>            
-                {!!blockHeight && <h2>Current block: {blockHeight} ({halvingBlock - blockHeight} blocks to go)</h2>}
+                {false && !!blockHeight && <h2>Current block: {blockHeight} ({halvingBlock - blockHeight} blocks to go)</h2>}
             </div>
             {!!secondsToHalving && 
                 <Countdown
