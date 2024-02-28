@@ -47,12 +47,19 @@ export default function HalvingCountdown() {
 
     useEffect(_ => {
         axios.post("https://zec.getblock.io/62c2e4dd-3012-4127-91cf-70ab813bd22b/mainnet/", body)
-            .then(({data}) => {
-                console.log(data)
-                setBlockHeight(+data.result.blocks)
-                
+        .then(({data}) => {
+            console.log(data)
+            setBlockHeight(+data.estimatedheight)
+        })
+        .catch(e => {
+                axios.get("https://corsproxy.io/?https://zcashblockexplorer.com/api/v1/blockchain-info")
+                .then(({data}) => {
+                    console.log(data)
+                    setBlockHeight(+data.estimatedheight)
+                    
+                })
+                console.log(e)
             })
-            .catch(e => console.log(e.response))
     },[])
 
     useEffect(_ => {
