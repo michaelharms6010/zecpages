@@ -105,32 +105,23 @@ export default function PostEntry({boardName, qrVal, replyBody, formatReplyBody,
 
                 <div className="price-selector">   
                         <div className="price-selector-pair">             
-                        <input
-                        onChange={handleChange}
-                        name="price"
-                        type="radio"
-                        value="0.001" 
-                        id="0.001" 
-                        defaultChecked />
-                        <label for="0.001">Post (.001)</label>
+                            <input
+                            onChange={handleChange}
+                            name="price"
+                            type="radio"
+                            value="0.001" 
+                            id="0.001" 
+                            defaultChecked />
+                            <label for="0.001">Post (.001)</label>
                         </div>
                         <div className="price-selector-pair">    
-                        <input
-                        onChange={handleChange}
-                        name="price"
-                        type="radio"
-                        id="0.01"
-                        value="0.01" />
-                        <label for="0.01">Post and <a className="label-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/zecpagesRAW">Tweet</a> (.01)</label>
-                        </div>
-                        <div className="price-selector-pair">    
-                        <input
-                        onChange={handleChange}
-                        name="price"
-                        type="radio"
-                        id="0.1"
-                        value="0.1" />
-                        <label for="0.1">Highlight (.1)</label>
+                            <input
+                            onChange={handleChange}
+                            name="price"
+                            type="radio"
+                            id="0.1"
+                            value="0.1" />
+                            <label for="0.1">Highlight (.1)</label>
                         </div>
                     </div>
 
