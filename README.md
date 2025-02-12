@@ -4,6 +4,7 @@ ZECpages is a Zcash-focused social site with a Zcash-powered message board. It u
 
 ZECpages was built and maintained by [Michael Harms](https://twitter.com/michaelharms70).
 
+ZECpages was a proof-of-concept "Blockchain MVC" app using Zcash shielded transaction memos as an api and data store. The posts that appeared on ZECpages still persist on the Zcash blockchain.
 The view key for ZECpages can be imported into most Zcash wallets, and has been used as a benchmarking tool for wallet sync, being an Old Wallet With Quite A Few Transactions.
 
 This is the view key:
