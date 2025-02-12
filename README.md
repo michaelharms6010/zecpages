@@ -2,7 +2,12 @@
 
 ZECpages is a Zcash-focused social site with a Zcash-powered message board. It uses a React frontend connected to a Express/knex/pg backend in its present state. You can see the app at https://zecpages.com. Note that this repo is just for the React app - the backend and a few other jobs that drive the app are in other repositories linked below.
 
-ZECpages is built and maintained by [Michael Harms](https://twitter.com/michaelharms70). 
+ZECpages was built and maintained by [Michael Harms](https://twitter.com/michaelharms70).
+
+The view key for ZECpages can be imported into most Zcash wallets, and has been used as a benchmarking tool for wallet sync, being an Old Wallet With Quite A Few Transactions.
+
+This is the view key:
+`zxviews1q0duytgcqqqqpqre26wkl45gvwwwd706xw608hucmvfalr759ejwf7qshjf5r9aa7323zulvz6plhttp5mltqcgs9t039cx2d09mgq05ts63n8u35hyv6h9nc9ctqqtue2u7cer2mqegunuulq2luhq3ywjcz35yyljewa4mgkgjzyfwh6fr6jd0dzd44ghk0nxdv2hnv4j5nxfwv24rwdmgllhe0p8568sgqt9ckt02v2kxf5ahtql6s0ltjpkckw8gtymxtxuu9gcr0swvz`
 
 ## Backend
 
